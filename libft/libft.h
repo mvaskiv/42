@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/14 16:43:03 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/14 16:43:05 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -6,12 +17,9 @@
 # include <stdio.h>
 # include <unistd.h>
 
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+typedef unsigned int	t_int;
+
+t_int		ft_strlcat(char *dest, char const *src, unsigned int n);
 
 void		ft_putchar(char c);
 void		ft_putnbr(int n);
@@ -50,16 +58,15 @@ char		*ft_strnew(unsigned int size);
 char		*ft_strmap(char const *s, char (*f)(char));
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strsub(char const *s, unsigned int start, unsigned int len);
-char								*ft_strnstr(char const *haystack, char const *needle, unsigned int n);
-
-unsigned int				ft_strlcat(char *dest, char const *src, unsigned int n);
+char		*ft_strnstr(char const *haystack, char const *needle,
+	unsigned int n);
 
 int			ft_memcmp(const void *s1, const void *s2, unsigned int n);
 int			ft_strnequ(char const *s1, char const *s2, unsigned int n);
 int			ft_strequ(char const *s1, char const *s2);
 int			ft_atoi(const char *nptr);
-int 		ft_strncmp(const char *s1, const char *s2, unsigned int n);
-int 		ft_strcmp(const char *s1, const char *s2);
+int			ft_strncmp(const char *s1, const char *s2, unsigned int n);
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strlen(const char *s);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
