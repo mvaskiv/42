@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:52:23 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:40:28 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/14 17:25:02 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char		*strdupp(const char *s)
 	i = 0;
 	while (s[i])
 		i++;
-	d = (char *)malloc(sizeof(char) * i + 1);
+	d = (char *)malloc(sizeof(char) * (i + 1));
 	if (!d)
 		return (0);
 	i = 0;
@@ -45,7 +45,7 @@ char			*ft_itoa(int n)
 		return (strdupp("-2147483648"));
 	while ((t / 10) != 0)
 		i++;
-	if (!(str = (char *)malloc(sizeof(char) * i + 1)))
+	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (n < 0)
 	{

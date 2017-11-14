@@ -804,10 +804,6 @@ char	ft_strcap(char a)
 	return (a);
 }
 
-
-
-
-
 int		main(int argc,  char **argv)
 {
 	if (argc != 2)
