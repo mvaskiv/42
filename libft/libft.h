@@ -19,6 +19,13 @@
 
 typedef unsigned int	t_int;
 
+typedef struct				s_list
+{
+	void					*content;
+	size_t				content_size;
+	struct s_list	*next;
+}											t_list;
+
 t_int		ft_strlcat(char *dest, char const *src, unsigned int n);
 
 void		ft_putchar(char c);
