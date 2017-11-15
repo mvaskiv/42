@@ -18,7 +18,8 @@ static int		ft_skip(const char *str)
 
 	i = 0;
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == ' ' || str[i] == '\f' || str[i] == '\r' || str[i] == '-')
+		|| str[i] == ' ' || str[i] == '\f' || str[i] == '\r'
+		|| str[i] == '-' || str[i] == '+')
 		i++;
 	return (i);
 }

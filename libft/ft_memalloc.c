@@ -18,9 +18,11 @@ void		*ft_memalloc(unsigned int size)
 	unsigned int	i;
 
 	i = 0;
-	if (!(str = malloc(size)))
-		return (NULL);
-	while (i <= size)
-		((char *)str)[i++] = '\0';
+	str = malloc(size);
+	if (str)
+	{
+		while (i < size)
+			((char *)str)[i++] = (unsigned char)'\0';
+	}
 	return (str);
 }

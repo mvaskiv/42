@@ -15,11 +15,13 @@
 char	*ft_strnew(unsigned int size)
 {
 	char	*str;
+	int		i;
 
+	i = 0;
 	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
 		return (NULL);
-	while (*str)
-		*str++ = '\0';
-	*str = '\0';
+	while (str[i])
+		((char *)str)[i++] = (unsigned char)'\0';
+	str[i] = '\0';
 	return (str);
 }

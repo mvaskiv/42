@@ -34,7 +34,7 @@ unsigned int				ft_strlcat(char *dest, char const *src,
 	l_s = strlenn(src);
 	if (n <= l_d)
 		return (n + l_s);
-	while (n < (n - l_d - 1) && src[i])
+	while (i < (n - l_d - 1) && src[i])
 	{
 		dest[l_d + i] = src[i];
 		i++;
