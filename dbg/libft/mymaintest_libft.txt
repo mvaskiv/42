@@ -1,0 +1,44 @@
+[Yellow Tests] are Hardcore
+Test [memset] : OK
+Test [bzero] : OK
+Test [memcpy] : OK
+Test [memccpy] : OK
+Test [memmove] : OK
+Test [memchr] : OK
+Test [memcmp] : OK
+Test [strlen] : OK
+Test [strdup] : OK
+Test [strcpy] : OK
+Test [strncpy] : OK
+Test [strcat] : OK
+Test [strncat] : OK
+Test [strlcat] : Error Line 1397, Funct uf_test_strlcat FAIL
+Test [strchr] : OK
+Test [strrchr] : OK
+Test [strstr] : OK
+Test [strnstr] : OK
+Test [strcmp] : Error Line 1266, Funct uf_test_strcmp FAIL
+Test [strncmp] : Error Line 1199, Funct uf_test_strncmp FAIL
+Test [atoi] : Error Line 1149, Funct uf_test_atoi FAIL
+Test [isalpha] : OK
+Test [isdigit] : OK
+Test [isalnum] : OK
+Test [isascii] : OK
+Test [isprint] : OK
+Test [toupper] : OK
+Test [tolower] : OK
+Test [memalloc_and_del] : OK
+Test [strnew] : OK
+Test [strdel] : OK
+Test [strclr] : OK
+Test [striter] : Segmentation Fault
+Test [striteri] : Segmentation Fault
+Test [strmap] : Segmentation Fault
+Test [strmapi] : Segmentation Fault
+Test [strequ] : Segmentation Fault
+Test [strnequ] : Segmentation Fault
+Test [strsub] : Segmentation Fault
+Test [strjoin] : Segmentation Fault
+Test [strsplit] : Segmentation Fault
+Test [itoa] : Segmentation Fault
+Test [strtrim] : Segmentation Fault

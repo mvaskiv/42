@@ -20,7 +20,7 @@ void		*ft_memalloc(unsigned int size)
 	i = 0;
 	if (!(str = malloc(size)))
 		return (NULL);
-	while (i < size)
+	while (i <= size)
 		((char *)str)[i++] = '\0';
 	return (str);
 }

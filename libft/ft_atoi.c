@@ -18,7 +18,7 @@ static int		ft_skip(const char *str)
 
 	i = 0;
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == ' ' || str[i] == '\f' || str[i] == '\r')
+		|| str[i] == ' ' || str[i] == '\f' || str[i] == '\r' || str[i] == '-')
 		i++;
 	return (i);
 }
@@ -30,7 +30,7 @@ int				ft_atoi(const char *nptr)
 	int		o;
 
 	o = 0;
-	i = ft_skip(nptr) + 1;
+	i = ft_skip(nptr);
 	j = i - 1;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		o = (o * 10) + nptr[i++] - 48;
