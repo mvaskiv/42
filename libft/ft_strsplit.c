@@ -17,25 +17,26 @@ static int		wordsize(char const *s, char c)
 	int		i;
 
 	i = 0;
-	while (s[i] != '\0' && s[i] != c)
+	while (*s != '\0' && *s != c)
+	{
 		i++;
+		s++;
+	}
 	return (i);
 }
 
 static int		wordcount(char const *s, char c)
 {
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			j++;
-		i++;
+		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
+			i++;
+		s++;
 	}
-	return (j);
+	return (i);
 }
 
 static char		*strncpyy(char *dest, const char *src, unsigned int n)
@@ -55,10 +56,10 @@ static char		*strncpyy(char *dest, const char *src, unsigned int n)
 
 char			**ft_strsplit(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		l;
-	char	**arr;
+	unsigned int		i;
+	unsigned int		j;
+	unsigned int		l;
+	char				**arr;
 
 	j = wordcount(s, c);
 	if (!(arr = malloc(sizeof(char) * (j + 1))))
@@ -80,4 +81,16 @@ char			**ft_strsplit(char const *s, char c)
 	}
 	arr[i] = NULL;
 	return (arr);
+}
+
+int			main(void)
+{
+	char		**arr;
+	int			i;
+
+	i = 0;
+	arr = ft_strsplit("   hello  sd ", ' ');
+	while (arr[0])
+		write(1, &arr[0][i++], 1);
+	return (0);
 }

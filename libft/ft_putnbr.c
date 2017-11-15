@@ -28,7 +28,7 @@ static void		putstrr(char const *s)
 
 void			ft_putnbr(int n)
 {
-	int			i[10];
+	int			i[11];
 	int			j;
 
 	j = 0;

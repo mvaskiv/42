@@ -33,18 +33,32 @@ static char		*strdupp(const char *s)
 	return (d);
 }
 
-char			*ft_itoa(int n)
+static int	nbrlenn(int n)
+{
+	int		i;
+
+	i = 0;
+	if (n < 0)
+		i++;
+	while (n / 10)
+	{
+		n /= 10;
+		i++;
+	}
+	i++;
+	return (i);
+}
+
+char				*ft_itoa(int n)
 {
 	unsigned int		i;
 	char				*str;
 	int					t;
 
-	i = 0;
+	i = nbrlenn(n);
 	t = n;
 	if (n == -2147483648)
 		return (strdupp("-2147483648"));
-	while ((t / 10) != 0)
-		i++;
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (n < 0)
@@ -52,10 +66,12 @@ char			*ft_itoa(int n)
 		str[0] = '-';
 		n = -n;
 	}
+	str[i] = '\0';
 	while (n >= 10)
 	{
 		str[i - 1] = n % 10 + '0';
 		n /= 10;
+		i--;
 	}
 	str[i - 1] = n + '0';
 	return (str);
