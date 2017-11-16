@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:06:51 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:07:14 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/16 17:19:06 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		((char *)str)[i++] = (unsigned char)'\0';
 	str[i] = '\0';
 	i = 0;
- 	if (s && f)
+	if (s && f)
 	{
 		while (s[i])
 		{

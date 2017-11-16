@@ -22,7 +22,7 @@ void		*ft_memalloc(unsigned int size)
 	if (str)
 	{
 		while (i < size)
-			((char *)str)[i++] = (unsigned char)'\0';
+			((char *)str)[i++] = 0;
 	}
 	return (str);
 }

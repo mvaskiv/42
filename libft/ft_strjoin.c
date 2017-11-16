@@ -6,13 +6,13 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:04:59 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:05:25 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/16 17:21:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			strlenn(char const *s)
+static int		strlenn(char const *s)
 {
 	int		i;
 
@@ -75,7 +75,7 @@ static char		*strcatt(char *dest, const char *src)
 	return (dest);
 }
 
-char				*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
 

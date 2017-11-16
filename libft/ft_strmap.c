@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:06:27 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:06:43 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/16 17:18:10 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char				*ft_strmap(char const *s, char (*f)(char))
 {
 	char				*str;
-	unsigned int			i;
+	unsigned int		i;
 
 	i = 0;
 	while (s[i])

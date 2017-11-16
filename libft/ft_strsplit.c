@@ -28,13 +28,15 @@ static int		wordsize(char const *s, char c)
 static int		wordcount(char const *s, char c)
 {
 	int		i;
+	int		j;
 
 	i = 0;
-	while (*s)
+	j = 0;
+	while (s[j])
 	{
-		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
+		if (s[j] != c && (s[j + 1] == c || s[j + 1] == '\0'))
 			i++;
-		s++;
+		j++;
 	}
 	return (i);
 }
@@ -44,10 +46,11 @@ static char		*strncpyy(char *dest, const char *src, unsigned int n)
 	unsigned int		i;
 
 	i = 0;
-	while (src[i] && i < n)
+	while (*src && i < n)
 	{
-		dest[i] = src[i];
+		dest[i] = *src;
 		i++;
+		src++;
 	}
 	while (i < n)
 		dest[i++] = '\0';
@@ -62,7 +65,7 @@ char			**ft_strsplit(char const *s, char c)
 	char				**arr;
 
 	j = wordcount(s, c);
-	if (!(arr = malloc(sizeof(char) * (j + 1))))
+	if (!(arr = (char **)malloc(sizeof(char *) * (j + 1))))
 		return (NULL);
 	i = -1;
 	while (++i < j && *s)
@@ -70,7 +73,7 @@ char			**ft_strsplit(char const *s, char c)
 		while (*s == c)
 			s++;
 		l = wordsize(s, c);
-		if (!(arr[i] = malloc(sizeof(char) * (l + 1))))
+		if (!(arr[i] = (char *)malloc(sizeof(char) * (l + 1))))
 		{
 			free(arr);
 			return (NULL);
@@ -81,16 +84,4 @@ char			**ft_strsplit(char const *s, char c)
 	}
 	arr[i] = NULL;
 	return (arr);
-}
-
-int			main(void)
-{
-	char		**arr;
-	int			i;
-
-	i = 0;
-	arr = ft_strsplit("   hello  sd ", ' ');
-	while (arr[0])
-		write(1, &arr[0][i++], 1);
-	return (0);
 }

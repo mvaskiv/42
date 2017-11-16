@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:54:19 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 15:54:39 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/16 17:17:30 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		*ft_memccpy(void *dest, const void *src, int c, unsigned int n)
 {
-	unsigned int	i;
+	unsigned int			i;
 	unsigned char			*tmp_dest;
 	unsigned const char		*tmp_src;
 

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:52:23 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 17:25:02 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/16 17:17:53 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char		*strdupp(const char *s)
 	return (d);
 }
 
-static int	nbrlenn(int n)
+static int		nbrlenn(int n)
 {
 	int		i;
 
@@ -49,7 +49,7 @@ static int	nbrlenn(int n)
 	return (i);
 }
 
-char				*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	unsigned int		i;
 	char				*str;
