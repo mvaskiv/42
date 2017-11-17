@@ -29,23 +29,19 @@ static char	*strneww(unsigned int size)
 void		*ft_memmove(void *dest, const void *src, unsigned int n)
 {
 	char			*tmp;
-	char			*tmp_dest;
-	const char		*tmp_src;
 	unsigned int	i;
 
 	i = 0;
-	tmp_dest = dest;
-	tmp_src = src;
 	tmp = strneww(sizeof(char) * n);
 	while (i < n)
 	{
-		tmp[i] = tmp_src[i];
+		tmp[i] = src[i];
 		i++;
 	}
 	i = 0;
 	while (i < n)
 	{
-		tmp_dest[i] = tmp[i];
+		dest[i] = tmp[i];
 		i++;
 	}
 	free(tmp);

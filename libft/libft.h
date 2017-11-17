@@ -3,21 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:43:03 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:43:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/17 14:08:53 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
+# include <string.h>
 
 typedef unsigned int	t_int;
+
+typedef struct				s_list
+{
+	void 								*content;
+	t_int								content_size;
+	struct s_list				*next;
+}											t_list;
 
 t_int		ft_strlcat(char *dest, char const *src, unsigned int n);
 
@@ -41,6 +46,12 @@ void		ft_striter(char *s, void (*f)(char *));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		*ft_memmove(void *dest, const void *src, unsigned int n);
 void		*ft_memchr(const void *s, int c, unsigned int n);
+
+t_list	*ft_lstnew(void const *content, t_int content_size);
+void		ft_lstdelone(t_list **alst, void (*del)(void *, t_int));
+void		ft_lstdel(t_list **alst, void (*del)(void *, t_int));
+void		ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void		ft_lstadd(t_list **alst, t_list *new);
 
 char		*ft_strncpy(char *dest, const char *src, unsigned int n);
 char		*ft_strcpy(char *dest, const char *src);
