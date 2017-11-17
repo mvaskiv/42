@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:05:33 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:41:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/17 17:42:16 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static unsigned int			strlenn(char const *s)
 	return (i);
 }
 
-unsigned int				ft_strlcat(char *dest, char const *src,
+size_t						ft_strlcat(char *dest, char const *src,
 	unsigned int n)
 {
 	unsigned int		i;

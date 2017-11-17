@@ -3,47 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:55:35 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 15:55:57 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/17 18:48:03 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*strneww(unsigned int size)
+void		*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*str;
-	int		i;
+	char				*tmp_dest;
+	char				*tmp_src;
 
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	while (str[i])
-		((char *)str)[i++] = (unsigned char)'\0';
-	str[i] = '\0';
-	return (str);
-}
-
-void		*ft_memmove(void *dest, const void *src, unsigned int n)
-{
-	char			*tmp;
-	unsigned int	i;
-
-	i = 0;
-	tmp = strneww(sizeof(char) * n);
-	while (i < n)
+	tmp_dest = (char *)dest;
+	tmp_src = (char *)src;
+	if (tmp_dest < tmp_src)
 	{
-		tmp[i] = src[i];
-		i++;
+		while (n-- > 0)
+			*tmp_dest++ = *tmp_src++;
 	}
-	i = 0;
-	while (i < n)
+	else
 	{
-		dest[i] = tmp[i];
-		i++;
+		tmp_src += n;
+		tmp_dest += n;
+		while (n-- > 0)
+			*--tmp_dest = *--tmp_src;
 	}
-	free(tmp);
 	return (dest);
 }

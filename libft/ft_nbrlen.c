@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 17:14:15 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/17 17:31:59 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/17 17:54:46 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/17 17:54:47 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+int		ft_nbrlen(int n)
 {
-	t_list	*to_free;
+	int		i;
 
-	if (alst)
+	i = 0;
+	if (n < 0)
+		i++;
+	while (n / 10)
 	{
-		while (*alst)
-		{
-			del((*alst)->content, (*alst)->content_size);
-			to_free = *alst;
-			*alst = (*alst)->next;
-			free(to_free);
-			to_free = NULL;
-		}
+		n /= 10;
+		i++;
 	}
+	i++;
+	return (i);
 }
