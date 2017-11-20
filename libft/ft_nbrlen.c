@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 17:54:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/18 18:02:58 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:58:58 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_nbrlen(int n)
+size_t		ft_nbrlen(int n)
 {
-	int		i;
+	unsigned int		i;
 
 	i = 0;
 	if (n < 0)
