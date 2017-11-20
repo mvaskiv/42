@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:55:11 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 15:55:24 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/18 17:56:55 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int			ft_memcmp(const void *s1, const void *s2, unsigned int n)
 {

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 17:14:15 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/17 17:31:59 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:12:39 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	t_list	*to_free;
 
-	if (alst)
+	if (alst && del)
 	{
 		while (*alst)
 		{

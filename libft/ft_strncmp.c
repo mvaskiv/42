@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:07:38 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:08:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/18 18:08:29 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int							ft_strncmp(const char *s1,
 	const char *s2, unsigned int n)

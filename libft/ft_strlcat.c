@@ -6,21 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:05:33 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/17 17:42:16 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/18 18:07:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static unsigned int			strlenn(char const *s)
-{
-	unsigned int		i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 size_t						ft_strlcat(char *dest, char const *src,
 	unsigned int n)
@@ -30,8 +20,8 @@ size_t						ft_strlcat(char *dest, char const *src,
 	unsigned int		l_s;
 
 	i = 0;
-	l_d = strlenn(dest);
-	l_s = strlenn(src);
+	l_d = ft_strlen(dest);
+	l_s = ft_strlen(src);
 	if (n <= l_d)
 		return (n + l_s);
 	while (i < (n - l_d - 1) && src[i])

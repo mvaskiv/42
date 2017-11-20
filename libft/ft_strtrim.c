@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:15:13 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:15:41 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/18 17:49:16 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char		*strncpyy(char *dest, const char *src, unsigned int n)
-{
-	unsigned int		i;
-
-	i = 0;
-	while (src[i] && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-		dest[i++] = '\0';
-	return (dest);
-}
 
 char			*ft_strtrim(char const *s)
 {
@@ -43,7 +28,7 @@ char			*ft_strtrim(char const *s)
 		i--;
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	strncpyy(str, s, i);
+	ft_strncpy(str, s, i);
 	str[i] = '\0';
 	return (str);
 }
