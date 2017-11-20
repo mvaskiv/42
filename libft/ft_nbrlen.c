@@ -6,9 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 17:54:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/20 16:58:58 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/20 17:01:42 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t		ft_nbrlen(int n)
 {
