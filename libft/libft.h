@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:43:03 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/17 18:38:21 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:57:34 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ int						ft_isprint(int c);
 int						ft_tolower(int c);
 int						ft_toupper(int c);
 int						ft_nbrlen(int n);
+long long int			ft_longatoi(const char *nptr);
 
 #endif
