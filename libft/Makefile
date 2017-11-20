@@ -6,7 +6,7 @@
 #    By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 15:48:00 by mvaskiv           #+#    #+#              #
-#    Updated: 2017/11/17 17:53:38 by mvaskiv          ###   ########.fr        #
+#    Updated: 2017/11/20 17:04:31 by mvaskiv          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRC = ft_atoi.c\
 			ft_lstdel.c\
 			ft_lstdelone.c\
 			ft_nbrlen.c\
+			ft_longatoi.c\
 
 OBJ = $(SRC:.c=.o)
 
