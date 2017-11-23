@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:43:03 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/20 16:59:26 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/21 13:31:49 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void					ft_lstdel(t_list **alst,
 	void (*del)(void *, size_t));
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void					ft_lstadd(t_list **alst, t_list *new);
+void					ft_arrclr(char **arr);
 
 char					*ft_strncpy(char *dest, const char *src,
 	unsigned int n);

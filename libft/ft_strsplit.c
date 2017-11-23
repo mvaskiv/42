@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:13:35 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:14:36 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/21 14:15:08 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char			**ft_strsplit(char const *s, char c)
 		l = wordsize(s, c);
 		if (!(arr[i] = (char *)malloc(sizeof(char) * (l + 1))))
 		{
-			free(arr);
+			ft_arrclr(arr);
 			return (NULL);
 		}
 		strncpyy(arr[i], s, l);

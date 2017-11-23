@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_arrclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 16:06:27 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/21 14:08:37 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/21 13:24:13 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/21 14:14:32 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_strmap(char const *s, char (*f)(char))
+void	ft_arrclr(char **arr)
 {
-	char				*str;
-	unsigned int		i;
+	int		i;
+	int		j;
 
+	j = 0;
 	i = 0;
-	if (s)
-		while (s[i])
-			i++;
-	else
-		return (NULL);
-	if (!(str = (char *)malloc(i + 1)))
-		return (NULL);
-	i = 0;
-	while (str[i])
-		((char *)str)[i++] = '\0';
-	str[i] = '\0';
-	i = 0;
-	if (s && f)
+	if (*arr)
 	{
-		while (s[i])
+		if(arr)
 		{
-			str[i] = f(s[i]);
-			i++;
+			while (i <= ft_strlen(*arr))
+			{
+				while (j <= ft_strlen(arr[i]))
+					arr[i][j++] = '\0';
+				i++;
+			}
 		}
-		str[i] = '\0';
-		return (str);
 	}
-	return (NULL);
 }
