@@ -1,0 +1,1 @@
+open ./Downloads/1475609299911.png && cd ./Documents/myGit && git add . && git commit -m 'update' && git push
