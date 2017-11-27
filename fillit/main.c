@@ -21,7 +21,7 @@ int		main(int argc, char **argv)
 	//	return (0);
 	//}
 	game = ft_get_minos(input);
-	ft_play_the(game);
+	ft_play_the(game, input);
 	free(input);
 	free(game);
 	return (0);

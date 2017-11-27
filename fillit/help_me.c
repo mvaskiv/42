@@ -36,29 +36,6 @@ void		ft_minowriter(t_tminos **block, char *str)
 	}
 }
 
-char		**ft_map_initial(int s)
-{
-	int		x;
-	int		y;
-	char **map;
-
-	x = 0;
-	if (!(map = (char **)malloc(sizeof(char *) * s + 1)))
-		return (NULL);
-	while (x < s)
-	{
-		if (!(map[x] = (char *)malloc(sizeof(char) * s + 1)))
-			return (NULL);
-		y = 0;
-		while (y < s)
-			map[x][y++] = '.';
-		map[x][y] = '\0';
-		x++;
-	}
-	map[x] = NULL;
-	return (map);
-}
-
 char		**ft_mapcreator(char **map, int s)
 {
 	int		x;
