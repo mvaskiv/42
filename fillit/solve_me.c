@@ -10,6 +10,7 @@ char		**ft_fill_me(t_tminos *game, char **map, int s)
 	x = 0;
 	if (game->next == NULL)
 		return (map);
+	filled = NULL;
 	while (x < s)
 	{
 		y = 0;
@@ -35,11 +36,13 @@ void		ft_play_the(t_tminos *game)
 	int			i;
 
 	i = 4;
-	map = ft_mapcreator(i);
+	map = NULL;
+	map = ft_mapcreator(map, i);
+	filled = NULL;
 	while (!(filled = ft_fill_me(game, map, i)))
 	{
 		ft_memdel((void **)map);
-		map = ft_mapcreator(++i);
+		map = ft_mapcreator(map, ++i);
 	}
 	i = 0;
 	while (map[i])

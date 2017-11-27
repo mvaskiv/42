@@ -28,19 +28,18 @@ void		ft_minowriter(t_tminos **block, char *str)
 	{
 		if (str[i] == '#')
 		{
-			(*block)->x[j] = i % 5;
-			(*block)->y[j] = i / 5;
+			(*block)->x[j] = i / 5;
+			(*block)->y[j] = i % 5;
 			j++;
 		}
 		i++;
 	}
 }
 
-char		**ft_mapcreator(int s)
+char		**ft_mapcreator(char  **map, int s)
 {
 	int		x;
 	int		y;
-	char	**map;
 
 	x = 0;
 	if (!(map = (char **)malloc(sizeof(char *) * s + 1)))
