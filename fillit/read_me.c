@@ -54,3 +54,45 @@ t_tminos	ft_get_minos(char *str)
 	tmp->next = NULL;
 	return (input);
 }
+
+char		**ft_add_one(t_tminos *game, char **map, int s)
+{
+	int		i;
+	int		x;
+	int		y;
+
+	i = 0;
+	x = 0;
+	while (x < s)
+	{
+		y = 0
+		while (y < s)
+		{
+			if (game->x[i] == x && game->y[i] == y)
+			{
+				map[x][y] = game->order;
+				i++;
+			}
+			y++;
+		}
+		x++;
+	}
+	return (map);
+}
+
+char		**ft_del_one(t_tminos *game, char **map, int s)
+{
+	int		x;
+	int		y;
+
+	x = 0;
+	while (x < s)
+	{
+		y = 0;
+		while (y < s)
+			if (map[x][y] == game->order)
+				map[x][y++] = '.';
+		x++;
+	}
+	return (map);
+}

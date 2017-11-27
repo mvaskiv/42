@@ -32,7 +32,14 @@ char		**ft_fill_me(t_tminos *game, char **map, int s)
 		while (x < s)
 		{
 			ft_set_coord(&game, x, y);
-			if ()
+			if (ft_check_place(game, map, s))
+				filled = ft_fill_me(ft_add_one(game, map, s), game->next, s);
+			if(filled)
+				return (filled);
+			map = ft_del_one(map, game, s);
+			x++;
 		}
+		y++;
 	}
+	return (NULL);
 }
