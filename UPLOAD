@@ -1,1 +1,1 @@
-git init && git add . && git commit -m 'update' && git push
+cd ./Documents/myGit && git add . && git commit -m 'update' && git push
