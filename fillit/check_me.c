@@ -15,7 +15,7 @@ int		ft_check_place(t_tminos *mino, char **map, int s)
 		while (y < s)
 		{
 			if (mino->x[i] < s && mino->y[i] < s
-				&&map[mino->x[i]][mino->y[i]] == '.')
+				&& map[mino->x[i]][mino->y[i]] == '.')
 				if (++i == 4)
 					return (1);
 			y++;

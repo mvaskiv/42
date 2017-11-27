@@ -36,7 +36,7 @@ t_tminos	*ft_get_minos(char *str)
 	t_tminos	*tmp;
 
 	i = 0;
-	letter = 65;
+	letter = 'A';
 	q = ft_minocounter(str);
 	if (!(input = (t_tminos *)malloc(sizeof(t_tminos))))
 		return (NULL);
@@ -67,7 +67,7 @@ char		**ft_add_one(t_tminos *game, char **map, int s)
 	while (x < s)
 	{
 		y = 0;
-		while (y < s)
+		while (y < s && i < 4)
 		{
 			if (game->x[i] == x && game->y[i] == y)
 			{

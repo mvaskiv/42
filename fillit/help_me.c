@@ -36,7 +36,30 @@ void		ft_minowriter(t_tminos **block, char *str)
 	}
 }
 
-char		**ft_mapcreator(char  **map, int s)
+char		**ft_map_initial(int s)
+{
+	int		x;
+	int		y;
+	char **map;
+
+	x = 0;
+	if (!(map = (char **)malloc(sizeof(char *) * s + 1)))
+		return (NULL);
+	while (x < s)
+	{
+		if (!(map[x] = (char *)malloc(sizeof(char) * s + 1)))
+			return (NULL);
+		y = 0;
+		while (y < s)
+			map[x][y++] = '.';
+		map[x][y] = '\0';
+		x++;
+	}
+	map[x] = NULL;
+	return (map);
+}
+
+char		**ft_mapcreator(char **map, int s)
 {
 	int		x;
 	int		y;
@@ -54,7 +77,7 @@ char		**ft_mapcreator(char  **map, int s)
 		map[x][y] = '\0';
 		x++;
 	}
-	map[x] = '\0';
+	map[x] = NULL;
 	return (map);
 }
 
@@ -75,11 +98,9 @@ void		ft_set_coord(t_tminos **piece, int x, int y)
 			max_y = (*piece)->y[i];
 		i++;
 	}
-	i--;
-	while (i >= 0)
+	while (--i >= 0)
 	{
 		(*piece)->x[i] = (*piece)->x[i] - max_x + x;
 		(*piece)->y[i] = (*piece)->y[i] - max_y + y;
-		i--;
 	}
 }
