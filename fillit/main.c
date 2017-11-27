@@ -4,7 +4,7 @@
 int		main(int argc, char **argv)
 {
 	int		fd;
-	char		input;
+	char		*input;
 	t_tminos	*game;
 
 	if (argc != 2)
@@ -15,11 +15,11 @@ int		main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	input = ft_copy_input(fd);
 	close(fd);
-	if (!check)
-	{
-		ft_putendl("error");
-		return (0);
-	}
+	//if (!check)
+	//{
+	//	ft_putendl("error");
+	//	return (0);
+	//}
 	game = ft_get_minos(input);
 	ft_play_the(game);
 	free(input);

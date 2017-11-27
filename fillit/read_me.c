@@ -8,6 +8,7 @@ char		*ft_copy_input(int fd)
 	char	c;
 	char	*str;
 
+	i = 0;
 	fdd = read(fd, &c, 1);
 	if (fdd != 1)
 		return(NULL);
@@ -26,7 +27,7 @@ char		*ft_copy_input(int fd)
 	return (str);
 }
 
-t_tminos	ft_get_minos(char *str)
+t_tminos	*ft_get_minos(char *str)
 {
 	int		i;
 	int		q;
@@ -45,7 +46,7 @@ t_tminos	ft_get_minos(char *str)
 		tmp->order = letter;
 		ft_minowriter(&tmp, ft_strsub(str, i, 20));
 		if (!(tmp->next = (t_tminos *)malloc(sizeof(t_tminos))))
-			return (NULL)
+			return (NULL);
 		tmp = tmp->next;
 		letter++;
 		i += 21;
@@ -65,7 +66,7 @@ char		**ft_add_one(t_tminos *game, char **map, int s)
 	x = 0;
 	while (x < s)
 	{
-		y = 0
+		y = 0;
 		while (y < s)
 		{
 			if (game->x[i] == x && game->y[i] == y)
@@ -90,8 +91,11 @@ char		**ft_del_one(t_tminos *game, char **map, int s)
 	{
 		y = 0;
 		while (y < s)
+		{
 			if (map[x][y] == game->order)
-				map[x][y++] = '.';
+				map[x][y] = '.';
+			y++;
+		}
 		x++;
 	}
 	return (map);

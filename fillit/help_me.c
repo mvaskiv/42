@@ -10,11 +10,11 @@ int		ft_minocounter(char *str)
 	q = 0;
 	while (str[i])
 	{
-		if (str[i] == '\n' && str[i + 1] != '\0')
+		if (str[i] == '#')
 			q++;
 		i++;
 	}
-	return (q);
+	return (q / 4);
 }
 
 void		ft_minowriter(t_tminos **block, char *str)
@@ -55,7 +55,7 @@ char		**ft_mapcreator(int s)
 		map[x][y] = '\0';
 		x++;
 	}
-	map[y] = '\0';
+	map[x] = '\0';
 	return (map);
 }
 
@@ -76,9 +76,11 @@ void		ft_set_coord(t_tminos **piece, int x, int y)
 			max_y = (*piece)->y[i];
 		i++;
 	}
-	while (--i >= 0)
+	i--;
+	while (i >= 0)
 	{
 		(*piece)->x[i] = (*piece)->x[i] - max_x + x;
 		(*piece)->y[i] = (*piece)->y[i] - max_y + y;
+		i--;
 	}
 }

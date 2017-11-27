@@ -27,6 +27,6 @@ char			**ft_mapcreator(int s);
 int				ft_check_place(t_tminos *mino, char **map, int s);
 int				ft_minocounter(char *str);
 
-t_tminos	*ft_get_minos(char *str);
+t_tminos	*ft_get_minos(char *str)
 
 #endif
