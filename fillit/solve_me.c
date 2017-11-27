@@ -38,12 +38,12 @@ char		**ft_fill_me(t_tminos *game, char **map, int s)
 	return (NULL);
 }
 
-int		ft_sqrt(int i)
+static int		ft_sqrt(int i)
 {
 	int q;
 
 	q = 1;
-	while ((q * q) <= i)
+	while ((q * q) < i)
 		q++;
 	return (q);
 }
@@ -54,7 +54,7 @@ void		ft_play_the(t_tminos *game, char *str)
 	char		**map;
 	int			i;
 	
-	i = ft_sqrt(ft_minocounter(str));
+	i = ft_sqrt(ft_minocounter(str) * 4);
 	map = NULL;
 	map = ft_mapcreator(map, i);
 	while (!(filled = ft_fill_me(game, map, i)))
