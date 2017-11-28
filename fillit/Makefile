@@ -7,6 +7,7 @@ FLAG = -Wall -Werror -Wextra
 SRC =	main.c\
 			read_me.c\
 			check_me.c\
+			validate_me.c\
 			help_me.c\
 			solve_me.c\
 			ft_putendl.c\
