@@ -21,7 +21,7 @@ all:	$(NAME)
 
 $(NAME):
 	$(CC) $(FLAG) $(SRC) -c
-	$(CC) $(FLAG) -o $(NAME) $(OBJ) -I ./includes
+	$(CC) $(FLAG) -o $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)

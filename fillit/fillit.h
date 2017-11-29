@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vblokha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vblokha <vblokha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 10:27:38 by vblokha           #+#    #+#             */
-/*   Updated: 2017/11/29 10:27:39 by vblokha          ###   ########.fr       */
+/*   Updated: 2017/11/29 11:09:24 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char				**ft_mapcreator(char **map, int s);
 char				*ft_copy_input(int fd);
 
 int					ft_check_place(t_tminos *mino, char **map, int s);
-int					validation_for_each(char *s);
-int					validation_for_one(char *s);
+int					ft_connections(char *s);
+int					ft_val_for_one(char *s);
+int					ft_val_for_each(char *s);
 int					ft_minocounter(char *str);
-int					connections(char *s);
 
 t_tminos			*ft_get_minos(char *str);
 
