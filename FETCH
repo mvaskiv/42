@@ -1,1 +1,1 @@
-say oooh, bacon! && cd ./Documents/myGit && git pull
+say Your files are being fetched, hold on && cd ./Documents/myGit && git pull
