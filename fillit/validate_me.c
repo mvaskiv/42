@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 10:56:55 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/29 11:22:03 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/29 12:44:56 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_connections(char *s)
 
 	i = 0;
 	k = 0;
-	while (s[i] && i < 20)
+	while (s[i] && i < 21)
 	{
 		if (s[i] == '#' && s[i + 1] == '#' && (i + 1) < 21)
 			k++;
@@ -32,7 +32,7 @@ int		ft_connections(char *s)
 			k++;
 		i++;
 	}
-	if (k == 8 && k == 6)
+	if (k == 8 || k == 6)
 		return (1);
 	return (0);
 }
@@ -47,18 +47,18 @@ int		ft_val_for_one(char *s)
 	h = 0;
 	p = 0;
 	while (((s[i] == '.' || s[i] == '#')
-		|| (s[i % 5] == '\n' && (i % 5) == 4)) && i < 21)
+		|| (s[i % 5] == '\n' && (i % 5) == 4)) && i < 20)
 	{
 		if (h == 5)
 			return (0);
 		if (s[i] == '#')
 			h++;
-		else if (s[i] == '.')
+		if (s[i] == '.')
 			p++;
 		i++;
 	}
-	return ((h == 4 && p == 12 && (s[i + 1] == '\n'
-		|| s[i + 1] == '\0') && ft_connections(s) == 1) ? 1 : 0);
+	return (((h == 4 && p == 12) && ((s[i] == '\n' && s[i + 1] != '\0')
+		|| s[i] == '\0') && ft_connections(s) == 1) ? 1 : 0);
 }
 
 int		ft_val_for_each(char *s)
@@ -66,12 +66,14 @@ int		ft_val_for_each(char *s)
 	size_t	i;
 
 	i = 0;
-	if (ft_strlen(s) < 20)
+	if (!s)
 		return (0);
 	while (s[i])
-		if (ft_val_for_one(s + i) == 1)
+	{
+		if (ft_val_for_one(s + i))
 			i += 21;
 		else
 			return (0);
+	}
 	return (1);
 }

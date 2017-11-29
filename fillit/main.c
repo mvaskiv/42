@@ -6,7 +6,7 @@
 /*   By: vblokha <vblokha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 10:26:08 by vblokha           #+#    #+#             */
-/*   Updated: 2017/11/29 11:08:06 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/29 11:55:47 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (0);
 	input = ft_copy_input(fd);
 	close(fd);
 	if (!ft_val_for_each(input))
