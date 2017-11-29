@@ -3,7 +3,7 @@
 
 int		main(int argc, char **argv)
 {
-	int		fd;
+	int			fd;
 	char		*input;
 	t_tminos	*game;
 

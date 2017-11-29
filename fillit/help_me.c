@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "fillit.h"
 
-int		ft_minocounter(char *str)
+int			ft_minocounter(char *str)
 {
 	int		i;
 	int		q;

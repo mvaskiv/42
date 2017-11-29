@@ -6,26 +6,22 @@ char			**ft_fill_me(t_tminos *game, char **map, int s)
 	int		x;
 	int		y;
 	char	**filled;
-	char	**tmp;
 
 	x = 0;
 	filled = NULL;
 	if (game->next == NULL)
 		return (map);
-	tmp = map;
 	while (x < s)
 	{
 		y = 0;
 		while (y < s)
 		{
 			ft_set_coord(&game, x, y);
-			if (ft_check_place(game, tmp, s))
-			{
-				filled = ft_fill_me(game->next, ft_add_one(game, tmp, s), s);
-			}
+			if (ft_check_place(game, map, s))
+				filled = ft_fill_me(game->next, ft_add_one(game, map, s), s);
 			if (filled)
 				return (filled);
-			tmp = ft_del_one(game, tmp, s);
+			map = ft_del_one(game, map, s);
 			y++;
 		}
 		x++;
