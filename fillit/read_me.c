@@ -26,7 +26,7 @@ char		*ft_copy_input(int fd)
 		return (NULL);
 	else
 	{
-		if (!(str = (char *)malloc(sizeof(char) * 550)))
+		if (!(str = (char *)malloc(sizeof(char) * 546)))
 			return (NULL);
 		while (fdd != '\0')
 		{
