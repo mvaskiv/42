@@ -26,7 +26,7 @@ char		*ft_copy_input(int fd)
 		return (NULL);
 	else
 	{
-		if (!(str = (char *)malloc(sizeof(char) * 546)))
+		if (!(str = (char *)malloc(sizeof(char) * 550)))
 			return (NULL);
 		while (fdd != '\0')
 		{
@@ -36,6 +36,8 @@ char		*ft_copy_input(int fd)
 		while (str[i])
 			str[i++] = '\0';
 	}
+	if (ft_strlen(str) > 545)
+		return (NULL);
 	return (str);
 }
 
