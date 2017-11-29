@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vblokha <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/29 10:28:36 by vblokha           #+#    #+#             */
-/*   Updated: 2017/11/29 10:28:54 by vblokha          ###   ########.fr       */
+/*   Created: 2017/11/29 10:35:07 by vblokha           #+#    #+#             */
+/*   Updated: 2017/11/29 10:39:23 by vblokha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		connections(char *s)
+int					connections(char *s)
 {
 	int i;
 	int k;
 
 	i = 0;
 	k = 0;
-	while(s[i] && i < 20)
+	while (s[i] && i < 20)
 	{
 		if (s[i] == '#' && s[i + 1] == '#' && i + 1 < 21)
 			k++;
@@ -32,15 +32,15 @@ int		connections(char *s)
 		i++;
 	}
 	if (k == 8 || k == 6)
-		return(1);
+		return (1);
 	return (0);
 }
 
-int		validation_for_one(char *s)
+int			validation_for_one(char *s)
 {
 	size_t i;
-	  size_t h;
-		size_t p;
+	size_t h;
+	size_t p;
 
 	i = 0;
 	h = 0;
@@ -52,7 +52,7 @@ int		validation_for_one(char *s)
 			return (0);
 		if (s[i] == '#')
 			h++;
-		else if(s[i] == '.')
+		else if (s[i] == '.')
 			p++;
 		i++;
 	}
@@ -60,15 +60,15 @@ int		validation_for_one(char *s)
 		|| s[i] == '\0') && connections(s) == 1) ? 1 : 0);
 }
 
-int		validation_for_each(char *s)
+int			validation_for_each (char *s)
 {
 	size_t i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 		if (validation_for_one(s + i) == 1)
 			i = i + 21;
 		else
 			return (0);
-	return(1);
+	return (1);
 }
