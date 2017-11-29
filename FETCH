@@ -1,1 +1,1 @@
-say Your files are being fetched, hold on && cd ./Documents/myGit && git pull
+cd ./Documents/myGit && git pull
