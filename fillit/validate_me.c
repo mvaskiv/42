@@ -6,10 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 10:56:55 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/29 11:06:11 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2017/11/29 11:22:03 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "fillit.h"
 
 int		ft_connections(char *s)
@@ -56,8 +57,8 @@ int		ft_val_for_one(char *s)
 			p++;
 		i++;
 	}
-	return ((h == 4 && p == 12 && (s[i] == '\n'
-		|| s[i] == '\0') && ft_connections(s) == 1) ? 1 : 0);
+	return ((h == 4 && p == 12 && (s[i + 1] == '\n'
+		|| s[i + 1] == '\0') && ft_connections(s) == 1) ? 1 : 0);
 }
 
 int		ft_val_for_each(char *s)
@@ -65,12 +66,12 @@ int		ft_val_for_each(char *s)
 	size_t	i;
 
 	i = 0;
+	if (ft_strlen(s) < 20)
+		return (0);
 	while (s[i])
-	{
 		if (ft_val_for_one(s + i) == 1)
 			i += 21;
 		else
 			return (0);
-	}
 	return (1);
 }

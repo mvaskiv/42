@@ -14,6 +14,7 @@ SRC =	main.c\
 			ft_strncpy.c\
 			ft_strsub.c\
 			ft_memdel.c\
+			ft_strlen.c\
 
 OBJ = $(SRC:.c=.o)
 
