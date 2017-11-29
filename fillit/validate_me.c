@@ -1,3 +1,4 @@
+
 #include "fillit.h"
 
 int 	connections(char *s)
@@ -27,13 +28,14 @@ int 	connections(char *s)
 int		validation_for_one(char *s)
 {
     size_t i;
-    size_t h;
+	  size_t h;
 		size_t p;
 
     i = 0;
     h = 0;
     p = 0;
-    while (((s[i] == '.' || s[i] == '#') || (s[i % 5] == '\n' && i % 5 == 4)) && i < 21)
+    while (((s[i] == '.' || s[i] == '#')
+		|| (s[i % 5] == '\n' && i % 5 == 4)) && i < 21)
     {
         if (h == 5)
             return (0);
@@ -43,7 +45,8 @@ int		validation_for_one(char *s)
             p++;
         i++;
     }
-    return ((h == 4 && p == 12 && (s[i] == '\n' || s[i] == '\0') && connections(s) == 1) ? 1 : 0);
+    return ((h == 4 && p == 12 && (s[i] == '\n'
+		|| s[i] == '\0') && connections(s) == 1) ? 1 : 0);
 }
 
 int		validation_for_each(char *s)

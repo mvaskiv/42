@@ -1,13 +1,12 @@
 #include "libft.h"
 #include "fillit.h"
 
-char		**ft_fill_me(t_tminos *game, char **map, int s)
+char			**ft_fill_me(t_tminos *game, char **map, int s)
 {
 	int		x;
 	int		y;
 	char	**filled;
-	char **tmp;
-	int i;
+	char	**tmp;
 
 	x = 0;
 	filled = NULL;
@@ -23,10 +22,6 @@ char		**ft_fill_me(t_tminos *game, char **map, int s)
 			if (ft_check_place(game, tmp, s))
 			{
 				filled = ft_fill_me(game->next, ft_add_one(game, tmp, s), s);
-				i = 0;
-				while (tmp[i])
-					ft_putendl(tmp[i++]);
-				ft_putendl("-------");
 			}
 			if (filled)
 				return (filled);
@@ -48,12 +43,12 @@ static int		ft_sqrt(int i)
 	return (q);
 }
 
-void		ft_play_the(t_tminos *game, char *str)
+void			ft_play_the(t_tminos *game, char *str)
 {
 	char		**filled;
 	char		**map;
 	int			i;
-	
+
 	i = ft_sqrt(ft_minocounter(str) * 4);
 	map = NULL;
 	map = ft_mapcreator(map, i);

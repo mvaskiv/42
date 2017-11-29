@@ -3,19 +3,19 @@
 
 char		*ft_copy_input(int fd)
 {
-	int	i;
-	int	fdd;
+	int		i;
+	int		fdd;
 	char	c;
 	char	*str;
 
 	i = 0;
 	fdd = read(fd, &c, 1);
 	if (fdd != 1)
-		return(NULL);
+		return (NULL);
 	else
 	{
-		if(!(str = (char *)malloc(sizeof(char) * 546)))
-		 	return (NULL);
+		if (!(str = (char *)malloc(sizeof(char) * 546)))
+			return (NULL);
 		while (fdd != '\0')
 		{
 			str[i++] = c;
@@ -29,8 +29,8 @@ char		*ft_copy_input(int fd)
 
 t_tminos	*ft_get_minos(char *str)
 {
-	int		i;
-	int		q;
+	int			i;
+	int			q;
 	char		letter;
 	t_tminos	*input;
 	t_tminos	*tmp;

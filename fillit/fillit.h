@@ -6,13 +6,13 @@
 # include <string.h>
 # include <stdlib.h>
 
-typedef struct			s_tminos
+typedef struct		s_tminos
 {
-	char		order;
-	int			x[4];
-	int			y[4];
-	struct s_tminos		*next;
-}				t_tminos;
+	char			order;
+	int				x[4];
+	int				y[4];
+	struct s_tminos	*next;
+}					t_tminos;
 
 void			ft_play_the(t_tminos *game, char *str);
 void			ft_minowriter(t_tminos **block, char *str);
@@ -28,8 +28,8 @@ int				ft_check_place(t_tminos *mino, char **map, int s);
 int				validation_for_each(char *s);
 int				validation_for_one(char *s);
 int				ft_minocounter(char *str);
-int 			connections(char *s);
+int				connections(char *s);
 
-t_tminos	*ft_get_minos(char *str);
+t_tminos		*ft_get_minos(char *str);
 
 #endif
