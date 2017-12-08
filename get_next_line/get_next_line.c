@@ -22,24 +22,78 @@ void		ft_strclr(char *s)
 			*s++ = '\0';
 	}
 }
+char		*ft_strncpy(char *dest, const char *src, unsigned int n)
+{
+	unsigned int		i;
+
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+		dest[i++] = '\0';
+	return (dest);
+}
+
+char			*ft_strsub(char const *s, unsigned int start, unsigned int len)
+{
+	char				*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	ft_strncpy(str, &(s[start]), len);
+	str[len] = '\0';
+	return (str);
+}
+
+
+int		find_new_line(char *s, int i)
+{
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (0);
+}
 
 int		get_next_line(const int fd, char **line)
 {
 	int			j;
-	char		c;
+	static char		c[BUFF_SIZE];
 	char *str;
 	int		file;
+	int i = 0;
 
 	ft_strclr(*line);
-	file = read(fd, &c, BUFF_SIZE);
+	file = read(fd, c, BUFF_SIZE);
 	j = 0;
 	str = *line;
 	while (file)
 	{
-			str[j++] = c;
-			file = read(fd, &c, BUFF_SIZE);
-			if (c == '\n')
-				return (1);
+		if (BUFF_SIZE == 1)
+			while (*c != '\n')
+			{
+				str[j++] = *c;
+				file = read(fd, c, BUFF_SIZE);
+			}
+		else
+		{
+				if (find_new_line(c, i + 1))
+				{
+					while (c[i] != '\n')
+					{
+						str[j++] = c[i++];
+					}
+					ft_strncpy(c, ft_strsub(c, i, BUFF_SIZE - i), BUFF_SIZE - i);
+					i = 0;
+					j = 0;
+				}
+		}
+		return (1);
 	}
 	return (0);
 }
