@@ -5,7 +5,7 @@
 
 typedef struct		s_line
 {
-	char						*string;
+	char						*string[BUFF_SIZE];
 	struct s_line					*next;
 }									t_line;
 

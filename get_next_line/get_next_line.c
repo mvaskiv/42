@@ -3,13 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-//
-// void 	write_next_line(const int fd, char *line)
-// {
-// 	int		i;
-//
-// 	i = 0;
-// }
+
 void	ft_putendl(char const *s)
 {
 	int		i;
@@ -40,10 +34,10 @@ int		get_next_line(const int fd, char **line)
 	file = read(fd, &c, BUFF_SIZE);
 	j = 0;
 	str = *line;
-	while (file != '\0')
+	while (file)
 	{
 			str[j++] = c;
-			file = read(fd, &c, 1);
+			file = read(fd, &c, BUFF_SIZE);
 			if (c == '\n')
 				return (1);
 	}
