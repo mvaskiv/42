@@ -1,101 +1,87 @@
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
 
-void	ft_putendl(char const *s)
+static char	*ft_cat(char *buff, char *tab)
+{
+	unsigned long	i;
+	unsigned long	j;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	if (buff)
+		i = ft_strlen(buff);
+	if (tab)
+		j = ft_strlen(tab);
+	str = (char *)malloc(sizeof(*str) * (i + j + 1));
+	ft_memcpy(str, buff, i);
+	ft_memcpy(str + i, tab, j);
+	str[i + j] = '\0';
+	free(buff);
+	ft_bzero(tab, BUFF_SIZE + 1);
+	return (str);
+}
+
+static int	ft_endl(char *buff)
 {
 	int		i;
 
 	i = 0;
-	while (s[i])
-		write(1, &s[i++], 1);
-	write(1, "\n", 1);
-}
-
-void		ft_strclr(char *s)
-{
-	if (s)
-	{
-		while (*s)
-			*s++ = '\0';
-	}
-}
-char		*ft_strncpy(char *dest, const char *src, unsigned int n)
-{
-	unsigned int		i;
-
-	i = 0;
-	while (src[i] && i < n)
-	{
-		dest[i] = src[i];
+	while (buff[i] != '\n' && buff[i])
 		i++;
-	}
-	while (i < n)
-		dest[i++] = '\0';
-	return (dest);
-}
-
-char			*ft_strsub(char const *s, unsigned int start, unsigned int len)
-{
-	char				*str;
-
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	ft_strncpy(str, &(s[start]), len);
-	str[len] = '\0';
-	return (str);
-}
-
-
-int		find_new_line(char *s, int i)
-{
-	while (s[i])
+	if (buff[i] == '\n')
 	{
-		if (s[i] == '\n')
-			return (i);
-		i++;
+		buff[i] = '\0';
+		return (i);
 	}
-	return (0);
+	else
+		return (-1);
 }
 
-int		get_next_line(const int fd, char **line)
+static int	ft_check(char **buff, char **tab, char **line)
 {
-	int			j;
-	static char		c[BUFF_SIZE];
-	char *str;
-	int		file;
-	int i = 0;
+	char	*str;
+	int		final;
 
-	ft_strclr(*line);
-	file = read(fd, c, BUFF_SIZE);
-	j = 0;
-	str = *line;
-	while (file)
+	*buff = ft_cat(*buff, *tab);
+	final = ft_endl(*buff);
+	if (final > -1)
 	{
-		if (BUFF_SIZE == 1)
-			while (*c != '\n')
-			{
-				str[j++] = *c;
-				file = read(fd, c, BUFF_SIZE);
-			}
-		else
-		{
-				if (find_new_line(c, i + 1))
-				{
-					while (c[i] != '\n')
-					{
-						str[j++] = c[i++];
-					}
-					ft_strncpy(c, ft_strsub(c, i, BUFF_SIZE - i), BUFF_SIZE - i);
-					i = 0;
-					j = 0;
-				}
-		}
+		*line = ft_strdup(*buff);
+		str = *buff;
+		*buff = ft_strdup(*buff + final + 1);
+		free(str);
 		return (1);
 	}
 	return (0);
+}
+
+int			get_next_line(int const fd, char **line)
+{
+	static char *buff[12000];
+	char		*tmp;
+	int			ret;
+	int			o;
+
+	tmp = ft_strnew(BUFF_SIZE);
+	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
+		return (-1);
+	while ((ret = read(fd, tmp, BUFF_SIZE)) > 0)
+	{
+		o = ft_check(&buff[fd], &tmp, line);
+		free(tmp);
+		if (o == 1)
+			return (1);
+		tmp = ft_strnew(BUFF_SIZE);
+	}
+	if ((o = ft_check(&buff[fd], &tmp, line)))
+		return (1);
+	else if (ft_strlen(buff[fd]) > 0)
+	{
+		*line = ft_strdup(buff[fd]);
+		ft_strdel(&buff[fd]);
+		return (1);
+	}
+	return (o);
 }
 
 int		main(int argc, char **argv)
@@ -108,9 +94,7 @@ int		main(int argc, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 		fdq = open(argv[2], O_RDONLY);
-	ft_putendl("opened");
 	line = (char *)malloc(sizeof(char) * 100);
-	ft_putendl("malloced");
 	res = get_next_line(fd, &line);
 	ft_putendl(line);
 		res = get_next_line(fdq, &line);

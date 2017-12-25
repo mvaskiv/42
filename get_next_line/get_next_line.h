@@ -1,11 +1,16 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+# include "libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-# define BUFF_SIZE 16
+# define BUFF_SIZE 32
 
 typedef struct		s_line
 {
-	char						*string[BUFF_SIZE];
+	void									*content;
+	unsigned int					file;
 	struct s_line					*next;
 }									t_line;
 
