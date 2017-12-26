@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/26 14:19:09 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/12/26 14:19:13 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static char	*ft_cat(char *buff, char *tab)
 {
 	unsigned long	i;
 	unsigned long	j;
-	char	*str;
+	char			*str;
 
 	i = 0;
 	j = 0;
@@ -82,31 +94,4 @@ int			get_next_line(int const fd, char **line)
 		return (1);
 	}
 	return (o);
-}
-
-int		main(int argc, char **argv)
-{
-	char *line;
-	int fd;
-	int	fdq;
-	int res;
-	int i = 0;
-
-	fd = open(argv[1], O_RDONLY);
-		fdq = open(argv[2], O_RDONLY);
-	line = (char *)malloc(sizeof(char) * 100);
-	res = get_next_line(fd, &line);
-	ft_putendl(line);
-		res = get_next_line(fdq, &line);
-		ft_putendl(line);
-			res = get_next_line(fd, &line);
-			ft_putendl(line);
-					res = get_next_line(fdq, &line);
-					ft_putendl(line);
-						res = get_next_line(fd, &line);
-						ft_putendl(line);
-							res = get_next_line(fd, &line);
-							ft_putendl(line);
-	free(line);
-	return (res);
 }
