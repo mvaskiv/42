@@ -67,7 +67,7 @@ static int	ft_check(char **buff, char **tab, char **line)
 	return (0);
 }
 
-int			get_next_line(int const fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static char *buff[12000];
 	char		*tmp;
