@@ -12,7 +12,7 @@
 
 NAME = libft.a
 
-HEAD = libft.h
+HEAD = includes/libft.h
 
 SRC = ft_atoi.c\
       ft_strlen.c\

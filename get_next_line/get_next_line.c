@@ -95,3 +95,16 @@ int			get_next_line(const int fd, char **line)
 	}
 	return (o);
 }
+
+int		main(int argc, char **argv)
+{
+	int fd1;
+	int fd2;
+	char *line;
+
+	fd1 = open(argv[1], O_RDONLY);
+	fd2 = open(argv[2], O_RDONLY);
+	get_next_line(fd1, &line);
+		ft_putendl(line);
+	return (0);
+}
