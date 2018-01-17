@@ -56,15 +56,22 @@ static int	ft_check(char **buff, char **tmp, char **line)
 	return (0);
 }
 
+static char		**ft_setthings(char **buff, int fd, char **tmp)
+{
+	*tmp = ft_strnew(BUFF_SIZE);
+	if (!buff)
+		buff = (char**)malloc(sizeof(int) * fd * 100);
+	return (buff);
+}
+
 int		get_next_line(const int fd, char **line)
 {
-	static char *buff[12000];
+	static char **buff;
 	char		*tmp;
 	int			ret;
 	int			output;
 
-	if (BUFF_SIZE > 0)
-		tmp = ft_strnew(BUFF_SIZE);
+	buff = ft_setthings(buff, fd, &tmp);
 	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
 		return (-1);
 	while ((ret = read(fd, tmp, BUFF_SIZE)) > 0)
