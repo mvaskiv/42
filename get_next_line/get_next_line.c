@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h> // to removeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 static char		*ft_overwrite(char *buff, char *tmp)
 {
 	unsigned long	i;
@@ -24,11 +24,12 @@ static char		*ft_overwrite(char *buff, char *tmp)
 		i = ft_strlen(buff);
 	if (tmp)
 		j = ft_strlen(tmp);
-	str = (char *)malloc(sizeof(char) * (i + j + 1));
+	str = (char *)malloc(sizeof(char) * (i + j));
 	ft_memcpy(str, buff, i);
 	ft_memcpy(str + i, tmp, j);
 	str[i + j] = '\0';
-	ft_strdel(&buff);
+	if (buff)
+		ft_strdel(&buff);
 	ft_bzero(tmp, BUFF_SIZE + 1);
 	return (str);
 }
@@ -52,13 +53,16 @@ static int		ft_endl(char *buff)
 static int		ft_check(char **buff, char **tmp, char **line)
 {
 	int		final;
+	char	*to_delete;
 
 	*buff = ft_overwrite(*buff, *tmp);
 	final = ft_endl(*buff);
 	if (final > -1)
 	{
 		*line = ft_strdup(*buff);
+		to_delete = *buff;
 		*buff = ft_strdup(*buff + final);
+		free(to_delete);
 		return (1);
 	}
 	return (0);
@@ -85,7 +89,7 @@ int			get_next_line(const int fd, char **line)
 	while ((ret = read(fd, tmp, BUFF_SIZE)) > 0)
 	{
 		output = ft_check(&buff[fd], &tmp, line);
-		free(tmp);
+		ft_bzero(tmp, BUFF_SIZE + 1);
 		if (output == 1)
 			return (1);
 		tmp = ft_strnew(BUFF_SIZE);
@@ -103,24 +107,23 @@ int			get_next_line(const int fd, char **line)
 
 /* main */
 
-// #include <stdio.h>
-// int		main(int argc, char **argv)
-// {
-// 	int fd;
-// 	int ret;
-// 	char a = 'a';
-// 	char *line;
-// 	int fd2 = open(argv[2], O_RDONLY);
-//
-// 	fd = open(argv[1], O_RDONLY);
-// 	while ((ret = get_next_line(fd, &line)) > 0)
-// 	{
-// 		printf("%d %c -> %s\n", ret, a++, line);
-// 	}
-// 	while ((ret = get_next_line(fd2, &line)) > 0)
-// 	{
-// 		printf("%d %c -> %s\n", ret, a++, line);
-// 	}
-// 	close(fd);
-// 	return (0);
-// }
+int		main(int argc, char **argv)
+{
+	int fd;
+	int ret;
+	char a = 'a';
+	char *line;
+	int fd2 = open(argv[2], O_RDONLY);
+
+	fd = open(argv[1], O_RDONLY);
+	while ((ret = get_next_line(fd, &line)) > 0)
+	{
+		printf("%d %c -> %s\n", ret, a++, line);
+	}
+	while ((ret = get_next_line(fd2, &line)) > 0)
+	{
+		printf("%d %c -> %s\n", ret, a++, line);
+	}
+	close(fd);
+	return (0);
+}

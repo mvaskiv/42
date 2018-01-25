@@ -15,7 +15,14 @@
 # include "libft/includes/libft.h"
 # include <fcntl.h>
 
-# define BUFF_SIZE 2
+# define BUFF_SIZE 23
+
+typedef struct			s_storage
+{
+	char				*content;
+	int				fd;
+	struct s_storage		*next;
+}						t_storage;
 
 int		get_next_line(const int fd, char **line);
 
