@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 14:19:17 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/01/30 18:08:33 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/01/31 15:58:12 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "libft/includes/libft.h"
 # include <fcntl.h>
 
-# define BUFF_SIZE 10000
+# define BUFF_SIZE 100
 
 typedef struct			s_storage
 {

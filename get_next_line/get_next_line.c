@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 17:57:24 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/01/30 18:11:14 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/01/31 17:11:53 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,15 @@ static t_storage		*ft_find_file(t_storage *storage, int fd)
 {
 	while (storage)
 	{
-		if (storage->fd == fd)
-			return (storage);
-		storage = storage->next;
+        if (storage->fd == fd)
+            return (storage);
+        storage = storage->next;
 	}
-	// free(storage);
 	storage = (t_storage*)malloc(sizeof(t_storage));
+    storage->next = NULL;
 	storage->fd = fd;
-	return (ft_find_file(storage, fd));
+    storage->content = NULL;
+	return (storage);
 }
 
 /* ft_read_n_write to read tmp, overwrite the existing data */
@@ -72,14 +73,14 @@ static char		*ft_read_n_write(char *string, char *tmp)
 		i = ft_strlen(string);
 	if (tmp != NULL)
 		j = ft_strlen(tmp);
-	str = (char *)malloc(sizeof(char*) * (i + j) + 1);
+	str = (char *)malloc(sizeof(char*) * (i + j + 1));
 	ft_memmove(str, string, i);
 	ft_memmove(str + i, tmp, j);
 	str[i + j] = '\0';
 	if (string != NULL)
 		free(string);
 	if (tmp != NULL)
-		ft_bzero(tmp, BUFF_SIZE + 1);
+		ft_strclr(tmp);
 	return (str);
 }
 
@@ -87,10 +88,11 @@ static char		*ft_read_n_write(char *string, char *tmp)
 
 static int		ft_check_endl(t_storage *storage, char *tmp, char **line)
 {
-	int		endl;
+	int		endl = 0;
 	char	*to_keep = NULL;
 
-	storage->content = ft_read_n_write(storage->content, tmp);
+    tmp[BUFF_SIZE + 1] = '\0';
+	storage->content = ft_read_n_write(ft_strdup(storage->content), tmp);
 	endl = ft_endl(storage->content);
 	if (endl > -1)
 	{
@@ -98,7 +100,7 @@ static int		ft_check_endl(t_storage *storage, char *tmp, char **line)
 		to_keep = storage->content;
 		storage->content = ft_strdup(to_keep + endl);
 		if (to_keep)
-			ft_strdel(&to_keep);
+			free(to_keep);
 		return (1);
 	}
 	return (0);
@@ -133,15 +135,11 @@ int		get_next_line(const int fd, char **line)
 	else if (ft_strlen(storage->content) > 1)
 	{
 		*line = ft_strdup(storage->content);
-		printf(RED "%s\n - leftover" RESET, storage->content);
-		free(storage);
+		ft_strdel(&storage->content);
+        free(storage);
 		return (1);
 	}
 	free(tmp);
-	// free(storage);
-	sleep(3);
-
-
 	return (output);
 }
 
@@ -150,11 +148,11 @@ int		get_next_line(const int fd, char **line)
 
 int			main(int argc, char **argv)
 {
-	int fd0 = open(argv[1], O_RDONLY);
-	int fd1 = open(argv[2], O_RDONLY);
+	int fd0 = open("test", O_RDONLY);
+	int fd1 = open("test0", O_RDONLY);
 	int ret = 0;
 	char a = 'a';
-	char *line = NULL;
+	char *line;
 	int q = argc;
 	q = 0;
 
@@ -167,6 +165,18 @@ int			main(int argc, char **argv)
 		printf("%d %c ---> %s\n", ret, a++, line);
 		ft_strdel(&line);
 	}
+	// get_next_line(fd0, &line);
+	// printf("%d %c ---> %s\n", ret, a++, line);
+	// ft_strdel(&line);
+	// get_next_line(fd1, &line);
+	// printf("%d %c ---> %s\n", ret, a++, line);
+	// ft_strdel(&line);
+	// get_next_line(fd0, &line);
+	// printf("%d %c ---> %s\n", ret, a++, line);
+	// ft_strdel(&line);
+	// get_next_line(fd1, &line);
+	// printf("%d %c ---> %s\n", ret, a++, line);
+	// ft_strdel(&line);
 	free(line);
 	close(fd0);
 	close(fd1);
