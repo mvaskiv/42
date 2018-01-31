@@ -44,8 +44,9 @@ static int		ft_endl(char *string)
 
 /*	ft_find_file to find the correct file in the storage list */
 
-static t_storage		*ft_find_file(t_storage *storage, int fd)
+static t_storage		*ft_find_file(t_storage *storage, int fd, char **tmp)
 {
+    *tmp = ft_strnew(BUFF_SIZE);
 	while (storage)
 	{
         if (storage->fd == fd)
@@ -86,20 +87,22 @@ static char		*ft_read_n_write(char *string, char *tmp)
 
 /* ft_check_endl to check for the /n in the storage->content and write **line accordingly */
 
-static int		ft_check_endl(t_storage *storage, char *tmp, char **line)
+static int		ft_check_endl(t_storage *storage, char *tmp, char **line, int ret)
 {
 	int		endl = 0;
 	char	*to_keep = NULL;
 
-	storage->content = ft_read_n_write(ft_strdup(storage->content), tmp);
+    if (ret && tmp)
+        tmp[ret] = '\0';
+	storage->content = ft_read_n_write(storage->content, tmp);
 	endl = ft_endl(storage->content);
 	if (endl > -1)
 	{
 		*line = ft_strdup(storage->content);
-		to_keep = storage->content;
-		storage->content = ft_strdup(to_keep + endl);
-		if (to_keep)
-			free(to_keep);
+		to_keep = ft_strdup(storage->content + endl);
+        ft_strdel(&storage->content);
+		storage->content = ft_strdup(to_keep);
+		ft_strdel(&to_keep);
 		return (1);
 	}
 	return (0);
@@ -114,31 +117,31 @@ int		get_next_line(const int fd, char **line)
 	int				output;
 	int				ret;
 
-	ret = 0;
-    tmp = ft_strnew(BUFF_SIZE);
-	storage = ft_find_file(storage, fd);
+	storage = ft_find_file(storage, fd, &tmp);
 	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
 		return (-1);
 	while ((ret = (int)read(fd, tmp, BUFF_SIZE)) > 0)
 	{
-		output = ft_check_endl(storage, tmp, line);
+		output = ft_check_endl(storage, tmp, line, ret);
 		free(tmp);
 		if (output == 1)
 			return (1);
 		tmp = ft_strnew(BUFF_SIZE);
 	}
-	if ((output = ft_check_endl(storage, tmp, line)))
-	{
-		free(tmp);
-		return (1);
-	}
+	if ((output = ft_check_endl(storage, tmp, line, ret)))
+    {
+        free(tmp);
+        return (1);
+    }
 	else if (ft_strlen(storage->content) > 1)
 	{
 		*line = ft_strdup(storage->content);
-		ft_strdel(&storage->content);
+        free(tmp);
 		return (1);
 	}
 	free(tmp);
+    free(storage);
+    ft_strdel(&storage->content);
 	return (output);
 }
 
@@ -149,6 +152,7 @@ int			main(int argc, char **argv)
 {
 	int fd0 = open("test", O_RDONLY);
 	int fd1 = open("test0", O_RDONLY);
+    int fd2 = open("gnl1_2.txt", O_RDONLY);
 	int ret = 0;
 	char a = 'a';
 	char *line;
@@ -164,6 +168,10 @@ int			main(int argc, char **argv)
 		printf("%d %c ---> %s\n", ret, a++, line);
 		ft_strdel(&line);
 	}
+    while ((ret = get_next_line(fd2, &line))){
+        printf("%d %c ---> %s\n", ret, a++, line);
+        ft_strdel(&line);
+    }
 	// get_next_line(fd0, &line);
 	// printf("%d %c ---> %s\n", ret, a++, line);
 	// ft_strdel(&line);
@@ -176,8 +184,9 @@ int			main(int argc, char **argv)
 	// get_next_line(fd1, &line);
 	// printf("%d %c ---> %s\n", ret, a++, line);
 	// ft_strdel(&line);
-	free(line);
+    free(line);
 	close(fd0);
 	close(fd1);
-	return (0);
+	sleep(4);
+    return (0);
 }
