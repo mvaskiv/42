@@ -21,7 +21,7 @@ char	*ft_strnew(unsigned int size)
 	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	while (str[i])
-		((char *)str)[i++] = (unsigned char)'\0';
+		((char *)str)[i++] = '\0';
 	str[i] = '\0';
 	return (str);
 }

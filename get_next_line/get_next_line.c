@@ -91,7 +91,6 @@ static int		ft_check_endl(t_storage *storage, char *tmp, char **line)
 	int		endl = 0;
 	char	*to_keep = NULL;
 
-    tmp[BUFF_SIZE + 1] = '\0';
 	storage->content = ft_read_n_write(ft_strdup(storage->content), tmp);
 	endl = ft_endl(storage->content);
 	if (endl > -1)
@@ -115,17 +114,18 @@ int		get_next_line(const int fd, char **line)
 	int				output;
 	int				ret;
 
-	tmp = ft_strnew(BUFF_SIZE + 1);
+	ret = 0;
+    tmp = ft_strnew(BUFF_SIZE);
 	storage = ft_find_file(storage, fd);
 	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
 		return (-1);
-	while ((ret = read(fd, tmp, BUFF_SIZE)) > 0)
+	while ((ret = (int)read(fd, tmp, BUFF_SIZE)) > 0)
 	{
 		output = ft_check_endl(storage, tmp, line);
 		free(tmp);
 		if (output == 1)
 			return (1);
-		tmp = ft_strnew(BUFF_SIZE + 1);
+		tmp = ft_strnew(BUFF_SIZE);
 	}
 	if ((output = ft_check_endl(storage, tmp, line)))
 	{
@@ -136,7 +136,6 @@ int		get_next_line(const int fd, char **line)
 	{
 		*line = ft_strdup(storage->content);
 		ft_strdel(&storage->content);
-        free(storage);
 		return (1);
 	}
 	free(tmp);
@@ -154,7 +153,7 @@ int			main(int argc, char **argv)
 	char a = 'a';
 	char *line;
 	int q = argc;
-	q = 0;
+	q = 2;
 
 	while ((ret = get_next_line(fd0, &line)))
 	{
