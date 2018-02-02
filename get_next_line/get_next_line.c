@@ -44,20 +44,49 @@ static int		ft_endl(char *string)
 
 /*	ft_find_file to find the correct file in the storage list */
 
-static t_storage		*ft_find_file(t_storage *storage, int fd, char **tmp)
+static t_storage		*ft_find_file(t_storage **storage, int fd, char **tmp)
 {
-    *tmp = ft_strnew(BUFF_SIZE);
-	while (storage)
-	{
-        if (storage->fd == fd)
-            return (storage);
-        storage = storage->next;
-	}
-	storage = (t_storage*)malloc(sizeof(t_storage));
-    storage->next = NULL;
-	storage->fd = fd;
-    storage->content = NULL;
-	return (storage);
+    t_storage       *temp;
+
+    *tmp = ft_strnew(BUFF_SIZE + 1);
+    temp = *storage;
+    while(temp)
+    {
+        if(temp->fd == fd)
+            return(temp);
+        temp = temp->next;
+    }
+    temp = (t_storage*)malloc(sizeof(t_storage));
+    temp->next = NULL;
+    temp->content=NULL;
+    temp->fd = fd;
+    return(temp);
+//    t_storage   *temp = (t_storage*)malloc(sizeof(t_storage));
+//    int         i;
+//
+//    i = 0;
+//    if (!storage)
+//        i = 1;
+//    if (storage)
+//    {
+//        storage = storage->head;
+//        temp->head = storage;
+//    }
+//    *tmp = ft_strnew(BUFF_SIZE + 1);
+//	while (storage)
+//	{
+//        if (storage->fd == fd)
+//            return (storage);
+//        storage = storage->next;
+//	}
+//	storage = (t_storage*)malloc(sizeof(t_storage));
+//    storage->next = NULL;
+//    if (i)
+//        temp->head = storage;
+//    storage->head = temp->head;
+//	storage->fd = fd;
+//    storage->content = NULL;
+//	return (storage);
 }
 
 /* ft_read_n_write to read tmp, overwrite the existing data */
@@ -117,16 +146,16 @@ int		get_next_line(const int fd, char **line)
 	int				output = 0;
 	int				ret;
 
-	storage = ft_find_file(storage, fd, &tmp);
-	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
+	storage = ft_find_file(&storage, fd, &tmp);
+    if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
 		return (-1);
 	while ((ret = (int)read(fd, tmp, BUFF_SIZE)) > 0)
 	{
 		output = ft_check_endl(storage, tmp, line, ret);
-		free(tmp);
+		ft_strdel(&tmp);
 		if (output == 1)
 			return (1);
-		tmp = ft_strnew(BUFF_SIZE);
+		tmp = ft_strnew(BUFF_SIZE + 1);
 	}
 	if ((output = ft_check_endl(storage, tmp, line, ret)))
     {
@@ -140,7 +169,9 @@ int		get_next_line(const int fd, char **line)
         free(tmp);
         return (1);
 	}
+    ft_strdel(&storage->content);
     free(storage);
+    free(tmp);
     storage = NULL;
 	return (output);
 }
@@ -148,33 +179,45 @@ int		get_next_line(const int fd, char **line)
 /* THE END */
 
 
-int			main(int argc, char **argv)
-{
-	int fd0 = open("test", O_RDONLY);
-	int fd1 = open("test0", O_RDONLY);
-    int fd2 = open("gnl1_2.txt", O_RDONLY);
-	int ret = 0;
-	char a = 'a';
-	char *line;
-	int q = argc;
-	q = 2;
-
-	while ((ret = get_next_line(fd0, &line)))
-	{
-		printf("%d %c ---> %s\n", ret, a++, line);
-		ft_strdel(&line);
-	}
-	while ((ret = get_next_line(fd1, &line))){
-		printf("%d %c ---> %s\n", ret, a++, line);
-		ft_strdel(&line);
-	}
-    while ((ret = get_next_line(fd2, &line))){
-        printf("%d %c ---> %s\n", ret, a++, line);
-        ft_strdel(&line);
-    }
-    free(line);
-	close(fd0);
-	close(fd1);
-	sleep(4);
-    return (0);
-}
+//int			main(int argc, char **argv)
+//{
+//	int fd0 = open("test", O_RDONLY);
+//	int fd1 = open("test0", O_RDONLY);
+//    int fd2 = open("gnl1_2.txt", O_RDONLY);
+//	int ret = 0;
+//	char a = 'a';
+//	char *line;
+//	int q = argc;
+//	q = 2;
+//
+//	while ((ret = get_next_line(fd0, &line)))
+//	{
+//		printf("%d %c ---> %s\n", ret, a++, line);
+//		ft_strdel(&line);
+//	}
+//	while ((ret = get_next_line(fd1, &line))){
+//		printf("%d %c ---> %s\n", ret, a++, line);
+//		ft_strdel(&line);
+//	}
+//    while ((ret = get_next_line(fd2, &line))){
+//        printf("%d %c ---> %s\n", ret, a++, line);
+//        ft_strdel(&line);
+//    }
+////    ret = get_next_line(fd2, &line);
+////    printf("%d %c ---> %s\n", ret, a++, line);
+////    ft_strdel(&line);
+////    ret = get_next_line(fd1, &line);
+////    printf("%d %c ---> %s\n", ret, a++, line);
+////    ft_strdel(&line);
+////    ret = get_next_line(fd2, &line);
+////    printf("%d %c ---> %s\n", ret, a++, line);
+////    ft_strdel(&line);
+////    ret = get_next_line(fd1, &line);
+////    printf("%d %c ---> %s\n", ret, a++, line);
+////    ft_strdel(&line);
+//    free(line);
+//	close(fd0);
+//	close(fd1);
+//	sleep(4);
+//    return (0);
+//}

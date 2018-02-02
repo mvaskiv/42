@@ -14,7 +14,7 @@
 
 char	*ft_strnew(unsigned int size)
 {
-	char	*str;
+	char	*str = NULL;
 	int		i;
 
 	i = 0;

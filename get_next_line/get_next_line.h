@@ -19,6 +19,7 @@
 
 typedef struct			s_storage
 {
+//	struct s_storage	*head;
 	char				*content;
 	int				fd;
 	struct s_storage		*next;
