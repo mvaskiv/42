@@ -141,40 +141,40 @@ int		get_next_line(const int fd, char **line)
         return (1);
 	}
     free(storage);
-    ft_strdel(&storage->content);
+    storage = NULL;
 	return (output);
 }
 
 /* THE END */
 
-//
-//int			main(int argc, char **argv)
-//{
-//	int fd0 = open("test", O_RDONLY);
-//	int fd1 = open("test0", O_RDONLY);
-//    int fd2 = open("gnl1_2.txt", O_RDONLY);
-//	int ret = 0;
-//	char a = 'a';
-//	char *line;
-//	int q = argc;
-//	q = 2;
-//
-//	while ((ret = get_next_line(fd0, &line)))
-//	{
-//		printf("%d %c ---> %s\n", ret, a++, line);
-//		ft_strdel(&line);
-//	}
-//	while ((ret = get_next_line(fd1, &line))){
-//		printf("%d %c ---> %s\n", ret, a++, line);
-//		ft_strdel(&line);
-//	}
-//    while ((ret = get_next_line(fd2, &line))){
-//        printf("%d %c ---> %s\n", ret, a++, line);
-//        ft_strdel(&line);
-//    }
-//    free(line);
-//	close(fd0);
-//	close(fd1);
-//	sleep(4);
-//    return (0);
-//}
+
+int			main(int argc, char **argv)
+{
+	int fd0 = open("test", O_RDONLY);
+	int fd1 = open("test0", O_RDONLY);
+    int fd2 = open("gnl1_2.txt", O_RDONLY);
+	int ret = 0;
+	char a = 'a';
+	char *line;
+	int q = argc;
+	q = 2;
+
+	while ((ret = get_next_line(fd0, &line)))
+	{
+		printf("%d %c ---> %s\n", ret, a++, line);
+		ft_strdel(&line);
+	}
+	while ((ret = get_next_line(fd1, &line))){
+		printf("%d %c ---> %s\n", ret, a++, line);
+		ft_strdel(&line);
+	}
+    while ((ret = get_next_line(fd2, &line))){
+        printf("%d %c ---> %s\n", ret, a++, line);
+        ft_strdel(&line);
+    }
+    free(line);
+	close(fd0);
+	close(fd1);
+	sleep(4);
+    return (0);
+}
