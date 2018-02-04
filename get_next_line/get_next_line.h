@@ -13,13 +13,11 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # include "libft/includes/libft.h"
-# include <fcntl.h>
 
 # define BUFF_SIZE 100
 
 typedef struct			s_storage
 {
-//	struct s_storage	*head;
 	char				*content;
 	int				fd;
 	struct s_storage		*next;

@@ -55,44 +55,20 @@ static t_storage		*ft_find_file(t_storage **storage, int fd, char **tmp)
 	while(temp)
 	{
 		if(temp->fd == fd)
-			return(temp);
+		{
+			temp->next = *start;
+			*storage = temp;
+			return (temp);
+		}
 		temp = temp->next;
 	}
 	temp = (t_storage*)malloc(sizeof(t_storage));
 	temp->content = NULL;
 	temp->fd = fd;
-	// temp->next = *start;
-	// *storage = temp;
 	temp->next = *start;
 	*storage = temp;
 	temp = *storage;
 	return(temp);
-//    t_storage   *temp = (t_storage*)malloc(sizeof(t_storage));
-//    int         i;
-//
-//    i = 0;
-//    if (!storage)
-//        i = 1;
-//    if (storage)
-//    {
-//        storage = storage->head;
-//        temp->head = storage;
-//    }
-//    *tmp = ft_strnew(BUFF_SIZE + 1);
-//	while (storage)
-//	{
-//        if (storage->fd == fd)
-//            return (storage);
-//        storage = storage->next;
-//	}
-//	storage = (t_storage*)malloc(sizeof(t_storage));
-//    storage->next = NULL;
-//    if (i)
-//        temp->head = storage;
-//    storage->head = temp->head;
-//	storage->fd = fd;
-//    storage->content = NULL;
-//	return (storage);
 }
 
 /* ft_read_n_write to read tmp, overwrite the existing data */
@@ -172,16 +148,13 @@ int		get_next_line(const int fd, char **line)
 		ft_strdel(&storage->content);
 		return (1);
 	}
-	ft_strdel(&storage->content);
 	storage_s = storage;
-	// free(storage);
-
 	return (output);
 }
 
 /* THE END */
 
-
+#include <fcntl.h>
 int			main(int argc, char **argv)
 {
 	int fd0 = open("test", O_RDONLY);
@@ -224,7 +197,12 @@ int			main(int argc, char **argv)
    ret = get_next_line(fd1, &line);
    printf("%d %c ---> %s\n", fd1, a++, line);
    ft_strdel(&line);
-
+	ret = get_next_line(fd2, &line);
+	printf("%d %c ---> %s\n", fd2, a++, line);
+	ft_strdel(&line);
+	ret = get_next_line(fd1, &line);
+	printf("%d %c ---> %s\n", fd1, a++, line);
+	ft_strdel(&line);
 	free(line);
 	close(fd0);
 	close(fd1);
