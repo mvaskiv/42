@@ -17,6 +17,11 @@ int ft_printf_engine(va_list arg, const char * format)
 			if (ft_isalpha(*format))
 				len = ft_convert(arg, format, &string, len);
 		}
+		else
+		{
+			if (*format != '%')
+				string = ft_addchar(string, *format);
+		}
 	}
 	ft_putstr(string);
 	return (len);
@@ -40,5 +45,5 @@ int 	main(void)
 
 	//printf("%s\n", string);
 	ft_printf("%s %d", string, 48);
-	sleep(5);
+//	sleep(5);
 }

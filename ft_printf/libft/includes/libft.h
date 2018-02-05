@@ -65,6 +65,7 @@ char					*ft_strcpy(char *dest, const char *src);
 char					*ft_strdup(const char *s);
 char					*ft_strncat(char *dest, const char *src,
 	unsigned int n);
+char				 	*ft_addchar(char *string, char c);
 char					*ft_strcat(char *dest, const char *src);
 char					*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
