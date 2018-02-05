@@ -5,6 +5,7 @@
 
 int		ft_printf_engine(va_list arg, const char *format);
 int		ft_printf(const char * restrict format, ...);
+int 	ft_convert(va_list arg, const char * format, char **string, int len);
 
 //void	(*flag[5]) = {
 //		flag_hash, flag_zero, flag_minus, flag_plus, flag_space
