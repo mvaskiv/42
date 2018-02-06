@@ -53,7 +53,7 @@ int 	main(void)
 {
 	char	*string = "hello";
 
-	printf("%X\n", 42);
-	ft_printf("%X\n", 42);
+	printf("%-3x mamma mia\n", 42);
+	ft_printf("%-3x motherfucker %c\n", 42, 48);
 //	sleep(5);
 }

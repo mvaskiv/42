@@ -1,5 +1,27 @@
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
+# define BLACK      "\033[30;"
+# define RED        "\033[31;"
+# define GREEN      "\033[32;"
+# define YELLOW     "\033[33;"
+# define BLUE       "\033[34;"
+# define PURPLE     "\033[35;"
+# define DKGREEN    "\033[6;"
+# define WHITE      "\033[7;"
+# define CYAN       "\x1b[36m"
+
+# define BBLACK      "40m"
+# define BRED        "41m"
+# define BGREEN      "42m"
+# define BYELLOW     "43m"
+# define BBLUE       "44m"
+# define BPURPLE     "45m"
+# define B_DKGREEN    "46m"
+# define BWHITE      "47m"
+
+# define RESET        "\033[0m"
 
 # include <stdarg.h>
 # include "libft/includes/libft.h"

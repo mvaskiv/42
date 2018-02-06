@@ -28,6 +28,8 @@ int 	ft_convert(va_list arg,
 		*string = ft_strjoin(*string, ft_dec_to_hex(va_arg(arg, int), 'l'));
 	if (*format == 'X')
 		*string = ft_strjoin(*string, ft_dec_to_hex(va_arg(arg, int), 'u'));
+	if (*format == 'c')
+		*string = ft_addchar(*string, va_arg(arg, unsigned char));
 	if (width != 0)
 		*string = ft_set_width(arg, format, *string, width);
 	return (ft_strlen(*string));

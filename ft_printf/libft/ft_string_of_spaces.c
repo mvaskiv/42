@@ -1,6 +1,7 @@
 #include "includes/libft.h"
 
-char 	*ft_string_of_spaces(unsigned int size){
+char 	*ft_string_of_spaces(unsigned int size)
+{
 	char	*str = NULL;
 	int		i;
 
