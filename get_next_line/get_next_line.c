@@ -15,6 +15,7 @@
 #define BLACK   "\033[30m"      /* Black */
 #define RED     "\033[31m"      /* Red */
 #define GREEN   "\033[32m"      /* Green */
+#include <malloc/malloc.h>
 
 // ---------------------------------------------------> !!!
 
@@ -50,16 +51,15 @@ static t_storage		*ft_find_file(t_storage **storage, int fd, char **tmp)
 	t_storage				**start;
 
 	*tmp = ft_strnew(BUFF_SIZE + 1);
+	printf("----%zu-----\n", malloc_size(*tmp));
 	start = storage;
 	temp = *storage;
 	while(temp)
 	{
 		if(temp->fd == fd)
-		{
-			temp->next = *start;
-			*storage = temp;
+
 			return (temp);
-		}
+
 		temp = temp->next;
 	}
 	temp = (t_storage*)malloc(sizeof(t_storage));
@@ -132,7 +132,7 @@ int		get_next_line(const int fd, char **line)
 	t_storage		*storage;
 
 	storage = ft_find_file(&storage_s, fd, &tmp);
-	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, 0, 0)) < 0)
+	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
 		return (-1);
 	while ((ret = (int)read(fd, tmp, BUFF_SIZE)) > 0)
 	{
@@ -166,43 +166,45 @@ int			main(int argc, char **argv)
 	int q = argc;
 	q = 2;
 
-	// while ((ret = get_next_line(fd0, &line)))
-	// {
-	// 	printf("%d %c ---> %s\n", ret, a++, line);
-	// 	ft_strdel(&line);
-	// }
-	// while ((ret = get_next_line(fd1, &line))){
-	// 	printf("%d %c ---> %s\n", ret, a++, line);
-	// 	ft_strdel(&line);
-	// }
-	// while ((ret = get_next_line(fd2, &line))){
-	// 	printf("%d %c ---> %s\n", ret, a++, line);
-	// 	ft_strdel(&line);
-	// }
-   ret = get_next_line(fd2, &line);
-   printf("%d %c ---> %s\n", fd2, a++, line);
-   ft_strdel(&line);
-   ret = get_next_line(fd1, &line);
-   printf("%d %c ---> %s\n", fd1, a++, line);
-   ft_strdel(&line);
-   ret = get_next_line(fd2, &line);
-   printf("%d %c ---> %s\n", fd2, a++, line);
-   ft_strdel(&line);
-   ret = get_next_line(fd1, &line);
-   printf("%d %c ---> %s\n", fd1, a++, line);
-   ft_strdel(&line);
-	 ret = get_next_line(fd2, &line);
-   printf("%d %c ---> %s\n", fd2, a++, line);
-   ft_strdel(&line);
-   ret = get_next_line(fd1, &line);
-   printf("%d %c ---> %s\n", fd1, a++, line);
-   ft_strdel(&line);
-	ret = get_next_line(fd2, &line);
-	printf("%d %c ---> %s\n", fd2, a++, line);
-	ft_strdel(&line);
-	ret = get_next_line(fd1, &line);
-	printf("%d %c ---> %s\n", fd1, a++, line);
-	ft_strdel(&line);
+	 while ((ret = get_next_line(fd0, &line)))
+	 {
+	 	printf("%d %c ---> %s\n", ret, a++, line);
+	 	ft_strdel(&line);
+	 }
+	 while ((ret = get_next_line(fd1, &line))){
+	 	printf("%d %c ---> %s\n", ret, a++, line);
+	 	ft_strdel(&line);
+	 }
+	 while ((ret = get_next_line(fd2, &line))){
+	 	printf("%d %c ---> %s\n", ret, a++, line);
+		 printf(">>%zu<<\n", malloc_size(line));
+	 	ft_strdel(&line);
+	 }
+
+//   ret = get_next_line(fd2, &line);
+//   printf("%d %c ---> %s\n", fd2, a++, line);
+//   ft_strdel(&line);
+//   ret = get_next_line(fd1, &line);
+//   printf("%d %c ---> %s\n", fd1, a++, line);
+//   ft_strdel(&line);
+//   ret = get_next_line(fd2, &line);
+//   printf("%d %c ---> %s\n", fd2, a++, line);
+//   ft_strdel(&line);
+//   ret = get_next_line(fd1, &line);
+//   printf("%d %c ---> %s\n", fd1, a++, line);
+//   ft_strdel(&line);
+//	 ret = get_next_line(fd2, &line);
+//   printf("%d %c ---> %s\n", fd2, a++, line);
+//   ft_strdel(&line);
+//   ret = get_next_line(fd1, &line);
+//   printf("%d %c ---> %s\n", fd1, a++, line);
+//   ft_strdel(&line);
+//	ret = get_next_line(fd2, &line);
+//	printf("%d %c ---> %s\n", fd2, a++, line);
+//	ft_strdel(&line);
+//	ret = get_next_line(fd1, &line);
+//	printf("%d %c ---> %s\n", fd1, a++, line);
+//	ft_strdel(&line);
 	free(line);
 	close(fd0);
 	close(fd1);

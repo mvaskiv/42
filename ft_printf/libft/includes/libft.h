@@ -58,6 +58,7 @@ void					ft_lstdel(t_list **alst,
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void					ft_lstadd(t_list **alst, t_list *new);
 void					ft_arrclr(char **arr);
+void					*ft_return_to(char *string, char c);
 
 char					*ft_strncpy(char *dest, const char *src,
 	unsigned int n);

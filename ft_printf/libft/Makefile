@@ -75,6 +75,7 @@ SRC = ft_atoi.c\
 			ft_longatoi.c\
 			ft_arrclr.c\
 			ft_addchar.c\
+			ft_return_to.c\
 
 OBJ = $(SRC:.c=.o)
 

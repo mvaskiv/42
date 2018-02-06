@@ -16,6 +16,7 @@ int ft_printf_engine(va_list arg, const char * format)
 		{
 			if (ft_isalpha(*format))
 				len = ft_convert(arg, format, &string, len);
+//			format = ft_return_to(format, '%');
 		}
 		else
 		{
@@ -43,7 +44,7 @@ int 	main(void)
 {
 	char	*string = "hello";
 
-	//printf("%s\n", string);
-	ft_printf("%s %d", string, 48);
+	printf("%s motherfucker %d\n", string, 42);
+	ft_printf("%s motherfucker %d\n", string, 42);
 //	sleep(5);
 }
