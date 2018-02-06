@@ -9,5 +9,7 @@ char 	*ft_addchar(char *string, char c)
 	str = ft_strdup(string);
 	str[ft_strlen(string)] = (char)c;
 	str[ft_strlen(string) + 1] = '\0';
+	if (string);
+		free(string);
 	return (str);
 }

@@ -64,4 +64,4 @@ add_executable(ft_printf
         libft/ft_strtrim.c
         libft/ft_tolower.c
         libft/ft_toupper.c
-        main.c ft_printf.h ft_get_details.c libft/ft_addchar.c libft/ft_return_to.c)
+        main.c ft_printf.h ft_get_details.c libft/ft_addchar.c libft/ft_return_to.c ft_set_width.c libft/ft_string_of_spaces.c libft/ft_intpositive.c libft/ft_int_base.c libft/ft_dec_to_hex.c libft/ft_strrev.c)

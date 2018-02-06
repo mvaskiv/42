@@ -20,8 +20,8 @@ char			*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	str = ft_strdup(s1);
 	ft_strcat(str, s2);
-	if (s1)
-		free(s1);
 	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
+	free(s2);
 	return (str);
 }

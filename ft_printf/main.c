@@ -7,17 +7,26 @@
 int ft_printf_engine(va_list arg, const char * format)
 {
 	char 	*string = NULL;
+	int 	width;
 	char 	spec;
 	int 	len = 0;
 
+	width = 0;
 	while ((spec = *format++))
 	{
 		if (spec == '%')
 		{
+			if (ft_isdigit(*format) || (*format == (char)'-') || (*format == (char)'+')
+				|| (*format == (char)' '))
+			{
+				width = ft_atoi(format);
+				format += ft_nbrlen(width);
+			}
 			if (ft_isalpha(*format))
-				len = ft_convert(arg, format, &string, len);
-//			format = ft_return_to(format, '%');
+				len = ft_convert(arg, format, &string, width);
 		}
+//			format = ft_return_to(format, '%');
+
 		else
 		{
 			if (*format != '%')
@@ -44,7 +53,7 @@ int 	main(void)
 {
 	char	*string = "hello";
 
-	printf("%s motherfucker %d\n", string, 42);
-	ft_printf("%s motherfucker %d\n", string, 42);
+	printf("%X\n", 42);
+	ft_printf("%X\n", 42);
 //	sleep(5);
 }

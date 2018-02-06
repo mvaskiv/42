@@ -1,10 +1,9 @@
+
 #include "ft_printf.h"
 
 int 	ft_convert(va_list arg,
-					const char * format, char **string, int len)
+					const char * format, char **string, int width)
 {
-	char 	spec;
-
 	if (*format == 's')
 		*string = ft_strjoin(*string, (char*)(va_arg(arg, char *)));
 //	if (*format == 'S')
@@ -17,13 +16,23 @@ int 	ft_convert(va_list arg,
 //		*string =
 	if (*format == 'i')
 		*string = ft_strjoin(*string, ft_itoa(va_arg(arg, int)));
-//	if (*format == 'o')
-//		*string =
+	if (*format == 'o')
+		*string = ft_strjoin(*string, ft_itoa(ft_int_base(va_arg(arg, int), 8)));
 //	if (*format == 'O')
 //		*string =
-//	if (*format == 'u')
-//		*string =
+	if (*format == 'u')
+		*string = ft_strjoin(*string, ft_itoa(va_arg(arg, unsigned int)));
 //	if (*format == 'U')
 //		*string =
+	if (*format == 'x')
+		*string = ft_strjoin(*string, ft_dec_to_hex(va_arg(arg, int), 'l'));
+	if (*format == 'X')
+		*string = ft_strjoin(*string, ft_dec_to_hex(va_arg(arg, int), 'u'));
+	if (width != 0)
+		*string = ft_set_width(arg, format, *string, width);
 	return (ft_strlen(*string));
 }
+
+
+
+

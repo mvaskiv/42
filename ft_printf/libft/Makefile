@@ -76,6 +76,8 @@ SRC = ft_atoi.c\
 			ft_arrclr.c\
 			ft_addchar.c\
 			ft_return_to.c\
+			ft_string_of_spaces.c\
+			ft_intpositive.c\
 
 OBJ = $(SRC:.c=.o)
 

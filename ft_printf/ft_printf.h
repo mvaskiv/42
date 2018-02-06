@@ -1,12 +1,15 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
 # include <stdarg.h>
 # include "libft/includes/libft.h"
 
-int		ft_printf_engine(va_list arg, const char *format);
 int		ft_printf(const char * restrict format, ...);
-int 	ft_convert(va_list arg, const char * format, char **string, int len);
-
+int		ft_printf_engine(va_list arg, const char *format);
+int 	ft_convert(va_list arg,
+				  const char * format, char **string, int width);
+char	*ft_set_width(va_list arg,
+					const char * format, char *string, int width);
 //void	(*flag[5]) = {
 //		flag_hash, flag_zero, flag_minus, flag_plus, flag_space
 //}
