@@ -10,6 +10,7 @@ int ft_printf_engine(va_list arg, const char * format)
 	int 	width;
 	char 	spec;
 	int 	len = 0;
+	void 	*size;
 
 	width = 0;
 	while ((spec = *format++))
@@ -17,13 +18,16 @@ int ft_printf_engine(va_list arg, const char * format)
 		if (spec == '%')
 		{
 			if (ft_isdigit(*format) || (*format == (char)'-') || (*format == (char)'+')
-				|| (*format == (char)' '))
+				|| (*format == (char)' ' || (*format == (char)'#')))
 			{
 				width = ft_atoi(format);
 				format += ft_nbrlen(width);
 			}
 			if (ft_isalpha(*format))
+			{
+				size = ft_set_size(*format, arg);
 				len = ft_convert(arg, format, &string, width);
+			}
 		}
 //			format = ft_return_to(format, '%');
 
@@ -53,7 +57,7 @@ int 	main(void)
 {
 	char	*string = "hello";
 
-	printf("%-3x mamma mia\n", 42);
+	printf("%-3x mamma mia %c\n", 42, 48);
 	ft_printf("%-3x motherfucker %c\n", 42, 48);
 //	sleep(5);
 }

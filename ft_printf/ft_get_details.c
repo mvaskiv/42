@@ -35,6 +35,15 @@ int 	ft_convert(va_list arg,
 	return (ft_strlen(*string));
 }
 
-
+//void	*ft_set_size(const char *format, va_list arg)
+//{
+//	void	*data;
+//	int 	i;
+//
+//	i = -1;
+//	while (i < )
+//
+//	return (data);
+//}
 
 
