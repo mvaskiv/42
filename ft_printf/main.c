@@ -10,27 +10,27 @@ int ft_printf_engine(va_list arg, const char * format)
 	int 	width;
 	char 	spec;
 	int 	len = 0;
-	void 	*size;
 
 	width = 0;
 	while ((spec = *format++))
 	{
 		if (spec == '%')
 		{
-			if (ft_isdigit(*format) || (*format == (char)'-') || (*format == (char)'+')
-				|| (*format == (char)' ' || (*format == (char)'#')))
+			if (ft_strchr("0123456789-+ #", *format))
 			{
 				width = ft_atoi(format);
 				format += ft_nbrlen(width);
 			}
-			if (ft_isalpha(*format))
-			{
-				size = ft_set_size(*format, arg);
-				len = ft_convert(arg, format, &string, width);
-			}
+
+            // precision, etc.
+
+            if (ft_strchr("hljz", *format))
+                len = ft_set_size(format, arg, &string, width, len);
+            if (ft_strchr("cCsSpdDioOuUxX", *format))
+                len = ft_convert(arg, format, &string, width);
+            format += 1;
 		}
 //			format = ft_return_to(format, '%');
-
 		else
 		{
 			if (*format != '%')
@@ -56,8 +56,9 @@ int ft_printf(const char * format, ...)
 int 	main(void)
 {
 	char	*string = "hello";
+    long int i = 1221321321321321322;
 
-	printf("%-3x mamma mia %c\n", 42, 48);
-	ft_printf("%-3x motherfucker %c\n", 42, 48);
-//	sleep(5);
+	printf("%ld mamma mia %c\n", i, 48);
+	ft_printf("%ld hello world %c\n", i, 48);
+	sleep(5);
 }

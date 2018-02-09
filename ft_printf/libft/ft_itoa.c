@@ -12,9 +12,9 @@
 
 #include "includes/libft.h"
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long int n)
 {
-	unsigned int		i;
+	long long int		i;
 	char				*str;
 
 	i = ft_nbrlen(n);

@@ -73,7 +73,7 @@ char					*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
 char					*ft_strstr(const char *haystack,
 	const char *needle);
-char					*ft_itoa(int n);
+char					*ft_itoa(long long int n);
 char					*ft_strrev(char *string);
 char					*ft_dec_to_hex(int number, char c);
 char					**ft_strsplit(char const *s, char c);
@@ -107,7 +107,7 @@ int						ft_isprint(int c);
 int						ft_tolower(int c);
 int						ft_toupper(int c);
 int 					ft_intpositive(int i);
-size_t					ft_nbrlen(int n);
+unsigned int			ft_nbrlen(long long int n);
 unsigned int			ft_int_base(int number, int base);
 long long int			ft_longatoi(const char *nptr);
 

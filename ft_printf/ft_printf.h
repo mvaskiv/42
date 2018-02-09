@@ -37,8 +37,10 @@
 
 int		ft_printf(const char * restrict format, ...);
 int		ft_printf_engine(va_list arg, const char *format);
-void	*ft_set_size(const char *format, va_list arg);
+int     ft_set_size(const char *format, va_list arg, char **string, int width, int len);
 int 	ft_convert(va_list arg,
+                  const char * format, char **string, int width);
+int 	ft_convert_size_set(void *data,
 				  const char * format, char **string, int width);
 char	*ft_set_width(va_list arg,
 					const char * format, char *string, int width);
