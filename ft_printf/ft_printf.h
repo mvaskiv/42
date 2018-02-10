@@ -2,6 +2,8 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <stdarg.h>
+# include "libft/includes/libft.h"
 //# define BLACK      "\033[30;"
 //# define RED        "\033[31;"
 //# define GREEN      "\033[32;"
@@ -31,9 +33,6 @@
 # define	Z	"z"
 
 //# define	CONVERT	int	ft_convert(va_list arg, const char * format, char **string, int width)
-
-# include <stdarg.h>
-# include "libft/includes/libft.h"
 
 int		ft_printf(const char * restrict format, ...);
 int		ft_printf_engine(va_list arg, const char *format);

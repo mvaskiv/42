@@ -86,7 +86,6 @@ int	ft_set_size(const char *format, va_list arg, char **string, int width, int l
 		data = (intmax_t *)va_arg(arg, intmax_t);
 	if (*format == 'z')
 		data = (size_t *)va_arg(arg, size_t);
-	if (ft_strchr("lh", *format))
     if (ft_strchr("cCsSpdDioOuUxX", *++format))
         len += ft_convert_size_set(data, format, string, width);
 	return (len);
