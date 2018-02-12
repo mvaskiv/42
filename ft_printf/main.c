@@ -3,11 +3,28 @@
 
 #include <stdio.h> // ------------------------->>> to delete
 
+float 	ft_set_precision(int precision, const char * format)
+{
+	float	after_dot;
+	int 		num_len;
+	long int	fractal_len;
+
+	fractal_len = 1;
+	num_len = ft_nbrlen(precision);
+	while (num_len > 0)
+	{
+		fractal_len *= 10;
+		num_len--;
+	}
+	after_dot = 0.0;
+	after_dot = ((float)precision / (fractal_len));
+	return (after_dot);
+}
 
 int ft_printf_engine(va_list arg, const char * format)
 {
 	char 	*string = NULL;
-	int 	width;
+	float 	width;
 	char 	spec;
 	int 	len = 0;
 
@@ -19,15 +36,15 @@ int ft_printf_engine(va_list arg, const char * format)
 			if (ft_strchr("0123456789-+ #", *format))
 			{
 				width = ft_atoi(format);
-				format += ft_nbrlen(width);
+				format += ft_nbrlen((int)width);
 			}
-
-            // precision, etc.
-
-            if (ft_strchr("hljz", *format))
-                len = ft_set_size(format, arg, &string, width, len);
-            if (ft_strchr("cCsSpdDioOuUxX", *format))
-                len = ft_convert(arg, format, &string, width);
+//			if (ft_strchr(".", *format++))
+// {
+//				width += ft_set_precision(ft_atoi(format), format);
+//				format += ft_nbrlen(width);
+//			}
+			if (ft_strchr("hljzcCsSpdDioOuUxX", *format))
+				len = ft_process(arg, &format, &string, width, len);
 		}
 //			format = ft_return_to(format, '%');
 		else
@@ -55,9 +72,9 @@ int ft_printf(const char * format, ...)
 int 	main(void)
 {
 	char	*string = "hello";
-    long int i = 1221321321321321322;
+    long int i = 1;
 
-	printf("%ld mamma mia %c\n", i, 48);
-	ft_printf("%ld %s hello world %c\n", i, "qwe", 48);
+	printf("%4ld mamma mia %c\n", i, 48);
+	ft_printf("%4ld %s hello world %c\n", i, "qwe", 48);
 	sleep(5);
 }

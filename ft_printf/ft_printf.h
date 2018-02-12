@@ -36,13 +36,14 @@
 
 int		ft_printf(const char * restrict format, ...);
 int		ft_printf_engine(va_list arg, const char *format);
-int     ft_set_size(const char *format, va_list arg, char **string, int width, int len);
+int     ft_set_size(const char *format, va_list arg, char **string, float width, int len);
+int 	ft_process(va_list arg,
+				  const char ** restrict format, char **string, float width, int len);
 int 	ft_convert(va_list arg,
-                  const char * format, char **string, int width);
+                  const char * format, char **string, float width);
 int 	ft_convert_size_set(void *data,
-				  const char * format, char **string, int width);
-char	*ft_set_width(va_list arg,
-					const char * format, char *string, int width);
+				  const char * format, char **string, float width);
+char	*ft_set_width(const char * format, char *string, float width);
 
 //void	(*flag[5]) = {
 //		flag_hash, flag_zero, flag_minus, flag_plus, flag_space

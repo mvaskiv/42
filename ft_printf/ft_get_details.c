@@ -1,8 +1,22 @@
 
 #include "ft_printf.h"
 
+int 	ft_process(va_list arg,
+					const char ** restrict format, char **string, float width, int len)
+{
+	if (ft_strchr("cCsSpdDioOuUxX", **format))
+	{
+		len = ft_convert(arg, *format, string, (int)width);
+		return (len);
+	}
+	if (ft_strchr("hljz", **format))
+		len = ft_set_size(*format, arg, string, width, len);
+	*format += 1;
+	return (len);
+}
+
 int 	ft_convert(va_list arg,
-					const char * format, char **string, int width)
+					const char * format, char **string, float width)
 {
 	if (*format == 's')
 		*string = ft_strjoin(*string, (char*)(va_arg(arg, char *)));
@@ -31,12 +45,12 @@ int 	ft_convert(va_list arg,
 	if (*format == 'c')
 		*string = ft_addchar(*string, va_arg(arg, unsigned char));
 	if (width != 0)
-		*string = ft_set_width(arg, format, *string, width);
+		*string = ft_set_width(format, *string, width);
 	return (ft_strlen(*string));
 }
 
 int 	ft_convert_size_set(void *data,
-                  const char * format, char **string, int width)
+                  const char * format, char **string, float width)
 {
 //	if (*format == 's')
 //		*string = ft_strjoin(*string, (char*)(va_arg(arg, char *)));
@@ -64,12 +78,12 @@ int 	ft_convert_size_set(void *data,
 //		*string = ft_strjoin(*string, ft_dec_to_hex(va_arg(arg, int), 'u'));
 //	if (*format == 'c')
 //		*string = ft_addchar(*string, va_arg(arg, unsigned char));
-//	if (width != 0)
-//		*string = ft_set_width(arg, format, *string, width);
+	if (width != 0)
+		*string = ft_set_width(format, *string, width);
     return (ft_strlen(*string));
 }
 
-int	ft_set_size(const char *format, va_list arg, char **string, int width, int len)
+int	ft_set_size(const char *format, va_list arg, char **string, float width, int len)
 {
 	void	*data = NULL;
 
