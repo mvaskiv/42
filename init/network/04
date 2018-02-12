@@ -1,0 +1,1 @@
+netstat -r | grep 'default' | cut -d 't' -f2 | cut -d ' ' -f13
