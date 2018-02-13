@@ -1,0 +1,1 @@
+ps -aux | grep 'sshd' | grep -v 'grep sshd' | cut -d ' ' -f7
