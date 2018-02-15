@@ -9,4 +9,19 @@
 # include <dirent.h>
 # include <pwd.h>
 
+typedef struct 		s_flags
+{
+	int 	a;
+	int 	l;
+	int 	R;
+	int 	r;
+	int 	t;
+}					t_flags;
+
+typedef struct		s_files
+{
+	char 			*name;
+	struct s_files	*next;
+}					t_files;
+
 #endif
