@@ -33,13 +33,25 @@ int ft_printf_engine(va_list arg, const char * format)
 	{
 		if (spec == '%')
 		{
-			if (ft_strchr("0123456789-+ #", *format))
+			if (ft_strchr("*0123456789-+ #", *format))
 			{
-				width = ft_atoi(format);
-				format += ft_nbrlen((int)width);
+				if (*format == '*')
+				{
+					width = va_arg(arg, int) ;
+					format += 1;
+				}
+				else if (*format == '-' && *++format == '*'){
+					width = (va_arg(arg, int) * (-1));
+					format += 2;
+				}
+				else
+				{
+					width = ft_atoi(format);
+					format += ft_nbrlen((int)width);
+				}
 			}
 //			if (ft_strchr(".", *format++))
-// {
+// 			{
 //				width += ft_set_precision(ft_atoi(format), format);
 //				format += ft_nbrlen(width);
 //			}
@@ -72,9 +84,10 @@ int ft_printf(const char * format, ...)
 int 	main(void)
 {
 	char	*string = "hello";
-    long int i = 1;
+	float 	j = 0.21341;
+    long int i = 16;
 
-	printf("%4ld mamma mia %c\n", i, 48);
-	ft_printf("%4ld %s hello world %c\n", i, "qwe", 48);
+	printf("%*ld mamma mia %c\n", 4, i, 48);
+	ft_printf("%*ld %s hello world %c\n", 4, i, "qwe", 48);
 	sleep(5);
 }
