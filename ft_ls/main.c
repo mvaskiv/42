@@ -31,12 +31,16 @@ char 	*ft_output_table(char *string, int win_width)
 		j++;
 	}
 	j = 0;
+//	win_width = 82;
 	c = win_width / i;
+	i += 5;
+	if (c == 0)
+		c = 1;
 	while (arr[j])
 	{
-		printf("%-*s\t", i, arr[j]);
+		ft_mini_printf("%-*s\t",(win_width / c) , arr[j]);
 		j++;
-		if (c != 0 && (j % c) == 0)
+		if ((j % c) == 0)
 			printf("\n");
 	}
 	//printf("\n");
@@ -89,6 +93,7 @@ int 	main(int argc, char **argv)
 		}
 	}
 	ft_output_table(string, w.ws_col > 0 ? w.ws_col : 2);
+
 //	ft_putendl(string);
 	return (0);
 }

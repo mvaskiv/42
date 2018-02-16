@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct			s_list
 {
@@ -68,6 +69,7 @@ char					*ft_strncat(char *dest, const char *src,
 	unsigned int n);
 char				 	*ft_addchar(char *string, unsigned char c);
 char 					*ft_string_of_spaces(unsigned int size);
+char				 	*ft_string_of_zeros(char * string, int precision);
 char					*ft_strcat(char *dest, const char *src);
 char					*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
@@ -89,6 +91,11 @@ char					*ft_strnstr(char const *haystack,
 	char const *needle,
 	unsigned int n);
 
+int 					ft_mini_printf(const char * restrict format, ...);
+int 					ft_convert(va_list arg,
+						  const char * format, char **string, int width);
+int						ft_set_size(const char *format, va_list arg,
+									   char **string, int width);
 int						ft_memcmp(const void *s1, const void *s2,
 	unsigned int n);
 int						ft_strnequ(char const *s1, char const *s2,

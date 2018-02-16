@@ -71,4 +71,7 @@ add_executable(ft_ls
         libft/ft_strtrim.c
         libft/ft_tolower.c
         libft/ft_toupper.c
+        libft/ft_string_of_zeros.c
+        libft/ft_mini_printf.c
+        libft/ft_santas_little_helper.c
         main.c ft_ls.h)
