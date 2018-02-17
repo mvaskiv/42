@@ -33,17 +33,18 @@ char 	*ft_output_table(char *string, int win_width)
 	j = 0;
 //	win_width = 82;
 	c = win_width / i;
-	i += 5;
-	if (c == 0)
+	c--;
+	if (c < 0)
 		c = 1;
+	arr = ft_sorttab(arr);
 	while (arr[j])
 	{
-		ft_mini_printf("%-*s\t",(win_width / c) , arr[j]);
+		ft_mini_printf("%-*s\t", i , arr[j]);
 		j++;
 		if ((j % c) == 0)
-			printf("\n");
+			printf("\r\n");
 	}
-	//printf("\n");
+//	printf("\n");
 	return (0);
 }
 
@@ -66,6 +67,8 @@ int 	main(int argc, char **argv)
 {
 	struct winsize	w;
 	struct dirent	*directory;
+	struct stat		stats;
+	t_files			files;
 	t_flags			flags;
 	char 			*string = NULL;
 	DIR				*dir;
@@ -79,8 +82,14 @@ int 	main(int argc, char **argv)
 	if (argc > 1 && argv[1][0] == '-')
 		ft_scan_flags(&flags, argv[1]);
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+//	flags.l = 1;
 	while ((directory = readdir(dir)))
 	{
+//		if (flags.l == 1)
+//		{
+//			stat(directory->d_name, &stats);
+//			printf("%d %d %d\n", stats.st_mode, stats.st_uid, stats.st_ctimespec);
+//		}
 		if (flags.a != 1 && (char)directory->d_name[0] != (char)'.')
 		{
 			string = ft_strjoin(string, directory->d_name);
@@ -92,8 +101,6 @@ int 	main(int argc, char **argv)
 			string = ft_addchar(string, '\t');
 		}
 	}
-	ft_output_table(string, w.ws_col > 0 ? w.ws_col : 2);
-
-//	ft_putendl(string);
+	ft_output_table(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);
 }

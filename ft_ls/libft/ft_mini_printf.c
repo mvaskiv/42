@@ -50,26 +50,23 @@ static int		ft_mini_engine(va_list arg, const char * format, int len)
 		if (spec == '%')
 		{
 			if (ft_strchr("*0123456789-+ #", *format))
-				if (*format == '*')
-				{
-					width = va_arg(arg, int) ;
+			{
+				if (*format == '*') {
+					width = va_arg(arg, int);
 					format += 1;
-				}
-				else if (*format == '-' && *++format == '*'){
+				} else if (*format == '-' && *++format == '*') {
 					width = (va_arg(arg, int) * (-1));
 					format += 1;
-				}
-				else
-				{
+				} else {
 					width = ft_atoi(format);
-					format += ft_nbrlen((int)width);
+					format += ft_nbrlen((int) width);
 				}
+			}
 			if (ft_strchr("hljzcCsSpdDioOuUxX", *format))
 				len += ft_process(arg, &format, &string, width);
 		}
 		else
-			if (*format != '%')
-				string = ft_addchar(string, *format);
+			string = ft_addchar(string, *format);
 	}
 	ft_putstr(string);
 	return (len);

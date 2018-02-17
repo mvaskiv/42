@@ -1,11 +1,15 @@
 
 #include "includes/libft.h"
 
-static char		*ft_set_width(const char *format, char *string, int width)
+static char		*ft_set_width(char * str, int width)
 {
 	char 	*spaces = NULL;
+	char 	*string;
 
-	if (ft_strlen(string) > ft_intpositive(width))
+	string = (char*)malloc(sizeof(char) * ft_strlen(str));
+	ft_memmove(string, str, ft_strlen(str));
+	if (ft_strlen(string) > ft_intpositive(width) ||
+			ft_strlen(string) == ft_intpositive(width))
 		return (string);
 	else if (width < 0)
 	{
@@ -14,10 +18,8 @@ static char		*ft_set_width(const char *format, char *string, int width)
 	}
 	else if (width > 0)
 	{
-		spaces = ft_string_of_spaces(ft_intpositive(width) - ft_strlen(string));
+		spaces = ft_string_of_spaces((unsigned int)(ft_intpositive(width) - (int)ft_strlen(string)));
 		string = ft_strjoin(spaces, string);
-		if ((width - (int)width) > 0)
-			string = ft_string_of_zeros(string, ((width - (int)width) * 10));
 	}
 	else
 		return (string);
@@ -28,7 +30,7 @@ int 			ft_convert(va_list arg,
 				  const char * format, char **string, int width)
 {
 	if (*format == 's')
-		*string = ft_strjoin(*string, (char*)(va_arg(arg, char *)));
+		*string = ft_strjoin(*string, (va_arg(arg, char *)));
 	if (*format == 'd')
 		*string = ft_strjoin(*string, ft_itoa(va_arg(arg, int)));
 	if (*format == 'i')
@@ -44,7 +46,7 @@ int 			ft_convert(va_list arg,
 	if (*format == 'c')
 		*string = ft_addchar(*string, va_arg(arg, unsigned char));
 	if (width != 0)
-		*string = ft_set_width(format, *string, width);
+		*string = ft_set_width(*string, width);
 	return (ft_strlen(*string));
 }
 
@@ -68,7 +70,7 @@ static int 		ft_convert_size_set(void *data,
 	if (*format == 'c')
 		*string = ft_addchar(*string, data);
 	if (width != 0)
-		*string = ft_set_width(format, *string, width);
+		*string = ft_set_width(*string, width);
 	return (ft_strlen(*string));
 }
 

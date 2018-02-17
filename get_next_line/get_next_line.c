@@ -51,15 +51,12 @@ static t_storage		*ft_find_file(t_storage **storage, int fd, char **tmp)
 	t_storage				**start;
 
 	*tmp = ft_strnew(BUFF_SIZE + 1);
-	printf("----%zu-----\n", malloc_size(*tmp));
 	start = storage;
 	temp = *storage;
 	while(temp)
 	{
 		if(temp->fd == fd)
-
 			return (temp);
-
 		temp = temp->next;
 	}
 	temp = (t_storage*)malloc(sizeof(t_storage));
@@ -157,9 +154,9 @@ int		get_next_line(const int fd, char **line)
 #include <fcntl.h>
 int			main(int argc, char **argv)
 {
-	int fd0 = open("test", O_RDONLY);
-	int fd1 = open("test0", O_RDONLY);
-	int fd2 = open("gnl1_2.txt", O_RDONLY);
+	int fd0 = open("libft", O_RDONLY);
+	// int fd1 = open("test0", O_RDONLY);
+	// int fd2 = open("gnl1_2.txt", O_RDONLY);
 	int ret = 0;
 	char a = 'a';
 	char *line;
@@ -168,18 +165,18 @@ int			main(int argc, char **argv)
 
 	 while ((ret = get_next_line(fd0, &line)))
 	 {
-	 	printf("%d %c ---> %s\n", ret, a++, line);
+	 	printf("%s\n", line);
 	 	ft_strdel(&line);
 	 }
-	 while ((ret = get_next_line(fd1, &line))){
-	 	printf("%d %c ---> %s\n", ret, a++, line);
-	 	ft_strdel(&line);
-	 }
-	 while ((ret = get_next_line(fd2, &line))){
-	 	printf("%d %c ---> %s\n", ret, a++, line);
-		 printf(">>%zu<<\n", malloc_size(line));
-	 	ft_strdel(&line);
-	 }
+	 // while ((ret = get_next_line(fd1, &line))){
+	 // 	printf("%d %c ---> %s\n", ret, a++, line);
+	 // 	ft_strdel(&line);
+	 // }
+	 // while ((ret = get_next_line(fd2, &line))){
+	 // 	printf("%d %c ---> %s\n", ret, a++, line);
+		//  printf(">>%zu<<\n", malloc_size(line));
+	 // 	ft_strdel(&line);
+	 // }
 
 //   ret = get_next_line(fd2, &line);
 //   printf("%d %c ---> %s\n", fd2, a++, line);
@@ -207,7 +204,7 @@ int			main(int argc, char **argv)
 //	ft_strdel(&line);
 	free(line);
 	close(fd0);
-	close(fd1);
-	sleep(4);
+	// close(fd1);
+	// sleep(4);
 	return (0);
 }

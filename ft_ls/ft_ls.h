@@ -21,6 +21,12 @@ typedef struct 		s_flags
 typedef struct		s_files
 {
 	char 			*name;
+	char 			*permissions;
+	char 			*owner;
+	char 			*year;
+	char 			*size;
+	char 			*date;
+	int 			total;
 	struct s_files	*next;
 }					t_files;
 
