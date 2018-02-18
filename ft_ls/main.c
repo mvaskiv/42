@@ -74,7 +74,7 @@ void		ft_output(char *string, int win_width)
 	while (arr[j])
 		j++;
 	if (win_width > (i * j))
-		c = 1;
+		c = 0;
 	else
 	{
 		c = (win_width / i) ? (win_width / i): 1;
@@ -82,6 +82,9 @@ void		ft_output(char *string, int win_width)
 			c--;
 	}
 //	c = 2;
+	if (c == 0)
+		while (arr[n])
+			ft_mini_printf("%-*s\t", i, arr[n++]);
 	while (arr[n])
 	{
 		if (arr[n])
@@ -96,6 +99,7 @@ void		ft_output(char *string, int win_width)
 			n = r++;
 		}
 	}
+	ft_mini_printf("\n");
 }
 
 void 	ft_scan_flags(t_flags *flags, char *arg)

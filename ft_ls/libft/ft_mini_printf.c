@@ -10,6 +10,7 @@ static int 		ft_process(va_list arg,
 	if (ft_strchr("cCsSpdDioOuUxX", **format))
 	{
 		len = ft_convert(arg, *format, string, (int)width);
+		*format += 1;
 		return (len);
 	}
 	if (ft_strchr("hljz", **format))
@@ -67,7 +68,7 @@ static int		ft_mini_engine(va_list arg, const char * format, int len)
 				len += ft_process(arg, &format, &string, width);
 		}
 		else
-			string = ft_addchar(string, *format);
+			string = ft_addchar(string, spec);
 	}
 	ft_putstr(string);
 	return (len);
