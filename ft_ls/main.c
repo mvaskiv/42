@@ -39,7 +39,7 @@ char 	*ft_output_table(char *string, int win_width)
 	arr = ft_sorttab(arr);
 	while (arr[j])
 	{
-		ft_mini_printf("%-*s\t", i , arr[j]);
+		ft_mini_printf("%-*s\t", i, arr[j]);
 		j++;
 		if ((j % c) == 0)
 			printf("\r\n");

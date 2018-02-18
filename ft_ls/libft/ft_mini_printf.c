@@ -54,10 +54,11 @@ static int		ft_mini_engine(va_list arg, const char * format, int len)
 				if (*format == '*') {
 					width = va_arg(arg, int);
 					format += 1;
-				} else if (*format == '-' && *++format == '*') {
+				} else if (*++format == '*' && *--format == '-') {
 					width = (va_arg(arg, int) * (-1));
-					format += 1;
+					format += 2;
 				} else {
+					format--;
 					width = ft_atoi(format);
 					format += ft_nbrlen((int) width);
 				}
