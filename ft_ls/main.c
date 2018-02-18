@@ -44,8 +44,58 @@ char 	*ft_output_table(char *string, int win_width)
 		if ((j % c) == 0)
 			printf("\r\n");
 	}
-//	printf("\n");
+//	printf("\r");
 	return (0);
+}
+
+void		ft_output(char *string, int win_width)
+{
+	int 	c;
+	int 	i;
+	int 	j;
+	int 	n;
+	int		r;
+	char 	**arr;
+
+	i = 0;
+	r = 1;
+	n = 0;
+	j = 0;
+	c = 1;
+	arr = ft_strsplit(string, '\t');
+	arr = ft_sorttab(arr);
+	while (arr[j] != NULL)
+	{
+		if (ft_strlen(arr[j]) > i)
+			i = ft_strlen(arr[j]);
+		j++;
+	}
+	j = 0;
+	while (arr[j])
+		j++;
+	if (win_width > (i * j))
+		c = 1;
+	else
+	{
+		c = (win_width / i) ? (win_width / i): 1;
+		while ((j % c))
+			c--;
+	}
+//	c = 2;
+	while (arr[n])
+	{
+		if (arr[n])
+			ft_mini_printf("%-*s\t", i, arr[n]);
+		if (!arr[n + 1])
+			break ;
+//		else
+//			ft_mini_printf("%-*s\t", i, arr[j]);
+		n += (j / c);
+		if ((n / (j / c)) >= c) {
+			printf("\r\n");
+			n = r++;
+		}
+	}
 }
 
 void 	ft_scan_flags(t_flags *flags, char *arg)
@@ -101,6 +151,6 @@ int 	main(int argc, char **argv)
 			string = ft_addchar(string, '\t');
 		}
 	}
-	ft_output_table(string, w.ws_col > 0 ? w.ws_col : 1);
+	ft_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);
 }

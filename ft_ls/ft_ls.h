@@ -27,6 +27,7 @@ typedef struct		s_files
 	char 			*size;
 	char 			*date;
 	int 			total;
+	int 			row;
 	struct s_files	*next;
 }					t_files;
 
