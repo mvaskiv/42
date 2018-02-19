@@ -142,12 +142,18 @@ void		ft_ls_output(char *string, int win_width)
 	table = ft_sorttab(ft_strsplit(string, '\t'));
 	ft_set_stock(&stock, table, win_width);
 	if (stock.columns == 0)
+	{
 		while (table[i])
 			ft_mini_printf("%-*s", stock.true_width, table[i++]);
+		ft_putchar('\n');
+	}
 	if (stock.columns == 1)
 		while (table[i])
 			ft_mini_printf("%-*s\n", stock.true_width, table[i++]);
 	if (stock.columns > 1)
+	{
 		ft_output_columns(table, stock);
+		ft_putchar('\n');
+	}
 //	ft_mini_printf("\n");
 }

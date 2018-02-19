@@ -57,7 +57,7 @@ int 	main(int argc, char **argv)
 //		}
 		if (flags.a != 1 && (char)directory->d_name[0] != (char)'.')
 		{
-			string = ft_strjoin(string, directory->d_name);
+			string = ft_strjoin(string, ft_strdup(directory->d_name));
 			string = ft_addchar(string, '\t');
 		}
 		if (flags.a == 1)
@@ -67,6 +67,6 @@ int 	main(int argc, char **argv)
 		}
 	}
 	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
-//	sleep (10);
+	sleep (10);
 	return (0);
 }

@@ -30,7 +30,7 @@ int 			ft_convert(va_list arg,
 				  const char * format, char **string, int width)
 {
 	if (*format == 's')
-		*string = ft_strjoin(*string, (va_arg(arg, char *)));
+		*string = ft_strjoin(*string, va_arg(arg, char*));
 	if (*format == 'd')
 		*string = ft_strjoin(*string, ft_itoa(va_arg(arg, int)));
 	if (*format == 'i')

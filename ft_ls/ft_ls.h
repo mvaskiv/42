@@ -32,13 +32,13 @@ typedef struct		s_output
 typedef struct		s_files
 {
 	char 			*name;
-	char 			*permissions;
-	char 			*owner;
-	char 			*year;
-	char 			*size;
-	char 			*date;
-	int 			total;
-	int 			row;
+//	char 			*permissions;
+//	char 			*owner;
+//	char 			*year;
+//	char 			*size;
+//	char 			*date;
+//	int 			total;
+//	int 			row;
 	struct s_files	*next;
 }					t_files;
 

@@ -9,7 +9,6 @@ char 	*ft_addchar(char *string, unsigned char c)
 	str = ft_strdup(string);
 	str[ft_strlen(string)] = (unsigned char)c;
 	str[ft_strlen(string) + 1] = '\0';
-	if (string)
-		free(string);
+	ft_strdel(&string);
 	return (str);
 }
