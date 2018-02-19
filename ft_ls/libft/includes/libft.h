@@ -114,6 +114,7 @@ int						ft_isprint(int c);
 int						ft_tolower(int c);
 int						ft_toupper(int c);
 int 					ft_intpositive(int i);
+int 					ft_longest_tab(char **arr);
 unsigned int			ft_nbrlen(long long int n);
 unsigned int			ft_int_base(int number, int base);
 long long int			ft_longatoi(const char *nptr);

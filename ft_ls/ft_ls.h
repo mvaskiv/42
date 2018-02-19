@@ -31,4 +31,6 @@ typedef struct		s_files
 	struct s_files	*next;
 }					t_files;
 
+void		ft_ls_output(char *string, int win_width);
+
 #endif
