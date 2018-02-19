@@ -11,12 +11,23 @@
 
 typedef struct 		s_flags
 {
-	int 	a;
-	int 	l;
-	int 	R;
-	int 	r;
-	int 	t;
+	int 			a;
+	int 			l;
+	int 			R;
+	int 			r;
+	int			 	t;
 }					t_flags;
+
+typedef struct		s_output
+{
+	int 			word_count;
+	int 			min_width;
+	int 			true_width;
+	int		 		columns;
+	int				rows;
+	int 			order;
+	int 			words;
+}					t_output;
 
 typedef struct		s_files
 {

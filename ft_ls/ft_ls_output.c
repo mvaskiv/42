@@ -89,81 +89,65 @@ static int	ft_columns_number(int word_count, int min_width, int win_width)
 	return (columns);
 }
 
-//static void	ft_print_columns(char **table, int word_count, int min_width, int columns)
-//{
-//	int		rows;
-//	int 	order;
-//	int 	words;
-//	int 	i;
-//	int 	q;
-//
-//	i = 0;
-//	q = 0;
-//	rows = 1;
-//	words = 0;
-//}
 
-static void	ft_output_columns(char **table, int word_count,
-								 int min_width, int columns)
+static void	ft_output_columns(char **table, t_output stock)
 {
-	int		rows;
-	int 	order;
-	int 	words;
 	int 	i;
 	int 	q;
 
 	i = 0;
 	q = 0;
-	rows = 1;
-	words = 0;
-	order = word_count;
-	min_width = ft_true_width(min_width);
-	while (order++ % columns);
 	while (table[i])
 	{
+		if (stock.words == stock.word_count)
+			break ;
 		if (table[i])
 		{
-			ft_mini_printf("%-*s", min_width, table[i]);
-			words++;
+			ft_mini_printf("%-*s", stock.true_width, table[i]);
+			stock.words++;
 		}
-		i += (order / columns);
+		i += (stock.order / stock.columns);
 		if (!table[i])
-			q = columns;
-		if (++q >= columns)
+			q = (stock.columns - 1);
+		if (++q >= stock.columns)
 		{
-			if (words == word_count)
-				break ;
 			ft_mini_printf("\r\n");
-			i = rows++;
+			i = stock.rows++;
 			q = 0;
 		}
 	}
 }
 
+static void	ft_set_stock(t_output *stock, char **table, int win_width)
+{
+	stock->rows = 1;
+	stock->words = 0;
+	stock->word_count = 0;
+	stock->min_width = ft_longest_tab(table);
+	stock->true_width = ft_true_width(stock->min_width);
+	while (table[++stock->word_count]);
+	stock->columns = ft_columns_number(stock->word_count, stock->min_width, win_width);
+	stock->order = stock->word_count;
+	if (stock->columns > 1)
+		while (stock->order++ % stock->columns);
+}
 
 void		ft_ls_output(char *string, int win_width)
 {
-	char 	**table = NULL;
-	int 	word_count;
-	int 	min_width;
-	int 	columns;
-	int 	i = 0;
+	t_output	stock;
+	char 		**table = NULL;
+	int 		i;
 
-//	win_width = 82;
-
+	i = 0;
 	table = ft_sorttab(ft_strsplit(string, '\t'));
-	min_width = ft_longest_tab(table);
-	word_count = 0;
-	while (table[++word_count]);
-	columns = ft_columns_number(word_count, min_width, win_width);
-	if (columns == 0)
+	ft_set_stock(&stock, table, win_width);
+	if (stock.columns == 0)
 		while (table[i])
-			ft_mini_printf("%-*s", ft_true_width(min_width), table[i++]);
-	if (columns == 1)
+			ft_mini_printf("%-*s", stock.true_width, table[i++]);
+	if (stock.columns == 1)
 		while (table[i])
-			ft_mini_printf("%-*s\n", ft_true_width(min_width), table[i++]);
-	if (columns > 1)
-		ft_output_columns(table, word_count,
-	min_width, columns);
+			ft_mini_printf("%-*s\n", stock.true_width, table[i++]);
+	if (stock.columns > 1)
+		ft_output_columns(table, stock);
 //	ft_mini_printf("\n");
 }

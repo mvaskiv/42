@@ -2,7 +2,7 @@
 
 char 	*ft_addchar(char *string, unsigned char c)
 {
-	char 	*str;
+	char 	*str = NULL;
 
 	if (!(str = (char*)malloc(sizeof(char) * ft_strlen(string) + 2)))
 		return (NULL);

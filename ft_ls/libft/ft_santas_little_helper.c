@@ -92,7 +92,7 @@ int			ft_set_size(const char *format, va_list arg, char **string, int width)
 //		if (*++format == 'h')
 //			data = (long long int *)va_arg(arg, long long int);
 //		else
-		data = (short int *) va_arg(arg,short int);
+		data = (short int *) va_arg(arg, short int *);
 	}
 	if (*format == 'j')
 		data = (intmax_t *)va_arg(arg, intmax_t);
