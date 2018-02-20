@@ -46,6 +46,31 @@ t_files		*ft_write_names(t_files **storage, struct dirent *directory)
 	return (temp);
 }
 
+char 	**ft_list_to_tab(t_files *storage)
+{
+	t_files *temp;
+	char **arr;
+	int q;
+	int i;
+
+	i = 0;
+	q = 0;
+	temp = storage;
+	while (temp)
+	{
+		q++;
+		temp = temp->next;
+	}
+	arr = (char **) malloc(sizeof(char) * q);
+	while (i < q)
+	{
+		arr[i++] = storage->name;
+		storage = storage->next;
+	}
+	return (arr);
+}
+
+
 int 	main(int argc, char **argv)
 {
 	struct winsize	w;
@@ -79,24 +104,25 @@ int 	main(int argc, char **argv)
 //		}
 		if (flags.a != 1 && (char)directory->d_name[0] != (char)'.')
 		{
-			temp = ft_write_names(&files, directory);
-//			string = ft_strjoin(string, directory->d_name);
-//			string = ft_addchar(string, '\t');
-		}
-		if (flags.a == 1)
-		{
+//			temp = ft_write_names(&files, directory);
 			string = ft_strjoin(string, directory->d_name);
 			string = ft_addchar(string, '\t');
 		}
+		if (flags.a == 1)
+		{
+//			string = ft_strjoin(string, directory->d_name);
+//			string = ft_addchar(string, '\t');
+		}
 	}
 	closedir(dir);
-	while (files->name != NULL)
-	{
-		ft_putendl(files->name);
-		files = files->next;
-	}
+//	string = ft_list_to_tab(files);
+//	while (files->name != NULL)
+//	{
+//		ft_putendl(files->name);
+//		files = files->next;
+//	}
 
+	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	sleep (10);
-//	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);
 }

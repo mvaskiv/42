@@ -21,7 +21,8 @@ char		**ft_sorttab(char **arr)
 				arr[i] = ft_strdup(arr[j]);
 				ft_strclr(arr[j]);
 				arr[j] = ft_strdup(tmp);
-				ft_strdel(&tmp);
+//				ft_strdel(&tmp);
+				free(tmp);
 			}
 			j++;
 		}
