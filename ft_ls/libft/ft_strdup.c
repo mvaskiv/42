@@ -29,7 +29,7 @@ char		*ft_strdup(const char *s)
 	i = 0;
 	if (s)
 	{
-		while (s[i])
+		while (s[i] != '\0')
 		{
 			d[i] = s[i];
 			i++;

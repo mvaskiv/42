@@ -155,5 +155,5 @@ void		ft_ls_output(char *string, int win_width)
 		ft_output_columns(table, stock);
 		ft_putchar('\n');
 	}
-//	ft_mini_printf("\n");
+	free(table);
 }

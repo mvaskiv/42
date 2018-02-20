@@ -80,7 +80,7 @@ char					*ft_strrev(char *string);
 char					*ft_dec_to_hex(int number, char c);
 char					**ft_strsplit(char const *s, char c);
 char					*ft_strtrim(char const *s);
-char					*ft_strjoin(char const *s1, char const *s2);
+char					*ft_strjoin(char *s1, char const *s2);
 char					*ft_strnew(unsigned int size);
 char					*ft_strmap(char const *s, char (*f)(char));
 char					*ft_strmapi(char const *s,
