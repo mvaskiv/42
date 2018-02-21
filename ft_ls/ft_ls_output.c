@@ -89,7 +89,7 @@ static int	ft_columns_number(int word_count, int min_width, int win_width)
 	return (columns);
 }
 
-
+#include <stdio.h>
 static void	ft_output_columns(char **table, t_output stock)
 {
 	int 	i;
@@ -99,13 +99,13 @@ static void	ft_output_columns(char **table, t_output stock)
 	q = 0;
 	while (table[i])
 	{
-		if (stock.words == stock.word_count)
-			break ;
 		if (table[i])
 		{
 			ft_mini_printf("%-*s", stock.true_width, table[i]);
 			stock.words++;
 		}
+		if (stock.words == stock.word_count)
+			break ;
 		i += (stock.order / stock.columns);
 		if (!table[i])
 			q = (stock.columns - 1);
@@ -139,6 +139,7 @@ void		ft_ls_output(char *string, int win_width)
 	int 		i;
 
 	i = 0;
+//	win_width = 82;
 	table = ft_sorttab(ft_strsplit(string, '\t'));
 	ft_set_stock(&stock, table, win_width);
 	if (stock.columns == 0)

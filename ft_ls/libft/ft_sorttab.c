@@ -1,14 +1,16 @@
 
 #include "includes/libft.h"
 
-char		**ft_sorttab(char **arr)
+char		**ft_sorttab(char **arr_s)
 {
 	int 	i;
 	int 	j;
 	char 	*tmp = NULL;
+	char 	**arr;
 
 	j = 0;
 	i = 0;
+	arr = arr_s;
 	while (arr[i])
 	{
 		j = 0;
@@ -16,13 +18,10 @@ char		**ft_sorttab(char **arr)
 		{
 			if (ft_strcmp(arr[j], arr[i]) > 0)
 			{
-				tmp = ft_strdup(arr[i]);
-				ft_strclr(arr[i]);
-				arr[i] = ft_strdup(arr[j]);
-				ft_strclr(arr[j]);
-				arr[j] = ft_strdup(tmp);
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
 //				ft_strdel(&tmp);
-				free(tmp);
 			}
 			j++;
 		}

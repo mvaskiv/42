@@ -7,7 +7,7 @@ static char		*ft_set_width(char * str, int width)
 	char 	*string;
 
 	string = (char*)malloc(sizeof(char) * ft_strlen(str));
-	ft_memmove(string, str, ft_strlen(str));
+	ft_strcpy(string, str);
 	if (ft_strlen(string) > ft_intpositive(width) ||
 			ft_strlen(string) == ft_intpositive(width))
 		return (string);

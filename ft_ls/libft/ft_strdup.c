@@ -23,13 +23,12 @@ char		*ft_strdup(const char *s)
 		while (s[i])
 			i++;
 	}
-	d = (char *)malloc(sizeof(char) * i + 1);
-	if (!d)
-		return (0);
+	if (!(d = ft_strnew(i)))
+		return (NULL);
 	i = 0;
 	if (s)
 	{
-		while (s[i])
+		while (s[i] != '\0')
 		{
 			d[i] = s[i];
 			i++;

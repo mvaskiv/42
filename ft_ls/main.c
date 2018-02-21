@@ -29,7 +29,7 @@ void 	ft_scan_flags(t_flags *flags, char *arg)
 	}
 }
 
-t_files		*ft_write_names(t_files **storage, struct dirent *directory)
+void		ft_write_names(t_files **storage, struct dirent *directory)
 {
 	t_files		*temp;
 	t_files		**start;
@@ -43,7 +43,7 @@ t_files		*ft_write_names(t_files **storage, struct dirent *directory)
 	temp->next = *start;
 	*storage = temp;
 	temp = *storage;
-	return (temp);
+//	return (temp);
 }
 
 char 	**ft_list_to_tab(t_files *storage)
@@ -67,6 +67,7 @@ char 	**ft_list_to_tab(t_files *storage)
 		arr[i++] = storage->name;
 		storage = storage->next;
 	}
+//	arr = ft_sorttab(arr);
 	return (arr);
 }
 
@@ -80,6 +81,7 @@ int 	main(int argc, char **argv)
 	t_files			*temp = NULL;
 	t_flags			flags;
 	char 			*string = NULL;
+	char 			*tempo = NULL;
 	DIR				*dir;
 
 	if (argc == 2 && argv[1][0] != '-')
@@ -104,14 +106,14 @@ int 	main(int argc, char **argv)
 //		}
 		if (flags.a != 1 && (char)directory->d_name[0] != (char)'.')
 		{
-//			temp = ft_write_names(&files, directory);
+//			ft_write_names(&files, directory);
 			string = ft_strjoin(string, directory->d_name);
 			string = ft_addchar(string, '\t');
 		}
 		if (flags.a == 1)
 		{
-//			string = ft_strjoin(string, directory->d_name);
-//			string = ft_addchar(string, '\t');
+			string = ft_strjoin(string, directory->d_name);
+			string = ft_addchar(string, '\t');
 		}
 	}
 	closedir(dir);
@@ -123,6 +125,6 @@ int 	main(int argc, char **argv)
 //	}
 
 	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
-	sleep (10);
+//	sleep (10);
 	return (0);
 }
