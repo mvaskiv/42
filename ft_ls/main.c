@@ -12,8 +12,6 @@
 
 #include "ft_ls.h"
 
-#include <stdio.h>  // ------------------------------ >>> to_delete !
-
 void 	ft_scan_flags(t_flags *flags, char *arg)
 {
 	int 	i;
@@ -76,7 +74,7 @@ int 	main(int argc, char **argv)
 {
 	struct winsize	w;
 	struct dirent	*directory;
-	struct stat		stats;
+
 	t_files			*files = NULL;
 	t_files			*temp = NULL;
 	t_flags			flags;
@@ -97,35 +95,30 @@ int 	main(int argc, char **argv)
 	files = (t_files*)malloc(sizeof(t_files));
 	files->name = NULL;
 	files->next = NULL;
+
+	flags.l = 1;
+
 	while ((directory = readdir(dir)))
 	{
-//		if (flags.l == 1)
+		if (flags.l == 1)
+		{
+			ft_read_list(directory);
+		}
+//		if (flags.a != 1 && (char)directory->d_name[0] != (char)'.')
 //		{
-//			stat(directory->d_name, &stats);
-//			printf("%d %d %d\n", stats.st_mode, stats.st_uid, stats.st_ctimespec);
+////			ft_write_names(&files, directory);
+//			string = ft_strjoin(string, directory->d_name);
+//			string = ft_addchar(string, '\t');
 //		}
-		if (flags.a != 1 && (char)directory->d_name[0] != (char)'.')
-		{
-//			ft_write_names(&files, directory);
-			string = ft_strjoin(string, directory->d_name);
-			string = ft_addchar(string, '\t');
-		}
-		if (flags.a == 1)
-		{
-			string = ft_strjoin(string, directory->d_name);
-			string = ft_addchar(string, '\t');
-		}
+//		if (flags.a == 1)
+//		{
+//			string = ft_strjoin(string, directory->d_name);
+//			string = ft_addchar(string, '\t');
+//		}
 	}
 	closedir(dir);
-//	string = ft_list_to_tab(files);
-//	while (files->name != NULL)
-//	{
-//		ft_putendl(files->name);
-//		files = files->next;
-//	}
-
-	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
-	ft_strdel(&string);
+//	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
+//	ft_strdel(&string);
 //	sleep (10);
 	return (0);
 }

@@ -17,16 +17,15 @@ static char		*ft_set_width(char * str, int width)
 	{
 		spaces = ft_string_of_spaces(ft_intpositive(width) - ft_strlen(string));
 		string = ft_strjoin(string, spaces);
-		ft_strdel(&spaces);
 	}
 	else if (width > 0)
 	{
-		spaces = ft_string_of_spaces((unsigned int)(ft_intpositive(width) - (int)ft_strlen(string)));
+		spaces = ft_string_of_spaces(ft_intpositive(width) - ft_strlen(string));
 		string = ft_strjoin(spaces, string);
-		ft_strdel(&spaces);
 	}
 	else
 		return (string);
+//	ft_strdel(&spaces);
 	return (string);
 }
 

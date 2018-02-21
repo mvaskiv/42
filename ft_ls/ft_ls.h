@@ -7,7 +7,9 @@
 # include <sys/ioctl.h>
 # include <sys/stat.h>
 # include <dirent.h>
+# include <time.h>
 # include <pwd.h>
+# include <grp.h>
 
 typedef struct 		s_flags
 {
@@ -43,5 +45,6 @@ typedef struct		s_files
 }					t_files;
 
 void		ft_ls_output(char *string, int win_width);
+void		ft_read_list(struct dirent *directory);
 
 #endif
