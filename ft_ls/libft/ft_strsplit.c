@@ -82,6 +82,6 @@ char			**ft_strsplit(char const *s, char c)
 		arr[i][l] = '\0';
 		s += l;
 	}
-	arr[i] = NULL;
+	arr[j] = '\0';
 	return (arr);
 }

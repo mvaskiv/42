@@ -71,6 +71,7 @@ static int		ft_mini_engine(va_list arg, const char * format, int len)
 			string = ft_addchar(string, spec);
 	}
 	ft_putstr(string);
+	ft_strdel(&string);
 	return (len);
 }
 

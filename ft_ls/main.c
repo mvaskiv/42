@@ -125,6 +125,7 @@ int 	main(int argc, char **argv)
 //	}
 
 	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
+	ft_strdel(&string);
 //	sleep (10);
 	return (0);
 }

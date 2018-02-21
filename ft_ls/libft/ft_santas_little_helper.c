@@ -8,6 +8,8 @@ static char		*ft_set_width(char * str, int width)
 
 	string = (char*)malloc(sizeof(char) * ft_strlen(str));
 	ft_strcpy(string, str);
+	if (str)
+		ft_strdel(&str);
 	if (ft_strlen(string) > ft_intpositive(width) ||
 			ft_strlen(string) == ft_intpositive(width))
 		return (string);
@@ -15,11 +17,13 @@ static char		*ft_set_width(char * str, int width)
 	{
 		spaces = ft_string_of_spaces(ft_intpositive(width) - ft_strlen(string));
 		string = ft_strjoin(string, spaces);
+		ft_strdel(&spaces);
 	}
 	else if (width > 0)
 	{
 		spaces = ft_string_of_spaces((unsigned int)(ft_intpositive(width) - (int)ft_strlen(string)));
 		string = ft_strjoin(spaces, string);
+		ft_strdel(&spaces);
 	}
 	else
 		return (string);
