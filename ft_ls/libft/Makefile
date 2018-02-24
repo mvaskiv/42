@@ -81,6 +81,7 @@ SRC = ft_atoi.c\
 			ft_string_of_zeros.c\
 			ft_mini_printf.c\
 			ft_santas_little_helper.c\
+			ft_sortrtab.c\
 
 OBJ = $(SRC:.c=.o)
 

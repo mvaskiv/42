@@ -119,5 +119,7 @@ unsigned int			ft_nbrlen(long long int n);
 unsigned int			ft_int_base(int number, int base);
 long long int			ft_longatoi(const char *nptr);
 char					**ft_sorttab(char **arr);
+char					**ft_sortrtab(char **arr);
+
 
 #endif

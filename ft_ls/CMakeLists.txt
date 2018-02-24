@@ -74,4 +74,4 @@ add_executable(ft_ls
         libft/ft_string_of_zeros.c
         libft/ft_mini_printf.c
         libft/ft_santas_little_helper.c
-        main.c ft_ls.h libft/ft_sorttab.c ft_ls_output.c libft/ft_longest_tab.c ft_ls_l.c)
+        main.c ft_ls.h libft/ft_sorttab.c ft_ls_output.c libft/ft_longest_tab.c ft_ls_l.c ft_flag_manager.c libft/ft_sortrtab.c)

@@ -57,7 +57,7 @@ static char 	*ft_month(int month_n)
 		return ("Dec");
 }
 
-void			ft_read_list(struct dirent *directory)
+void			ft_read_list(struct dirent *directory, t_flags flag)
 {
 	struct stat		stats;
 	struct group	*grp;

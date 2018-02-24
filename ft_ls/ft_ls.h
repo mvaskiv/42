@@ -13,6 +13,7 @@
 
 typedef struct 		s_flags
 {
+	int 			one;
 	int 			a;
 	int 			l;
 	int 			R;
@@ -45,6 +46,6 @@ typedef struct		s_files
 }					t_files;
 
 void		ft_ls_output(char *string, int win_width);
-void		ft_read_list(struct dirent *directory);
+void		ft_read_list(struct dirent *directory, t_flags flag);
 
 #endif
