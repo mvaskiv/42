@@ -28,7 +28,6 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 
 void 	ft_ls_core(t_flags flag, DIR *dir, int winsize)
 {
-	struct dirent	*directory;
 	t_files			*files;
 	int 	i;
 
