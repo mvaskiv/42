@@ -57,7 +57,7 @@ static char 	*ft_month(int month_n)
 		return ("Dec");
 }
 
-void			ft_read_list(struct dirent *directory, t_flags flag)
+void			ft_read_list(t_files *files)
 {
 	struct stat		stats;
 	struct group	*grp;
@@ -83,4 +83,10 @@ void			ft_read_list(struct dirent *directory, t_flags flag)
 	ft_mini_printf(" %s %d %d:%d", ft_month(time->tm_mon), time->tm_mday, time->tm_hour, time->tm_min);
 	ft_mini_printf(" %s", directory->d_name);
 	ft_putchar('\n');
+}
+
+void	ft_ls_l_output(t_files *files)
+{
+	ft_write_stats(&files);
+
 }

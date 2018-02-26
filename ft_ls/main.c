@@ -12,21 +12,6 @@
 
 #include "ft_ls.h"
 
-static void 	ft_scan_flags(t_flags *flags, char *arg)
-{
-	int 	i;
-
-	i = 0;
-	while (arg[i++])
-	{
-		flags->a = ft_strchr(arg, 'a') ? 1 : 0;
-		flags->l = ft_strchr(arg, 'l') ? 1 : 0;
-		flags->r = ft_strchr(arg, 'r') ? 1 : 0;
-		flags->R = ft_strchr(arg, 'R') ? 1 : 0;
-		flags->t = ft_strchr(arg, 't') ? 1 : 0;
-	}
-}
-
 void		ft_sort_bydate(t_files **files, t_flags flag)
 {
 	t_files		*temp;
@@ -148,36 +133,21 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 int 	main(int argc, char **argv)
 {
 	struct winsize	w;
-	struct dirent	*directory;
-
-	t_files			*files = NULL;
-//	t_files			*temp = NULL;
 	t_flags			flags;
-//	char 			*string = NULL;
 	DIR				*dir;
+	int 			i;
 
-	if (argc == 2 && argv[1][0] != '-')
-		dir = opendir(argv[1]);
-	else if (argc == 3 && argv[1][0] == '-')
-		dir = opendir(argv[2]);
-	else
-		dir = opendir(getenv("PWD"));
-	if (argc > 1 && argv[1][0] == '-')
-		ft_scan_flags(&flags, argv[1]);
+	i = 1;
+	ft_scan_flags(&flags, argv, argc);
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-	files = (t_files*)malloc(sizeof(t_files));
-	files->name = NULL;
-	files->next = NULL;
-//	flags.l = 1;
-	flags.r = 0;
+	while ((i < argc) && (argv[i][0] == '-'))
+		i++;
+	if (argv[i] && argv[i][0] != '-')
+		while ((argv[i][0] != '-') && (dir = opendir(argv[i++])))
+			ft_ls_core(flags, dir);
+	else
+		ft_ls_core(flags, opendir(getenv("PWD")));
 
-	ft_write_names(&files, dir, flags);
-	ft_sort_list(&files, flags);
-	ft_sort_bydate(&files, flags);
-	ft_write_stats(&files);
-	closedir(dir);
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
-//	ft_strdel(&string);
-//	sleep (10);
 	return (0);
 }

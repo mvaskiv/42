@@ -1,33 +1,39 @@
 
 #include "ft_ls.h"
 
-static void 	ft_scan_flags(t_flags *flags, char *arg)
+void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 {
 	int 	i;
 
 	i = 0;
-	while (arg[i++])
+	while (i <= argc && arg[i][0] == '-')
 	{
-		flags->a = ft_strchr(arg, 'a') ? 1 : 0;
-		flags->l = ft_strchr(arg, 'l') ? 1 : 0;
-		flags->r = ft_strchr(arg, 'r') ? 1 : 0;
-		flags->R = ft_strchr(arg, 'R') ? 1 : 0;
-		flags->t = ft_strchr(arg, 't') ? 1 : 0;
+		flags->one = ft_strchr(arg[i], '1') ? 1 : 0;
+		flags->a = ft_strchr(arg[i], 'a') ? 1 : 0;
+		flags->l = ft_strchr(arg[i], 'l') ? 1 : 0;
+		flags->r = ft_strchr(arg[i], 'r') ? 1 : 0;
+		flags->R = ft_strchr(arg[i], 'R') ? 1 : 0;
+		flags->t = ft_strchr(arg[i], 't') ? 1 : 0;
+		if (arg[++i][0] != '-')
+			break ;
 	}
 }
 
-void 	ft_flag_manager(t_flags flag, DIR *dir, char **argv, int argc)
+void 	ft_ls_core(t_flags flag, DIR *dir)
 {
 	struct dirent	*directory;
 	t_files			*files;
 	int 	i;
 
 	i = 0;
-	while (++i <= argc && argv[i][0] == '-')
-		ft_scan_flags(&flag, argv[i]);
+	files = (t_files*)malloc(sizeof(t_files));
+	files->name = NULL;
+	files->next = NULL;
 	ft_write_names(&files, dir, flag);
+	ft_sort_list(&files, flag);
+	if (flag.t == 1)
+		ft_sort_bydate(&files, flag);
 	if (flag.l == 1)
-		ft_write_stats(&files);
-
-
+		ft_ls_l_output(files);
+	closedir(dir);
 }
