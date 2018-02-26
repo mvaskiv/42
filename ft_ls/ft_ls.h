@@ -13,7 +13,7 @@
 
 typedef struct 		s_flags
 {
-	int 			one; //
+	int 			one; //done
 	int 			a; //done
 	int 			l; //done
 	int 			R;
@@ -46,7 +46,6 @@ typedef struct		s_files
 void 		ft_ls_core(t_flags flag, DIR *dir, int winsize);
 
 void 		ft_scan_flags(t_flags *flags, char **arg, int argc);
-
 void		ft_write_names(t_files **files, DIR *dir, t_flags flag);
 void		ft_sort_bydate(t_files **files, t_flags flag);
 void		ft_sort_list(t_files **files, t_flags flag);

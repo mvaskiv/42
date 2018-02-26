@@ -1,70 +1,5 @@
 
 #include "ft_ls.h"
-//
-//void		ft_output(char *string, int win_width) {
-//	int c;
-//	int i;
-//	int j;
-//	int jj = 0;
-//	int n;
-//	int r;
-//	int q = 0;
-//	int w = 0;
-//	char **arr;
-//
-//	i = 0;
-//	r = 1;
-//	n = 0;
-//	j = 0;
-//	c = 1;
-//	arr = ft_strsplit(string, '\t');
-//	arr = ft_sorttab(arr);
-//	while (arr[j] != NULL) {
-//		if (ft_strlen(arr[j]) > i)
-//			i = ft_strlen(arr[j]);
-//		j++;
-//	}
-//	j = 0;
-//	while (arr[j])
-//		j++;
-//	if ((i % 8) == 0)
-//		i += 8;
-//	else
-//		while ((i % 8) != 0)
-//			i++;
-//	if (win_width > (i * j))
-//		c = 0;
-//	else {
-//		c = (win_width / (i)) ? (win_width / (i)) : 1;
-//	}
-////	c = 2;
-//	jj = j;
-//	if (c != 0)
-//		while (jj % c)
-//			jj++;
-//	if (c == 0)
-//		while (arr[n])
-//			ft_mini_printf("%-*s", i, arr[n++]);
-//	while (arr[n])
-//	{
-//		if (arr[n]) {
-//			ft_mini_printf("%-*s", i, arr[n]);
-//			w++;
-//		}
-//		n += (jj / c);
-//		if (!arr[n])
-//			q = (c - 1);
-//		q++;
-//		if (q >= c) {
-//			if (w == j)
-//				break ;
-//			ft_mini_printf("\r\n");
-//			n = r++;
-//			q = 0;
-//		}
-//	}
-//	ft_mini_printf("\n");
-//}
 
 static void	ft_output_columns(char **table, t_output stock)
 {
@@ -80,7 +15,7 @@ static void	ft_output_columns(char **table, t_output stock)
 			ft_mini_printf("%-*s", stock.true_width, table[i]);
 			stock.words++;
 		}
-		if (stock.words == stock.word_count)
+		if (stock.words >= stock.word_count)
 			break ;
 		i += (stock.order / stock.columns);
 		if (i >=  stock.word_count)
