@@ -34,18 +34,20 @@ typedef struct		s_output
 
 typedef struct		s_files
 {
+//	struct s_files	*prev;
 	char 			*name;
-//	char 			*permissions;
-//	char 			*owner;
-//	char 			*year;
-//	char 			*size;
-//	char 			*date;
-//	int 			total;
-//	int 			row;
+	__darwin_time_t moddate;
+	struct stat		stats;
+	struct tm		*time;
+	struct group	*grp;
 	struct s_files	*next;
 }					t_files;
 
+void		ft_write_names(t_files **files, DIR *dir, t_flags flag);
+void		ft_sort_list(t_files **files, t_flags flag);
+void		ft_write_stats(t_files **files);
 void		ft_ls_output(char *string, int win_width);
 void		ft_read_list(struct dirent *directory, t_flags flag);
+
 
 #endif

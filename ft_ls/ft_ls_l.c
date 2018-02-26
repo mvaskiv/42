@@ -63,7 +63,6 @@ void			ft_read_list(struct dirent *directory, t_flags flag)
 	struct group	*grp;
 	struct tm		*time;
 
-
 	stat(directory->d_name, &stats);
 	grp = getgrgid(stats.st_gid);
 	time = localtime(&stats.st_birthtimespec.tv_sec);

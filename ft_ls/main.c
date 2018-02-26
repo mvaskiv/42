@@ -27,47 +27,122 @@ static void 	ft_scan_flags(t_flags *flags, char *arg)
 	}
 }
 
-void		ft_write_names(t_files **storage, struct dirent *directory)
+void		ft_sort_bydate(t_files **files, t_flags flag)
+{
+	t_files		*temp;
+	char 		*swap = NULL;
+	t_files		**start;
+	__darwin_time_t time_swap;
+
+	start = files;
+	temp = *files;
+	while (temp->next)
+	{
+		if ((flag.r == 0 ? (temp->moddate < temp->next->moddate) :
+					(temp->moddate > temp->next->moddate)))
+		{
+			swap = temp->name;
+			time_swap = temp->moddate;
+			temp->name = temp->next->name;
+			temp->moddate = temp->next->moddate;
+			temp->next->name = swap;
+			temp->next->moddate = time_swap;
+			ft_sort_bydate(start, flag);
+		}
+		temp = temp->next;
+	}
+}
+
+void		ft_sort_list(t_files **files, t_flags flag)
+{
+	t_files		*temp;
+	__darwin_time_t time_swap;
+	char		*swap = NULL;
+	t_files		**start;
+
+	start = files;
+	temp = *files;
+	while (temp->next)
+	{
+		if ((flag.r == 0 ? (ft_strcmp(temp->name, temp->next->name) > 0) :
+			 (ft_strcmp(temp->name, temp->next->name) < 0)))
+		{
+			swap = temp->name;
+			time_swap = temp->moddate;
+			temp->name = temp->next->name;
+			temp->moddate = temp->next->moddate;
+			temp->next->name = swap;
+			temp->next->moddate = time_swap;
+			ft_sort_list(start, flag);
+		}
+		temp = temp->next;
+	}
+}
+
+void		ft_write_stats(t_files **files)
 {
 	t_files		*temp;
 	t_files		**start;
 
-	start = storage;
-	temp = *storage;
+	start = files;
+	temp = *files;
 	while (temp)
+	{
+		stat(temp->name, &temp->stats);
+		temp->grp = getgrgid(temp->stats.st_gid);
+		temp->time = localtime(&temp->stats.st_birthtimespec.tv_sec);
 		temp = temp->next;
-	temp = (t_files*)malloc(sizeof(t_files));
-	temp->name = ft_strdup(directory->d_name);
-	temp->next = *start;
-	*storage = temp;
-	temp = *storage;
-//	return (temp);
+	}
 }
 
-char 	**ft_list_to_tab(t_files *storage)
+void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 {
-	t_files *temp;
-	char **arr;
-	int q;
-	int i;
+	t_files			*temp;
+	t_files			**start;
+	struct dirent	*directory;
 
-	i = 0;
-	q = 0;
-	temp = storage;
-	while (temp)
+	while ((directory = readdir(dir)))
 	{
-		q++;
-		temp = temp->next;
+		start = files;
+		temp = *files;
+		temp = (t_files *) malloc(sizeof(t_files));
+		while (flag.a != 1 && (char) directory->d_name[0] == '.')
+			directory = readdir(dir);
+		temp->name = ft_strdup(directory->d_name);
+		stat(temp->name, &temp->stats);
+		temp->moddate = temp->stats.st_mtimespec.tv_sec;
+		temp->time = NULL;
+		temp->grp = NULL;
+		temp->next = *start;
+		*files = temp;
+		temp = *files;
 	}
-	arr = (char **) malloc(sizeof(char) * q);
-	while (i < q)
-	{
-		arr[i++] = storage->name;
-		storage = storage->next;
-	}
-//	arr = ft_sorttab(arr);
-	return (arr);
 }
+
+//char 	**ft_list_to_tab(t_files *storage)
+//{
+//	t_files *temp;
+//	char **arr;
+//	int q;
+//	int i;
+//
+//	i = 0;
+//	q = 0;
+//	temp = storage;
+//	while (temp)
+//	{
+//		q++;
+//		temp = temp->next;
+//	}
+//	arr = (char **) malloc(sizeof(char) * q);
+//	while (i < q)
+//	{
+//		arr[i++] = storage->name;
+//		storage = storage->next;
+//	}
+////	arr = ft_sorttab(arr);
+//	return (arr);
+//}
 
 
 int 	main(int argc, char **argv)
@@ -75,10 +150,10 @@ int 	main(int argc, char **argv)
 	struct winsize	w;
 	struct dirent	*directory;
 
-//	t_files			*files = NULL;
+	t_files			*files = NULL;
 //	t_files			*temp = NULL;
 	t_flags			flags;
-	char 			*string = NULL;
+//	char 			*string = NULL;
 	DIR				*dir;
 
 	if (argc == 2 && argv[1][0] != '-')
@@ -90,33 +165,19 @@ int 	main(int argc, char **argv)
 	if (argc > 1 && argv[1][0] == '-')
 		ft_scan_flags(&flags, argv[1]);
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-//	files = (t_files*)malloc(sizeof(t_files));
-//	files->name = NULL;
-//	files->next = NULL;
-
+	files = (t_files*)malloc(sizeof(t_files));
+	files->name = NULL;
+	files->next = NULL;
 //	flags.l = 1;
+	flags.r = 0;
 
-	while ((directory = readdir(dir)))
-	{
-//		if (flags.l == 1)
-//		{
-//			ft_read_list(directory);
-//		}
-		if (flags.a != 1 && (char)directory->d_name[0] != (char)'.')
-		{
-//			ft_write_names(&files, directory);
-			string = ft_strjoin(string, directory->d_name);
-			string = ft_addchar(string, '\t');
-		}
-		if (flags.a == 1)
-		{
-			string = ft_strjoin(string, directory->d_name);
-			string = ft_addchar(string, '\t');
-		}
-	}
+	ft_write_names(&files, dir, flags);
+	ft_sort_list(&files, flags);
+	ft_sort_bydate(&files, flags);
+	ft_write_stats(&files);
 	closedir(dir);
-	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
-	ft_strdel(&string);
+//	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
+//	ft_strdel(&string);
 //	sleep (10);
 	return (0);
 }

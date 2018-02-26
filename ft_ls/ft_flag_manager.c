@@ -19,13 +19,15 @@ static void 	ft_scan_flags(t_flags *flags, char *arg)
 void 	ft_flag_manager(t_flags flag, DIR *dir, char **argv, int argc)
 {
 	struct dirent	*directory;
+	t_files			*files;
 	int 	i;
 
-	i = 1;
-	while (i <= argc)
-		ft_scan_flags(&flag, argv[i++]);
+	i = 0;
+	while (++i <= argc && argv[i][0] == '-')
+		ft_scan_flags(&flag, argv[i]);
+	ft_write_names(&files, dir, flag);
 	if (flag.l == 1)
-		while ((directory = readdir(dir)))
-			ft_read_list(directory, flag);
+		ft_write_stats(&files);
+
 
 }
