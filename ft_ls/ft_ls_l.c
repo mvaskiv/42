@@ -63,9 +63,6 @@ void			ft_read_list(t_files *files)
 	struct group	*grp;
 	struct tm		*time;
 
-	stat(directory->d_name, &stats);
-	grp = getgrgid(stats.st_gid);
-	time = localtime(&stats.st_birthtimespec.tv_sec);
 	ft_mini_printf( (S_ISDIR(stats.st_mode)) ? "d" : "-");
 	ft_mini_printf( (stats.st_mode & S_IRUSR) ? "r" : "-");
 	ft_mini_printf( (stats.st_mode & S_IWUSR) ? "w" : "-");

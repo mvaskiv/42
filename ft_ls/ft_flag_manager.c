@@ -33,7 +33,11 @@ void 	ft_ls_core(t_flags flag, DIR *dir)
 	ft_sort_list(&files, flag);
 	if (flag.t == 1)
 		ft_sort_bydate(&files, flag);
+	//if (flag.R == 1)
+	//	do magic ;
 	if (flag.l == 1)
 		ft_ls_l_output(files);
+	//if ((flag.l != 1) && (flag.R != 1))
+		//ft_ls_output()
 	closedir(dir);
 }

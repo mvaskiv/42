@@ -67,9 +67,7 @@ void		ft_sort_list(t_files **files, t_flags flag)
 void		ft_write_stats(t_files **files)
 {
 	t_files		*temp;
-	t_files		**start;
 
-	start = files;
 	temp = *files;
 	while (temp)
 	{
