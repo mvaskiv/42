@@ -94,6 +94,7 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 		temp->name = ft_strdup(directory->d_name);
 		stat(temp->name, &temp->stats);
 		temp->moddate = temp->stats.st_mtimespec.tv_sec;
+		temp->namlen = directory->d_namlen;
 		temp->time = NULL;
 		temp->grp = NULL;
 		temp->next = *start;
@@ -102,49 +103,23 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 	}
 }
 
-//char 	**ft_list_to_tab(t_files *storage)
-//{
-//	t_files *temp;
-//	char **arr;
-//	int q;
-//	int i;
-//
-//	i = 0;
-//	q = 0;
-//	temp = storage;
-//	while (temp)
-//	{
-//		q++;
-//		temp = temp->next;
-//	}
-//	arr = (char **) malloc(sizeof(char) * q);
-//	while (i < q)
-//	{
-//		arr[i++] = storage->name;
-//		storage = storage->next;
-//	}
-////	arr = ft_sorttab(arr);
-//	return (arr);
-//}
-
-
 int 	main(int argc, char **argv)
 {
-	struct winsize	w;
+	struct winsize	win;
 	t_flags			flags;
 	DIR				*dir;
 	int 			i;
 
 	i = 1;
 	ft_scan_flags(&flags, argv, argc);
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
 		i++;
 	if (argv[i] && argv[i][0] != '-')
 		while ((argv[i][0] != '-') && (dir = opendir(argv[i++])))
-			ft_ls_core(flags, dir);
+			ft_ls_core(flags, dir, win.ws_col);
 	else
-		ft_ls_core(flags, opendir(getenv("PWD")));
+		ft_ls_core(flags, opendir(getenv("PWD")), win.ws_col);
 
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);

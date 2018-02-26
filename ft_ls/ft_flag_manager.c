@@ -5,21 +5,28 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 {
 	int 	i;
 
-	i = 0;
-	while (i <= argc && arg[i][0] == '-')
+	i = 1;
+	if (argc > 1)
 	{
-		flags->one = ft_strchr(arg[i], '1') ? 1 : 0;
-		flags->a = ft_strchr(arg[i], 'a') ? 1 : 0;
-		flags->l = ft_strchr(arg[i], 'l') ? 1 : 0;
-		flags->r = ft_strchr(arg[i], 'r') ? 1 : 0;
-		flags->R = ft_strchr(arg[i], 'R') ? 1 : 0;
-		flags->t = ft_strchr(arg[i], 't') ? 1 : 0;
-		if (arg[++i][0] != '-')
-			break ;
+		while (i <= argc)
+		{
+			if (arg[i][0] != '-')
+				break;
+			else
+			{
+				flags->one = ft_strchr(arg[i], '1') ? 1 : 0;
+				flags->a = ft_strchr(arg[i], 'a') ? 1 : 0;
+				flags->l = ft_strchr(arg[i], 'l') ? 1 : 0;
+				flags->r = ft_strchr(arg[i], 'r') ? 1 : 0;
+				flags->R = ft_strchr(arg[i], 'R') ? 1 : 0;
+				flags->t = ft_strchr(arg[i], 't') ? 1 : 0;
+			}
+			i++;
+		}
 	}
 }
 
-void 	ft_ls_core(t_flags flag, DIR *dir)
+void 	ft_ls_core(t_flags flag, DIR *dir, int winsize)
 {
 	struct dirent	*directory;
 	t_files			*files;
@@ -35,9 +42,9 @@ void 	ft_ls_core(t_flags flag, DIR *dir)
 		ft_sort_bydate(&files, flag);
 	//if (flag.R == 1)
 	//	do magic ;
-	if (flag.l == 1)
-		ft_ls_l_output(files);
-	//if ((flag.l != 1) && (flag.R != 1))
-		//ft_ls_output()
+//	if (flag.l == 1)
+//		ft_ls_l_output(files);
+	if ((flag.l != 1) && (flag.R != 1))
+		ft_ls_output(files, (flag.one == 1 ? 0 : winsize));
 	closedir(dir);
 }

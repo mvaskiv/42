@@ -117,46 +117,87 @@ static int	ft_columns_number(int word_count, int min_width, int win_width)
 	return (columns);
 }
 
+int 		ft_high_namlen(t_files *files, int type)
+{
+	t_files		*temp;
+	int			i;
+	int 		j;
 
-static void	ft_set_stock(t_output *stock, char **table, int win_width)
+	i = 0;
+	j = 0;
+	temp = files;
+	while (temp)
+	{
+		if (temp->namlen > i)
+			i = temp->namlen;
+		temp = temp->next;
+		j++;
+	}
+	if (type == 0)
+		return (i);
+	else
+		return (j);
+}
+
+static void	ft_set_stock(t_output *stock, t_files *files, int win_width)
 {
 	stock->rows = 1;
 	stock->words = 0;
 	stock->word_count = 0;
-	stock->min_width = ft_longest_tab(table);
+	stock->min_width = ft_high_namlen(files, 0);
 	stock->true_width = ft_true_width(stock->min_width);
-	while (table[++stock->word_count]);
+	stock->word_count = ft_high_namlen(files, 1) - 1;
 	stock->columns = ft_columns_number(stock->word_count, stock->min_width, win_width);
 	stock->order = stock->word_count;
 	if (stock->columns > 1)
 		while (stock->order++ % stock->columns);
 }
 
-void		ft_ls_output(char *string, int win_width)
+char		**ft_list_to_arr(t_files *files, t_output stock)
+{
+	char 	**arr;
+	int 	i;
+
+	i = 0;
+	arr = (char**)malloc(sizeof(char*) * stock.word_count + 1);
+	while (files)
+	{
+		arr[i] = ft_strdup(files->name);
+		files = files->next;
+		i++;
+	}
+//	arr[i + 1] = '\0';
+	return (arr);
+}
+
+void		ft_ls_output(t_files *files, int win_width)
 {
 	t_output	stock;
-	char 		**table = NULL;
 	int 		i;
 
 	i = 0;
-//	win_width = 106;
-	table = ft_sorttab(ft_strsplit(string, '\t'));
-	ft_set_stock(&stock, table, win_width);
+
+//	win_width = 82;
+
+	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
 	{
-		while (table[i])
-			ft_mini_printf("%-*s", stock.true_width, table[i++]);
+		while (files->name != NULL)
+		{
+			ft_mini_printf("%-*s", stock.true_width, files->name);
+			files = files->next;
+		}
 		ft_putchar('\n');
 	}
 	if (stock.columns == 1)
-		while (table[i])
-
-			ft_mini_printf("%-*s\n", stock.true_width, table[i++]);
+		while (files->name != NULL)
+		{
+			ft_mini_printf("%-*s\n", stock.true_width, files->name);
+			files = files->next;
+		}
 	if (stock.columns > 1)
 	{
-		ft_output_columns(table, stock);
+		ft_output_columns(ft_list_to_arr(files, stock), stock);
 		ft_putchar('\n');
 	}
-	ft_strdel(table);
-//	sleep (10);
 }

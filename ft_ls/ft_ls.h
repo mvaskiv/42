@@ -34,6 +34,7 @@ typedef struct		s_output
 
 typedef struct		s_files
 {
+	int 			namlen;
 	char 			*name;
 	struct stat		stats;
 	struct tm		*time;
@@ -42,7 +43,7 @@ typedef struct		s_files
 	struct s_files	*next;
 }					t_files;
 
-void 		ft_ls_core(t_flags flag, DIR *dir);
+void 		ft_ls_core(t_flags flag, DIR *dir, int winsize);
 
 void 		ft_scan_flags(t_flags *flags, char **arg, int argc);
 
@@ -52,7 +53,7 @@ void		ft_sort_list(t_files **files, t_flags flag);
 void		ft_write_stats(t_files **files);
 
 void		ft_ls_l_output(t_files *files);
-void		ft_ls_output(char *string, int win_width);
+void		ft_ls_output(t_files *files, int win_width);
 void		ft_read_list(t_files *files);
 
 
