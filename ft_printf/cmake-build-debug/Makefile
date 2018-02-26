@@ -150,6 +150,33 @@ ft_get_details.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_get_details.c.s
 .PHONY : ft_get_details.c.s
 
+ft_set_width.o: ft_set_width.c.o
+
+.PHONY : ft_set_width.o
+
+# target to build an object file
+ft_set_width.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_set_width.c.o
+.PHONY : ft_set_width.c.o
+
+ft_set_width.i: ft_set_width.c.i
+
+.PHONY : ft_set_width.i
+
+# target to preprocess a source file
+ft_set_width.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_set_width.c.i
+.PHONY : ft_set_width.c.i
+
+ft_set_width.s: ft_set_width.c.s
+
+.PHONY : ft_set_width.s
+
+# target to generate assembly for a file
+ft_set_width.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_set_width.c.s
+.PHONY : ft_set_width.c.s
+
 libft/ft_addchar.o: libft/ft_addchar.c.o
 
 .PHONY : libft/ft_addchar.o
@@ -257,6 +284,87 @@ libft/ft_bzero.s: libft/ft_bzero.c.s
 libft/ft_bzero.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_bzero.c.s
 .PHONY : libft/ft_bzero.c.s
+
+libft/ft_dec_to_hex.o: libft/ft_dec_to_hex.c.o
+
+.PHONY : libft/ft_dec_to_hex.o
+
+# target to build an object file
+libft/ft_dec_to_hex.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o
+.PHONY : libft/ft_dec_to_hex.c.o
+
+libft/ft_dec_to_hex.i: libft/ft_dec_to_hex.c.i
+
+.PHONY : libft/ft_dec_to_hex.i
+
+# target to preprocess a source file
+libft/ft_dec_to_hex.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.i
+.PHONY : libft/ft_dec_to_hex.c.i
+
+libft/ft_dec_to_hex.s: libft/ft_dec_to_hex.c.s
+
+.PHONY : libft/ft_dec_to_hex.s
+
+# target to generate assembly for a file
+libft/ft_dec_to_hex.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.s
+.PHONY : libft/ft_dec_to_hex.c.s
+
+libft/ft_int_base.o: libft/ft_int_base.c.o
+
+.PHONY : libft/ft_int_base.o
+
+# target to build an object file
+libft/ft_int_base.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o
+.PHONY : libft/ft_int_base.c.o
+
+libft/ft_int_base.i: libft/ft_int_base.c.i
+
+.PHONY : libft/ft_int_base.i
+
+# target to preprocess a source file
+libft/ft_int_base.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_int_base.c.i
+.PHONY : libft/ft_int_base.c.i
+
+libft/ft_int_base.s: libft/ft_int_base.c.s
+
+.PHONY : libft/ft_int_base.s
+
+# target to generate assembly for a file
+libft/ft_int_base.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_int_base.c.s
+.PHONY : libft/ft_int_base.c.s
+
+libft/ft_intpositive.o: libft/ft_intpositive.c.o
+
+.PHONY : libft/ft_intpositive.o
+
+# target to build an object file
+libft/ft_intpositive.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o
+.PHONY : libft/ft_intpositive.c.o
+
+libft/ft_intpositive.i: libft/ft_intpositive.c.i
+
+.PHONY : libft/ft_intpositive.i
+
+# target to preprocess a source file
+libft/ft_intpositive.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.i
+.PHONY : libft/ft_intpositive.c.i
+
+libft/ft_intpositive.s: libft/ft_intpositive.c.s
+
+.PHONY : libft/ft_intpositive.s
+
+# target to generate assembly for a file
+libft/ft_intpositive.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.s
+.PHONY : libft/ft_intpositive.c.s
 
 libft/ft_isalnum.o: libft/ft_isalnum.c.o
 
@@ -1257,6 +1365,33 @@ libft/ft_strequ.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_strequ.c.s
 .PHONY : libft/ft_strequ.c.s
 
+libft/ft_string_of_spaces.o: libft/ft_string_of_spaces.c.o
+
+.PHONY : libft/ft_string_of_spaces.o
+
+# target to build an object file
+libft/ft_string_of_spaces.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o
+.PHONY : libft/ft_string_of_spaces.c.o
+
+libft/ft_string_of_spaces.i: libft/ft_string_of_spaces.c.i
+
+.PHONY : libft/ft_string_of_spaces.i
+
+# target to preprocess a source file
+libft/ft_string_of_spaces.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.i
+.PHONY : libft/ft_string_of_spaces.c.i
+
+libft/ft_string_of_spaces.s: libft/ft_string_of_spaces.c.s
+
+.PHONY : libft/ft_string_of_spaces.s
+
+# target to generate assembly for a file
+libft/ft_string_of_spaces.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.s
+.PHONY : libft/ft_string_of_spaces.c.s
+
 libft/ft_striter.o: libft/ft_striter.c.o
 
 .PHONY : libft/ft_striter.o
@@ -1635,6 +1770,33 @@ libft/ft_strrchr.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_strrchr.c.s
 .PHONY : libft/ft_strrchr.c.s
 
+libft/ft_strrev.o: libft/ft_strrev.c.o
+
+.PHONY : libft/ft_strrev.o
+
+# target to build an object file
+libft/ft_strrev.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o
+.PHONY : libft/ft_strrev.c.o
+
+libft/ft_strrev.i: libft/ft_strrev.c.i
+
+.PHONY : libft/ft_strrev.i
+
+# target to preprocess a source file
+libft/ft_strrev.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_strrev.c.i
+.PHONY : libft/ft_strrev.c.i
+
+libft/ft_strrev.s: libft/ft_strrev.c.s
+
+.PHONY : libft/ft_strrev.s
+
+# target to generate assembly for a file
+libft/ft_strrev.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_strrev.c.s
+.PHONY : libft/ft_strrev.c.s
+
 libft/ft_strsplit.o: libft/ft_strsplit.c.o
 
 .PHONY : libft/ft_strsplit.o
@@ -1836,6 +1998,9 @@ help:
 	@echo "... ft_get_details.o"
 	@echo "... ft_get_details.i"
 	@echo "... ft_get_details.s"
+	@echo "... ft_set_width.o"
+	@echo "... ft_set_width.i"
+	@echo "... ft_set_width.s"
 	@echo "... libft/ft_addchar.o"
 	@echo "... libft/ft_addchar.i"
 	@echo "... libft/ft_addchar.s"
@@ -1848,6 +2013,15 @@ help:
 	@echo "... libft/ft_bzero.o"
 	@echo "... libft/ft_bzero.i"
 	@echo "... libft/ft_bzero.s"
+	@echo "... libft/ft_dec_to_hex.o"
+	@echo "... libft/ft_dec_to_hex.i"
+	@echo "... libft/ft_dec_to_hex.s"
+	@echo "... libft/ft_int_base.o"
+	@echo "... libft/ft_int_base.i"
+	@echo "... libft/ft_int_base.s"
+	@echo "... libft/ft_intpositive.o"
+	@echo "... libft/ft_intpositive.i"
+	@echo "... libft/ft_intpositive.s"
 	@echo "... libft/ft_isalnum.o"
 	@echo "... libft/ft_isalnum.i"
 	@echo "... libft/ft_isalnum.s"
@@ -1959,6 +2133,9 @@ help:
 	@echo "... libft/ft_strequ.o"
 	@echo "... libft/ft_strequ.i"
 	@echo "... libft/ft_strequ.s"
+	@echo "... libft/ft_string_of_spaces.o"
+	@echo "... libft/ft_string_of_spaces.i"
+	@echo "... libft/ft_string_of_spaces.s"
 	@echo "... libft/ft_striter.o"
 	@echo "... libft/ft_striter.i"
 	@echo "... libft/ft_striter.s"
@@ -2001,6 +2178,9 @@ help:
 	@echo "... libft/ft_strrchr.o"
 	@echo "... libft/ft_strrchr.i"
 	@echo "... libft/ft_strrchr.s"
+	@echo "... libft/ft_strrev.o"
+	@echo "... libft/ft_strrev.i"
+	@echo "... libft/ft_strrev.s"
 	@echo "... libft/ft_strsplit.o"
 	@echo "... libft/ft_strsplit.i"
 	@echo "... libft/ft_strsplit.s"

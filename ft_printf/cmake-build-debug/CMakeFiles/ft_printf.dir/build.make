@@ -1569,6 +1569,150 @@ CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o.provides: CMakeFiles/ft_printf.d
 CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o.provides.build: CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o
 
 
+CMakeFiles/ft_printf.dir/ft_set_width.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/ft_set_width.c.o: ../ft_set_width.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/ft_printf.dir/ft_set_width.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/ft_set_width.c.o   -c /Users/mvaskiv/Documents/myGit/ft_printf/ft_set_width.c
+
+CMakeFiles/ft_printf.dir/ft_set_width.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/ft_set_width.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mvaskiv/Documents/myGit/ft_printf/ft_set_width.c > CMakeFiles/ft_printf.dir/ft_set_width.c.i
+
+CMakeFiles/ft_printf.dir/ft_set_width.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/ft_set_width.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mvaskiv/Documents/myGit/ft_printf/ft_set_width.c -o CMakeFiles/ft_printf.dir/ft_set_width.c.s
+
+CMakeFiles/ft_printf.dir/ft_set_width.c.o.requires:
+
+.PHONY : CMakeFiles/ft_printf.dir/ft_set_width.c.o.requires
+
+CMakeFiles/ft_printf.dir/ft_set_width.c.o.provides: CMakeFiles/ft_printf.dir/ft_set_width.c.o.requires
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_set_width.c.o.provides.build
+.PHONY : CMakeFiles/ft_printf.dir/ft_set_width.c.o.provides
+
+CMakeFiles/ft_printf.dir/ft_set_width.c.o.provides.build: CMakeFiles/ft_printf.dir/ft_set_width.c.o
+
+
+CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o: ../libft/ft_string_of_spaces.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o   -c /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_string_of_spaces.c
+
+CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_string_of_spaces.c > CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.i
+
+CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_string_of_spaces.c -o CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.s
+
+CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.requires:
+
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.requires
+
+CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.provides: CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.requires
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.provides.build
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.provides
+
+CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.provides.build: CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o
+
+
+CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o: ../libft/ft_intpositive.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o   -c /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_intpositive.c
+
+CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_intpositive.c > CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.i
+
+CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_intpositive.c -o CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.s
+
+CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.requires:
+
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.requires
+
+CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.provides: CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.requires
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.provides.build
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.provides
+
+CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.provides.build: CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o
+
+
+CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o: ../libft/ft_int_base.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o   -c /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_int_base.c
+
+CMakeFiles/ft_printf.dir/libft/ft_int_base.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/libft/ft_int_base.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_int_base.c > CMakeFiles/ft_printf.dir/libft/ft_int_base.c.i
+
+CMakeFiles/ft_printf.dir/libft/ft_int_base.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/libft/ft_int_base.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_int_base.c -o CMakeFiles/ft_printf.dir/libft/ft_int_base.c.s
+
+CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.requires:
+
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.requires
+
+CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.provides: CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.requires
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.provides.build
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.provides
+
+CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.provides.build: CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o
+
+
+CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o: ../libft/ft_dec_to_hex.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o   -c /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_dec_to_hex.c
+
+CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_dec_to_hex.c > CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.i
+
+CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_dec_to_hex.c -o CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.s
+
+CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.requires:
+
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.requires
+
+CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.provides: CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.requires
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.provides.build
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.provides
+
+CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.provides.build: CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o
+
+
+CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o: ../libft/ft_strrev.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o   -c /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_strrev.c
+
+CMakeFiles/ft_printf.dir/libft/ft_strrev.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/libft/ft_strrev.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_strrev.c > CMakeFiles/ft_printf.dir/libft/ft_strrev.c.i
+
+CMakeFiles/ft_printf.dir/libft/ft_strrev.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/libft/ft_strrev.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_strrev.c -o CMakeFiles/ft_printf.dir/libft/ft_strrev.c.s
+
+CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.requires:
+
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.requires
+
+CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.provides: CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.requires
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.provides.build
+.PHONY : CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.provides
+
+CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.provides.build: CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o
+
+
 # Object files for target ft_printf
 ft_printf_OBJECTS = \
 "CMakeFiles/ft_printf.dir/libft/ft_arrclr.c.o" \
@@ -1633,7 +1777,13 @@ ft_printf_OBJECTS = \
 "CMakeFiles/ft_printf.dir/main.c.o" \
 "CMakeFiles/ft_printf.dir/ft_get_details.c.o" \
 "CMakeFiles/ft_printf.dir/libft/ft_addchar.c.o" \
-"CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o"
+"CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o" \
+"CMakeFiles/ft_printf.dir/ft_set_width.c.o" \
+"CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o" \
+"CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o" \
+"CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o" \
+"CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o" \
+"CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o"
 
 # External object files for target ft_printf
 ft_printf_EXTERNAL_OBJECTS =
@@ -1701,9 +1851,15 @@ ft_printf: CMakeFiles/ft_printf.dir/main.c.o
 ft_printf: CMakeFiles/ft_printf.dir/ft_get_details.c.o
 ft_printf: CMakeFiles/ft_printf.dir/libft/ft_addchar.c.o
 ft_printf: CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o
+ft_printf: CMakeFiles/ft_printf.dir/ft_set_width.c.o
+ft_printf: CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o
+ft_printf: CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o
+ft_printf: CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o
+ft_printf: CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o
+ft_printf: CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o
 ft_printf: CMakeFiles/ft_printf.dir/build.make
 ft_printf: CMakeFiles/ft_printf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Linking C executable ft_printf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mvaskiv/Documents/myGit/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Linking C executable ft_printf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_printf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -1774,6 +1930,12 @@ CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/main.c.o.requires
 CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/ft_get_details.c.o.requires
 CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/libft/ft_addchar.c.o.requires
 CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o.requires
+CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/ft_set_width.c.o.requires
+CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o.requires
+CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o.requires
+CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o.requires
+CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o.requires
+CMakeFiles/ft_printf.dir/requires: CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o.requires
 
 .PHONY : CMakeFiles/ft_printf.dir/requires
 

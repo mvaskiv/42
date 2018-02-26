@@ -62,6 +62,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft_printf.dir/ft_get_details.c.o"
   "CMakeFiles/ft_printf.dir/libft/ft_addchar.c.o"
   "CMakeFiles/ft_printf.dir/libft/ft_return_to.c.o"
+  "CMakeFiles/ft_printf.dir/ft_set_width.c.o"
+  "CMakeFiles/ft_printf.dir/libft/ft_string_of_spaces.c.o"
+  "CMakeFiles/ft_printf.dir/libft/ft_intpositive.c.o"
+  "CMakeFiles/ft_printf.dir/libft/ft_int_base.c.o"
+  "CMakeFiles/ft_printf.dir/libft/ft_dec_to_hex.c.o"
+  "CMakeFiles/ft_printf.dir/libft/ft_strrev.c.o"
   "ft_printf.pdb"
   "ft_printf"
 )

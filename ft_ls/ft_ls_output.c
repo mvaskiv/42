@@ -127,7 +127,7 @@ void		ft_ls_output(t_files *files, int win_width)
 	if (stock.columns == 1)
 		while (files->name != NULL)
 		{
-			ft_mini_printf("%-*s\n", stock.true_width, files->name);
+			ft_mini_printf("%s\n", files->name);
 			files = files->next;
 		}
 	if (stock.columns > 1)

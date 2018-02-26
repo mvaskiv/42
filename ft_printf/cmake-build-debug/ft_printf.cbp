@@ -88,6 +88,9 @@
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/ft_printf.h">
 			<Option target="ft_printf"/>
 		</Unit>
+		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/ft_set_width.c">
+			<Option target="ft_printf"/>
+		</Unit>
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_addchar.c">
 			<Option target="ft_printf"/>
 		</Unit>
@@ -98,6 +101,15 @@
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_bzero.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_dec_to_hex.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_int_base.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_intpositive.c">
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_isalnum.c">
@@ -211,6 +223,9 @@
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_strequ.c">
 			<Option target="ft_printf"/>
 		</Unit>
+		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_string_of_spaces.c">
+			<Option target="ft_printf"/>
+		</Unit>
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_striter.c">
 			<Option target="ft_printf"/>
 		</Unit>
@@ -251,6 +266,9 @@
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_strrchr.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_strrev.c">
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/mvaskiv/Documents/myGit/ft_printf/libft/ft_strsplit.c">

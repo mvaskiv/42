@@ -1,7 +1,7 @@
 
 #include "ft_printf.h"
 
-#include <stdio.h> // ------------------------->>> to delete
+// ------------------------->>> to delete
 
 //float 	ft_set_precision(int precision, const char * format)
 //{
@@ -61,8 +61,10 @@ int ft_printf_engine(va_list arg, const char * format)
 //			format = ft_return_to(format, '%');
 		else
 		{
-			if (*format != '%')
+			if (*format != '%') {
 				string = ft_addchar(string, *format);
+				len += 1;
+			}
 		}
 	}
 	ft_putstr(string);
