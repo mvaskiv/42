@@ -36,7 +36,7 @@ void		ft_write_stats(t_files **files, char *path_a)
 	path = ft_addchar(path, '/');
 	path = ft_strjoin(path, temp->name);
 	lstat(path, &temp->stats);
-	temp->time = localtime(&temp->stats.st_ctimespec.tv_sec);
+	temp->time = localtime(&temp->stats.st_mtimespec.tv_sec);
 	temp->grp = getgrgid(temp->stats.st_gid);
 }
 

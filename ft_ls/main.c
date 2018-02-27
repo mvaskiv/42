@@ -79,7 +79,7 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 			directory = readdir(dir);
 		temp->name = ft_strdup(directory->d_name);
 		lstat(directory->d_name, &temp->stats);
-		temp->moddate = temp->stats.st_ctimespec.tv_sec; // or maybe st_mtimespec ???
+		temp->moddate = temp->stats.st_mtimespec.tv_sec; // or maybe st_mtimespec ???
 		temp->namlen = directory->d_namlen;
 		temp->grp = NULL;
 		temp->next = *start;
@@ -109,7 +109,7 @@ int 	main(int argc, char **argv)
 	ft_initialize(&flags);
 	ft_scan_flags(&flags, argv, argc);
 
-	flags.l = 1;
+//	flags.l = 1;
 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
@@ -118,7 +118,7 @@ int 	main(int argc, char **argv)
 		while (argv[i] && (argv[i][0] != '-') && (dir = opendir(argv[i])))
 			ft_ls_core(flags, dir, win.ws_col, argv[i++]);
 	else
-		ft_ls_core(flags, opendir("/private/tmp"), win.ws_col, "/private/tmp");
+		ft_ls_core(flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
 
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);

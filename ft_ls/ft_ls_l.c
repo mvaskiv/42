@@ -63,7 +63,6 @@ static char 	*ft_month(int month_n)
 void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 {
 	t_files			*temp;
-	struct group	*grp;
 
 	temp = files;
 	width->n_us = 0;
@@ -106,6 +105,21 @@ static void			ft_print_type(t_files *files)
 		ft_putchar('-');
 }
 
+static void			ft_read_link(t_files *files, char *path)
+{
+	char 	*name;
+	int 	i = 0;
+
+	if (S_ISLNK(files->stats.st_mode))
+	{
+		name = (char*) malloc(sizeof(char) * 100);
+		i = readlink(path, name, 100);
+		name[i] = '\0';
+		ft_mini_printf(" -> %s", name);
+		ft_strdel(&name);
+	}
+}
+
 void			ft_read_list(t_files *files, char *path, t_l_out width)
 {
 	ft_write_stats(&files, path);
@@ -127,8 +141,9 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_mini_printf("%-*s", (width.n_us + 1), ft_get_uname(files->stats.st_uid));
 	ft_mini_printf("%*s", (width.n_gr + 1), files->grp->gr_name);
 	ft_mini_printf("%*d", (width.n_sz + 2), files->stats.st_size);
-	ft_mini_printf(" %s %i %02i:%02i", ft_month(files->time->tm_mon), files->time->tm_mday, files->time->tm_hour, files->time->tm_min);
+	ft_mini_printf(" %s %2i %02i:%02i", ft_month(files->time->tm_mon), files->time->tm_mday, files->time->tm_hour, files->time->tm_min);
 	ft_mini_printf(" %s", files->name);
+	ft_read_link(files, path);
 	ft_putchar('\n');
 }
 
