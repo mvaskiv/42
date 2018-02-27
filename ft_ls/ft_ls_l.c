@@ -6,7 +6,10 @@ static char 	*ft_get_uname(uid_t uid)
 	struct passwd	*passwd;
 
 	passwd = getpwuid(uid);
-	return (passwd->pw_name);
+	if (passwd != NULL)
+		return (passwd->pw_name);
+	else
+		return (NULL);
 }
 
 //static char	*ft_time_convert(time_t timestamp)
