@@ -70,10 +70,10 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 	width->n_sl = 0;
 	width->n_gr = 0;
 	width->n_sz = 0;
-	ft_write_stats(&files, path);
 	while (temp->name != NULL)
 	{
-		grp = getgrgid(temp->stats.st_gid);
+//		grp = getgrgid(temp->stats.st_gid);
+		ft_write_stats(&temp, path);
 		if (ft_nbrlen(temp->stats.st_nlink) > width->n_sl)
 			width->n_sl = ft_nbrlen(temp->stats.st_nlink);
 		if (ft_strlen(ft_get_uname(temp->stats.st_uid)) > width->n_us)
@@ -100,11 +100,11 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_mini_printf( (files->stats.st_mode & S_IWOTH) ? "w" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IXOTH) ? "x" : "-");
 	ft_mini_printf(" ");
-	ft_mini_printf("%*d", ++width.n_sl, files->stats.st_nlink);
-	ft_mini_printf("%*s ", ++width.n_us, ft_get_uname(files->stats.st_uid));
-	ft_mini_printf("%*s ", ++width.n_gr, files->grp->gr_name);
-	ft_mini_printf("%*d", ++width.n_sz, files->stats.st_size);
-	ft_mini_printf(" %s %i %i:%i", ft_month(files->time->tm_mon), files->time->tm_mday, files->time->tm_hour, files->time->tm_min);
+	ft_mini_printf("%*d ", ++width.n_sl, files->stats.st_nlink);
+	ft_mini_printf("%-*s", (width.n_us + 1), ft_get_uname(files->stats.st_uid));
+	ft_mini_printf("%*s", (width.n_gr + 1), files->grp->gr_name);
+	ft_mini_printf("%*d", (width.n_sz + 2), files->stats.st_size);
+	ft_mini_printf(" %s %i %02i:%02i", ft_month(files->time->tm_mon), files->time->tm_mday, files->time->tm_hour, files->time->tm_min);
 	ft_mini_printf(" %s", files->name);
 	ft_putchar('\n');
 }

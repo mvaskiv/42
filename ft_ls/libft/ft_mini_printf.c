@@ -2,14 +2,14 @@
 #include "includes/libft.h"
 
 static int 		ft_process(va_list arg,
-				  const char ** restrict format, char **string, int width)
+				  const char ** restrict format, char **string, t_mini width)
 {
 	int		len;
 
 	len = 0;
 	if (ft_strchr("cCsSpdDioOuUxX", **format))
 	{
-		len = ft_convert(arg, *format, string, (int)width);
+		len = ft_convert(arg, *format, string, width);
 		*format += 1;
 		return (len);
 	}
@@ -38,30 +38,45 @@ static int 		ft_process(va_list arg,
 //	}
 //	return (width);
 //}
+static void		ft_width_ini(t_mini *width)
+{
+	width->sign = 0;
+	width->type = 0;
+	width->width = 0;
+}
 
 static int		ft_mini_engine(va_list arg, const char * format, int len)
 {
 	char 	*string = NULL;
-	int 	width;
+	t_mini	width;
 	char 	spec;
 
-	width = 0;
+	ft_width_ini(&width);
 	while ((spec = *format++))
 	{
 		if (spec == '%')
 		{
 			if (ft_strchr("*0123456789-+ #", *format))
 			{
-				if (*format == '*') {
-					width = va_arg(arg, int);
+				if (*format == '-')
+				{
+					width.sign = 1;
 					format += 1;
-				} else if (*++format == '*' && *--format == '-') {
-					width = (va_arg(arg, int) * (-1));
-					format += 2;
-				} else {
-					format--;
-					width = ft_atoi(format);
-					format += ft_nbrlen((int) width);
+				}
+				if (*format == '0')
+				{
+					width.type = 1;
+					format += 1;
+				}
+				if (*format == '*')
+				{
+					width.width = va_arg(arg, int);
+					format += 1;
+				}
+				else
+				{
+					width.width = ft_atoi(format);
+					format += ft_nbrlen(width.width);
 				}
 			}
 			if (ft_strchr("hljzcCsSpdDioOuUxX", *format))

@@ -1,11 +1,15 @@
 #include "includes/libft.h"
 
-char 	*ft_string_of_zeros(char * string, int precision)
+char 	*ft_string_of_zeros(int size)
 {
+	char	*str = NULL;
 	int		i;
 
 	i = 0;
-	while (i < precision && !(ft_isalnum(string[i])))
-		((char *)string)[i++] = (char)'0';
-	return (string);
+	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	while (i < size)
+		((char *)str)[i++] = (char)'0';
+	str[i] = '\0';
+	return (str);
 }

@@ -1,7 +1,7 @@
 
 #include "includes/libft.h"
 
-static char		*ft_set_width(char * str, int width)
+static char		*ft_set_width(char * str, t_mini width)
 {
 	char 	*spaces = NULL;
 	char 	*string;
@@ -10,17 +10,16 @@ static char		*ft_set_width(char * str, int width)
 	ft_strcpy(string, str);
 	if (str)
 		ft_strdel(&str);
-	if (ft_strlen(string) > ft_intpositive(width) ||
-			ft_strlen(string) == ft_intpositive(width))
+	if (ft_strlen(string) >= width.width)
 		return (string);
-	else if (width < 0)
+	else if (width.sign == 1)
 	{
-		spaces = ft_string_of_spaces(ft_intpositive(width) - ft_strlen(string));
+		spaces = (width.type == 1) ? ft_string_of_zeros(width.width - ft_strlen(string)) : ft_string_of_spaces(width.width - ft_strlen(string));
 		string = ft_strjoin(string, spaces);
 	}
-	else if (width > 0)
+	else if (width.sign == 0)
 	{
-		spaces = ft_string_of_spaces(ft_intpositive(width) - ft_strlen(string));
+		spaces = (width.type == 1) ? ft_string_of_zeros(width.width - ft_strlen(string)) : ft_string_of_spaces(width.width - ft_strlen(string));
 		string = ft_strjoin(spaces, string);
 	}
 	else
@@ -30,31 +29,34 @@ static char		*ft_set_width(char * str, int width)
 }
 
 int 			ft_convert(va_list arg,
-				  const char * format, char **string, int width)
+				  const char * format, char **string_o, t_mini width)
 {
+	char 	*string = NULL;
+
 	if (*format == 's')
-		*string = ft_strjoin(*string, va_arg(arg, char*));
+		string = ft_strjoin(string, va_arg(arg, char*));
 	if (*format == 'd')
-		*string = ft_strjoin(*string, ft_itoa(va_arg(arg, int)));
+		string = ft_strjoin(string, ft_itoa(va_arg(arg, int)));
 	if (*format == 'i')
-		*string = ft_strjoin(*string, ft_itoa(va_arg(arg, int)));
+		string = ft_strjoin(string, ft_itoa(va_arg(arg, int)));
 	if (*format == 'o')
-		*string = ft_strjoin(*string, ft_itoa(ft_int_base(va_arg(arg, int), 8)));
+		string = ft_strjoin(string, ft_itoa(ft_int_base(va_arg(arg, int), 8)));
 	if (*format == 'u')
-		*string = ft_strjoin(*string, ft_itoa(va_arg(arg, unsigned int)));
+		string = ft_strjoin(string, ft_itoa(va_arg(arg, unsigned int)));
 	if (*format == 'x')
-		*string = ft_strjoin(*string, ft_dec_to_hex(va_arg(arg, int), 'l'));
+		string = ft_strjoin(string, ft_dec_to_hex(va_arg(arg, int), 'l'));
 	if (*format == 'X')
-		*string = ft_strjoin(*string, ft_dec_to_hex(va_arg(arg, int), 'u'));
+		string = ft_strjoin(string, ft_dec_to_hex(va_arg(arg, int), 'u'));
 	if (*format == 'c')
-		*string = ft_addchar(*string, va_arg(arg, unsigned char));
-	if (width != 0)
-		*string = ft_set_width(*string, width);
-	return (ft_strlen(*string));
+		string = ft_addchar(string, va_arg(arg, unsigned char));
+	if (width.width != 0)
+		string = ft_set_width(string, width);
+	*string_o = ft_strjoin(*string_o, string);
+	return (ft_strlen(*string_o));
 }
 
 static int 		ft_convert_size_set(void *data,
-						   const char * format, char **string, int width)
+						   const char * format, char **string, t_mini width)
 {
 	if (*format == 's')
 		*string = ft_strjoin(*string, data);
@@ -72,12 +74,12 @@ static int 		ft_convert_size_set(void *data,
 		*string = ft_strjoin(*string, ft_dec_to_hex(data, 'u'));
 	if (*format == 'c')
 		*string = ft_addchar(*string, data);
-	if (width != 0)
+	if (width.width != 0)
 		*string = ft_set_width(*string, width);
 	return (ft_strlen(*string));
 }
 
-int			ft_set_size(const char *format, va_list arg, char **string, int width)
+int			ft_set_size(const char *format, va_list arg, char **string, t_mini width)
 {
 	void	*data = NULL;
 	int 	len;
