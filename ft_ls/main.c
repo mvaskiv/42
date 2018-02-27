@@ -118,7 +118,7 @@ int 	main(int argc, char **argv)
 		while (argv[i] && (argv[i][0] != '-') && (dir = opendir(argv[i])))
 			ft_ls_core(flags, dir, win.ws_col, argv[i++]);
 	else
-		ft_ls_core(flags, opendir("/private/tmp"), win.ws_col, "/private/tmp");
+		ft_ls_core(flags, opendir("/Users/mvaskiv/Documents"), win.ws_col, "/Users/mvaskiv/Documents");
 
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);
