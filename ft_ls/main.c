@@ -64,20 +64,6 @@ void		ft_sort_list(t_files **files, t_flags flag)
 	}
 }
 
-void		ft_write_stats(t_files **files)
-{
-	t_files		*temp;
-
-	temp = *files;
-	while (temp)
-	{
-		stat(temp->name, &temp->stats);
-		temp->grp = getgrgid(temp->stats.st_gid);
-		temp->time = localtime(&temp->stats.st_birthtimespec.tv_sec);
-		temp = temp->next;
-	}
-}
-
 void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 {
 	t_files			*temp;
@@ -92,10 +78,9 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 		while (flag.a != 1 && (char) directory->d_name[0] == '.')
 			directory = readdir(dir);
 		temp->name = ft_strdup(directory->d_name);
-		stat(directory->d_name, &temp->stats);
-		temp->moddate = temp->stats.st_mtimespec.tv_sec;
+		lstat(directory->d_name, &temp->stats);
+		temp->moddate = temp->stats.st_ctimespec.tv_sec; // or maybe st_mtimespec ???
 		temp->namlen = directory->d_namlen;
-		temp->time = NULL;
 		temp->grp = NULL;
 		temp->next = *start;
 		*files = temp;
@@ -123,14 +108,17 @@ int 	main(int argc, char **argv)
 	i = 1;
 	ft_initialize(&flags);
 	ft_scan_flags(&flags, argv, argc);
+
+	flags.l = 1;
+
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
 		i++;
 	if (argv[i] && argv[i][0] != '-')
-		while (argv[i] && (argv[i][0] != '-') && (dir = opendir(argv[i++])))
-			ft_ls_core(flags, dir, win.ws_col);
+		while (argv[i] && (argv[i][0] != '-') && (dir = opendir(argv[i])))
+			ft_ls_core(flags, dir, win.ws_col, argv[i++]);
 	else
-		ft_ls_core(flags, opendir(getenv("PWD")), win.ws_col);
+		ft_ls_core(flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
 
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);

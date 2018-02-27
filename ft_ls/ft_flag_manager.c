@@ -26,7 +26,20 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 	}
 }
 
-void 	ft_ls_core(t_flags flag, DIR *dir, int winsize)
+void		ft_write_stats(t_files **files, char *path)
+{
+	t_files		*temp = NULL;
+
+	temp = *files;
+	while (temp)
+	{
+		stat(temp->name, &temp->stats);
+		temp->grp = getgrgid(temp->stats.st_gid);
+		temp = temp->next;
+	}
+}
+
+void 	ft_ls_core(t_flags flag, DIR *dir, int winsize, char *path)
 {
 	t_files			*files;
 	int 	i;
@@ -45,8 +58,8 @@ void 	ft_ls_core(t_flags flag, DIR *dir, int winsize)
 		ft_sort_bydate(&files, flag);
 	//if (flag.R == 1)
 	//	do magic ;
-//	if (flag.l == 1)
-//		ft_ls_l_output(files);
+	if (flag.l == 1)
+		ft_ls_l_output(files, path);
 	if ((flag.l != 1) && (flag.R != 1))
 		ft_ls_output(files, (flag.one == 1 ? 0 : winsize));
 	closedir(dir);

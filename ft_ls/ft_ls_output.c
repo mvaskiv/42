@@ -111,9 +111,6 @@ void		ft_ls_output(t_files *files, int win_width)
 	int 		i;
 
 	i = 0;
-
-//	win_width = 82;
-
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
 	{

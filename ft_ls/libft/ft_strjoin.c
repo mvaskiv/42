@@ -26,7 +26,7 @@ char			*ft_strjoin(char *s1, char const *s2)
 	ft_strcpy(str, s1);
 	ft_strcat(str, s2);
 	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	if (s1)
-		ft_strdel(&s1);
+//	if (s1)
+//		ft_strdel(&s1);
 	return (str);
 }
