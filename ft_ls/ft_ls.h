@@ -5,6 +5,7 @@
 # include "libft/includes/libft.h"
 # include <sys/types.h>
 # include <sys/ioctl.h>
+# include <sys/xattr.h>
 # include <sys/stat.h>
 # include <dirent.h>
 # include <time.h>
@@ -50,6 +51,7 @@ typedef struct		s_l_out
 	int 			n_us;
 	int 			n_gr;
 	int 			n_sz;
+	int 			blocks;
 }					t_l_out;
 
 void 		ft_ls_core(t_flags flag, DIR *dir, int winsize, char *path);

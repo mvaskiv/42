@@ -70,6 +70,7 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 	width->n_sl = 0;
 	width->n_gr = 0;
 	width->n_sz = 0;
+	width->blocks = 0;
 	while (temp->name != NULL)
 	{
 //		grp = getgrgid(temp->stats.st_gid);
@@ -82,14 +83,35 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 			width->n_gr = ft_strlen(files->grp->gr_name);
 		if (ft_nbrlen(temp->stats.st_size) > width->n_sz)
 			width->n_sz = ft_nbrlen(temp->stats.st_size);
+		width->blocks += temp->stats.st_blocks;
 		temp = temp->next;
 	}
+}
+
+static void			ft_print_type(t_files *files)
+{
+	if (files->stats.st_mode & S_IFIFO)
+		ft_putchar('p');
+	else if (S_ISDIR(files->stats.st_mode))
+		ft_putchar('d');
+//	if (files->stats.st_mode & S_IFBLK)
+//		ft_putchar('b');
+	else if (S_ISLNK(files->stats.st_mode))
+		ft_putchar('l');
+	else if (S_ISCHR(files->stats.st_mode))
+		ft_putchar('c');
+	else if (S_ISSOCK(files->stats.st_mode))
+		ft_putchar('s');
+	else
+		ft_putchar('-');
 }
 
 void			ft_read_list(t_files *files, char *path, t_l_out width)
 {
 	ft_write_stats(&files, path);
-	ft_mini_printf( (S_ISDIR(files->stats.st_mode)) ? "d" : "-");
+	path = ft_addchar(path, '/');
+	path = ft_strjoin(path, files->name);
+	ft_print_type(files);
 	ft_mini_printf( (files->stats.st_mode & S_IRUSR) ? "r" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IWUSR) ? "w" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IXUSR) ? "x" : "-");
@@ -99,8 +121,9 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_mini_printf( (files->stats.st_mode & S_IROTH) ? "r" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IWOTH) ? "w" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IXOTH) ? "x" : "-");
+	ft_mini_printf( ((listxattr(path, NULL, 0, XATTR_NOFOLLOW)) > 0) ? "@" : " ");
 	ft_mini_printf(" ");
-	ft_mini_printf("%*d ", ++width.n_sl, files->stats.st_nlink);
+	ft_mini_printf("%*d ", width.n_sl, files->stats.st_nlink);
 	ft_mini_printf("%-*s", (width.n_us + 1), ft_get_uname(files->stats.st_uid));
 	ft_mini_printf("%*s", (width.n_gr + 1), files->grp->gr_name);
 	ft_mini_printf("%*d", (width.n_sz + 2), files->stats.st_size);
@@ -114,6 +137,7 @@ void	ft_ls_l_output(t_files *files, char *path)
 	t_l_out		widths;
 
 	ft_set_cols(files, &widths, path);
+	ft_mini_printf("total %d\n", widths.blocks);
 	while (files->name != NULL)
 	{
 		ft_read_list(files, path, widths);
