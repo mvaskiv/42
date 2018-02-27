@@ -26,17 +26,18 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 	}
 }
 
-void		ft_write_stats(t_files **files, char *path)
+void		ft_write_stats(t_files **files, char *path_a)
 {
 	t_files		*temp = NULL;
+	char 		*path;
 
 	temp = *files;
-	while (temp)
-	{
-		stat(temp->name, &temp->stats);
-		temp->grp = getgrgid(temp->stats.st_gid);
-		temp = temp->next;
-	}
+	path = ft_strdup(path_a);
+	path = ft_addchar(path, '/');
+	path = ft_strjoin(path, temp->name);
+	lstat(path, &temp->stats);
+	temp->time = localtime(&temp->stats.st_ctimespec.tv_sec);
+	temp->grp = getgrgid(temp->stats.st_gid);
 }
 
 void 	ft_ls_core(t_flags flag, DIR *dir, int winsize, char *path)
