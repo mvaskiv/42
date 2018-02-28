@@ -7,6 +7,7 @@
 # include <sys/ioctl.h>
 # include <sys/xattr.h>
 # include <sys/stat.h>
+# include <sys/acl.h>
 # include <dirent.h>
 # include <time.h>
 # include <pwd.h>

@@ -12,26 +12,6 @@ static char 	*ft_get_uname(uid_t uid)
 		return (NULL);
 }
 
-//static char	*ft_time_convert(time_t timestamp)
-//{
-//	char		*buf;
-//	struct tm	*time;
-//
-//	buf = (char*)malloc(sizeof(char) * 80);
-//	time = localtime(&timestamp);
-//	strftime(buf, 80, "%m %d %H:%M", time);
-//	return (buf);
-//}
-
-//static int	ft_get_nlinks(struct dirent *directory)
-//{
-//	struct stat		stats;
-//	int 			i;
-//
-//	i = 0;
-//	while ()
-//}
-
 static char 	*ft_month(int month_n)
 {
 	if (month_n == 0)
@@ -58,6 +38,7 @@ static char 	*ft_month(int month_n)
 		return ("Nov");
 	if (month_n == 11)
 		return ("Dec");
+	return (0);
 }
 
 void			ft_set_cols(t_files *files, t_l_out *width, char *path)
@@ -105,11 +86,12 @@ static void			ft_print_type(t_files *files)
 		ft_putchar('-');
 }
 
-static void			ft_read_link(t_files *files, char *path)
+static void		ft_read_link(t_files *files, char *path)
 {
 	char 	*name;
-	int 	i = 0;
+	ssize_t	i;
 
+	i = 0;
 	if (S_ISLNK(files->stats.st_mode))
 	{
 		name = (char*) malloc(sizeof(char) * 100);
@@ -118,6 +100,16 @@ static void			ft_read_link(t_files *files, char *path)
 		ft_mini_printf(" -> %s", name);
 		ft_strdel(&name);
 	}
+}
+
+static void 	ft_read_ext_perm(char *path)
+{
+	if ((listxattr(path, NULL, 0, XATTR_NOFOLLOW)) > 0)
+		ft_mini_printf("@ ");
+	else if ((acl_get_link_np(path, ACL_TYPE_EXTENDED)) > 0)
+		ft_mini_printf("+ ");
+	else
+		ft_mini_printf("  ");
 }
 
 void			ft_read_list(t_files *files, char *path, t_l_out width)
@@ -135,12 +127,11 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_mini_printf( (files->stats.st_mode & S_IROTH) ? "r" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IWOTH) ? "w" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IXOTH) ? "x" : "-");
-	ft_mini_printf( ((listxattr(path, NULL, 0, XATTR_NOFOLLOW)) > 0) ? "@" : " ");
-	ft_mini_printf(" ");
+	ft_read_ext_perm(path);
 	ft_mini_printf("%*d ", width.n_sl, files->stats.st_nlink);
-	ft_mini_printf("%-*s", (width.n_us + 1), ft_get_uname(files->stats.st_uid));
-	ft_mini_printf("%*s", (width.n_gr + 1), files->grp->gr_name);
-	ft_mini_printf("%*d", (width.n_sz + 2), files->stats.st_size);
+	ft_mini_printf("%-*s", (width.n_us + 2), ft_get_uname(files->stats.st_uid));
+	ft_mini_printf("%-*s", (width.n_gr + 1), files->grp->gr_name);
+	ft_mini_printf("%*d", (width.n_sz + 1), files->stats.st_size);
 	ft_mini_printf(" %s %2i %02i:%02i", ft_month(files->time->tm_mon), files->time->tm_mday, files->time->tm_hour, files->time->tm_min);
 	ft_mini_printf(" %s", files->name);
 	ft_read_link(files, path);
