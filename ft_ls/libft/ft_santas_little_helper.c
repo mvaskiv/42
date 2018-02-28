@@ -47,7 +47,7 @@ int 			ft_convert(va_list arg,
 	if (*format == 'X')
 		string = ft_strjoin(string, ft_dec_to_hex(va_arg(arg, int), 'u'));
 	if (*format == 'c')
-		string = ft_addchar(string, va_arg(arg, unsigned char));
+		string = ft_addchar(string, va_arg(arg, int));
 	if (width.width != 0)
 		string = ft_set_width(string, width);
 	*string_o = ft_strjoin(*string_o, string);

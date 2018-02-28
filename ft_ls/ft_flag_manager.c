@@ -70,7 +70,7 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 		files->moddate = 0;
 	ft_write_names(&files, dir, *flag);
 	ft_sort_list(&files, *flag);
-	if (flag->folders-- > 0)
+	if (flag->folders-- > 1)
 		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ? ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
 	if (flag->t == 1)
 		ft_sort_bydate(&files, *flag);
