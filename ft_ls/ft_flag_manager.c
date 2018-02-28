@@ -40,7 +40,7 @@ void		ft_write_stats(t_files **files, char *path_a)
 	temp->grp = getgrgid(temp->stats.st_gid);
 }
 
-void 	ft_ls_core(t_flags flag, DIR *dir, int winsize, char *path)
+void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
 	t_files			*files;
 	int 	i;
@@ -49,19 +49,22 @@ void 	ft_ls_core(t_flags flag, DIR *dir, int winsize, char *path)
 	files = (t_files*)malloc(sizeof(t_files));
 	files->name = NULL;
 	files->next = NULL;
-	if (flag.r == 1)
+	if (flag->r == 1)
 		files->moddate = 9999999999;
 	else
 		files->moddate = 0;
-	ft_write_names(&files, dir, flag);
-	ft_sort_list(&files, flag);
-	if (flag.t == 1)
-		ft_sort_bydate(&files, flag);
+	ft_write_names(&files, dir, *flag);
+	ft_sort_list(&files, *flag);
+	if (flag->folders-- > 0)
+		ft_mini_printf("%s:\n", path);
+	if (flag->t == 1)
+		ft_sort_bydate(&files, *flag);
 	//if (flag.R == 1)
 	//	do magic ;
-	if (flag.l == 1)
+	if (flag->l == 1)
 		ft_ls_l_output(files, path);
-	if ((flag.l != 1) && (flag.R != 1))
-		ft_ls_output(files, (flag.one == 1 ? 0 : winsize));
+	if ((flag->l != 1) && (flag->R != 1))
+		ft_ls_output(files, (flag->one == 1 ? 0 : winsize));
+	ft_mini_printf( ((flag->folders > 0) ? "\n" : "%c"), '\0');
 	closedir(dir);
 }

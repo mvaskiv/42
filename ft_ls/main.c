@@ -96,9 +96,18 @@ void		ft_initialize(t_flags *flags)
 	flags->r = 0;
 	flags->R = 0;
 	flags->t = 0;
+	flags->folders = 0;
 }
 
-int 	main(int argc, char **argv)
+void 		ft_count_folders(int argc, char **argv, int i, t_flags *flags)
+{
+	DIR		*dir;
+	while (argv[i] && (argv[i++][0] != '-'))
+		flags->folders++;
+
+}
+
+int 		main(int argc, char **argv)
 {
 	struct winsize	win;
 	t_flags			flags;
@@ -115,10 +124,13 @@ int 	main(int argc, char **argv)
 	while ((i < argc) && (argv[i][0] == '-'))
 		i++;
 	if (argv[i] && argv[i][0] != '-')
+	{
+		ft_count_folders(argc, argv, i, &flags);
 		while (argv[i] && (argv[i][0] != '-') && (dir = opendir(argv[i])))
-			ft_ls_core(flags, dir, win.ws_col, argv[i++]);
+			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
+	}
 	else
-		ft_ls_core(flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
+		ft_ls_core(&flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
 
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	return (0);

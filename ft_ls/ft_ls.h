@@ -13,6 +13,12 @@
 # include <pwd.h>
 # include <grp.h>
 
+//typedef struct		s_folder
+//{
+//	char 			*folder;
+//	struct s_folder	*next;
+//}					t_folder;
+
 typedef struct 		s_flags
 {
 	int 			one; //done
@@ -21,6 +27,7 @@ typedef struct 		s_flags
 	int 			R;
 	int 			r; //done
 	int			 	t; //done
+	int 			folders;
 }					t_flags;
 
 typedef struct		s_output
@@ -55,7 +62,7 @@ typedef struct		s_l_out
 	int 			blocks;
 }					t_l_out;
 
-void 		ft_ls_core(t_flags flag, DIR *dir, int winsize, char *path);
+void 		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path);
 
 void 		ft_scan_flags(t_flags *flags, char **arg, int argc);
 void		ft_write_names(t_files **files, DIR *dir, t_flags flag);

@@ -92,7 +92,7 @@ static void		ft_read_link(t_files *files, char *path)
 	ssize_t	i;
 
 	i = 0;
-	if (S_ISLNK(files->stats.st_mode))
+	if ((S_ISLNK(files->stats.st_mode)))
 	{
 		name = (char*) malloc(sizeof(char) * 100);
 		i = readlink(path, name, 100);
@@ -131,7 +131,7 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_mini_printf("%*d ", width.n_sl, files->stats.st_nlink);
 	ft_mini_printf("%-*s", (width.n_us + 2), ft_get_uname(files->stats.st_uid));
 	ft_mini_printf("%-*s", (width.n_gr + 1), files->grp->gr_name);
-	ft_mini_printf("%*d", (width.n_sz + 1), files->stats.st_size);
+	ft_mini_printf("%*d", (width.n_sz + 2), files->stats.st_size);
 	ft_mini_printf(" %s %2i %02i:%02i", ft_month(files->time->tm_mon), files->time->tm_mday, files->time->tm_hour, files->time->tm_min);
 	ft_mini_printf(" %s", files->name);
 	ft_read_link(files, path);
@@ -141,9 +141,19 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 void	ft_ls_l_output(t_files *files, char *path)
 {
 	t_l_out		widths;
+	struct stat	stats;
 
-	ft_set_cols(files, &widths, path);
+	lstat(path, &stats);
+	if ((S_ISLNK(stats.st_mode)))
+	{
+		files->name = path;
+		files->next->name = NULL;
+		ft_set_cols(files, &widths, path);
+		ft_read_list(files, NULL, widths);
+		return ;
+	}
 	ft_mini_printf("total %d\n", widths.blocks);
+	ft_set_cols(files, &widths, path);
 	while (files->name != NULL)
 	{
 		ft_read_list(files, path, widths);
