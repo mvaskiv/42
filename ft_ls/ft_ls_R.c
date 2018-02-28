@@ -1,11 +1,13 @@
 #include "ft_ls.h"
 
-static void	ft_find_folders(t_files *files, t_folder **folders, char *path)
+static int	ft_find_folders(t_files *files, t_files **folders, char *path)
 {
-	t_folder	*temp = NULL;
-	t_folder	**start = NULL;
+	t_files	*temp = NULL;
+	t_files	**start = NULL;
 	t_files		*files_t;
+	int 		i;
 
+	i = 0;
 	files_t = files;
 	while (files_t->name != NULL)
 	{
@@ -14,9 +16,10 @@ static void	ft_find_folders(t_files *files, t_folder **folders, char *path)
 		ft_write_stats(&files_t, path);
 		if (S_ISDIR(files_t->stats.st_mode))
 		{
-			temp = (t_folder*)malloc(sizeof(t_folder));
-			temp->folder = NULL;
-			temp->folder = files_t->name;
+			temp = (t_files*)malloc(sizeof(t_files));
+			temp->name = NULL;
+			temp->name = files_t->name;
+			i++;
 			temp->next = *start;
 			*folders = temp;
 			temp = *folders;
@@ -24,15 +27,27 @@ static void	ft_find_folders(t_files *files, t_folder **folders, char *path)
 		}
 		files_t = files_t->next;
 	}
-//	return (temp);
+	return (i);
 }
 
-void 		ft_ls_do(t_files *the, t_flags magic, char *mother, int fucker)
+void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 {
-	t_folder		*folders = NULL;
+	t_files			*folders = NULL;
+	char 			*path;
+	DIR				*dir;
 
-	folders = (t_folder*)malloc(sizeof(t_folder));
-	folders->folder = NULL;
+	folders = (t_files*)malloc(sizeof(t_files));
+	folders->name = NULL;
 	folders->next = NULL;
-	ft_find_folders(the, &folders, mother);
+	magic->folders = 1;
+	magic->folders += ft_find_folders(the, &folders, mother);
+	ft_sort_list(&folders, *magic);
+	while (folders->name != NULL)
+	{
+		path = mother;
+		path = ft_strjoin(ft_strjoin(path, "/"), folders->name);
+		if ((dir = opendir(path)))
+			ft_ls_core(magic, dir, fucker, path);
+		folders = folders->next;
+	}
 }

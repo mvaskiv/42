@@ -75,8 +75,12 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 		start = files;
 		temp = *files;
 		temp = (t_files *) malloc(sizeof(t_files));
-		while (flag.a != 1 && (char) directory->d_name[0] == '.')
+		while (flag.a != 1 && (char)directory->d_name[0] == '.')
+		{
 			directory = readdir(dir);
+			if (directory == NULL)
+				return ;
+		}
 		temp->name = ft_strdup(directory->d_name);
 		lstat(directory->d_name, &temp->stats);
 		temp->moddate = temp->stats.st_mtimespec.tv_sec; // or maybe st_mtimespec ???
@@ -101,10 +105,8 @@ void		ft_initialize(t_flags *flags)
 
 void 		ft_count_folders(int argc, char **argv, int i, t_flags *flags)
 {
-	DIR		*dir;
 	while (argv[i] && (argv[i++][0] != '-'))
 		flags->folders++;
-
 }
 
 int 		main(int argc, char **argv)
