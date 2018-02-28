@@ -18,10 +18,10 @@ char			*ft_strjoin(char *s1, char const *s2)
 
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	if (s2 == NULL)
-		return (ft_strdup(s1));
 	if (s1 == NULL)
 		return (ft_strdup(s2));
+	if (s2 == NULL)
+		return (ft_strdup(s1));
 	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
 	ft_strcpy(str, s1);
 	ft_strcat(str, s2);

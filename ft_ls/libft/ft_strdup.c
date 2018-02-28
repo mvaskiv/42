@@ -18,15 +18,15 @@ char		*ft_strdup(const char *s)
 	char	*d = NULL;
 
 	i = 0;
-	if (s)
+	if (s != NULL)
 	{
-		while (s[i])
+		while (s[i] != '\0')
 			i++;
 	}
 	if (!(d = ft_strnew(i)))
 		return (NULL);
 	i = 0;
-	if (s)
+	if (s != NULL)
 	{
 		while (s[i] != '\0')
 		{

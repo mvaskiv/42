@@ -12,13 +12,13 @@
 
 int		ft_strlen(const char *s)
 {
-	int		i;
+	unsigned int		i;
 
 	i = 0;
 	if (s)
 	{
-		while (s[i])
+		while (s[i] != '\0')
 			i++;
 	}
-	return (i);
+	return ((int)i);
 }

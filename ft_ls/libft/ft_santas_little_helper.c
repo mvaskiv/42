@@ -4,12 +4,11 @@
 static char		*ft_set_width(char * str, t_mini width)
 {
 	char 	*spaces = NULL;
-	char 	*string;
+	char 	*string = NULL;
 
-	string = (char*)malloc(sizeof(char) * ft_strlen(str));
-	ft_strcpy(string, str);
-	if (str)
-		ft_strdel(&str);
+	string = ft_strdup(str);
+//	if (str)
+//		ft_strdel(&str);
 	if (ft_strlen(string) >= width.width)
 		return (string);
 	else if (width.sign == 1)
@@ -52,6 +51,7 @@ int 			ft_convert(va_list arg,
 	if (width.width != 0)
 		string = ft_set_width(string, width);
 	*string_o = ft_strjoin(*string_o, string);
+	ft_strdel(&string);
 	return (ft_strlen(*string_o));
 }
 

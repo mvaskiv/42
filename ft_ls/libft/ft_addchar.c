@@ -10,7 +10,7 @@ char 	*ft_addchar(char *string, unsigned char c)
 		ft_strcpy(str, string);
 	str[ft_strlen(string)] = (unsigned char)c;
 	str[ft_strlen(string) + 1] = '\0';
-//	if (string)
-//		ft_strdel(&string);
+	if (string)
+		ft_strdel(&string);
 	return (str);
 }
