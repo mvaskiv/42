@@ -9,9 +9,8 @@ void	*ft_return_to(char *string, char c)
 		return (NULL);
 	while (string && *string)
 	{
-		if (*string == (char)c)
+		if (*string-- == (char)c)
 			return (string);
-		*--string;
 	}
 	string = string_backup;
 	return (string);

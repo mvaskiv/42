@@ -3,7 +3,6 @@ unsigned int	ft_int_base(int number, int base)
 {
 	unsigned int 	output;
 	int 	position;
-	char 	*hex = "0123456789abcdef";
 
 	output = 0;
 	position = 1;

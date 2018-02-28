@@ -11,7 +11,7 @@ char		*ft_strrev(char *string)
 	j = 0;
 	output = ft_strnew(3);
 	while (string[i] != '\0')
-		string[i++];
+		i++;
 	i--;
 	while (i >= 0)
 	{

@@ -55,13 +55,13 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 	{
 //		grp = getgrgid(temp->stats.st_gid);
 		ft_write_stats(&temp, path);
-		if (ft_nbrlen(temp->stats.st_nlink) > width->n_sl)
+		if ((int)ft_nbrlen(temp->stats.st_nlink) > width->n_sl)
 			width->n_sl = ft_nbrlen(temp->stats.st_nlink);
 		if (ft_strlen(ft_get_uname(temp->stats.st_uid)) > width->n_us)
 			width->n_us = ft_strlen(ft_get_uname(temp->stats.st_uid));
 		if (ft_strlen(files->grp->gr_name) > width->n_gr)
 			width->n_gr = ft_strlen(files->grp->gr_name);
-		if (ft_nbrlen(temp->stats.st_size) > width->n_sz)
+		if ((int)ft_nbrlen(temp->stats.st_size) > width->n_sz)
 			width->n_sz = ft_nbrlen(temp->stats.st_size);
 		width->blocks += temp->stats.st_blocks;
 		temp = temp->next;

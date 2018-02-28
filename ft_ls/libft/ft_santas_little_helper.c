@@ -59,21 +59,21 @@ static int 		ft_convert_size_set(void *data,
 						   const char * format, char **string, t_mini width)
 {
 	if (*format == 's')
-		*string = ft_strjoin(*string, data);
+		*string = ft_strjoin(*string, (char*)data);
 	if (*format == 'd')
-		*string = ft_strjoin(*string, ft_itoa(data));
+		*string = ft_strjoin(*string, ft_itoa((int)data));
 	if (*format == 'i')
-		*string = ft_strjoin(*string, ft_itoa(data));
+		*string = ft_strjoin(*string, ft_itoa((int)data));
 	if (*format == 'o')
-		*string = ft_strjoin(*string, ft_itoa(ft_int_base(data, 8)));
+		*string = ft_strjoin(*string, ft_itoa(ft_int_base((int)data, 8)));
 	if (*format == 'u')
-		*string = ft_strjoin(*string, ft_itoa(data));
+		*string = ft_strjoin(*string, ft_itoa((int)data));
 	if (*format == 'x')
-		*string = ft_strjoin(*string, ft_dec_to_hex(data, 'l'));
+		*string = ft_strjoin(*string, ft_dec_to_hex((int)data, 'l'));
 	if (*format == 'X')
-		*string = ft_strjoin(*string, ft_dec_to_hex(data, 'u'));
+		*string = ft_strjoin(*string, ft_dec_to_hex((int)data, 'u'));
 	if (*format == 'c')
-		*string = ft_addchar(*string, data);
+		*string = ft_addchar(*string, (unsigned char)data);
 	if (width.width != 0)
 		*string = ft_set_width(*string, width);
 	return (ft_strlen(*string));

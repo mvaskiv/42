@@ -25,6 +25,6 @@ char		**ft_sorttab(char **arr)
 		}
 		i++;
 	}
-	arr[i] = '\0';
+	arr[i] = NULL;
 	return (arr);
 }

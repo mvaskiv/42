@@ -59,9 +59,9 @@ static char		*strncpyy(char *dest, const char *src, unsigned int n)
 
 char			**ft_strsplit(char const *s, char c)
 {
-	unsigned int		i;
-	unsigned int		j;
-	unsigned int		l;
+	int		i;
+	int		j;
+	int		l;
 	char				**arr;
 
 	j = wordcount(s, c);
@@ -82,6 +82,6 @@ char			**ft_strsplit(char const *s, char c)
 		arr[i][l] = '\0';
 		s += l;
 	}
-	arr[j] = '\0';
+	arr[j] = NULL;
 	return (arr);
 }
