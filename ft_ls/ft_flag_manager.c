@@ -59,8 +59,8 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 		ft_mini_printf("%s:\n", path);
 	if (flag->t == 1)
 		ft_sort_bydate(&files, *flag);
-	//if (flag.R == 1)
-	//	do magic ;
+	if (flag->R == 1)
+		ft_ls_do(files, *flag, path, winsize);
 	if (flag->l == 1)
 		ft_ls_l_output(files, path);
 	if ((flag->l != 1) && (flag->R != 1))
