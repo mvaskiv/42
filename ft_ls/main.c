@@ -47,7 +47,7 @@ void		ft_sort_list(t_files **files, t_flags flag)
 
 	start = files;
 	temp = *files;
-	while (temp->next)
+	while (temp->name != NULL && temp->next)
 	{
 		if ((flag.r == 0 ? (ft_strcmp(temp->name, temp->next->name) > 0) :
 			 (ft_strcmp(temp->name, temp->next->name) < 0)))
@@ -74,7 +74,7 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 	{
 		start = files;
 		temp = *files;
-		temp = (t_files *) malloc(sizeof(t_files));
+		temp = (t_files *)malloc(sizeof(t_files));
 		while (flag.a != 1 && (char)directory->d_name[0] == '.')
 		{
 			directory = readdir(dir);
@@ -132,8 +132,9 @@ int 		main(int argc, char **argv)
 			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
 	}
 	else
-		ft_ls_core(&flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
+		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
 
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
+	sleep (10);
 	return (0);
 }

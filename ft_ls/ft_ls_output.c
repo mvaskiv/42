@@ -122,11 +122,13 @@ void		ft_ls_output(t_files *files, int win_width)
 		ft_putchar('\n');
 	}
 	if (stock.columns == 1)
+	{
 		while (files->name != NULL)
 		{
 			ft_mini_printf("%s\n", files->name);
 			files = files->next;
 		}
+	}
 	if (stock.columns > 1)
 	{
 		ft_output_columns(ft_list_to_arr(files, stock), stock);

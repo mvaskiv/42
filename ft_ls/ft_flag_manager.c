@@ -40,6 +40,23 @@ void		ft_write_stats(t_files **files, char *path_a)
 	temp->grp = getgrgid(temp->stats.st_gid);
 }
 
+void		ft_free_lst(t_files **files)
+{
+	t_files		*temp;
+	t_files		*rem;
+
+	temp = *files;
+	rem = temp;
+	while (rem)
+	{
+		temp = rem;
+		rem = temp->next;
+		if (temp->name != NULL)
+			ft_strdel(&temp->name);
+		free(temp);
+	}
+}
+
 void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
 	t_files			*files;
@@ -54,7 +71,7 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	ft_write_names(&files, dir, *flag);
 	ft_sort_list(&files, *flag);
 	if (flag->folders-- > 0)
-		ft_mini_printf("%s:\n", path);
+		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ? ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
 	if (flag->t == 1)
 		ft_sort_bydate(&files, *flag);
 	if (flag->l == 1)
@@ -65,4 +82,5 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	if (flag->R == 1)
 		ft_ls_do(files, flag, path, winsize);
 	closedir(dir);
+	ft_free_lst(&files);
 }
