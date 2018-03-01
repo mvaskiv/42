@@ -10,11 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/libft.h"
+
 int		ft_strlen(const char *s)
 {
 	unsigned int		i;
 
 	i = 0;
+	if (s == NULL)
+		return (0);
 	if (s)
 	{
 		while (s[i] != '\0')

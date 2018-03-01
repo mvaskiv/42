@@ -1,24 +1,18 @@
 
 #include "includes/libft.h"
-
-static int 		ft_process(va_list arg,
-				  const char ** restrict format, char **string, t_mini width)
-{
-	int		len;
-
-	len = 0;
-	if (ft_strchr("cCsSpdDioOuUxX", **format))
-	{
-		len = ft_convert(arg, *format, string, width);
-		*format += 1;
-		return (len);
-	}
-	if (ft_strchr("hljz", **format))
-		len = ft_set_size(*format, arg, string, width);
-	*format += 1;
-	return (len);
-}
-
+//
+//static int 		ft_scan_type(t_mini *mini, const char *format)
+//{
+//	mini->conv.c = (*format == 'c') ? 1 : 0;
+//	mini->conv.s = (*format == 's') ? 1 : 0;
+//	mini->conv.d = (*format == 'd') ? 1 : 0;
+//	mini->conv.i = (*format == 'i') ? 1 : 0;
+//	mini->conv.o = (*format == 'o') ? 1 : 0;
+//	mini->conv.u = (*format == 'u') ? 1 : 0;
+//	mini->conv.x = (*format == 'x') ? 1 : 0;
+//	mini->conv.X = (*format == 'X') ? 1 : 0;
+//	return (1);
+//}
 //static int 		ft_prepare_width(va_list arg, const char ** format, int width)
 //{
 //	if (**format == '*')
@@ -38,56 +32,96 @@ static int 		ft_process(va_list arg,
 //	}
 //	return (width);
 //}
-static void		ft_width_ini(t_mini *width)
+
+static int 		ft_process(va_list arg,
+				  const char ** restrict format, char **string, t_mini *mini)
 {
-	width->sign = 0;
-	width->type = 0;
-	width->width = 0;
+	int		len;
+
+	len = 0;
+//	*format += ft_scan_type(mini, *format);
+	mini->conv.c = (**format == 'c') ? 1 : 0;
+	mini->conv.s = (**format == 's') ? 1 : 0;
+	mini->conv.d = (**format == 'd') ? 1 : 0;
+	mini->conv.i = (**format == 'i') ? 1 : 0;
+	mini->conv.o = (**format == 'o') ? 1 : 0;
+	mini->conv.u = (**format == 'u') ? 1 : 0;
+	mini->conv.x = (**format == 'x') ? 1 : 0;
+	mini->conv.X = (**format == 'X') ? 1 : 0;
+	ft_convert(arg, *++format, string, mini);
+	return (1);
 }
+
+static void		ft_width_ini(t_mini *mini)
+{
+	mini->string = NULL;
+	mini->sign = 0;
+	mini->type = 0;
+	mini->width = 0;
+	mini->conv.c = 0;
+	mini->conv.s = 0;
+	mini->conv.d = 0;
+	mini->conv.i = 0;
+	mini->conv.o = 0;
+	mini->conv.u = 0;
+	mini->conv.x = 0;
+	mini->conv.X = 0;
+}
+
+static int 		ft_scan_width(t_mini *mini, const char * format, va_list arg)
+{
+	int 	i;
+
+	i = 0;
+	if (*format == '-')
+	{
+		mini->sign = 1;
+		i += 0;
+	}
+	if ((*format + i) == '0')
+	{
+		mini->type = 1;
+		i++;
+	}
+	if ((*format + i) == '*')
+	{
+		mini->width = va_arg(arg, int);
+		i++;
+	}
+	else
+	{
+		mini->width = ft_atoi(format);
+		i += ft_nbrlen(mini->width);
+	}
+	return (i);
+}
+
+
 
 static int		ft_mini_engine(va_list arg, const char * format, int len)
 {
 	char 	*string = NULL;
-	t_mini	width;
+	t_mini	mini;
 	char 	spec;
+	int 	output;
 
-	ft_width_ini(&width);
+	ft_width_ini(&mini);
 	while ((spec = *format++))
 	{
 		if (spec == '%')
 		{
 			if (ft_strchr("*0123456789-+ #", *format))
-			{
-				if (*format == '-')
-				{
-					width.sign = 1;
-					format += 1;
-				}
-				if (*format == '0')
-				{
-					width.type = 1;
-					format += 1;
-				}
-				if (*format == '*')
-				{
-					width.width = va_arg(arg, int);
-					format += 1;
-				}
-				else
-				{
-					width.width = ft_atoi(format);
-					format += ft_nbrlen(width.width);
-				}
-			}
-			if (ft_strchr("hljzcCsSpdDioOuUxX", *format))
-				len += ft_process(arg, &format, &string, width);
+				format += ft_scan_width(&mini, format, arg);
+			if (ft_strchr("cCsSpdDioOuUxX", *format))
+				format += ft_process(arg, &format, &string, &mini);
 		}
 		else
-			string = ft_addchar(string, spec);
+			string = ft_addchar(&string, spec);
 	}
+	output = ft_strlen(string);
 	ft_putstr(string);
 	ft_strdel(&string);
-	return (len);
+	return (output);
 }
 
 int 			ft_mini_printf(const char * restrict format, ...)

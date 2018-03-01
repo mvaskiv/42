@@ -75,5 +75,6 @@ void		ft_ls_l_output(t_files *files, char *path);
 void		ft_ls_output(t_files *files, int win_width);
 void		ft_read_list(t_files *files, char *path, t_l_out width);
 
+char		*ft_alter_path(char **path, char *name);
 
 #endif

@@ -29,12 +29,12 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 void		ft_write_stats(t_files **files, char *path_a)
 {
 	t_files		*temp = NULL;
-	char 		*path;
+	char 		*path = NULL;
 
 	temp = *files;
 	path = ft_strdup(path_a);
-	path = ft_addchar(path, '/');
-	path = ft_strjoin(path, temp->name);
+	ft_strdel(&path_a);
+	path = ft_alter_path(&path, temp->name);
 	lstat(path, &temp->stats);
 	temp->time = localtime(&temp->stats.st_mtimespec.tv_sec);
 	temp->grp = getgrgid(temp->stats.st_gid);

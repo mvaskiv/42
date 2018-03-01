@@ -1,16 +1,19 @@
 #include "includes/libft.h"
 
-char 	*ft_addchar(char *string, unsigned char c)
+char 	*ft_addchar(char **string, char c)
 {
 	char 	*str = NULL;
+	int 	i;
 
-	if (!(str = (char*)malloc(sizeof(char) * ft_strlen(string) + 2)))
+	i = 0;
+	if (*string != '\0')
+		i = ft_strlen(*string);
+	if (!(str = (char*)malloc(sizeof(char) * i + 1)))
 		return (NULL);
-	if (string)
-		ft_strcpy(str, string);
-	str[ft_strlen(string)] = (unsigned char)c;
-	str[ft_strlen(string) + 1] = '\0';
-//	if (string)
-//		ft_strdel(&string);
+	if (*string)
+		ft_memmove(str, *string, i);
+	ft_strdel(string);
+	str[i] = c;
+	str[i + 1] = '\0';
 	return (str);
 }

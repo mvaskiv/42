@@ -112,11 +112,25 @@ static void 	ft_read_ext_perm(char *path)
 		ft_mini_printf("  ");
 }
 
+char			*ft_alter_path(char **path, char *name)
+{
+	int 	i;
+	char 	*str = NULL;
+
+	i = 0;
+	if (*path)
+		i = ft_strlen(*path);
+	str = (char*)malloc(sizeof(char) * (i + ft_strlen(name)));
+	ft_memmove(str, *path, i);
+	str[i] = '/';
+	ft_strcat(str, name);
+	return (str);
+}
+
 void			ft_read_list(t_files *files, char *path, t_l_out width)
 {
 	ft_write_stats(&files, path);
-	path = ft_addchar(path, '/');
-	path = ft_strjoin(path, files->name);
+	path = ft_alter_path(&path, files->name);
 	ft_print_type(files);
 	ft_mini_printf( (files->stats.st_mode & S_IRUSR) ? "r" : "-");
 	ft_mini_printf( (files->stats.st_mode & S_IWUSR) ? "w" : "-");

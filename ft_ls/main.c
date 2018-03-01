@@ -40,10 +40,10 @@ void		ft_sort_bydate(t_files **files, t_flags flag)
 
 void		ft_sort_list(t_files **files, t_flags flag)
 {
-	t_files		*temp;
+	t_files			*temp;
 	__darwin_time_t time_swap;
-	char		*swap = NULL;
-	t_files		**start;
+	char			*swap = NULL;
+	t_files			**start;
 
 	start = files;
 	temp = *files;
@@ -120,8 +120,8 @@ int 		main(int argc, char **argv)
 	ft_initialize(&flags);
 	ft_scan_flags(&flags, argv, argc);
 
-//	flags.l = 1;
-	flags.R = 1;
+	flags.l = 1;
+//	flags.R = 1;
 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
@@ -136,6 +136,6 @@ int 		main(int argc, char **argv)
 		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
 
 //	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
-//	sleep (10);
+	sleep (10);
 	return (0);
 }

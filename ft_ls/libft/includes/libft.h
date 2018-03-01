@@ -25,11 +25,25 @@ typedef struct			s_list
 	struct s_list		*next;
 }						t_list;
 
+typedef struct			s_conv
+{
+	int 				c;
+	int 				s;
+	int 				d;
+	int 				i;
+	int 				o;
+	int 				u;
+	int 				x;
+	int 				X;
+}						t_conv;
+
 typedef struct			s_mini
 {
+	char 				*string;
 	int 				width;
 	int 				type;
 	int 				sign;
+	struct s_conv		conv;
 }						t_mini;
 
 size_t					ft_strlcat(char *dest, char const *src, unsigned int n);
@@ -74,7 +88,7 @@ char					*ft_strcpy(char *dest, const char *src);
 char					*ft_strdup(const char *s);
 char					*ft_strncat(char *dest, const char *src,
 	unsigned int n);
-char				 	*ft_addchar(char *string, unsigned char c);
+char				 	*ft_addchar(char **string, char c);
 char 					*ft_string_of_spaces(int size);
 char				 	*ft_string_of_zeros(int size);
 char					*ft_strcat(char *dest, const char *src);
@@ -99,8 +113,8 @@ char					*ft_strnstr(char const *haystack,
 	unsigned int n);
 
 int 					ft_mini_printf(const char * restrict format, ...);
-int 					ft_convert(va_list arg,
-						  const char * format, char **string, t_mini width);
+void					ft_convert(va_list arg,
+						  const char * format, char **string, t_mini *mini);
 int						ft_set_size(const char *format, va_list arg,
 									   char **string, t_mini width);
 int						ft_memcmp(const void *s1, const void *s2,
