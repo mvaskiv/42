@@ -25,19 +25,51 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 	}
 }
 
+char 		*ft_get_path(char *name, char *path)
+{
+	char	*fullname;
+	int 	i;
+
+	fullname = (char*)malloc(sizeof(char) * 1024);
+	i = ft_strlen(path);
+	if (path[0] != '/' && path[1] != '\0')
+	{
+		i = 0;
+		while (*path)
+			fullname[i++] = *path++;
+		fullname[i] = '/';
+	}
+	else
+		fullname[0] = '/';
+	i = 1;
+	while (*name)
+		fullname[i++] = *name++;
+	fullname[i] = '\0';
+	return (fullname);
+}
+
 void		ft_write_stats(t_files **files, char *path_a)
 {
 	t_files		*temp = NULL;
-	char 		*path = NULL;
+	char 		*path;
+	struct stat	stats;
 
 	temp = *files;
-	path = ft_alter_path(&path_a, temp->data->name);
-	lstat(path, &temp->data->stats);
-	temp->data->time = localtime(&temp->data->stats.st_mtimespec.tv_sec);
-	temp->data->grp = getgrgid(temp->data->stats.st_gid);
+	path = ft_get_path(temp->name, path_a);
+	stat(path, &stats);
+	temp->path = ft_strdup(path);
+	temp->data->dev = stats.st_dev;
+	temp->data->group = stats.st_gid;
+	temp->data->link = stats.st_nlink;
+	temp->data->moddate = stats.st_mtimespec.tv_sec;
+	temp->data->mode = stats.st_mode;
+	temp->data->user = stats.st_uid;
+	temp->data->size = stats.st_size;
+	temp->data->blocks = stats.st_blocks;
+	ft_strdel(&path);
 }
 
-void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
+void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
 {
 	t_files			*temp;
 	t_files			**start;
@@ -55,12 +87,9 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
 			if (directory == NULL)
 				return ;
 		}
-		temp->data->name = ft_strdup(directory->d_name);
-		lstat(directory->d_name, &temp->data->stats);
-		temp->data->moddate = temp->data->stats.st_mtimespec.tv_sec; // or maybe st_mtimespec ???
-		temp->data->time = localtime(&temp->data->stats.st_mtimespec.tv_sec);
+		temp->name = ft_strdup(directory->d_name);
 		temp->data->namlen = directory->d_namlen;
-		temp->data->grp = getgrgid(temp->data->stats.st_gid);
+		ft_write_stats(&temp, path);
 		temp->next = *start;
 		*files = temp;
 		temp = *files;
@@ -73,10 +102,10 @@ void		ft_read_link(t_files *files, char *path)
 	ssize_t	i;
 
 	i = 0;
-	if ((S_ISLNK(files->data->stats.st_mode)))
+	if ((S_ISLNK(files->data->mode)))
 	{
 		name = (char*) malloc(sizeof(char) * 100);
-		i = readlink(path, name, 100);
+		i = readlink(files->path, name, 100);
 		name[i] = '\0';
 		ft_mini_printf(" -> %s", name);
 		ft_strdel(&name);

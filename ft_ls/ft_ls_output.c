@@ -38,7 +38,7 @@ char		**ft_list_to_arr(t_files *files, t_output stock)
 	arr = (char**)malloc(sizeof(char*) * stock.word_count + 1);
 	while (files)
 	{
-		arr[i] = ft_strdup(files->data->name);
+		arr[i] = ft_strdup(files->name);
 		files = files->next;
 		i++;
 	}
@@ -55,18 +55,18 @@ void		ft_ls_output(t_files *files, int win_width)
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
 	{
-		while (files->data->name != NULL)
+		while (files->name != NULL)
 		{
-			ft_mini_printf("%-*s", stock.true_width, files->data->name);
+			ft_mini_printf("%-*s", stock.true_width, files->name);
 			files = files->next;
 		}
 		ft_putchar('\n');
 	}
 	if (stock.columns == 1)
 	{
-		while (files->data->name != NULL)
+		while (files->name != NULL)
 		{
-			ft_mini_printf("%s\n", files->data->name);
+			ft_mini_printf("%s\n", files->name);
 			files = files->next;
 		}
 	}

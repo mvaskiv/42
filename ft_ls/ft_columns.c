@@ -33,19 +33,19 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 	width->n_gr = 0;
 	width->n_sz = 0;
 	width->blocks = 0;
-	while (temp->data->name != NULL)
+	while (temp->name != NULL)
 	{
 //		grp = getgrgid(temp->data->stats.st_gid);
-		ft_write_stats(&temp, path);
-		if ((int)ft_nbrlen(temp->data->stats.st_nlink) > width->n_sl)
-			width->n_sl = ft_nbrlen(temp->data->stats.st_nlink);
-		if (ft_strlen(ft_get_uname(temp->data->stats.st_uid)) > width->n_us)
-			width->n_us = ft_strlen(ft_get_uname(temp->data->stats.st_uid));
-		if (ft_strlen(temp->data->grp->gr_name) > width->n_gr)
-			width->n_gr = ft_strlen(temp->data->grp->gr_name);
-		if ((int)ft_nbrlen(temp->data->stats.st_size) > width->n_sz)
-			width->n_sz = ft_nbrlen(temp->data->stats.st_size);
-		width->blocks += temp->data->stats.st_blocks;
+//		ft_write_stats(&temp, path);
+		if ((int)ft_nbrlen(temp->data->link) > width->n_sl)
+			width->n_sl = ft_nbrlen(temp->data->link);
+		if (ft_strlen(ft_get_uname(temp->data->user)) > width->n_us)
+			width->n_us = ft_strlen(ft_get_uname(temp->data->user));
+//		if (ft_strlen(temp->data->grp->gr_name) > width->n_gr)
+//			width->n_gr = ft_strlen(temp->data->grp->gr_name);
+		if ((int)ft_nbrlen(temp->data->size) > width->n_sz)
+			width->n_sz = ft_nbrlen(temp->data->size);
+		width->blocks += temp->data->blocks;
 		temp = temp->next;
 	}
 }

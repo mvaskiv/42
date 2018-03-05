@@ -23,15 +23,21 @@
 typedef struct		s_data
 {
 	int 			namlen;
-	char 			*name;
-	struct tm		*time;
-	struct stat		stats;
-	struct group	*grp;
+	mode_t 			mode;
+	gid_t 			group;
+	nlink_t 		link;
+	dev_t 			dev;
+	uid_t 			user;
+	time_t			time;
+	off_t 			size;
+	blkcnt_t 		blocks;
 	__darwin_time_t moddate;
 }					t_data;
 
 typedef struct		s_files
 {
+	char 			*name;
+	char 			*path;
 	struct s_data	*data;
 	struct s_files	*next;
 }					t_files;
@@ -75,7 +81,7 @@ void		ft_ls_l_output(t_files *files, char *path);
 
 void		ft_read_list(t_files *files, char *path, t_l_out width);
 void 		ft_scan_flags(t_flags *flags, char **arg, int argc);
-void		ft_write_names(t_files **files, DIR *dir, t_flags flag);
+void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path);
 void		ft_sort_bydate(t_files **files, t_flags flag);
 void		ft_sort_list(t_files **files, t_flags flag);
 void		ft_write_stats(t_files **files, char *path_a);

@@ -43,23 +43,27 @@ void		ft_free_lst(t_files **files)
 	{
 		temp = rem;
 		rem = temp->next;
-		if (temp->data != NULL)
+		if (temp->name != NULL)
+		{
 			free(temp->data);
+			ft_strdel(&temp->name);
+			ft_strdel(&temp->path);
+		}
 		free(temp);
 	}
 }
-
-char			*ft_alter_path(char **path, char *name)
-{
-	int 	i;
-	char 	*str = NULL;
-
-	i = 0;
-	if (*path)
-		i = ft_strlen(*path);
-	str = (char*)malloc(sizeof(char) * (i + ft_strlen(name)));
-	ft_memmove(str, *path, i);
-	str[i] = '/';
-	ft_strcat(str, name);
-	return (str);
-}
+//
+//char			*ft_alter_path(char **path, char *name)
+//{
+//	int 	i;
+//	char 	*str = NULL;
+//
+//	i = 0;
+//	if (*path)
+//		i = ft_strlen(*path);
+//	str = (char*)malloc(sizeof(char) * (i + ft_strlen(name)));
+//	ft_memmove(str, *path, i);
+//	str[i] = '/';
+//	ft_strcat(str, name);
+//	return (str);
+//}
