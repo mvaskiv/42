@@ -29,65 +29,6 @@ static void	ft_output_columns(char **table, t_output stock)
 	}
 }
 
-static int	ft_true_width(int min_width)
-{
-	if ((min_width % 8) == 0)
-		min_width += 8;
-	else
-		while ((min_width % 8) != 0)
-			min_width++;
-	return (min_width);
-}
-
-static int	ft_columns_number(int word_count, int min_width, int win_width)
-{
-	int 	columns;
-
-	columns = 0;
-	min_width = ft_true_width(min_width);
-	if (win_width > (min_width * word_count))
-		columns = 0;
-	else
-		columns = (win_width / min_width) ? (win_width / min_width) : 1;
-	return (columns);
-}
-
-int 		ft_high_namlen(t_files *files, int type)
-{
-	t_files		*temp;
-	int			i;
-	int 		j;
-
-	i = 0;
-	j = 0;
-	temp = files;
-	while (temp)
-	{
-		if (temp->namlen > i)
-			i = temp->namlen;
-		temp = temp->next;
-		j++;
-	}
-	if (type == 0)
-		return (i);
-	else
-		return (j);
-}
-
-static void	ft_set_stock(t_output *stock, t_files *files, int win_width)
-{
-	stock->rows = 1;
-	stock->words = 0;
-	stock->word_count = 0;
-	stock->min_width = ft_high_namlen(files, 0);
-	stock->true_width = ft_true_width(stock->min_width);
-	stock->word_count = ft_high_namlen(files, 1) - 1;
-	stock->columns = ft_columns_number(stock->word_count, stock->min_width, win_width);
-	stock->order = stock->word_count;
-	if (stock->columns > 1)
-		while (stock->order++ % stock->columns);
-}
-
 char		**ft_list_to_arr(t_files *files, t_output stock)
 {
 	char 	**arr;
@@ -97,7 +38,7 @@ char		**ft_list_to_arr(t_files *files, t_output stock)
 	arr = (char**)malloc(sizeof(char*) * stock.word_count + 1);
 	while (files)
 	{
-		arr[i] = ft_strdup(files->name);
+		arr[i] = ft_strdup(files->data->name);
 		files = files->next;
 		i++;
 	}
@@ -114,18 +55,18 @@ void		ft_ls_output(t_files *files, int win_width)
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
 	{
-		while (files->name != NULL)
+		while (files->data->name != NULL)
 		{
-			ft_mini_printf("%-*s", stock.true_width, files->name);
+			ft_mini_printf("%-*s", stock.true_width, files->data->name);
 			files = files->next;
 		}
 		ft_putchar('\n');
 	}
 	if (stock.columns == 1)
 	{
-		while (files->name != NULL)
+		while (files->data->name != NULL)
 		{
-			ft_mini_printf("%s\n", files->name);
+			ft_mini_printf("%s\n", files->data->name);
 			files = files->next;
 		}
 	}

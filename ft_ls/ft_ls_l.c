@@ -1,7 +1,7 @@
 
 #include "ft_ls.h"
 
-static char 	*ft_get_uname(uid_t uid)
+char 	*ft_get_uname(uid_t uid)
 {
 	struct passwd	*passwd;
 
@@ -12,7 +12,7 @@ static char 	*ft_get_uname(uid_t uid)
 		return (NULL);
 }
 
-static char 	*ft_month(int month_n)
+char 	*ft_month(int month_n)
 {
 	if (month_n == 0)
 		return ("Jan");
@@ -41,113 +41,45 @@ static char 	*ft_month(int month_n)
 	return (0);
 }
 
-void			ft_set_cols(t_files *files, t_l_out *width, char *path)
+void			ft_print_type(t_files *files)
 {
-	t_files			*temp;
-
-	temp = files;
-	width->n_us = 0;
-	width->n_sl = 0;
-	width->n_gr = 0;
-	width->n_sz = 0;
-	width->blocks = 0;
-	while (temp->name != NULL)
-	{
-//		grp = getgrgid(temp->stats.st_gid);
-		ft_write_stats(&temp, path);
-		if ((int)ft_nbrlen(temp->stats.st_nlink) > width->n_sl)
-			width->n_sl = ft_nbrlen(temp->stats.st_nlink);
-		if (ft_strlen(ft_get_uname(temp->stats.st_uid)) > width->n_us)
-			width->n_us = ft_strlen(ft_get_uname(temp->stats.st_uid));
-		if (ft_strlen(files->grp->gr_name) > width->n_gr)
-			width->n_gr = ft_strlen(files->grp->gr_name);
-		if ((int)ft_nbrlen(temp->stats.st_size) > width->n_sz)
-			width->n_sz = ft_nbrlen(temp->stats.st_size);
-		width->blocks += temp->stats.st_blocks;
-		temp = temp->next;
-	}
-}
-
-static void			ft_print_type(t_files *files)
-{
-	if (files->stats.st_mode & S_IFIFO)
+	if (files->data->stats.st_mode & S_IFIFO)
 		ft_putchar('p');
-	else if (S_ISDIR(files->stats.st_mode))
+	else if (S_ISDIR(files->data->stats.st_mode))
 		ft_putchar('d');
-//	if (files->stats.st_mode & S_IFBLK)
+//	if (files->data->stats.st_mode & S_IFBLK)
 //		ft_putchar('b');
-	else if (S_ISLNK(files->stats.st_mode))
+	else if (S_ISLNK(files->data->stats.st_mode))
 		ft_putchar('l');
-	else if (S_ISCHR(files->stats.st_mode))
+	else if (S_ISCHR(files->data->stats.st_mode))
 		ft_putchar('c');
-	else if (S_ISSOCK(files->stats.st_mode))
+	else if (S_ISSOCK(files->data->stats.st_mode))
 		ft_putchar('s');
 	else
 		ft_putchar('-');
 }
 
-static void		ft_read_link(t_files *files, char *path)
-{
-	char 	*name;
-	ssize_t	i;
-
-	i = 0;
-	if ((S_ISLNK(files->stats.st_mode)))
-	{
-		name = (char*) malloc(sizeof(char) * 100);
-		i = readlink(path, name, 100);
-		name[i] = '\0';
-		ft_mini_printf(" -> %s", name);
-		ft_strdel(&name);
-	}
-}
-
-static void 	ft_read_ext_perm(char *path)
-{
-	if ((listxattr(path, NULL, 0, XATTR_NOFOLLOW)) > 0)
-		ft_mini_printf("@ ");
-	else if ((acl_get_link_np(path, ACL_TYPE_EXTENDED)) > 0)
-		ft_mini_printf("+ ");
-	else
-		ft_mini_printf("  ");
-}
-
-char			*ft_alter_path(char **path, char *name)
-{
-	int 	i;
-	char 	*str = NULL;
-
-	i = 0;
-	if (*path)
-		i = ft_strlen(*path);
-	str = (char*)malloc(sizeof(char) * (i + ft_strlen(name)));
-	ft_memmove(str, *path, i);
-	str[i] = '/';
-	ft_strcat(str, name);
-	return (str);
-}
-
 void			ft_read_list(t_files *files, char *path, t_l_out width)
 {
 	ft_write_stats(&files, path);
-	path = ft_alter_path(&path, files->name);
+	path = ft_alter_path(&path, files->data->name);
 	ft_print_type(files);
-	ft_mini_printf( (files->stats.st_mode & S_IRUSR) ? "r" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IWUSR) ? "w" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IXUSR) ? "x" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IRGRP) ? "r" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IWGRP) ? "w" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IXGRP) ? "x" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IROTH) ? "r" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IWOTH) ? "w" : "-");
-	ft_mini_printf( (files->stats.st_mode & S_IXOTH) ? "x" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IRUSR) ? "r" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IWUSR) ? "w" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IXUSR) ? "x" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IRGRP) ? "r" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IWGRP) ? "w" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IXGRP) ? "x" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IROTH) ? "r" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IWOTH) ? "w" : "-");
+	ft_mini_printf( (files->data->stats.st_mode & S_IXOTH) ? "x" : "-");
 	ft_read_ext_perm(path);
-	ft_mini_printf("%*d ", width.n_sl, files->stats.st_nlink);
-	ft_mini_printf("%-*s", (width.n_us + 2), ft_get_uname(files->stats.st_uid));
-	ft_mini_printf("%-*s", (width.n_gr + 1), files->grp->gr_name);
-	ft_mini_printf("%*d", (width.n_sz + 1), files->stats.st_size);
-	ft_mini_printf(" %s %2i %02i:%02i", ft_month(files->time->tm_mon), files->time->tm_mday, files->time->tm_hour, files->time->tm_min);
-	ft_mini_printf(" %s", files->name);
+	ft_mini_printf("%*d ", width.n_sl, files->data->stats.st_nlink);
+	ft_mini_printf("%-*s", (width.n_us + 2), ft_get_uname(files->data->stats.st_uid));
+	ft_mini_printf("%-*s", (width.n_gr + 1), files->data->grp->gr_name);
+	ft_mini_printf("%*d", (width.n_sz + 1), files->data->stats.st_size);
+	ft_mini_printf(" %s %2i %02i:%02i", ft_month(files->data->time->tm_mon), files->data->time->tm_mday, files->data->time->tm_hour, files->data->time->tm_min);
+	ft_mini_printf(" %s", files->data->name);
 	ft_read_link(files, path);
 	ft_putchar('\n');
 }
@@ -160,15 +92,15 @@ void	ft_ls_l_output(t_files *files, char *path)
 	lstat(path, &stats);
 	if ((S_ISLNK(stats.st_mode)))
 	{
-		files->name = path;
-		files->next->name = NULL;
+		files->data->name = path;
+		files->next->data->name = NULL;
 		ft_set_cols(files, &widths, path);
 		ft_read_list(files, NULL, widths);
 		return ;
 	}
 	ft_set_cols(files, &widths, path);
 	ft_mini_printf("total %d\n", widths.blocks);
-	while (files->name != NULL)
+	while (files->data->name != NULL)
 	{
 		ft_read_list(files, path, widths);
 		files = files->next;

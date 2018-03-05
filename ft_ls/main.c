@@ -12,101 +12,33 @@
 
 #include "ft_ls.h"
 
-void		ft_sort_bydate(t_files **files, t_flags flag)
+void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
-	t_files		*temp;
-	char 		*swap = NULL;
-	t_files		**start;
-	__darwin_time_t time_swap;
+	t_files			*files;
 
-	start = files;
-	temp = *files;
-	while (temp->next)
-	{
-		if ((flag.r == 0 ? (temp->moddate < temp->next->moddate) :
-					(temp->moddate > temp->next->moddate)))
-		{
-			swap = temp->name;
-			time_swap = temp->moddate;
-			temp->name = temp->next->name;
-			temp->moddate = temp->next->moddate;
-			temp->next->name = swap;
-			temp->next->moddate = time_swap;
-			ft_sort_bydate(start, flag);
-		}
-		temp = temp->next;
-	}
-}
-
-void		ft_sort_list(t_files **files, t_flags flag)
-{
-	t_files			*temp;
-	__darwin_time_t time_swap;
-	char			*swap = NULL;
-	t_files			**start;
-
-	start = files;
-	temp = *files;
-	while (temp->name != NULL && temp->next)
-	{
-		if ((flag.r == 0 ? (ft_strcmp(temp->name, temp->next->name) > 0) :
-			 (ft_strcmp(temp->name, temp->next->name) < 0)))
-		{
-			swap = temp->name;
-			time_swap = temp->moddate;
-			temp->name = temp->next->name;
-			temp->moddate = temp->next->moddate;
-			temp->next->name = swap;
-			temp->next->moddate = time_swap;
-			ft_sort_list(start, flag);
-		}
-		temp = temp->next;
-	}
-}
-
-void		ft_write_names(t_files **files, DIR *dir, t_flags flag)
-{
-	t_files			*temp;
-	t_files			**start;
-	struct dirent	*directory;
-
-	while ((directory = readdir(dir)))
-	{
-		start = files;
-		temp = *files;
-		temp = (t_files *)malloc(sizeof(t_files));
-		while (flag.a != 1 && (char)directory->d_name[0] == '.')
-		{
-			directory = readdir(dir);
-			if (directory == NULL)
-				return ;
-		}
-		temp->name = ft_strdup(directory->d_name);
-		lstat(directory->d_name, &temp->stats);
-		temp->moddate = temp->stats.st_mtimespec.tv_sec; // or maybe st_mtimespec ???
-		temp->namlen = directory->d_namlen;
-		temp->grp = NULL;
-		temp->next = *start;
-		*files = temp;
-		temp = *files;
-	}
-}
-
-void		ft_initialize(t_flags *flags)
-{
-	flags->one = 0;
-	flags->a = 0;
-	flags->l = 0;
-	flags->r = 0;
-	flags->R = 0;
-	flags->t = 0;
-	flags->folders = 0;
-}
-
-void 		ft_count_folders(char **argv, int i, t_flags *flags)
-{
-	while (argv[i] && (argv[i++][0] != '-'))
-		flags->folders++;
+	files = (t_files*)malloc(sizeof(t_files));
+	files->data = (t_data*)malloc(sizeof(t_data));
+//	files->data->name = NULL;
+	files->next = NULL;
+	if (flag->r == 1)
+		files->data->moddate = 9999999999;
+	else
+		files->data->moddate = 0;
+	ft_write_names(&files, dir, *flag);
+	ft_sort_list(&files, *flag);
+	if (flag->folders-- > 1)
+		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ? ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
+	if (flag->t == 1)
+		ft_sort_bydate(&files, *flag);
+	if (flag->l == 1)
+		ft_ls_l_output(files, path);
+	if ((flag->l != 1))
+		ft_ls_output(files, (flag->one == 1 ? 0 : winsize));
+	ft_mini_printf( ((flag->folders > 0 || flag->R == 1) ? "\n" : "%c"), '\0');
+	if (flag->R == 1)
+		ft_ls_do(files, flag, path, winsize);
+	closedir(dir);
+	ft_free_lst(&files);
 }
 
 int 		main(int argc, char **argv)
@@ -134,8 +66,6 @@ int 		main(int argc, char **argv)
 	}
 	else
 		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
-
-//	ft_ls_output(string, w.ws_col > 0 ? w.ws_col : 1);
 	sleep (10);
 	return (0);
 }
