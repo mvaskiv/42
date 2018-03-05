@@ -31,20 +31,24 @@ char 		*ft_get_path(char *name, char *path)
 	int 	i;
 
 	fullname = (char*)malloc(sizeof(char) * 1024);
-	i = ft_strlen(path);
-	if (path[0] != '/' && path[1] != '\0')
+	i = 0;
+	if (path[0] == '/' && path[1] == '\0')
 	{
-		i = 0;
-		while (*path)
-			fullname[i++] = *path++;
-		fullname[i] = '/';
+		i = 1;
+		fullname[0] = '/';
+		while (*name)
+			fullname[i++] = *name++;
+		fullname[i] = '\0';
 	}
 	else
-		fullname[0] = '/';
-	i = 1;
-	while (*name)
-		fullname[i++] = *name++;
-	fullname[i] = '\0';
+	{
+		while (*path)
+			fullname[i++] = *path++;
+		fullname[i++] = '/';
+		while (*name)
+			fullname[i++] = *name++;
+		fullname[i] = '\0';
+	}
 	return (fullname);
 }
 

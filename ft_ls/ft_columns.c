@@ -60,7 +60,7 @@ int 		ft_high_namlen(t_files *files, int type)
 	i = 0;
 	j = 0;
 	temp = files;
-	while (temp)
+	while (temp->name != NULL)
 	{
 		if (temp->data->namlen > i)
 			i = temp->data->namlen;

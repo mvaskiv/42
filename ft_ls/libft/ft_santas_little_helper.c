@@ -52,7 +52,10 @@ void 			ft_convert(va_list arg,
 	if (mini->conv.X)
 		mini->string = ft_dec_to_hex(va_arg(arg, int), 'u');
 	if (mini->conv.c)
-		ft_addchar(&mini->string, va_arg(arg, int));
+	{
+		ft_putchar(va_arg(arg, char));
+		return ;
+	}
 	if (mini->width != 0)
 		mini->string = ft_set_width(mini);
 	ft_putstr(mini->string);
