@@ -76,7 +76,8 @@ static int 		ft_scan_width(t_mini *mini, const char * format, va_list arg)
 	if (*format == '-')
 	{
 		mini->sign = 1;
-		i += 0;
+//		format += 1;
+//		i += 1;
 	}
 	if ((*format + i) == '0')
 	{
@@ -103,7 +104,7 @@ static int		ft_mini_engine(va_list arg, const char * format, int len)
 	char 	*string = NULL;
 	t_mini	mini;
 	char 	spec;
-	int 	output;
+	int 	output = 0;
 
 	ft_width_ini(&mini);
 	while ((spec = *format++))
@@ -116,11 +117,8 @@ static int		ft_mini_engine(va_list arg, const char * format, int len)
 				format += ft_process(arg, &format, &string, &mini);
 		}
 		else
-			string = ft_addchar(&string, spec);
+			ft_putchar(spec);
 	}
-	output = ft_strlen(string);
-	ft_putstr(string);
-	ft_strdel(&string);
 	return (output);
 }
 

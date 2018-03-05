@@ -4,6 +4,7 @@
 static char		*ft_set_width(t_mini *width)
 {
 	char 	*spaces = NULL;
+	char 	*string;
 	int 	i;
 
 	i = ft_strlen(width->string);
@@ -18,18 +19,19 @@ static char		*ft_set_width(t_mini *width)
 	{
 		spaces = (width->type == 1) ? ft_string_of_zeros(width->width - i) :
 				 ft_string_of_spaces(width->width - i);
-		width->string = ft_strjoin(width->string, spaces);
+		string = ft_strjoin(width->string, spaces);
 	}
 	else if (width->sign == 0)
 	{
 		spaces = (width->type == 1) ? ft_string_of_zeros(width->width - i) :
 				 ft_string_of_spaces(width->width - i);
-		width->string = ft_strjoin(spaces, width->string);
+		string = ft_strjoin(spaces, width->string);
 	}
 	else
 		return (width->string);
-//	ft_strdel(&spaces);
-	return (width->string);
+	ft_strdel(&spaces);
+	ft_strdel(&width->string);
+	return (string);
 }
 
 void 			ft_convert(va_list arg,
@@ -53,7 +55,7 @@ void 			ft_convert(va_list arg,
 		ft_addchar(&mini->string, va_arg(arg, int));
 	if (mini->width != 0)
 		mini->string = ft_set_width(mini);
-	*string_o = ft_strjoin(*string_o, mini->string);
+	ft_putstr(mini->string);
 	ft_strdel(&mini->string);
 }
 
