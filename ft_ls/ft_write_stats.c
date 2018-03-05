@@ -56,7 +56,7 @@ void		ft_write_stats(t_files **files, char *path_a)
 
 	temp = *files;
 	path = ft_get_path(temp->name, path_a);
-	stat(path, &stats);
+	lstat(path, &stats);
 	temp->path = ft_strdup(path);
 	temp->data->dev = stats.st_dev;
 	temp->data->group = stats.st_gid;
@@ -66,6 +66,7 @@ void		ft_write_stats(t_files **files, char *path_a)
 	temp->data->user = stats.st_uid;
 	temp->data->size = stats.st_size;
 	temp->data->blocks = stats.st_blocks;
+	temp->data->time = stats.st_mtimespec.tv_sec;
 	ft_strdel(&path);
 }
 
@@ -98,7 +99,7 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
 
 void		ft_read_link(t_files *files, char *path)
 {
-	char 	*name;
+	char 	*name = NULL;
 	ssize_t	i;
 
 	i = 0;

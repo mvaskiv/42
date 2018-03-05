@@ -76,15 +76,16 @@ static int 		ft_scan_width(t_mini *mini, const char * format, va_list arg)
 	if (*format == '-')
 	{
 		mini->sign = 1;
-//		format += 1;
-//		i += 1;
+		format += 1;
+		i += 1;
 	}
-	if ((*format + i) == '0')
+	if ((*format) == '0')
 	{
 		mini->type = 1;
+		format += 1;
 		i++;
 	}
-	if ((*format + i) == '*')
+	if ((*format) == '*')
 	{
 		mini->width = va_arg(arg, int);
 		i++;

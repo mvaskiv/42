@@ -19,6 +19,7 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	files = (t_files*)malloc(sizeof(t_files));
 	files->data = (t_data*)malloc(sizeof(t_data));
 	files->name = NULL;
+	files->path = NULL;
 	files->next = NULL;
 	if (flag->r == 1)
 		files->data->moddate = 9999999999;

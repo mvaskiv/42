@@ -45,9 +45,9 @@ void		ft_free_lst(t_files **files)
 		rem = temp->next;
 		if (temp->name != NULL)
 		{
-			free(temp->data);
 			ft_strdel(&temp->name);
 			ft_strdel(&temp->path);
+			free(temp->data);
 		}
 		free(temp);
 	}

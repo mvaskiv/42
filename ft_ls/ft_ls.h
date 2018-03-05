@@ -96,6 +96,7 @@ void 		ft_count_folders(char **argv, int i, t_flags *flags);
 void		ft_free_lst(t_files **files);
 void		ft_set_stock(t_output *stock, t_files *files, int win_width);
 
+char 		*ft_get_path(char *name, char *path);
 
 char		*ft_alter_path(char **path, char *name);
 char 		*ft_get_uname(uid_t uid);

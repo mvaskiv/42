@@ -61,6 +61,11 @@ void			ft_print_type(t_files *files)
 
 void			ft_read_list(t_files *files, char *path, t_l_out width)
 {
+	struct group		*gr;
+	struct tm		*tm;
+
+	tm = localtime(&files->data->time);
+	gr = getgrgid(files->data->group);
 //	ft_write_stats(&files, path);
 	ft_print_type(files);
 	ft_mini_printf( (files->data->mode & S_IRUSR) ? "r" : "-");
@@ -75,9 +80,9 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_read_ext_perm(path);
 	ft_mini_printf("%*d ", width.n_sl, files->data->link);
 	ft_mini_printf("%-*s", (width.n_us + 2), ft_get_uname(files->data->user));
-//	ft_mini_printf("%-*s", (width.n_gr + 1), files->data->group.gr_name);
+	ft_mini_printf("%-*s", (width.n_gr + 1), gr->gr_name);
 	ft_mini_printf("%*d", (width.n_sz + 1), files->data->size);
-//	ft_mini_printf(" %s %2i %02i:%02i", ft_month(files->data->time->tm_mon), files->data->time->tm_mday, files->data->time->tm_hour, files->data->time->tm_min);
+	ft_mini_printf(" %s %2i %02i:%02i", ft_month(tm->tm_mon), tm->tm_mday, tm->tm_hour, tm->tm_min);
 	ft_mini_printf(" %s", files->name);
 	ft_read_link(files, path);
 	ft_putchar('\n');
