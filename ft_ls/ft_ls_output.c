@@ -42,16 +42,19 @@ char		**ft_list_to_arr(t_files *files, t_output stock)
 		files = files->next;
 		i++;
 	}
-//	arr[i + 1] = '\0';
+	arr[i + 1] = NULL;
 	return (arr);
 }
 
-void		ft_ls_output(t_files *files, int win_width)
+void		ft_ls_output(t_flags *flag, t_files *files, int win_width)
 {
 	t_output	stock;
 	int 		i;
 
 	i = 0;
+
+//	win_width = 82;
+
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
 	{

@@ -13,7 +13,7 @@ static int	ft_find_folders(t_files *files, t_files **folders, char *path)
 	{
 		start = folders;
 		temp = *folders;
-		ft_write_stats(&files_t, path);
+//		ft_write_stats(&files_t, path);
 		if (S_ISDIR(files_t->data->mode))
 		{
 			temp = (t_files*)malloc(sizeof(t_files));
@@ -39,15 +39,18 @@ void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 	folders = (t_files*)malloc(sizeof(t_files));
 	folders->name = NULL;
 	folders->next = NULL;
-	magic->folders = 1;
+	folders->path = NULL;
+//	magic->folders = 1;
 	magic->folders += ft_find_folders(the, &folders, mother);
 	ft_sort_list(&folders, *magic);
 	while (folders->name != NULL)
 	{
 		path = ft_get_path(folders->name, mother);
+		ft_putchar('\n');
 		if ((dir = opendir(path)))
 			ft_ls_core(magic, dir, fucker, path);
 		ft_strdel(&path);
+		magic->folders--;
 		folders = folders->next;
 	}
 }

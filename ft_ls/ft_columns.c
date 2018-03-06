@@ -26,6 +26,7 @@ int		ft_columns_number(int word_count, int min_width, int win_width)
 void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 {
 	t_files			*temp;
+	struct group	*grp;
 
 	temp = files;
 	width->n_us = 0;
@@ -35,14 +36,13 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 	width->blocks = 0;
 	while (temp->name != NULL)
 	{
-//		grp = getgrgid(temp->data->stats.st_gid);
-//		ft_write_stats(&temp, path);
+		grp = getgrgid(temp->data->group);
 		if ((int)ft_nbrlen(temp->data->link) > width->n_sl)
 			width->n_sl = ft_nbrlen(temp->data->link);
 		if (ft_strlen(ft_get_uname(temp->data->user)) > width->n_us)
 			width->n_us = ft_strlen(ft_get_uname(temp->data->user));
-//		if (ft_strlen(temp->data->grp->gr_name) > width->n_gr)
-//			width->n_gr = ft_strlen(temp->data->grp->gr_name);
+		if (ft_strlen(grp->gr_name) > width->n_gr)
+			width->n_gr = ft_strlen(grp->gr_name);
 		if ((int)ft_nbrlen(temp->data->size) > width->n_sz)
 			width->n_sz = ft_nbrlen(temp->data->size);
 		width->blocks += temp->data->blocks;

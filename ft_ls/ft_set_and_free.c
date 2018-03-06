@@ -19,7 +19,7 @@ void	ft_set_stock(t_output *stock, t_files *files, int win_width)
 	stock->word_count = 0;
 	stock->min_width = ft_high_namlen(files, 0);
 	stock->true_width = ft_true_width(stock->min_width);
-	stock->word_count = ft_high_namlen(files, 1) - 1;
+	stock->word_count = ft_high_namlen(files, 1);
 	stock->columns = ft_columns_number(stock->word_count, stock->min_width, win_width);
 	stock->order = stock->word_count;
 	if (stock->columns > 1)

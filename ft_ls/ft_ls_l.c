@@ -59,6 +59,16 @@ void			ft_print_type(t_files *files)
 		ft_putchar('-');
 }
 
+void 			ft_sticky_bit(t_files *files)
+{
+	if (files->data->mode & S_ISVTX)
+		ft_mini_printf("t");
+	else if (files->data->mode & S_IXOTH)
+		ft_mini_printf("x");
+	else
+		ft_mini_printf("-");
+}
+
 void			ft_read_list(t_files *files, char *path, t_l_out width)
 {
 	struct group		*gr;
@@ -76,8 +86,8 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_mini_printf( (files->data->mode & S_IXGRP) ? "x" : "-");
 	ft_mini_printf( (files->data->mode & S_IROTH) ? "r" : "-");
 	ft_mini_printf( (files->data->mode & S_IWOTH) ? "w" : "-");
-	ft_mini_printf( (files->data->mode & S_IXOTH) ? "x" : "-");
-	ft_read_ext_perm(path);
+	ft_sticky_bit(files);
+	ft_read_ext_perm(files->path);
 	ft_mini_printf("%*d ", width.n_sl, files->data->link);
 	ft_mini_printf("%-*s", (width.n_us + 2), ft_get_uname(files->data->user));
 	ft_mini_printf("%-*s", (width.n_gr + 1), gr->gr_name);

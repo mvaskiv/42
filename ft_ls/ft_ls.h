@@ -76,7 +76,7 @@ typedef struct		s_l_out
 
 void 		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path);
 void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker);
-void		ft_ls_output(t_files *files, int win_width);
+void		ft_ls_output(t_flags * flag, t_files *files, int win_width);
 void		ft_ls_l_output(t_files *files, char *path);
 
 void		ft_read_list(t_files *files, char *path, t_l_out width);
