@@ -105,4 +105,7 @@ int			ft_true_width(int min_width);
 int			ft_columns_number(int word_count, int min_width, int win_width);
 int 		ft_high_namlen(t_files *files, int type);
 
+
+void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path);
+
 #endif

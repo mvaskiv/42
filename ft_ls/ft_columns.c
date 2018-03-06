@@ -34,7 +34,7 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 	width->n_gr = 0;
 	width->n_sz = 0;
 	width->blocks = 0;
-	while (temp->name != NULL)
+	while (temp != NULL)
 	{
 		grp = getgrgid(temp->data->group);
 		if ((int)ft_nbrlen(temp->data->link) > width->n_sl)
@@ -60,7 +60,7 @@ int 		ft_high_namlen(t_files *files, int type)
 	i = 0;
 	j = 0;
 	temp = files;
-	while (temp->name != NULL)
+	while (temp != NULL)
 	{
 		if (temp->data->namlen > i)
 			i = temp->data->namlen;

@@ -58,7 +58,7 @@ void		ft_ls_output(t_flags *flag, t_files *files, int win_width)
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
 	{
-		while (files->name != NULL)
+		while (files != NULL)
 		{
 			ft_mini_printf("%-*s", stock.true_width, files->name);
 			files = files->next;
@@ -67,7 +67,7 @@ void		ft_ls_output(t_flags *flag, t_files *files, int win_width)
 	}
 	if (stock.columns == 1)
 	{
-		while (files->name != NULL)
+		while (files != NULL)
 		{
 			ft_mini_printf("%s\n", files->name);
 			files = files->next;

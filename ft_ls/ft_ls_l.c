@@ -114,7 +114,7 @@ void	ft_ls_l_output(t_files *files, char *path)
 	}
 	ft_set_cols(files, &widths, path);
 	ft_mini_printf("total %d\n", widths.blocks);
-	while (files->name != NULL)
+	while (files != NULL)
 	{
 		ft_read_list(files, path, widths);
 		files = files->next;
