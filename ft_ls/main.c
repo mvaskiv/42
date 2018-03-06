@@ -20,10 +20,6 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 //	files->name = NULL;
 //	files->path = NULL;
 //	files->next = NULL;
-//	if (flag->r == 1)
-//		files->data->moddate = 9999999999;
-//	else
-//		files->data->moddate = 0;
 //	ft_write_names(&files, dir, *flag, path);
 //	ft_sort_list(&files, *flag);
 	ft_write_n_sort(&files, dir, flag, path);
