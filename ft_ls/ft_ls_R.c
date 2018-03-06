@@ -9,7 +9,7 @@ static int	ft_find_folders(t_files *files, t_files **folders, char *path)
 
 	i = 0;
 	files_t = files;
-	while (files_t->name != NULL)
+	while (files_t != NULL)
 	{
 		start = folders;
 		temp = *folders;

@@ -16,12 +16,6 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
 	t_files			*files;
 
-//	files = (t_files*)malloc(sizeof(t_files));
-//	files->name = NULL;
-//	files->path = NULL;
-//	files->next = NULL;
-//	ft_write_names(&files, dir, *flag, path);
-//	ft_sort_list(&files, *flag);
 	ft_write_n_sort(&files, dir, flag, path);
 	if (flag->folders > 0)
 		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ? ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
@@ -63,7 +57,7 @@ int 		main(int argc, char **argv)
 			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
 	}
 	else
-		ft_ls_core(&flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
+		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
 //	sleep (10);
 	return (0);
 }

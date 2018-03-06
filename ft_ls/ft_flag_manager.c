@@ -14,7 +14,7 @@ static t_files		*ft_new_node(struct dirent *directory, char *path)
 	return (new);
 }
 
-static void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
+void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 {
 	struct stat	stats;
 	t_files		*temp;

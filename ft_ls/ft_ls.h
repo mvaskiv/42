@@ -106,6 +106,7 @@ int			ft_columns_number(int word_count, int min_width, int win_width);
 int 		ft_high_namlen(t_files *files, int type);
 
 
+void		ft_insert_file(t_files **files, t_files *new, t_flags *flag);
 void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path);
 
 #endif
