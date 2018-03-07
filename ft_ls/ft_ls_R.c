@@ -1,76 +1,68 @@
 #include "ft_ls.h"
-//
-//t_files		**ft_insert_folder(t_files **folders_o, t_files *file)
-//{
-//	t_files		*temp = NULL;
-//	t_files		*folders;
-////	temp = *files;
-//	folders = *folders_o;
-//	if (folders == NULL)
-//	{
-//		folders = (t_files*)malloc(sizeof(t_files));
-//		folders->name = file->name;
-//		folders->path = file->path;
-//		folders->data = file->data;
-//		return (folders_o);
-////		folders->next = NULL;
-//	}
-//	else
-//	{
-//		while (folders->next != NULL)
-//			folders = folders->next;
-//		folders->next = (t_files*)malloc(sizeof(t_files));
-//		folders = folders->next;
-//		folders->name = file->name;
-//		folders->path = file->path;
-//		folders->data = file->data;
-//		return (folders_o);
-//	}
-//}
 
-t_files		*ft_find_folders(t_files *files, t_files **folders_o, char *path)
+void		ft_insert_folder(t_files **folders, t_files *files)
+{
+	t_files		*temp = NULL;
+	t_files		*new = NULL;
+
+	new = (t_files*)malloc(sizeof(t_files));
+	new->name = files->name;
+	new->path = files->path;
+	new->data = files->data;
+	new->next = NULL;
+	if ((*folders) == NULL)
+	{
+		(*folders) = new;
+		(*folders)->next = NULL;
+	}
+	else
+	{
+		temp = *folders;
+		while ((*folders)->next != NULL)
+			(*folders) = (*folders)->next;
+		(*folders)->next = new;
+		*folders = temp;
+	}
+}
+
+void		ft_find_folders(t_files *files, t_files **folders_o, char *path, t_flags *flag)
 {
 	int 		i;
-	t_files		*folders = NULL;
-	t_files		*start = NULL;
+	t_files		*folders;
 
 	i = 0;
-	folders = (t_files *)malloc(sizeof(t_files));
-	start = folders;
+	folders = NULL;
 	while (files != NULL)
 	{
 		if (S_ISDIR(files->data->mode))
 		{
-			folders = (t_files *)malloc(sizeof(t_files));
-			folders->data = (t_data*)malloc(sizeof(t_data));
-			folders->name = files->name;
-			folders->path = files->path;
-			folders->data = files->data;
-			folders->next = NULL;
-			folders = folders->next;
+			ft_insert_folder(&folders, files);
+			*folders_o = folders;
+			folders = *folders_o;
 			i++;
 		}
 		files = files->next;
 	}
-	return (folders);
+	*folders_o = folders;
+	flag->folders += i;
 }
 
 void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 {
 	t_files			*folders = NULL;
-	char 			*path = NULL;
+//	char 			*path = NULL;
 	DIR				*dir;
 
 //	magic->folders = 1;
-	folders = ft_find_folders(the, &folders, mother);
+	ft_find_folders(the, &folders, mother, magic);
 //	ft_sort_list(&folders, *magic);
 	while (folders != NULL)
 	{
-		path = ft_get_path(folders->name, mother);
+//		path = ft_get_path(folders->name, mother);
 		ft_putchar('\n');
-		if ((dir = opendir(path)))
-			ft_ls_core(magic, dir, fucker, path);
-		ft_strdel(&path);
+		if ((dir = opendir(folders->path)))
+			ft_ls_core(magic, dir, fucker, folders->path);
+//		ft_strdel(&path);
 		magic->folders--;
 		folders = folders->next;
 	}
