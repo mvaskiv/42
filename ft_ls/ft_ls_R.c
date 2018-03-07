@@ -47,6 +47,24 @@ void		ft_find_folders(t_files *files, t_files **folders_o, char *path, t_flags *
 	flag->folders += i;
 }
 
+//void		ft_free_node(t_files **files)
+//{
+//	t_files		*temp;
+//	t_files		*rem;
+//
+//	temp = *files;
+//	rem = temp;
+//	rem = temp->next;
+//	if (temp->name != NULL)
+//	{
+//		ft_strdel(&temp->name);
+//		ft_strdel(&temp->path);
+//		free(temp->data);
+//	}
+//	free(temp);
+//	temp = rem;
+//}
+
 void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 {
 	t_files			*folders = NULL;
@@ -64,6 +82,11 @@ void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 			ft_ls_core(magic, dir, fucker, folders->path);
 //		ft_strdel(&path);
 		magic->folders--;
+//		ft_strdel(&folders->name);
+//		ft_strdel(&folders->path);
+//		free(folders->data);
+		free (folders);
 		folders = folders->next;
 	}
+//	ft_free_lst(&folders);
 }
