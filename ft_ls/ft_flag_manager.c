@@ -3,7 +3,7 @@
 
 static t_files		*ft_new_node(struct dirent *directory, char *path)
 {
-	t_files		*new;
+	t_files		*new = NULL;
 
 	new = (t_files *)malloc(sizeof(t_files));
 	new->data = (t_data*)malloc(sizeof(t_data));
@@ -16,7 +16,7 @@ static t_files		*ft_new_node(struct dirent *directory, char *path)
 
 void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 {
-	t_files		*temp;
+	t_files		*temp = NULL;
 //	temp = *files;
 	if (*files == NULL || (flag->r == 0 ?
 		(ft_strcmp((*files)->name, new->name) > 0) :
@@ -39,7 +39,7 @@ void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 
 void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
 {
-	struct dirent	*directory;
+	struct dirent	*directory = NULL;
 	t_files			**start = NULL;
 
 	start = files;

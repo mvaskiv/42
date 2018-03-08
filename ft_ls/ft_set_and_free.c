@@ -34,8 +34,8 @@ void 		ft_count_folders(char **argv, int i, t_flags *flags)
 
 void		ft_free_lst(t_files **files)
 {
-	t_files		*temp;
-	t_files		*rem;
+	t_files		*temp = NULL;
+	t_files		*rem = NULL;
 
 	temp = *files;
 	rem = temp;

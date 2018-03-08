@@ -6,8 +6,8 @@ void		ft_insert_folder(t_files **folders, t_files *files)
 	t_files		*new = NULL;
 
 	new = (t_files*)malloc(sizeof(t_files));
-	new->name = files->name;
-	new->path = files->path;
+	new->name = ft_strdup(files->name);
+	new->path = ft_strdup(files->path);
 	new->data = files->data;
 	new->next = NULL;
 	if ((*folders) == NULL)
@@ -25,20 +25,20 @@ void		ft_insert_folder(t_files **folders, t_files *files)
 	}
 }
 
-t_files		*ft_find_folders(t_files *files, t_files **folders_o, char *path, t_flags *flag)
+t_files		*ft_find_folders(t_files *files, char *path, t_flags *flag)
 {
 	int 		i;
-	t_files		*folders;
+	t_files		*folders = NULL;
+//	t_files		**folders_o = NULL;
 
 	i = 0;
-	folders = NULL;
 	while (files != NULL)
 	{
 		if (S_ISDIR(files->data->mode))
 		{
 			ft_insert_folder(&folders, files);
-			*folders_o = folders;
-			folders = *folders_o;
+//			*folders_o = folders;
+//			folders = *folders_o;
 			i++;
 		}
 		files = files->next;
@@ -69,9 +69,9 @@ t_files		*ft_find_folders(t_files *files, t_files **folders_o, char *path, t_fla
 void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 {
 	t_files			*folders = NULL;
-	DIR				*dir;
+	DIR				*dir = NULL;
 
-	if (!(folders = ft_find_folders(the, &folders, mother, magic)))
+	if (!(folders = ft_find_folders(the, mother, magic)))
 		return ;
 	while (folders != NULL)
 	{
@@ -79,10 +79,11 @@ void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 		if ((dir = opendir(folders->path)))
 			ft_ls_core(magic, dir, fucker, folders->path);
 		magic->folders--;
-//		ft_strdel(&folders->name);
-//		ft_strdel(&folders->path);
+		ft_strdel(&folders->name);
+		ft_strdel(&folders->path);
 //		free(folders->data);
 		free (folders);
 		folders = folders->next;
 	}
+	free(folders);
 }

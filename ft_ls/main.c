@@ -14,7 +14,7 @@
 
 void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
-	t_files			*files;
+	t_files			*files = NULL;
 
 	ft_write_n_sort(&files, dir, flag, path);
 	if (flag->folders > 0)
@@ -36,7 +36,7 @@ int 		main(int argc, char **argv)
 {
 	struct winsize	win;
 	t_flags			flags;
-	DIR				*dir;
+	DIR				*dir = NULL;
 	int 			i;
 
 	i = 1;

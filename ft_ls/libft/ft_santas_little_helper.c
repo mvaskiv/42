@@ -4,7 +4,7 @@
 static char		*ft_set_width(t_mini *width)
 {
 	char 	*spaces = NULL;
-	char 	*string;
+	char 	*string = NULL;
 	int 	i;
 
 	i = ft_strlen(width->string);

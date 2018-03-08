@@ -3,7 +3,7 @@
 
 char		**ft_list_to_arr(t_files *files, t_output stock)
 {
-	char 	**arr;
+	char 	**arr = NULL;
 	int 	i;
 
 	i = 0;
@@ -22,7 +22,7 @@ static void	ft_output_columns(t_files *files, t_output stock)
 {
 	int 	i;
 	int 	q;
-	char 	**table;
+	char 	**table = NULL;
 
 	table = ft_list_to_arr(files, stock);
 	i = 0;

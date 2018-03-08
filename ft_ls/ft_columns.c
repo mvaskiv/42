@@ -25,7 +25,7 @@ int		ft_columns_number(int word_count, int min_width, int win_width)
 
 void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 {
-	t_files			*temp;
+	t_files			*temp = NULL;
 	struct group	*grp;
 
 	temp = files;
@@ -53,7 +53,7 @@ void			ft_set_cols(t_files *files, t_l_out *width, char *path)
 
 int 		ft_high_namlen(t_files *files, int type)
 {
-	t_files		*temp;
+	t_files		*temp = NULL;
 	int			i;
 	int 		j;
 

@@ -3,7 +3,7 @@
 
 char 	*ft_get_uname(uid_t uid)
 {
-	struct passwd	*passwd;
+	struct passwd	*passwd = NULL;
 
 	passwd = getpwuid(uid);
 	if (passwd != NULL)
@@ -71,8 +71,8 @@ void 			ft_sticky_bit(t_files *files)
 
 void			ft_read_list(t_files *files, char *path, t_l_out width)
 {
-	struct group		*gr;
-	struct tm		*tm;
+	struct group		*gr = NULL;
+	struct tm		*tm = NULL;
 
 	tm = localtime(&files->data->time);
 	gr = getgrgid(files->data->group);

@@ -27,7 +27,7 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 
 char 		*ft_get_path(char *name, char *path)
 {
-	char	*fullname;
+	char	*fullname = NULL;
 	int 	i;
 
 	fullname = (char*)malloc(sizeof(char) * 1024);
@@ -56,7 +56,7 @@ char 		*ft_get_path(char *name, char *path)
 void		ft_write_stats(t_files **files, char *path_a)
 {
 	t_files		*temp = NULL;
-	char 		*path;
+	char 		*path = NULL;
 	struct stat	stats;
 
 	temp = *files;
@@ -77,9 +77,9 @@ void		ft_write_stats(t_files **files, char *path_a)
 
 void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
 {
-	t_files			*temp;
-	t_files			**start;
-	struct dirent	*directory;
+	t_files			*temp = NULL;
+	t_files			**start = NULL;
+	struct dirent	*directory = NULL;
 
 	while ((directory = readdir(dir)))
 	{
