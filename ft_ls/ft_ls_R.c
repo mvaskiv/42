@@ -28,8 +28,7 @@ void		ft_insert_folder(t_files **folders, t_files *files)
 t_files		*ft_find_folders(t_files *files, char *path, t_flags *flag)
 {
 	int 		i;
-	t_files		*folders = NULL;
-//	t_files		**folders_o = NULL;
+	t_files		*folders = NULL;;
 
 	i = 0;
 	while (files != NULL)
@@ -37,13 +36,10 @@ t_files		*ft_find_folders(t_files *files, char *path, t_flags *flag)
 		if (S_ISDIR(files->data->mode))
 		{
 			ft_insert_folder(&folders, files);
-//			*folders_o = folders;
-//			folders = *folders_o;
 			i++;
 		}
 		files = files->next;
 	}
-//	*folders_o = folders;
 	flag->folders += i;
 	return (folders);
 }

@@ -100,8 +100,8 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 
 void	ft_ls_l_output(t_files *files, char *path)
 {
-	t_l_out		widths;
-	struct stat	stats;
+	t_l_out		widths = NULL;
+	struct stat	stats = NULL;
 
 	lstat(path, &stats);
 	if ((S_ISLNK(stats.st_mode)))
