@@ -1,20 +1,36 @@
 
 #include "ft_ls.h"
 
-static void	ft_output_columns(char **table, t_output stock)
+char		**ft_list_to_arr(t_files *files, t_output stock)
+{
+	char 	**arr;
+	int 	i;
+
+	i = 0;
+	arr = (char**)malloc(sizeof(char*) * stock.word_count + 1);
+	while (files)
+	{
+		arr[i] = files->name;
+		files = files->next;
+		i++;
+	}
+	arr[i] = NULL;
+	return (arr);
+}
+
+static void	ft_output_columns(t_files *files, t_output stock)
 {
 	int 	i;
 	int 	q;
+	char 	**table;
 
+	table = ft_list_to_arr(files, stock);
 	i = 0;
 	q = 0;
 	while (table[i])
 	{
-		if (table[i])
-		{
+		if (table[i] && ++stock.words)
 			ft_mini_printf("%-*s", stock.true_width, table[i]);
-			stock.words++;
-		}
 		if (stock.words >= stock.word_count)
 			break ;
 		i += (stock.order / stock.columns);
@@ -30,28 +46,12 @@ static void	ft_output_columns(char **table, t_output stock)
 	free(table);
 }
 
-char		**ft_list_to_arr(t_files *files, t_output stock)
-{
-	char 	**arr;
-	int 	i;
-
-	i = 0;
-	arr = (char**)malloc(sizeof(char*) * stock.word_count + 1);
-	while (files)
-	{
-		arr[i] = files->name;
-		files = files->next;
-		i++;
-	}
-	arr[i + 1] = NULL;
-	return (arr);
-}
 
 void		ft_ls_output(t_flags *flag, t_files *files, int win_width)
 {
 	t_output	stock;
 
-	win_width = 82;
+	win_width = 81;
 
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
@@ -73,7 +73,7 @@ void		ft_ls_output(t_flags *flag, t_files *files, int win_width)
 	}
 	if (stock.columns > 1)
 	{
-		ft_output_columns(ft_list_to_arr(files, stock), stock);
+		ft_output_columns(files, stock);
 		ft_putchar('\n');
 	}
 }
