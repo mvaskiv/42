@@ -86,4 +86,5 @@ void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 		folders = folders->next;
 	}
 	free(folders);
+	folders = NULL;
 }
