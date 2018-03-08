@@ -43,9 +43,9 @@ int 		main(int argc, char **argv)
 	ft_initialize(&flags);
 	ft_scan_flags(&flags, argv, argc);
 
-	flags.l = 1;
+//	flags.l = 1;
 //	flags.r = 0;
-	flags.R = 1;
+//	flags.R = 1;
 //	flags.t = 1;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))

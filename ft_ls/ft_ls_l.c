@@ -76,7 +76,6 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 
 	tm = localtime(&files->data->time);
 	gr = getgrgid(files->data->group);
-//	ft_write_stats(&files, path);
 	ft_print_type(files);
 	ft_mini_printf( (files->data->mode & S_IRUSR) ? "r" : "-");
 	ft_mini_printf( (files->data->mode & S_IWUSR) ? "w" : "-");
