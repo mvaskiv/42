@@ -71,7 +71,8 @@ void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 	t_files			*folders = NULL;
 	DIR				*dir;
 
-	folders = ft_find_folders(the, &folders, mother, magic);
+	if (!(folders = ft_find_folders(the, &folders, mother, magic)))
+		return ;
 	while (folders != NULL)
 	{
 		ft_putchar('\n');

@@ -41,10 +41,8 @@ void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
 {
 	struct dirent	*directory;
 	t_files			**start = NULL;
-	t_files			*temp = NULL;
 
 	start = files;
-	temp = *files;
 	while ((directory = readdir(dir)))
 	{
 		while (flag->a != 1 && directory->d_name[0] == '.')
