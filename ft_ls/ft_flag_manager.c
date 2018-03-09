@@ -1,6 +1,34 @@
 
 #include "ft_ls.h"
 
+//void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
+//{
+//	t_files		*temp = NULL;
+//	t_files		*swap = NULL;
+//
+//	if (*files == NULL)
+//	{
+//		new->next = *files;
+//		*files = new;
+//	}
+//	else
+//	{
+//		temp = *files;
+//		while (1)
+//		{
+//			if (temp == NULL || (temp->data->moddate <= new->data->moddate && ft_strcmp(temp->name))
+//				break ;
+//			swap = temp;
+//			temp = temp->next;
+//		}
+//		new->next = temp;
+//		if (swap != NULL)
+//			swap->next = new;
+//		else
+//			(*files) = new;
+//	}
+//}
+
 static t_files		*ft_new_node(struct dirent *directory, char *path)
 {
 	t_files		*new = NULL;
@@ -18,9 +46,9 @@ void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
 {
 	t_files		*temp = NULL;
 
-	if (*files == NULL || (flag->r == 0 ?
-		((*files)->data->moddate < new->data->moddate) :
-						  ((*files)->data->moddate > new->data->moddate)))
+	if (*files == NULL || ((flag->r == 0 ?
+		((*files)->data->time <= new->data->time && ft_strcmp((*files)->name, new->name) < 0) :
+			((*files)->data->time > new->data->time))))
 	{
 		new->next = *files;
 		*files = new;
@@ -28,14 +56,16 @@ void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
 	else
 	{
 		temp = *files;
-		while (temp->next != NULL && (flag->r == 0 ?
-			(temp->data->moddate > new->data->moddate) :
-				(temp->data->moddate < new->data->moddate)))
+		while (temp->next != NULL && ((flag->r == 0 ?
+			(temp->next->data->time > new->data->time) :
+				(temp->next->data->time < new->data->time))))
 			temp = temp->next;
 		new->next = temp->next;
 		temp->next = new;
 	}
 }
+
+
 
 void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 {
@@ -43,7 +73,7 @@ void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 
 	if (*files == NULL || (flag->r == 0 ?
 		(ft_strcmp((*files)->name, new->name) > 0) :
-			ft_strcmp((*files)->name, new->name) < 0))
+			(ft_strcmp((*files)->name, new->name) < 0)))
 	{
 		new->next = *files;
 		*files = new;

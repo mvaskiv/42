@@ -33,6 +33,15 @@ t_files		*ft_find_folders(t_files *files, char *path, t_flags *flag)
 	i = 0;
 	while (files != NULL)
 	{
+		while ((files->name[0] == '.' && files->name[1] == '\0') ||
+				(files->name[0] == '.' && files->name[1] == '.'))
+		{
+			files = files->next;
+			if (files == NULL)
+				break ;
+		}
+		if (files == NULL)
+			break ;
 		if (S_ISDIR(files->data->mode))
 		{
 			ft_insert_folder(&folders, files);
