@@ -97,18 +97,44 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_putchar('\n');
 }
 
+void		ft_write_l_stats(t_files **files, char *path_a)
+{
+	t_files		*temp = NULL;
+	char 		*path = NULL;
+	struct stat	stats;
+
+	temp = *files;
+	path = path_a;
+	lstat(path, &stats);
+	temp->path = ft_strdup(path);
+	temp->data->dev = stats.st_dev;
+	temp->data->group = stats.st_gid;
+	temp->data->link = stats.st_nlink;
+	temp->data->moddate = stats.st_mtimespec.tv_sec;
+	temp->data->mode = stats.st_mode;
+	temp->data->user = stats.st_uid;
+	temp->data->size = stats.st_size;
+	temp->data->blocks = stats.st_blocks;
+	temp->data->time = stats.st_mtimespec.tv_sec;
+//	ft_strdel(&path);
+}
+
 void	ft_ls_l_output(t_files *files, char *path)
 {
 	t_l_out		widths;
 	struct stat	stats;
+	t_files		*one_for_link = NULL;
 
 	lstat(path, &stats);
 	if ((S_ISLNK(stats.st_mode)))
 	{
-		files->name = path;
-		files->next->name = NULL;
-		ft_set_cols(files, &widths, path);
-		ft_read_list(files, NULL, widths);
+		one_for_link = (t_files *)malloc(sizeof(t_files));
+		one_for_link->data = (t_data *)malloc(sizeof(t_data));
+		one_for_link->name = path;
+		ft_write_l_stats(&one_for_link, path);
+		one_for_link->next = NULL;
+		ft_set_cols(one_for_link, &widths, path);
+		ft_read_list(one_for_link, NULL, widths);
 		return ;
 	}
 	ft_set_cols(files, &widths, path);

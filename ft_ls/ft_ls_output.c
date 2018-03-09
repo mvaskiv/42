@@ -51,7 +51,7 @@ void		ft_ls_output(t_flags *flag, t_files *files, int win_width)
 {
 	t_output	stock;
 
-	win_width = 81;
+//	win_width = 81;
 
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)

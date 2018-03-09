@@ -17,7 +17,7 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	t_files			*files = NULL;
 
 	ft_write_n_sort(&files, dir, flag, path);
-	if (flag->folders > 0)
+	if (flag->folders > 1)
 		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ? ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
 	if (flag->t == 1)
 		ft_sort_bydate(&files, *flag);
@@ -57,7 +57,7 @@ int 		main(int argc, char **argv)
 			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
 	}
 	else
-		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
+		ft_ls_core(&flags, opendir("/tmp"), win.ws_col, "/tmp");
 //	sleep (10);
 	return (0);
 }

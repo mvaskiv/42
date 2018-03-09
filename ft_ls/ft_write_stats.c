@@ -44,7 +44,7 @@ char 		*ft_get_path(char *name, char *path)
 	{
 		while (*path)
 			fullname[i++] = *path++;
-		if (fullname[i - 1] != '/')
+		if (fullname[i - 1] != '/' && name[0] != '/')
 			fullname[i++] = '/';
 		while (*name)
 			fullname[i++] = *name++;
