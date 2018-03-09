@@ -14,10 +14,33 @@ static t_files		*ft_new_node(struct dirent *directory, char *path)
 	return (new);
 }
 
+void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
+{
+	t_files		*temp = NULL;
+
+	if (*files == NULL || (flag->r == 0 ?
+		((*files)->data->moddate < new->data->moddate) :
+						   ((*files)->data->moddate > new->data->moddate)))
+	{
+		new->next = *files;
+		*files = new;
+	}
+	else
+	{
+		temp = *files;
+		while (temp->next != NULL && (flag->r == 0 ?
+			(temp->data->moddate > new->data->moddate) :
+				(temp->data->moddate < new->data->moddate)))
+			temp = temp->next;
+		new->next = temp->next;
+		temp->next = new;
+	}
+}
+
 void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 {
 	t_files		*temp = NULL;
-//	temp = *files;
+
 	if (*files == NULL || (flag->r == 0 ?
 		(ft_strcmp((*files)->name, new->name) > 0) :
 			ft_strcmp((*files)->name, new->name) < 0))
@@ -51,6 +74,7 @@ void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
 			if (directory == NULL)
 				return;
 		}
-		ft_insert_file(start, ft_new_node(directory, path), flag);
+		(flag->t == 0) ? ft_insert_file(start, ft_new_node(directory, path), flag) :
+		ft_insert_file_by_date(start, ft_new_node(directory, path), flag);
 	}
 }

@@ -19,8 +19,6 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	ft_write_n_sort(&files, dir, flag, path);
 	if (flag->folders > 1)
 		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ? ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
-	if (flag->t == 1)
-		ft_sort_bydate(&files, *flag);
 	if (flag->l == 1)
 		ft_ls_l_output(files, path);
 	if ((flag->l != 1))
@@ -43,10 +41,10 @@ int 		main(int argc, char **argv)
 	ft_initialize(&flags);
 	ft_scan_flags(&flags, argv, argc);
 
-	flags.l = 1;
+//	flags.l = 1;
 //	flags.r = 0;
 //	flags.R = 1;
-//	flags.t = 1;
+	flags.t = 1;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
 		i++;
