@@ -120,10 +120,14 @@ void		ft_read_link(t_files *files, char *path)
 
 void 	ft_read_ext_perm(char *path)
 {
+	acl_t 	acl;
+
+	acl = acl_get_link_np(path, ACL_TYPE_EXTENDED);
 	if ((listxattr(path, NULL, 0, XATTR_NOFOLLOW)) > 0)
 		ft_mini_printf("@ ");
-	else if ((acl_get_link_np(path, ACL_TYPE_EXTENDED)) > 0)
+	else if (acl > 0)
 		ft_mini_printf("+ ");
 	else
 		ft_mini_printf("  ");
+	free(acl);
 }

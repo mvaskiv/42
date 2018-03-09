@@ -119,11 +119,12 @@ void		ft_write_l_stats(t_files **files, char *path_a)
 //	ft_strdel(&path);
 }
 
-void	ft_ls_l_output(t_files *files, char *path)
+void	ft_ls_l_output(t_files *temp, char *path)
 {
 	t_l_out		widths;
 	struct stat	stats;
 	t_files		*one_for_link = NULL;
+	t_files		*files= temp;
 
 	lstat(path, &stats);
 	if ((S_ISLNK(stats.st_mode)))
@@ -132,9 +133,12 @@ void	ft_ls_l_output(t_files *files, char *path)
 		one_for_link->data = (t_data *)malloc(sizeof(t_data));
 		one_for_link->name = path;
 		ft_write_l_stats(&one_for_link, path);
-		one_for_link->next = NULL;
 		ft_set_cols(one_for_link, &widths, path);
 		ft_read_list(one_for_link, NULL, widths);
+		free(one_for_link->data);
+		free(one_for_link->path);
+		free(one_for_link);
+		one_for_link = NULL;
 		return ;
 	}
 	ft_set_cols(files, &widths, path);

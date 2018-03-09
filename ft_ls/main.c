@@ -43,7 +43,7 @@ int 		main(int argc, char **argv)
 	ft_initialize(&flags);
 	ft_scan_flags(&flags, argv, argc);
 
-//	flags.l = 1;
+	flags.l = 1;
 //	flags.r = 0;
 //	flags.R = 1;
 //	flags.t = 1;
@@ -57,7 +57,7 @@ int 		main(int argc, char **argv)
 			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
 	}
 	else
-		ft_ls_core(&flags, opendir("/tmp"), win.ws_col, "/tmp");
+		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
 //	sleep (10);
 	return (0);
 }
