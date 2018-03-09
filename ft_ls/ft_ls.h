@@ -31,7 +31,7 @@ typedef struct		s_data
 	time_t			time;
 	off_t 			size;
 	blkcnt_t 		blocks;
-	time_t 			moddate;
+	long 			moddate;
 }					t_data;
 
 typedef struct		s_files
@@ -80,7 +80,7 @@ void		ft_ls_output(t_flags * flag, t_files *files, int win_width);
 void		ft_ls_l_output(t_files *files, char *path);
 
 void		ft_read_list(t_files *files, char *path, t_l_out width);
-void 		ft_scan_flags(t_flags *flags, char **arg, int argc);
+int 		ft_scan_flags(t_flags *flags, char **arg, int argc);
 void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path);
 void		ft_sort_bydate(t_files **files, t_flags flag);
 void		ft_sort_list(t_files **files, t_flags flag);

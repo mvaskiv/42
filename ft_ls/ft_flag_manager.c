@@ -20,7 +20,7 @@ void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
 
 	if (*files == NULL || (flag->r == 0 ?
 		((*files)->data->moddate < new->data->moddate) :
-						   ((*files)->data->moddate > new->data->moddate)))
+						  ((*files)->data->moddate > new->data->moddate)))
 	{
 		new->next = *files;
 		*files = new;

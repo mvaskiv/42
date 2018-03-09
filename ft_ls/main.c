@@ -39,7 +39,8 @@ int 		main(int argc, char **argv)
 
 	i = 1;
 	ft_initialize(&flags);
-	ft_scan_flags(&flags, argv, argc);
+	if (!(ft_scan_flags(&flags, argv, argc)))
+		return (1);
 
 //	flags.l = 1;
 //	flags.r = 0;

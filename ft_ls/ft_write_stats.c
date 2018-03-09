@@ -1,6 +1,23 @@
 #include "ft_ls.h"
 
-void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
+int		ft_flag_error(char *arg)
+{
+	int		i;
+
+	i = 0;
+	while (arg[i++])
+	{
+		if (!(ft_strchr("1alrRt", arg[i])))
+		{
+			ft_mini_printf("ft_ls: illegal option -- %c\n", arg[i]);
+			ft_mini_printf("usage: ft_ls [-Ralrt1] [file ...]\n");
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 {
 	int 	i;
 
@@ -13,6 +30,8 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 				break;
 			else
 			{
+				if ((ft_flag_error(arg[i])))
+					return (0);
 				flags->one = ft_strchr(arg[i], '1') ? 1 : flags->one;
 				flags->a = ft_strchr(arg[i], 'a') ? 1 : flags->a;
 				flags->l = ft_strchr(arg[i], 'l') ? 1 : flags->l;
@@ -23,6 +42,7 @@ void 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 			i++;
 		}
 	}
+	return (1);
 }
 
 char 		*ft_get_path(char *name, char *path)
