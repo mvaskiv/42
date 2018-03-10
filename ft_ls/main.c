@@ -43,10 +43,10 @@ int 		main(int argc, char **argv)
 		return (1);
 
 //	flags.l = 1;
-//	flags.r = 0;
+//	flags.r = 1;
 //	flags.a = 1;
 //	flags.R = 1;
-	flags.t = 1;
+//	flags.t = 1;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
 		i++;

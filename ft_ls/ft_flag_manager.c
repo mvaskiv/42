@@ -52,8 +52,8 @@ void		ft_help_by_date(t_files **files, t_files *new, t_flags *flag)
 			(ft_strcmp((*files)->name, new->name) > 0)) &&
 			(new->data->time == (*files)->data->time)))
 	{
-		new->next = *files;
-		*files = new;
+		new->next = temp->next;
+		temp->next = new;
 	}
 	else
 	{
