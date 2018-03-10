@@ -22,7 +22,7 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	if (flag->l == 1)
 		ft_ls_l_output(files, path);
 	if ((flag->l != 1))
-		ft_ls_output(flag, files, (flag->one == 1 ? 0 : winsize));
+		ft_ls_output(files, (flag->one == 1 ? 0 : winsize));
 //	ft_mini_printf( ((flag->folders > 0) ? "\n" : "%c"), '\0');
 	if (flag->R == 1)
 		ft_ls_do(files, flag, path, winsize);
@@ -57,7 +57,7 @@ int 		main(int argc, char **argv)
 			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
 	}
 	else
-		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
+		ft_ls_core(&flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
 //	sleep (10);
 	return (0);
 }

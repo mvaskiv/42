@@ -47,7 +47,7 @@ static void	ft_output_columns(t_files *files, t_output stock)
 }
 
 
-void		ft_ls_output(t_flags *flag, t_files *files, int win_width)
+void		ft_ls_output(t_files *files, int win_width)
 {
 	t_output	stock;
 

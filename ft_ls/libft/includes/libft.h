@@ -113,8 +113,7 @@ char					*ft_strnstr(char const *haystack,
 	unsigned int n);
 
 int 					ft_mini_printf(const char * restrict format, ...);
-void					ft_convert(va_list arg,
-						  const char * format, char **string, t_mini *mini);
+void					ft_convert(va_list arg, t_mini *mini);
 int						ft_set_size(const char *format, va_list arg,
 									   char **string, t_mini width);
 int						ft_memcmp(const void *s1, const void *s2,

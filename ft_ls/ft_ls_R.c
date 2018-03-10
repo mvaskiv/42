@@ -25,7 +25,7 @@ void		ft_insert_folder(t_files **folders, t_files *files)
 	}
 }
 
-t_files		*ft_find_folders(t_files *files, char *path, t_flags *flag)
+t_files		*ft_find_folders(t_files *files, t_flags *flag)
 {
 	int 		i;
 	t_files		*folders = NULL;;
@@ -76,7 +76,7 @@ void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
 	t_files			*folders = NULL;
 	DIR				*dir = NULL;
 
-	if (!(folders = ft_find_folders(the, mother, magic)))
+	if (!(folders = ft_find_folders(the, magic)))
 		return ;
 	while (folders != NULL)
 	{

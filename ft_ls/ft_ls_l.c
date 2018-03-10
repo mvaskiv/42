@@ -93,7 +93,7 @@ void			ft_read_list(t_files *files, char *path, t_l_out width)
 	ft_mini_printf("%*d", (width.n_sz + 1), files->data->size);
 	ft_mini_printf(" %s %2i %02i:%02i", ft_month(tm->tm_mon), tm->tm_mday, tm->tm_hour, tm->tm_min);
 	ft_mini_printf(" %s", files->name);
-	ft_read_link(files, path);
+	ft_read_link(files);
 	ft_putchar('\n');
 }
 
@@ -133,7 +133,7 @@ void	ft_ls_l_output(t_files *temp, char *path)
 		one_for_link->data = (t_data *)malloc(sizeof(t_data));
 		one_for_link->name = path;
 		ft_write_l_stats(&one_for_link, path);
-		ft_set_cols(one_for_link, &widths, path);
+		ft_set_cols(one_for_link, &widths);
 		ft_read_list(one_for_link, NULL, widths);
 		free(one_for_link->data);
 		free(one_for_link->path);
@@ -141,7 +141,7 @@ void	ft_ls_l_output(t_files *temp, char *path)
 		one_for_link = NULL;
 		return ;
 	}
-	ft_set_cols(files, &widths, path);
+	ft_set_cols(files, &widths);
 	ft_mini_printf("total %d\n", widths.blocks);
 	while (files != NULL)
 	{

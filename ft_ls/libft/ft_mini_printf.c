@@ -34,7 +34,7 @@
 //}
 
 static int 		ft_process(va_list arg,
-				  const char ** restrict format, char **string, t_mini *mini)
+				  const char ** restrict format, t_mini *mini)
 {
 	int		len;
 
@@ -48,7 +48,8 @@ static int 		ft_process(va_list arg,
 	mini->conv.u = (**format == 'u') ? 1 : 0;
 	mini->conv.x = (**format == 'x') ? 1 : 0;
 	mini->conv.X = (**format == 'X') ? 1 : 0;
-	ft_convert(arg, *++format, string, mini);
+	ft_convert(arg, mini);
+	*++format;
 	return (1);
 }
 
@@ -102,7 +103,6 @@ static int 		ft_scan_width(t_mini *mini, const char * format, va_list arg)
 
 static int		ft_mini_engine(va_list arg, const char * format, int len)
 {
-	char 	*string = NULL;
 	t_mini	mini;
 	char 	spec;
 	int 	output = 0;
@@ -115,7 +115,7 @@ static int		ft_mini_engine(va_list arg, const char * format, int len)
 			if (ft_strchr("*0123456789-+ #", *format))
 				format += ft_scan_width(&mini, format, arg);
 			if (ft_strchr("cCsSpdDioOuUxX", *format))
-				format += ft_process(arg, &format, &string, &mini);
+				format += ft_process(arg, &format, &mini);
 		}
 		else
 			ft_putchar(spec);

@@ -122,7 +122,7 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
 	}
 }
 
-void		ft_read_link(t_files *files, char *path)
+void		ft_read_link(t_files *files)
 {
 	char 	*name = NULL;
 	ssize_t	i;

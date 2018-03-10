@@ -34,8 +34,7 @@ static char		*ft_set_width(t_mini *width)
 	return (string);
 }
 
-void 			ft_convert(va_list arg,
-				  const char * format, char **string_o, t_mini *mini)
+void 			ft_convert(va_list arg, t_mini *mini)
 {
 	if (mini->conv.s)
 		mini->string = ft_strdup(va_arg(arg, char*));
@@ -53,7 +52,7 @@ void 			ft_convert(va_list arg,
 		mini->string = ft_dec_to_hex(va_arg(arg, int), 'u');
 	if (mini->conv.c)
 	{
-		ft_putchar(va_arg(arg, char));
+		ft_putchar(va_arg(arg, int));
 		return ;
 	}
 	if (mini->width != 0)

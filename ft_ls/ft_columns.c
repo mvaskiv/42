@@ -23,7 +23,7 @@ int		ft_columns_number(int word_count, int min_width, int win_width)
 	return (columns);
 }
 
-void			ft_set_cols(t_files *files, t_l_out *width, char *path)
+void			ft_set_cols(t_files *files, t_l_out *width)
 {
 	t_files			*temp = NULL;
 	struct group	*grp;

@@ -76,7 +76,7 @@ typedef struct		s_l_out
 
 void 		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path);
 void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker);
-void		ft_ls_output(t_flags * flag, t_files *files, int win_width);
+void		ft_ls_output(t_files *files, int win_width);
 void		ft_ls_l_output(t_files *files, char *path);
 
 void		ft_read_list(t_files *files, char *path, t_l_out width);
@@ -87,9 +87,9 @@ void		ft_sort_list(t_files **files, t_flags flag);
 void		ft_write_stats(t_files **files, char *path_a);
 
 void 		ft_read_ext_perm(char *path);
-void		ft_read_link(t_files *files, char *path);
+void		ft_read_link(t_files *files);
 
-void		ft_set_cols(t_files *files, t_l_out *width, char *path);
+void		ft_set_cols(t_files *files, t_l_out *width);
 
 void		ft_initialize(t_flags *flags);
 void 		ft_count_folders(char **argv, int i, t_flags *flags);
