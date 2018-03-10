@@ -42,12 +42,61 @@ static t_files		*ft_new_node(struct dirent *directory, char *path)
 	return (new);
 }
 
+void		ft_help_by_date(t_files **files, t_files *new, t_flags *flag)
+{
+	t_files		*temp = NULL;
+
+	temp = *files;
+	if (((flag->r == 0 ?
+		(ft_strcmp((*files)->name, new->name) < 0) :
+			(ft_strcmp((*files)->name, new->name) > 0)) &&
+			(new->data->time == (*files)->data->time)))
+	{
+		new->next = *files;
+		*files = new;
+	}
+	else
+	{
+	while (temp->next != NULL && new->data->time != temp->next->data->time)
+		temp = temp->next;
+	while (temp->next != NULL &&
+			(temp->next->data->time == new->data->time) && (flag->r == 0 ?
+		(ft_strcmp(temp->next->name, new->name) < 0) :
+			ft_strcmp(temp->next->name, new->name) > 0))
+		temp = temp->next;
+	new->next = temp->next;
+	temp->next = new;
+	}
+}
+
+int 		ft_check_same_time(t_files **files, t_files *new, t_flags *flag)
+{
+	t_files		*temp = NULL;
+
+	temp = *files;
+	while (temp != NULL)
+	{
+		if (new->data->time == temp->data->time)
+		{
+			ft_help_by_date(files, new, flag);
+			return (1);
+		}
+		temp = temp->next;
+	}
+	return (0);
+}
+
 void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
 {
 	t_files		*temp = NULL;
 
+	if (*files != NULL)
+	{
+		if ((ft_check_same_time(files, new, flag)))
+			return ;
+	}
 	if (*files == NULL || ((flag->r == 0 ?
-		((*files)->data->time <= new->data->time && ft_strcmp((*files)->name, new->name) < 0) :
+		((*files)->data->time < new->data->time) :
 			((*files)->data->time > new->data->time))))
 	{
 		new->next = *files;

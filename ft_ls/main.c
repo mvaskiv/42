@@ -46,7 +46,7 @@ int 		main(int argc, char **argv)
 //	flags.r = 0;
 //	flags.a = 1;
 //	flags.R = 1;
-//	flags.t = 1;
+	flags.t = 1;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
 		i++;
@@ -57,7 +57,7 @@ int 		main(int argc, char **argv)
 			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
 	}
 	else
-		ft_ls_core(&flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
+		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
 //	sleep (10);
 	return (0);
 }

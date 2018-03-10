@@ -31,7 +31,7 @@ typedef struct		s_data
 	time_t			time;
 	off_t 			size;
 	blkcnt_t 		blocks;
-	long 			moddate;
+	long int			moddate;
 }					t_data;
 
 typedef struct		s_files
