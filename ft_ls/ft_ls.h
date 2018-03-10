@@ -75,11 +75,11 @@ typedef struct		s_l_out
 }					t_l_out;
 
 void 		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path);
-void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker);
+void 		ft_ls_do(t_files *the, t_flags *magic, int fucker);
 void		ft_ls_output(t_files *files, int win_width);
 void		ft_ls_l_output(t_files *files, char *path);
 
-void		ft_read_list(t_files *files, char *path, t_l_out width);
+void		ft_read_list(t_files *files, t_l_out width);
 int 		ft_scan_flags(t_flags *flags, char **arg, int argc);
 void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path);
 void		ft_sort_bydate(t_files **files, t_flags flag);

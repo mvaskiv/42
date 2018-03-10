@@ -69,7 +69,7 @@ void 			ft_sticky_bit(t_files *files)
 		ft_mini_printf("-");
 }
 
-void			ft_read_list(t_files *files, char *path, t_l_out width)
+void			ft_read_list(t_files *files, t_l_out width)
 {
 	struct group		*gr = NULL;
 	struct tm		*tm = NULL;
@@ -134,7 +134,7 @@ void	ft_ls_l_output(t_files *temp, char *path)
 		one_for_link->name = path;
 		ft_write_l_stats(&one_for_link, path);
 		ft_set_cols(one_for_link, &widths);
-		ft_read_list(one_for_link, NULL, widths);
+		ft_read_list(one_for_link, widths);
 		free(one_for_link->data);
 		free(one_for_link->path);
 		free(one_for_link);
@@ -145,7 +145,7 @@ void	ft_ls_l_output(t_files *temp, char *path)
 	ft_mini_printf("total %d\n", widths.blocks);
 	while (files != NULL)
 	{
-		ft_read_list(files, path, widths);
+		ft_read_list(files, widths);
 		files = files->next;
 	}
 }

@@ -49,7 +49,6 @@ static int 		ft_process(va_list arg,
 	mini->conv.x = (**format == 'x') ? 1 : 0;
 	mini->conv.X = (**format == 'X') ? 1 : 0;
 	ft_convert(arg, mini);
-	*++format;
 	return (1);
 }
 
@@ -101,7 +100,7 @@ static int 		ft_scan_width(t_mini *mini, const char * format, va_list arg)
 
 
 
-static int		ft_mini_engine(va_list arg, const char * format, int len)
+static int		ft_mini_engine(va_list arg, const char * format)
 {
 	t_mini	mini;
 	char 	spec;
@@ -130,7 +129,7 @@ int 			ft_mini_printf(const char * restrict format, ...)
 
 	output = 0;
 	va_start(arg, format);
-	output = ft_mini_engine(arg, format, output);
+	output = ft_mini_engine(arg, format);
 	va_end(arg);
 	return (output);
 }

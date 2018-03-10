@@ -71,7 +71,7 @@ t_files		*ft_find_folders(t_files *files, t_flags *flag)
 //	temp = rem;
 //}
 
-void 		ft_ls_do(t_files *the, t_flags *magic, char *mother, int fucker)
+void 		ft_ls_do(t_files *the, t_flags *magic, int fucker)
 {
 	t_files			*folders = NULL;
 	DIR				*dir = NULL;
