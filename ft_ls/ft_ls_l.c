@@ -69,6 +69,21 @@ void 			ft_sticky_bit(t_files *files)
 		ft_mini_printf("-");
 }
 
+void		ft_print_time(struct tm *tm, time_t file)
+{
+	time_t			now;
+
+	time(&now);
+	if ((now - file) < 15778463)
+	{
+		ft_mini_printf(" %s %2i %02i:%02i", ft_month(tm->tm_mon), tm->tm_mday, tm->tm_hour, tm->tm_min);
+	}
+	else
+	{
+		ft_mini_printf(" %s %2i %5i", ft_month(tm->tm_mon), tm->tm_mday, (1900 + tm->tm_year));
+	}
+}
+
 void			ft_read_list(t_files *files, t_l_out width)
 {
 	struct group		*gr = NULL;
@@ -91,7 +106,7 @@ void			ft_read_list(t_files *files, t_l_out width)
 	ft_mini_printf("%-*s", (width.n_us + 2), ft_get_uname(files->data->user));
 	ft_mini_printf("%-*s", (width.n_gr + 1), gr->gr_name);
 	ft_mini_printf("%*d", (width.n_sz + 1), files->data->size);
-	ft_mini_printf(" %s %2i %02i:%02i", ft_month(tm->tm_mon), tm->tm_mday, tm->tm_hour, tm->tm_min);
+	ft_print_time(tm, files->data->time);
 	ft_mini_printf(" %s", files->name);
 	ft_read_link(files);
 	ft_putchar('\n');

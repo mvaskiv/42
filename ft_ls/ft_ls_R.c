@@ -30,7 +30,7 @@ t_files		*ft_find_folders(t_files *files, t_flags *flag)
 	int 		i;
 	t_files		*folders = NULL;;
 
-	i = 0;
+	i = 1;
 	while (files != NULL)
 	{
 		while ((files->name[0] == '.' && files->name[1] == '\0') ||

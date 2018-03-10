@@ -47,7 +47,7 @@ static void	ft_output_columns(t_files *files, t_output stock)
 }
 
 
-void		ft_ls_output(t_files *files, int win_width)
+void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
 {
 	t_output	stock;
 
@@ -61,7 +61,13 @@ void		ft_ls_output(t_files *files, int win_width)
 			ft_mini_printf("%-*s", stock.true_width, files->name);
 			files = files->next;
 		}
-		ft_putchar('\n');
+		if (flag->R == 1)
+		{
+			if (files != NULL)
+				ft_putchar('\n');
+		}
+		else
+			ft_putchar('\n');
 	}
 	if (stock.columns == 1)
 	{

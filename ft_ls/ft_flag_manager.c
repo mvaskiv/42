@@ -65,8 +65,6 @@ void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
 	}
 }
 
-
-
 void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 {
 	t_files		*temp = NULL;

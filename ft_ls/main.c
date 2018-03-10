@@ -22,7 +22,7 @@ void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	if (flag->l == 1)
 		ft_ls_l_output(files, path);
 	if ((flag->l != 1))
-		ft_ls_output(files, (flag->one == 1 ? 0 : winsize));
+		ft_ls_output(files, flag, (flag->one == 1 ? 0 : winsize));
 //	ft_mini_printf( ((flag->folders > 0) ? "\n" : "%c"), '\0');
 	if (flag->R == 1)
 		ft_ls_do(files, flag, winsize);
