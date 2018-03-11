@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:28:08 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 16:39:38 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 16:42:25 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_read_list(t_files *files, t_l_out width)
 	ft_print_type(files);
 	ft_mini_printf((files->data->mode & S_IRUSR) ? "r" : "-");
 	ft_mini_printf((files->data->mode & S_IWUSR) ? "w" : "-");
-	ft_mini_printf((files->data->mode & S_IXUSR) ? "x" : "-");
+	ft_set_uid(files);
 	ft_mini_printf((files->data->mode & S_IRGRP) ? "r" : "-");
 	ft_mini_printf((files->data->mode & S_IWGRP) ? "w" : "-");
 	ft_mini_printf((files->data->mode & S_IXGRP) ? "x" : "-");

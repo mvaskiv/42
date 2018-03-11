@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 16:37:19 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 16:42:25 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:04:48 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,16 @@ void	ft_l_link(char *path)
 	free(one_for_link->path);
 	free(one_for_link);
 	one_for_link = NULL;
+}
+
+void	ft_set_uid(t_files *files)
+{
+	if ((files->data->mode & S_ISUID) && (files->data->mode & S_IEXEC))
+		ft_mini_printf("s");
+	else if (files->data->mode & S_ISUID)
+		ft_mini_printf("S");
+	else if (files->data->mode & S_IEXEC)
+		ft_mini_printf("x");
+	else
+		ft_mini_printf("-");
 }

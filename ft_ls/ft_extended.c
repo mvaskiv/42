@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 15:04:13 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 15:09:25 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:01:50 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ char	*ft_get_uname(uid_t uid)
 
 void	ft_print_type(t_files *files)
 {
-	if (files->data->mode & S_IFIFO)
-		ft_putchar('p');
-	else if (S_ISDIR(files->data->mode))
+	if (S_ISDIR(files->data->mode))
 		ft_putchar('d');
-/*	if (files->data->stats.st_mode & S_IFBLK) */
-/*		ft_putchar('b'); */
 	else if (S_ISLNK(files->data->mode))
 		ft_putchar('l');
+	else if (files->data->mode & S_IFBLK)
+		ft_putchar('b');
+	else if (files->data->mode & S_IFIFO)
+		ft_putchar('p');
 	else if (S_ISCHR(files->data->mode))
 		ft_putchar('c');
 	else if (S_ISSOCK(files->data->mode))
@@ -73,8 +73,10 @@ void	ft_print_type(t_files *files)
 
 void	ft_sticky_bit(t_files *files)
 {
-	if (files->data->mode & S_ISVTX)
+	if ((files->data->mode & S_ISVTX) && (files->data->mode & S_IXOTH))
 		ft_mini_printf("t");
+	else if (files->data->mode & S_ISVTX)
+		ft_mini_printf("T");
 	else if (files->data->mode & S_IXOTH)
 		ft_mini_printf("x");
 	else

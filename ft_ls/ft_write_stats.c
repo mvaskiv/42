@@ -89,30 +89,3 @@ void		ft_write_stats(t_files **files, char *path_a)
 	temp->data->time = stats.st_mtimespec.tv_sec;
 	ft_strdel(&path);
 }
-
-void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
-{
-	t_files			*temp;
-	t_files			**start;
-	struct dirent	*directory;
-
-	while ((directory = readdir(dir)))
-	{
-		start = files;
-		temp = *files;
-		temp = (t_files *)malloc(sizeof(t_files));
-		temp->data = (t_data*)malloc(sizeof(t_data));
-		while (flag.a != 1 && (char)directory->d_name[0] == '.')
-		{
-			directory = readdir(dir);
-			if (directory == NULL)
-				return ;
-		}
-		temp->name = ft_strdup(directory->d_name);
-		temp->data->namlen = directory->d_namlen;
-		ft_write_stats(&temp, path);
-		temp->next = *start;
-		*files = temp;
-		temp = *files;
-	}
-}
