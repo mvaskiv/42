@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:51:49 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:52:42 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:52:48 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		ft_ls_do(t_files *the, t_flags *magic, int fucker)
 		magic->folders--;
 		ft_strdel(&folders->name);
 		ft_strdel(&folders->path);
-		free (folders);
+		free(folders);
 		folders = folders->next;
 	}
 	free(folders);
