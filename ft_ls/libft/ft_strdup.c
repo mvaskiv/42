@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:03:05 by mvaskiv           #+#    #+#             */
-/*   Updated: 2017/11/14 16:03:18 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:17:30 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 char		*ft_strdup(const char *s)
 {
 	int		i;
-	char	*d = NULL;
+	char	*d;
 
+	d = NULL;
 	i = 0;
 	if (s != NULL)
 	{

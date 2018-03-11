@@ -62,7 +62,7 @@ char			**ft_strsplit(char const *s, char c)
 	int		i;
 	int		j;
 	int		l;
-	char				**arr;
+	char	**arr;
 
 	j = wordcount(s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * (j + 1))))

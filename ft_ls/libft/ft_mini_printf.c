@@ -1,45 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mini_printf.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:10:56 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:21:32 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "includes/libft.h"
-//
-//static int 		ft_scan_type(t_mini *mini, const char *format)
-//{
-//	mini->conv.c = (*format == 'c') ? 1 : 0;
-//	mini->conv.s = (*format == 's') ? 1 : 0;
-//	mini->conv.d = (*format == 'd') ? 1 : 0;
-//	mini->conv.i = (*format == 'i') ? 1 : 0;
-//	mini->conv.o = (*format == 'o') ? 1 : 0;
-//	mini->conv.u = (*format == 'u') ? 1 : 0;
-//	mini->conv.x = (*format == 'x') ? 1 : 0;
-//	mini->conv.X = (*format == 'X') ? 1 : 0;
-//	return (1);
-//}
-//static int 		ft_prepare_width(va_list arg, const char ** format, int width)
-//{
-//	if (**format == '*')
-//	{
-//		width = va_arg(arg, int);
-//		*format += 1;
-//	}
-//	if (**format == '-' && (char**)(format + 1) == '*')
-//	{
-//		width = (va_arg(arg, int) * (-1));
-//		*format += 2;
-//	}
-//	else
-//	{
-//		width = ft_atoi(*format);
-//		*format += ft_nbrlen((int)width);
-//	}
-//	return (width);
-//}
 
-static int 		ft_process(va_list arg,
-				  const char ** restrict format, t_mini *mini)
+static int		ft_process(va_list arg,
+	const char **format, t_mini *mini)
 {
 	int		len;
 
 	len = 0;
-//	*format += ft_scan_type(mini, *format);
 	mini->conv.c = (**format == 'c') ? 1 : 0;
 	mini->conv.s = (**format == 's') ? 1 : 0;
 	mini->conv.d = (**format == 'd') ? 1 : 0;
@@ -47,7 +25,7 @@ static int 		ft_process(va_list arg,
 	mini->conv.o = (**format == 'o') ? 1 : 0;
 	mini->conv.u = (**format == 'u') ? 1 : 0;
 	mini->conv.x = (**format == 'x') ? 1 : 0;
-	mini->conv.X = (**format == 'X') ? 1 : 0;
+	mini->conv.xh = (**format == 'X') ? 1 : 0;
 	ft_convert(arg, mini);
 	return (1);
 }
@@ -65,12 +43,12 @@ static void		ft_width_ini(t_mini *mini)
 	mini->conv.o = 0;
 	mini->conv.u = 0;
 	mini->conv.x = 0;
-	mini->conv.X = 0;
+	mini->conv.xh = 0;
 }
 
-static int 		ft_scan_width(t_mini *mini, const char * format, va_list arg)
+static int		ft_scan_width(t_mini *mini, const char *format, va_list arg)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (*format == '-')
@@ -98,14 +76,13 @@ static int 		ft_scan_width(t_mini *mini, const char * format, va_list arg)
 	return (i);
 }
 
-
-
-static int		ft_mini_engine(va_list arg, const char * format)
+static int		ft_mini_engine(va_list arg, const char *format)
 {
 	t_mini	mini;
-	char 	spec;
-	int 	output = 0;
+	char	spec;
+	int		output;
 
+	output = 0;
 	ft_width_ini(&mini);
 	while ((spec = *format++))
 	{
@@ -122,10 +99,10 @@ static int		ft_mini_engine(va_list arg, const char * format)
 	return (output);
 }
 
-int 			ft_mini_printf(const char * restrict format, ...)
+int			ft_mini_printf(const char *format, ...)
 {
-	int 	output;
-	va_list arg;
+	int		output;
+	va_list	arg;
 
 	output = 0;
 	va_start(arg, format);

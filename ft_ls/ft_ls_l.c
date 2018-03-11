@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls_l.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:28:08 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:30:36 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char 	*ft_get_uname(uid_t uid)
+char	*ft_get_uname(uid_t uid)
 {
-	struct passwd	*passwd = NULL;
+	struct passwd	*passwd;
 
 	passwd = getpwuid(uid);
 	if (passwd != NULL)
@@ -12,7 +23,7 @@ char 	*ft_get_uname(uid_t uid)
 		return (NULL);
 }
 
-char 	*ft_month(int month_n)
+char	*ft_month(int month_n)
 {
 	if (month_n == 0)
 		return ("Jan");
@@ -59,7 +70,7 @@ void			ft_print_type(t_files *files)
 		ft_putchar('-');
 }
 
-void 			ft_sticky_bit(t_files *files)
+void			ft_sticky_bit(t_files *files)
 {
 	if (files->data->mode & S_ISVTX)
 		ft_mini_printf("t");
@@ -86,20 +97,20 @@ void		ft_print_time(struct tm *tm, time_t file)
 
 void			ft_read_list(t_files *files, t_l_out width)
 {
-	struct group		*gr = NULL;
-	struct tm		*tm = NULL;
+	struct group	*gr;
+	struct tm		*tm;
 
 	tm = localtime(&files->data->time);
 	gr = getgrgid(files->data->group);
 	ft_print_type(files);
-	ft_mini_printf( (files->data->mode & S_IRUSR) ? "r" : "-");
-	ft_mini_printf( (files->data->mode & S_IWUSR) ? "w" : "-");
-	ft_mini_printf( (files->data->mode & S_IXUSR) ? "x" : "-");
-	ft_mini_printf( (files->data->mode & S_IRGRP) ? "r" : "-");
-	ft_mini_printf( (files->data->mode & S_IWGRP) ? "w" : "-");
-	ft_mini_printf( (files->data->mode & S_IXGRP) ? "x" : "-");
-	ft_mini_printf( (files->data->mode & S_IROTH) ? "r" : "-");
-	ft_mini_printf( (files->data->mode & S_IWOTH) ? "w" : "-");
+	ft_mini_printf((files->data->mode & S_IRUSR) ? "r" : "-");
+	ft_mini_printf((files->data->mode & S_IWUSR) ? "w" : "-");
+	ft_mini_printf((files->data->mode & S_IXUSR) ? "x" : "-");
+	ft_mini_printf((files->data->mode & S_IRGRP) ? "r" : "-");
+	ft_mini_printf((files->data->mode & S_IWGRP) ? "w" : "-");
+	ft_mini_printf((files->data->mode & S_IXGRP) ? "x" : "-");
+	ft_mini_printf((files->data->mode & S_IROTH) ? "r" : "-");
+	ft_mini_printf((files->data->mode & S_IWOTH) ? "w" : "-");
 	ft_sticky_bit(files);
 	ft_read_ext_perm(files->path);
 	ft_mini_printf("%*d ", width.n_sl, files->data->link);
@@ -114,8 +125,8 @@ void			ft_read_list(t_files *files, t_l_out width)
 
 void		ft_write_l_stats(t_files **files, char *path_a)
 {
-	t_files		*temp = NULL;
-	char 		*path = NULL;
+	t_files		*temp;
+	char		*path;
 	struct stat	stats;
 
 	temp = *files;
@@ -131,15 +142,14 @@ void		ft_write_l_stats(t_files **files, char *path_a)
 	temp->data->size = stats.st_size;
 	temp->data->blocks = stats.st_blocks;
 	temp->data->time = stats.st_mtimespec.tv_sec;
-//	ft_strdel(&path);
 }
 
 void	ft_ls_l_output(t_files *temp, char *path)
 {
 	t_l_out		widths;
 	struct stat	stats;
-	t_files		*one_for_link = NULL;
-	t_files		*files= temp;
+	t_files		*one_for_link;
+	t_files		*files;
 
 	lstat(path, &stats);
 	if ((S_ISLNK(stats.st_mode)))

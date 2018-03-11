@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_write_stats.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:11:02 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:25:21 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 int		ft_flag_error(char *arg)
@@ -17,9 +29,9 @@ int		ft_flag_error(char *arg)
 	return (0);
 }
 
-int 	ft_scan_flags(t_flags *flags, char **arg, int argc)
+int		ft_scan_flags(t_flags *flags, char **arg, int argc)
 {
-	int 	i;
+	int		i;
 
 	i = 1;
 	if (argc > 1)
@@ -27,7 +39,7 @@ int 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 		while (arg[i])
 		{
 			if (arg[i][0] != '-')
-				break;
+				break ;
 			else
 			{
 				if ((ft_flag_error(arg[i])))
@@ -45,10 +57,10 @@ int 	ft_scan_flags(t_flags *flags, char **arg, int argc)
 	return (1);
 }
 
-char 		*ft_get_path(char *name, char *path)
+char		*ft_get_path(char *name, char *path)
 {
-	char	*fullname = NULL;
-	int 	i;
+	char	*fullname;
+	int		i;
 
 	fullname = (char*)malloc(sizeof(char) * 1024);
 	i = 0;
@@ -75,8 +87,8 @@ char 		*ft_get_path(char *name, char *path)
 
 void		ft_write_stats(t_files **files, char *path_a)
 {
-	t_files		*temp = NULL;
-	char 		*path = NULL;
+	t_files		*temp;
+	char		*path;
 	struct stat	stats;
 
 	temp = *files;
@@ -97,9 +109,9 @@ void		ft_write_stats(t_files **files, char *path_a)
 
 void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
 {
-	t_files			*temp = NULL;
-	t_files			**start = NULL;
-	struct dirent	*directory = NULL;
+	t_files			*temp;
+	t_files			**start;
+	struct dirent	*directory;
 
 	while ((directory = readdir(dir)))
 	{
@@ -124,13 +136,13 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
 
 void		ft_read_link(t_files *files)
 {
-	char 	*name = NULL;
+	char	*name;
 	ssize_t	i;
 
 	i = 0;
 	if ((S_ISLNK(files->data->mode)))
 	{
-		name = (char*) malloc(sizeof(char) * 100);
+		name = (char*)malloc(sizeof(char) * 100);
 		i = readlink(files->path, name, 100);
 		name[i] = '\0';
 		ft_mini_printf(" -> %s", name);
@@ -138,9 +150,9 @@ void		ft_read_link(t_files *files)
 	}
 }
 
-void 	ft_read_ext_perm(char *path)
+void	ft_read_ext_perm(char *path)
 {
-	acl_t 	acl;
+	acl_t	acl;
 
 	acl = acl_get_link_np(path, ACL_TYPE_EXTENDED);
 	if ((listxattr(path, NULL, 0, XATTR_NOFOLLOW)) > 0)

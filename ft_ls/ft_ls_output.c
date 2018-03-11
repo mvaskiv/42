@@ -46,12 +46,9 @@ static void	ft_output_columns(t_files *files, t_output stock)
 	free(table);
 }
 
-
 void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
 {
 	t_output	stock;
-
-//	win_width = 81;
 
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)

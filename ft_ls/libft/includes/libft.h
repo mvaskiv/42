@@ -27,22 +27,22 @@ typedef struct			s_list
 
 typedef struct			s_conv
 {
-	int 				c;
-	int 				s;
-	int 				d;
-	int 				i;
-	int 				o;
-	int 				u;
-	int 				x;
-	int 				X;
+	int					c;
+	int					s;
+	int					d;
+	int					i;
+	int					o;
+	int					u;
+	int					x;
+	int					xh;
 }						t_conv;
 
 typedef struct			s_mini
 {
-	char 				*string;
-	int 				width;
-	int 				type;
-	int 				sign;
+	char				*string;
+	int					width;
+	int					type;
+	int					sign;
 	struct s_conv		conv;
 }						t_mini;
 
@@ -88,9 +88,9 @@ char					*ft_strcpy(char *dest, const char *src);
 char					*ft_strdup(const char *s);
 char					*ft_strncat(char *dest, const char *src,
 	unsigned int n);
-char				 	*ft_addchar(char **string, char c);
-char 					*ft_string_of_spaces(int size);
-char				 	*ft_string_of_zeros(int size);
+char					*ft_addchar(char **string, char c);
+char					*ft_string_of_spaces(int size);
+char					*ft_string_of_zeros(int size);
 char					*ft_strcat(char *dest, const char *src);
 char					*ft_strchr(const char *s, int c);
 char					*ft_strrchr(const char *s, int c);
@@ -112,10 +112,10 @@ char					*ft_strnstr(char const *haystack,
 	char const *needle,
 	unsigned int n);
 
-int 					ft_mini_printf(const char * restrict format, ...);
+int						ft_mini_printf(const char *format, ...);
 void					ft_convert(va_list arg, t_mini *mini);
 int						ft_set_size(const char *format, va_list arg,
-									   char **string, t_mini width);
+	char **string, t_mini width);
 int						ft_memcmp(const void *s1, const void *s2,
 	unsigned int n);
 int						ft_strnequ(char const *s1, char const *s2,
@@ -133,13 +133,12 @@ int						ft_isascii(int c);
 int						ft_isprint(int c);
 int						ft_tolower(int c);
 int						ft_toupper(int c);
-int 					ft_intpositive(int i);
-int 					ft_longest_tab(char **arr);
+int						ft_intpositive(int i);
+int						ft_longest_tab(char **arr);
 unsigned int			ft_nbrlen(long long int n);
 unsigned int			ft_int_base(int number, int base);
 long long int			ft_longatoi(const char *nptr);
 char					**ft_sorttab(char **arr);
 char					**ft_sortrtab(char **arr);
-
 
 #endif

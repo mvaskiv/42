@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_addchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:30:47 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:31:05 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/libft.h"
 
-char 	*ft_addchar(char **string, char c)
+char	*ft_addchar(char **string, char c)
 {
-	char 	*str = NULL;
-	int 	i;
+	char	*str;
+	int		i;
 
 	i = 0;
 	if (*string != '\0')

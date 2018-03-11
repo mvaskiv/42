@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dec_to_hex.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:27:27 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:27:27 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "includes/libft.h"
 
 char		*ft_dec_to_hex(int number, char c)
 {
 	char	*output;
-	int 	position;
-	int 	remainder;
+	int		position;
+	int		remainder;
 	int		letter_case;
 
 	output = ft_strnew(3);
@@ -27,4 +38,3 @@ char		*ft_dec_to_hex(int number, char c)
 	output[position] = '\0';
 	return (ft_strrev(output));
 }
-

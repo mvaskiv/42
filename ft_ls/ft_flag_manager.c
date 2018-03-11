@@ -1,37 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_flag_manager.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:31:21 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:32:43 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
-//void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
-//{
-//	t_files		*temp = NULL;
-//	t_files		*swap = NULL;
-//
-//	if (*files == NULL)
-//	{
-//		new->next = *files;
-//		*files = new;
-//	}
-//	else
-//	{
-//		temp = *files;
-//		while (1)
-//		{
-//			if (temp == NULL || (temp->data->moddate <= new->data->moddate && ft_strcmp(temp->name))
-//				break ;
-//			swap = temp;
-//			temp = temp->next;
-//		}
-//		new->next = temp;
-//		if (swap != NULL)
-//			swap->next = new;
-//		else
-//			(*files) = new;
-//	}
-//}
-
-static t_files		*ft_new_node(struct dirent *directory, char *path)
+static t_files	*ft_new_node(struct dirent *directory, char *path)
 {
-	t_files		*new = NULL;
+	t_files		*new;
 
 	new = (t_files *)malloc(sizeof(t_files));
 	new->data = (t_data*)malloc(sizeof(t_data));
@@ -44,7 +27,7 @@ static t_files		*ft_new_node(struct dirent *directory, char *path)
 
 void		ft_help_by_date(t_files **files, t_files *new, t_flags *flag)
 {
-	t_files		*temp = NULL;
+	t_files		*temp;
 
 	temp = *files;
 	if (((flag->r == 0 ?
@@ -57,7 +40,7 @@ void		ft_help_by_date(t_files **files, t_files *new, t_flags *flag)
 	}
 	else
 	{
-	while (temp->next != NULL && new->data->time != temp->next->data->time)
+	while ((temp->next != NULL) && (new->data->time != temp->next->data->time))
 		temp = temp->next;
 	while (temp->next != NULL &&
 			(temp->next->data->time == new->data->time) && (flag->r == 0 ?
@@ -69,9 +52,9 @@ void		ft_help_by_date(t_files **files, t_files *new, t_flags *flag)
 	}
 }
 
-int 		ft_check_same_time(t_files **files, t_files *new, t_flags *flag)
+int			ft_check_same_time(t_files **files, t_files *new, t_flags *flag)
 {
-	t_files		*temp = NULL;
+	t_files		*temp;
 
 	temp = *files;
 	while (temp != NULL)
@@ -88,7 +71,7 @@ int 		ft_check_same_time(t_files **files, t_files *new, t_flags *flag)
 
 void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
 {
-	t_files		*temp = NULL;
+	t_files		*temp;
 
 	if (*files != NULL)
 	{
@@ -116,7 +99,7 @@ void		ft_insert_file_by_date(t_files **files, t_files *new, t_flags *flag)
 
 void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 {
-	t_files		*temp = NULL;
+	t_files		*temp;
 
 	if (*files == NULL || (flag->r == 0 ?
 		(ft_strcmp((*files)->name, new->name) > 0) :
@@ -139,8 +122,8 @@ void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 
 void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
 {
-	struct dirent	*directory = NULL;
-	t_files			**start = NULL;
+	struct dirent	*directory;
+	t_files			**start;
 
 	start = files;
 	while ((directory = readdir(dir)))
@@ -149,7 +132,7 @@ void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
 		{
 			directory = readdir(dir);
 			if (directory == NULL)
-				return;
+				return ;
 		}
 		(flag->t == 0) ? ft_insert_file(start, ft_new_node(directory, path), flag) :
 		ft_insert_file_by_date(start, ft_new_node(directory, path), flag);
