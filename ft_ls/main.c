@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 18:29:58 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:29:56 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
 	t_files		*files;
 
-	ft_write_n_sort(&files, dir, flag, path);
+	flag->f == 0 ?
+	ft_write_n_sort(&files, dir, flag, path) :
+	ft_write_dont_sort(&files, dir, flag, path);
 	if (flag->folders > 1)
 		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ?
 			ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));

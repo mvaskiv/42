@@ -6,11 +6,29 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:11:02 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 15:11:43 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:31:50 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void		ft_write_flags(t_flags *flags, char *arg)
+{
+	flags->one = ft_strchr(arg, '1') ? 1 : flags->one;
+	flags->l = ft_strchr(arg, 'l') ? 1 : flags->l;
+	flags->a = ft_strchr(arg, 'a') ? 1 : flags->a;
+	flags->f = ft_strchr(arg, 'f') ? 1 : flags->f;
+	flags->r = ft_strchr(arg, 'r') ? 1 : flags->r;
+	flags->rh = ft_strchr(arg, 'R') ? 1 : flags->rh;
+	flags->t = ft_strchr(arg, 't') ? 1 : flags->t;
+	if (flags->l == 1 && flags->one == 1)
+	{
+		if (ft_strlen(ft_strrchr(arg, '1')) < ft_strlen(ft_strrchr(arg, 'l')))
+			flags->l= 0;
+		else if (ft_strlen(ft_strrchr(arg, '1')) > ft_strlen(ft_strrchr(arg, 'l')))
+			flags->one = 0;
+	}
+}
 
 int			ft_scan_flags(t_flags *flags, char **arg, int argc)
 {
@@ -27,15 +45,16 @@ int			ft_scan_flags(t_flags *flags, char **arg, int argc)
 			{
 				if ((ft_flag_error(arg[i])))
 					return (0);
-				flags->one = ft_strchr(arg[i], '1') ? 1 : flags->one;
-				flags->a = ft_strchr(arg[i], 'a') ? 1 : flags->a;
-				flags->l = ft_strchr(arg[i], 'l') ? 1 : flags->l;
-				flags->r = ft_strchr(arg[i], 'r') ? 1 : flags->r;
-				flags->rh = ft_strchr(arg[i], 'R') ? 1 : flags->rh;
-				flags->t = ft_strchr(arg[i], 't') ? 1 : flags->t;
+				ft_write_flags(flags, arg[i]);
 			}
 			i++;
 		}
+	}
+	if (flags->f == 1)
+	{
+		flags->a = 1;
+		flags->t = 0;
+		flags->r = 0;
 	}
 	return (1);
 }

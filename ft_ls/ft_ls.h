@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:33:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 18:58:00 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:29:13 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_flags
 	int				rh;
 	int				r;
 	int				t;
+	int				f;
 	int				folders;
 }					t_flags;
 
@@ -121,6 +122,8 @@ void				ft_insert_file(t_files **files, t_files *new,
 	t_flags *flag);
 void				ft_write_n_sort(t_files **files, DIR *dir,
 	t_flags *flag, char *path);
+void				ft_write_dont_sort(t_files **files, DIR *dir, t_flags *flag, char *path);
+
 void				ft_write_l_stats(t_files **files, char *path_a);
 void				ft_l_link(char *path);
 

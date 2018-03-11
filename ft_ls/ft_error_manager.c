@@ -19,10 +19,10 @@ int		ft_flag_error(char *arg)
 	i = 0;
 	while (arg[i++])
 	{
-		if (!(ft_strchr("1alrRt", arg[i])))
+		if (!(ft_strchr("1alfrRt", arg[i])))
 		{
 			ft_mini_printf("ft_ls: illegal option -- %c\n", arg[i]);
-			ft_mini_printf("usage: ft_ls [-Ralrt1] [file ...]\n");
+			ft_mini_printf("usage: ft_ls [-Ralfrt1] [file ...]\n");
 			return (1);
 		}
 	}
