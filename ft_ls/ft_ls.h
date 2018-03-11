@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:33:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 17:12:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:50:05 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void				ft_print_type(t_files *files);
 void				ft_sticky_bit(t_files *files);
 
 void				ft_initialize(t_flags *flags);
-void				ft_count_folders(char **argv, int i, t_flags *flags, int argc, char **files);
+int					ft_count_folders(char **argv, int i,
+	int argc, char **files);
 void				ft_free_lst(t_files **files);
 void				ft_set_stock(t_output *stock, t_files *files,
 	int win_width);

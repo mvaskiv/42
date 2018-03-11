@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 17:41:42 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:50:05 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,15 @@ void		ft_check_folders(int argc, char **argv, int i, int win)
 {
 	t_flags		flags;
 	DIR			*dir;
-	int 		j;
-	int 		f;
-	char 		**files;
+	int			f;
+	char		**files;
 
-	j = i;
 	f = 0;
 	ft_initialize(&flags);
-	files = (char**)malloc(sizeof(char) * argc);
 	if (!(ft_scan_flags(&flags, argv, argc)))
 		return ;
-	ft_count_folders(argv, i, &flags, argc, files);
+	files = (char**)malloc(sizeof(char) * argc);
+	flags.folders = ft_count_folders(argv, i, argc, files);
 	if (files[0] != NULL)
 	{
 		while (files[f] != NULL)

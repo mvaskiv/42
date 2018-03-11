@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:39:38 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 17:36:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:50:05 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,33 @@ void		ft_set_stock(t_output *stock, t_files *files, int win_width)
 			stock->order++;
 }
 
-void		ft_count_folders(char **argv, int i, t_flags *flags, int argc, char **files)
+int			ft_count_folders(char **argv, int i,
+	int argc, char **files)
 {
 	struct stat	stat;
-	int 		f;
+	int			f;
+	int			n;
 
+	n = 0;
 	f = 0;
 	while (argv[i] && (argv[i][0] != '-') && i < argc)
 	{
 		if ((lstat(argv[i], &stat)) < 0)
 		{
 			ft_mini_printf("ft_ls: %s: No such file or directory\n", argv[i]);
-			flags->folders++;
+			n++;
 		}
 		else
 		{
 			if (S_ISDIR(stat.st_mode))
-				flags->folders++;
+				n++;
 			else if (S_ISREG(stat.st_mode))
-			{
 				files[f++] = argv[i];
-			}
 		}
 		i++;
 	}
 	files[f] = NULL;
+	return (n);
 }
 
 void		ft_free_lst(t_files **files)
