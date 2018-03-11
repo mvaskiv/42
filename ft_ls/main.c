@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:59:11 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:41:42 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,35 @@ void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	ft_free_lst(&files);
 }
 
+void		ft_check_folders(int argc, char **argv, int i, int win)
+{
+	t_flags		flags;
+	DIR			*dir;
+	int 		j;
+	int 		f;
+	char 		**files;
+
+	j = i;
+	f = 0;
+	ft_initialize(&flags);
+	files = (char**)malloc(sizeof(char) * argc);
+	if (!(ft_scan_flags(&flags, argv, argc)))
+		return ;
+	ft_count_folders(argv, i, &flags, argc, files);
+	if (files[0] != NULL)
+	{
+		while (files[f] != NULL)
+			ft_putendl(files[f++]);
+		ft_putchar('\n');
+	}
+	while (argv[i] && (argv[i][0] != '-') && i < argc)
+	{
+		if ((dir = opendir(argv[i])))
+			ft_ls_core(&flags, dir, win, argv[i]);
+		i++;
+	}
+}
+
 int			main(int argc, char **argv)
 {
 	struct winsize	win;
@@ -38,19 +67,19 @@ int			main(int argc, char **argv)
 	int				i;
 
 	i = 1;
-	ft_initialize(&flags);
-	if (!(ft_scan_flags(&flags, argv, argc)))
-		return (1);
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
 	while ((i < argc) && (argv[i][0] == '-'))
 		i++;
 	if (argv[i] && argv[i][0] != '-')
 	{
-		ft_count_folders(argv, i, &flags);
-		while (argv[i] && (argv[i][0] != '-') && (dir = opendir(argv[i])))
-			ft_ls_core(&flags, dir, win.ws_col, argv[i++]);
+		ft_check_folders(argc, argv, i, win.ws_col);
 	}
 	else
-		ft_ls_core(&flags, opendir("/"), win.ws_col, "/");
+	{
+		ft_initialize(&flags);
+		if (!(ft_scan_flags(&flags, argv, argc)))
+			return (1);
+		ft_ls_core(&flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
+	}
 	return (0);
 }

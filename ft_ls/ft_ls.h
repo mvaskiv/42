@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:33:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 15:09:25 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:12:05 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void				ft_ls_core(t_flags *flag, DIR *dir,
 	int winsize, char *path);
 void				ft_ls_do(t_files *the, t_flags *magic, int fucker);
 void				ft_ls_output(t_files *files, t_flags *flag, int win_width);
-void				ft_ls_l_output(t_files *files, char *path);
+void				ft_ls_l_output(t_files *temp, char *path);
 
 void				ft_read_list(t_files *files, t_l_out width);
 int					ft_scan_flags(t_flags *flags, char **arg, int argc);
@@ -99,7 +99,7 @@ void				ft_print_type(t_files *files);
 void				ft_sticky_bit(t_files *files);
 
 void				ft_initialize(t_flags *flags);
-void				ft_count_folders(char **argv, int i, t_flags *flags);
+void				ft_count_folders(char **argv, int i, t_flags *flags, int argc, char **files);
 void				ft_free_lst(t_files **files);
 void				ft_set_stock(t_output *stock, t_files *files,
 	int win_width);
@@ -119,6 +119,8 @@ void				ft_insert_file(t_files **files, t_files *new,
 	t_flags *flag);
 void				ft_write_n_sort(t_files **files, DIR *dir,
 	t_flags *flag, char *path);
+void				ft_write_l_stats(t_files **files, char *path_a);
+void				ft_l_link(char *path);
 
 t_files				*ft_new_node(struct dirent *directory, char *path);
 

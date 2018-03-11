@@ -24,7 +24,7 @@ int		ft_true_width(int min_width)
 
 int		ft_columns_number(int word_count, int min_width, int win_width)
 {
-	int 	columns;
+	int		columns;
 
 	columns = 0;
 	min_width = ft_true_width(min_width);

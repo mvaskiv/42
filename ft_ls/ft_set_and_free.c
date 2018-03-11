@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:39:38 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:55:21 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:36:32 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,49 @@ void		ft_initialize(t_flags *flags)
 
 void		ft_set_stock(t_output *stock, t_files *files, int win_width)
 {
+	int		i;
+	int		j;
+
 	stock->rows = 1;
 	stock->words = 0;
 	stock->word_count = 0;
 	stock->min_width = ft_high_namlen(files, 0);
 	stock->true_width = ft_true_width(stock->min_width);
 	stock->word_count = ft_high_namlen(files, 1);
-	stock->columns = ft_columns_number(stock->word_count, stock->min_width, win_width);
+	i = stock->word_count;
+	j = stock->min_width;
+	stock->columns = ft_columns_number(i, j, win_width);
 	stock->order = stock->word_count;
 	if (stock->columns > 1)
-		while (stock->order++ % stock->columns);
+		while (stock->order % stock->columns)
+			stock->order++;
 }
 
-void		ft_count_folders(char **argv, int i, t_flags *flags)
+void		ft_count_folders(char **argv, int i, t_flags *flags, int argc, char **files)
 {
-	while (argv[i] && (argv[i++][0] != '-'))
-		flags->folders++;
+	struct stat	stat;
+	int 		f;
+
+	f = 0;
+	while (argv[i] && (argv[i][0] != '-') && i < argc)
+	{
+		if ((lstat(argv[i], &stat)) < 0)
+		{
+			ft_mini_printf("ft_ls: %s: No such file or directory\n", argv[i]);
+			flags->folders++;
+		}
+		else
+		{
+			if (S_ISDIR(stat.st_mode))
+				flags->folders++;
+			else if (S_ISREG(stat.st_mode))
+			{
+				files[f++] = argv[i];
+			}
+		}
+		i++;
+	}
+	files[f] = NULL;
 }
 
 void		ft_free_lst(t_files **files)

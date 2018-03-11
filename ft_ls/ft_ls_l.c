@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:28:08 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 15:09:03 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 16:39:38 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,24 @@ char	*ft_month(int month_n)
 	return (0);
 }
 
-void		ft_print_time(struct tm *tm, time_t file)
+void	ft_print_time(struct tm *tm, time_t file)
 {
 	time_t			now;
 
 	time(&now);
 	if ((now - file) < 15778463)
 	{
-		ft_mini_printf(" %s %2i %02i:%02i", ft_month(tm->tm_mon), tm->tm_mday, tm->tm_hour, tm->tm_min);
+		ft_mini_printf(" %s %2i ", ft_month(tm->tm_mon), tm->tm_mday);
+		ft_mini_printf("%02i:%02i", tm->tm_hour, tm->tm_min);
 	}
 	else
 	{
-		ft_mini_printf(" %s %2i %5i", ft_month(tm->tm_mon), tm->tm_mday, (1900 + tm->tm_year));
+		ft_mini_printf(" %s %2i ", ft_month(tm->tm_mon), tm->tm_mday);
+		ft_mini_printf("%5i", (1900 + tm->tm_year));
 	}
 }
 
-void		ft_read_list(t_files *files, t_l_out width)
+void	ft_read_list(t_files *files, t_l_out width)
 {
 	struct group	*gr;
 	struct tm		*tm;
@@ -84,7 +86,7 @@ void		ft_read_list(t_files *files, t_l_out width)
 	ft_putchar('\n');
 }
 
-void		ft_write_l_stats(t_files **files, char *path_a)
+void	ft_write_l_stats(t_files **files, char *path_a)
 {
 	t_files		*temp;
 	char		*path;
@@ -105,28 +107,19 @@ void		ft_write_l_stats(t_files **files, char *path_a)
 	temp->data->time = stats.st_mtimespec.tv_sec;
 }
 
-void		ft_ls_l_output(t_files *temp, char *path)
+void	ft_ls_l_output(t_files *temp, char *path)
 {
 	t_l_out		widths;
 	struct stat	stats;
-	t_files		*one_for_link;
 	t_files		*files;
 
 	lstat(path, &stats);
 	if ((S_ISLNK(stats.st_mode)))
 	{
-		one_for_link = (t_files *)malloc(sizeof(t_files));
-		one_for_link->data = (t_data *)malloc(sizeof(t_data));
-		one_for_link->name = path;
-		ft_write_l_stats(&one_for_link, path);
-		ft_set_cols(one_for_link, &widths);
-		ft_read_list(one_for_link, widths);
-		free(one_for_link->data);
-		free(one_for_link->path);
-		free(one_for_link);
-		one_for_link = NULL;
+		ft_l_link(path);
 		return ;
 	}
+	files = temp;
 	ft_set_cols(files, &widths);
 	ft_mini_printf("total %d\n", widths.blocks);
 	while (files != NULL)

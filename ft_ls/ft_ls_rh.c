@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls_R.c                                          :+:      :+:    :+:   */
+/*   ft_ls_rh.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:51:49 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:52:48 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 16:51:29 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_files		*ft_find_folders(t_files *files, t_flags *flag)
 	t_files		*folders;
 
 	i = 1;
+	folders = NULL;
 	while (files != NULL)
 	{
 		while ((files->name[0] == '.' && files->name[1] == '\0') ||
@@ -70,6 +71,7 @@ void		ft_ls_do(t_files *the, t_flags *magic, int fucker)
 	t_files		*folders;
 	DIR			*dir;
 
+	folders = NULL;
 	if (!(folders = ft_find_folders(the, magic)))
 		return ;
 	while (folders != NULL)

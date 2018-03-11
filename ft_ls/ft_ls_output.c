@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:52:58 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:55:21 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 16:47:43 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ static void	ft_output_columns(t_files *files, t_output stock)
 	free(table);
 }
 
-void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
+void		ft_single_col(t_output stock, t_files *files, t_flags *flag)
 {
-	t_output	stock;
-
-	ft_set_stock(&stock, files, win_width);
 	if (stock.columns == 0)
 	{
 		while (files != NULL)
@@ -69,13 +66,7 @@ void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
 			ft_mini_printf("%-*s", stock.true_width, files->name);
 			files = files->next;
 		}
-		if (flag->rh == 1)
-		{
-			if (files != NULL)
-				ft_putchar('\n');
-		}
-		else
-			ft_putchar('\n');
+		ft_putchar('\n');
 	}
 	if (stock.columns == 1)
 	{
@@ -85,7 +76,18 @@ void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
 			files = files->next;
 		}
 	}
-	if (stock.columns > 1)
+}
+
+void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
+{
+	t_output	stock;
+
+	if (files == NULL)
+		return ;
+	ft_set_stock(&stock, files, win_width);
+	if (stock.columns <= 1)
+		ft_single_col(stock, files, flag);
+	else if (stock.columns > 1)
 	{
 		ft_output_columns(files, stock);
 		ft_putchar('\n');
