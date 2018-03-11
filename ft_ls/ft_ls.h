@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:33:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 19:40:11 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 20:17:09 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct		s_flags
 	int				a;
 	int				l;
 	int				g;
+	int				gh;
 	int				rh;
 	int				r;
 	int				t;
@@ -82,7 +83,7 @@ typedef struct		s_l_out
 void				ft_ls_core(t_flags *flag, DIR *dir,
 	int winsize, char *path);
 void				ft_ls_do(t_files *the, t_flags *magic, int fucker);
-void				ft_ls_output(t_files *files, int win_width);
+void				ft_ls_output(t_files *files, int win_width, t_flags *flag);
 void				ft_ls_l_output(t_files *temp, char *path, t_flags *flags);
 
 void				ft_read_list(t_files *files, t_l_out width);
@@ -130,6 +131,7 @@ void				ft_write_dont_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
 
 void				ft_write_l_stats(t_files **files, char *path_a);
 void				ft_l_link(char *path);
+void				ft_write_color(t_files *files);
 
 t_files				*ft_new_node(struct dirent *directory, char *path);
 

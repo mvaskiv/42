@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:11:02 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 20:00:06 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 20:00:16 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		ft_write_flags(t_flags *flags, char *arg)
 	flags->a = ft_strchr(arg, 'a') ? 1 : flags->a;
 	flags->f = ft_strchr(arg, 'f') ? 1 : flags->f;
 	flags->g = ft_strchr(arg, 'g') ? 1 : flags->g;
+	flags->gh = ft_strchr(arg, 'G') ? 1 : flags->gh;
 	flags->r = ft_strchr(arg, 'r') ? 1 : flags->r;
 	flags->rh = ft_strchr(arg, 'R') ? 1 : flags->rh;
 	flags->t = ft_strchr(arg, 't') ? 1 : flags->t;

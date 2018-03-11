@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 19:30:09 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:37:46 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	if (flag->l == 1)
 		ft_ls_l_output(files, path, flag);
 	if ((flag->l != 1))
-		ft_ls_output(files, (flag->one == 1 ? 0 : winsize));
+		ft_ls_output(files, (flag->one == 1 ? 0 : winsize), flag);
 	if (flag->rh == 1)
 		ft_ls_do(files, flag, winsize);
 	if (flag->folders > 1 && flag->rh != 1 && files != NULL)

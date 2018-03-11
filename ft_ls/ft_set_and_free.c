@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:39:38 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 17:51:02 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:32:03 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		ft_initialize(t_flags *flags)
 	flags->a = 0;
 	flags->l = 0;
 	flags->f = 0;
+	flags->g = 0;
+	flags->gh = 0;
 	flags->r = 0;
 	flags->rh = 0;
 	flags->t = 0;

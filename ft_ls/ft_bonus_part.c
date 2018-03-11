@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:25:19 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 19:39:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 20:21:36 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		ft_write_dont_sort(t_files **files, DIR *dir, t_flags *flag,
 	}
 }
 
-void	ft_read_list_g(t_files *files, t_l_out width)
+void		ft_read_list_g(t_files *files, t_l_out width)
 {
 	struct group	*gr;
 	struct tm		*tm;
@@ -75,4 +75,28 @@ void	ft_read_list_g(t_files *files, t_l_out width)
 	ft_mini_printf(" %s", files->name);
 	ft_read_link(files);
 	ft_putchar('\n');
+}
+
+void		ft_write_color(t_files *files)
+{
+	if (S_ISDIR(files->data->mode))
+	{
+		ft_mini_printf(CYN);
+		ft_mini_printf("%s\n", files->name);
+		ft_mini_printf(NRM);
+	}
+	else if (S_ISLNK(files->data->mode))
+	{
+		ft_mini_printf(YEL);
+		ft_mini_printf("%s\n", files->name);
+		ft_mini_printf(NRM);
+	}
+	else if (files->data->mode & S_IEXEC)
+	{
+		ft_mini_printf(RED);
+		ft_mini_printf("%s\n", files->name);
+		ft_mini_printf(NRM);
+	}
+	else
+		ft_mini_printf("%s\n", files->name);
 }
