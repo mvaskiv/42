@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls_R.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:51:49 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:52:42 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 void		ft_insert_folder(t_files **folders, t_files *files)
 {
-	t_files		*temp = NULL;
-	t_files		*new = NULL;
+	t_files		*temp;
+	t_files		*new;
 
 	new = (t_files*)malloc(sizeof(t_files));
 	new->name = ft_strdup(files->name);
@@ -27,14 +39,14 @@ void		ft_insert_folder(t_files **folders, t_files *files)
 
 t_files		*ft_find_folders(t_files *files, t_flags *flag)
 {
-	int 		i;
-	t_files		*folders = NULL;;
+	int			i;
+	t_files		*folders;
 
 	i = 1;
 	while (files != NULL)
 	{
 		while ((files->name[0] == '.' && files->name[1] == '\0') ||
-				(files->name[0] == '.' && files->name[1] == '.'))
+			(files->name[0] == '.' && files->name[1] == '.'))
 		{
 			files = files->next;
 			if (files == NULL)
@@ -53,28 +65,10 @@ t_files		*ft_find_folders(t_files *files, t_flags *flag)
 	return (folders);
 }
 
-//void		ft_free_node(t_files **files)
-//{
-//	t_files		*temp;
-//	t_files		*rem;
-//
-//	temp = *files;
-//	rem = temp;
-//	rem = temp->next;
-//	if (temp->name != NULL)
-//	{
-//		ft_strdel(&temp->name);
-//		ft_strdel(&temp->path);
-//		free(temp->data);
-//	}
-//	free(temp);
-//	temp = rem;
-//}
-
-void 		ft_ls_do(t_files *the, t_flags *magic, int fucker)
+void		ft_ls_do(t_files *the, t_flags *magic, int fucker)
 {
-	t_files			*folders = NULL;
-	DIR				*dir = NULL;
+	t_files		*folders;
+	DIR			*dir;
 
 	if (!(folders = ft_find_folders(the, magic)))
 		return ;
@@ -86,7 +80,6 @@ void 		ft_ls_do(t_files *the, t_flags *magic, int fucker)
 		magic->folders--;
 		ft_strdel(&folders->name);
 		ft_strdel(&folders->path);
-//		free(folders->data);
 		free (folders);
 		folders = folders->next;
 	}

@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls_output.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:52:58 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:53:27 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
 char		**ft_list_to_arr(t_files *files, t_output stock)
 {
-	char 	**arr = NULL;
-	int 	i;
+	char	**arr;
+	int		i;
 
 	i = 0;
 	arr = (char**)malloc(sizeof(char*) * stock.word_count + 1);
@@ -20,9 +31,9 @@ char		**ft_list_to_arr(t_files *files, t_output stock)
 
 static void	ft_output_columns(t_files *files, t_output stock)
 {
-	int 	i;
-	int 	q;
-	char 	**table = NULL;
+	int		i;
+	int		q;
+	char	**table;
 
 	table = ft_list_to_arr(files, stock);
 	i = 0;
@@ -58,7 +69,7 @@ void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
 			ft_mini_printf("%-*s", stock.true_width, files->name);
 			files = files->next;
 		}
-		if (flag->R == 1)
+		if (flag->rh == 1)
 		{
 			if (files != NULL)
 				ft_putchar('\n');

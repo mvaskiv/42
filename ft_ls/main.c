@@ -6,34 +6,35 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:17:00 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:59:11 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void 	ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
+void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
-	t_files		*files = NULL;
+	t_files		*files;
 
 	ft_write_n_sort(&files, dir, flag, path);
 	if (flag->folders > 1)
-		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ? ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
+		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ?
+			ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
 	if (flag->l == 1)
 		ft_ls_l_output(files, path);
 	if ((flag->l != 1))
 		ft_ls_output(files, flag, (flag->one == 1 ? 0 : winsize));
-	if (flag->R == 1)
+	if (flag->rh == 1)
 		ft_ls_do(files, flag, winsize);
 	closedir(dir);
 	ft_free_lst(&files);
 }
 
-int 		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	struct winsize	win;
 	t_flags			flags;
-	DIR				*dir = NULL;
+	DIR				*dir;
 	int				i;
 
 	i = 1;

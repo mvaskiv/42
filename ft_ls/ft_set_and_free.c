@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_set_and_free.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 14:39:38 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:40:13 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 void		ft_initialize(t_flags *flags)
@@ -6,11 +18,10 @@ void		ft_initialize(t_flags *flags)
 	flags->a = 0;
 	flags->l = 0;
 	flags->r = 0;
-	flags->R = 0;
+	flags->rh = 0;
 	flags->t = 0;
 	flags->folders = 0;
 }
-
 
 void	ft_set_stock(t_output *stock, t_files *files, int win_width)
 {
@@ -26,7 +37,7 @@ void	ft_set_stock(t_output *stock, t_files *files, int win_width)
 		while (stock->order++ % stock->columns);
 }
 
-void 		ft_count_folders(char **argv, int i, t_flags *flags)
+void		ft_count_folders(char **argv, int i, t_flags *flags)
 {
 	while (argv[i] && (argv[i++][0] != '-'))
 		flags->folders++;
@@ -34,8 +45,8 @@ void 		ft_count_folders(char **argv, int i, t_flags *flags)
 
 void		ft_free_lst(t_files **files)
 {
-	t_files		*temp = NULL;
-	t_files		*rem = NULL;
+	t_files		*temp;
+	t_files		*rem;
 
 	temp = *files;
 	rem = temp;
@@ -52,18 +63,16 @@ void		ft_free_lst(t_files **files)
 		free(temp);
 	}
 }
-//
-//char			*ft_alter_path(char **path, char *name)
-//{
-//	int 	i;
-//	char 	*str = NULL;
-//
-//	i = 0;
-//	if (*path)
-//		i = ft_strlen(*path);
-//	str = (char*)malloc(sizeof(char) * (i + ft_strlen(name)));
-//	ft_memmove(str, *path, i);
-//	str[i] = '/';
-//	ft_strcat(str, name);
-//	return (str);
-//}
+
+t_files		*ft_new_node(struct dirent *directory, char *path)
+{
+	t_files		*new;
+
+	new = (t_files *)malloc(sizeof(t_files));
+	new->data = (t_data*)malloc(sizeof(t_data));
+	new->name = ft_strdup(directory->d_name);
+	new->data->namlen = directory->d_namlen;
+	ft_write_stats(&new, path);
+	new->next = NULL;
+	return (new);
+}

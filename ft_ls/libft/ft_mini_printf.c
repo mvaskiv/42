@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:10:56 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:21:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 15:01:59 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,9 @@ static void		ft_width_ini(t_mini *mini)
 	mini->conv.xh = 0;
 }
 
-static int		ft_scan_width(t_mini *mini, const char *format, va_list arg)
+static int		ft_scan_width(t_mini *mini, const char *format,
+	va_list arg, int i)
 {
-	int		i;
-
-	i = 0;
 	if (*format == '-')
 	{
 		mini->sign = 1;
@@ -89,7 +87,7 @@ static int		ft_mini_engine(va_list arg, const char *format)
 		if (spec == '%')
 		{
 			if (ft_strchr("*0123456789-+ #", *format))
-				format += ft_scan_width(&mini, format, arg);
+				format += ft_scan_width(&mini, format, arg, 0);
 			if (ft_strchr("cCsSpdDioOuUxX", *format))
 				format += ft_process(arg, &format, &mini);
 		}
@@ -99,7 +97,7 @@ static int		ft_mini_engine(va_list arg, const char *format)
 	return (output);
 }
 
-int			ft_mini_printf(const char *format, ...)
+int				ft_mini_printf(const char *format, ...)
 {
 	int		output;
 	va_list	arg;

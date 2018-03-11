@@ -6,28 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:11:02 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:25:21 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 15:03:52 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-int		ft_flag_error(char *arg)
-{
-	int		i;
-
-	i = 0;
-	while (arg[i++])
-	{
-		if (!(ft_strchr("1alrRt", arg[i])))
-		{
-			ft_mini_printf("ft_ls: illegal option -- %c\n", arg[i]);
-			ft_mini_printf("usage: ft_ls [-Ralrt1] [file ...]\n");
-			return (1);
-		}
-	}
-	return (0);
-}
 
 int		ft_scan_flags(t_flags *flags, char **arg, int argc)
 {
@@ -48,7 +31,7 @@ int		ft_scan_flags(t_flags *flags, char **arg, int argc)
 				flags->a = ft_strchr(arg[i], 'a') ? 1 : flags->a;
 				flags->l = ft_strchr(arg[i], 'l') ? 1 : flags->l;
 				flags->r = ft_strchr(arg[i], 'r') ? 1 : flags->r;
-				flags->R = ft_strchr(arg[i], 'R') ? 1 : flags->R;
+				flags->rh = ft_strchr(arg[i], 'R') ? 1 : flags->R;
 				flags->t = ft_strchr(arg[i], 't') ? 1 : flags->t;
 			}
 			i++;
@@ -132,34 +115,4 @@ void		ft_write_names(t_files **files, DIR *dir, t_flags flag, char *path)
 		*files = temp;
 		temp = *files;
 	}
-}
-
-void		ft_read_link(t_files *files)
-{
-	char	*name;
-	ssize_t	i;
-
-	i = 0;
-	if ((S_ISLNK(files->data->mode)))
-	{
-		name = (char*)malloc(sizeof(char) * 100);
-		i = readlink(files->path, name, 100);
-		name[i] = '\0';
-		ft_mini_printf(" -> %s", name);
-		ft_strdel(&name);
-	}
-}
-
-void	ft_read_ext_perm(char *path)
-{
-	acl_t	acl;
-
-	acl = acl_get_link_np(path, ACL_TYPE_EXTENDED);
-	if ((listxattr(path, NULL, 0, XATTR_NOFOLLOW)) > 0)
-		ft_mini_printf("@ ");
-	else if (acl > 0)
-		ft_mini_printf("+ ");
-	else
-		ft_mini_printf("  ");
-	free(acl);
 }
