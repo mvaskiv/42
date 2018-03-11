@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:11:02 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 20:00:16 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 20:41:14 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void		ft_write_flags(t_flags *flags, char *arg)
 	if (flags->l == 1 && flags->one == 1)
 	{
 		if (ft_strlen(ft_strrchr(arg, '1')) < ft_strlen(ft_strrchr(arg, 'l')))
-			flags->l= 0;
-		else if (ft_strlen(ft_strrchr(arg, '1')) > ft_strlen(ft_strrchr(arg, 'l')))
+			flags->l = 0;
+		if (ft_strlen(ft_strrchr(arg, '1')) > ft_strlen(ft_strrchr(arg, 'l')))
 			flags->one = 0;
 	}
 }
