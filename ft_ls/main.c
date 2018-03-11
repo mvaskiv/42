@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 19:29:56 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:30:09 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ?
 			ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
 	if (flag->l == 1)
-		ft_ls_l_output(files, path);
+		ft_ls_l_output(files, path, flag);
 	if ((flag->l != 1))
 		ft_ls_output(files, (flag->one == 1 ? 0 : winsize));
 	if (flag->rh == 1)

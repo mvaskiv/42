@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:33:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 19:29:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:40:11 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct		s_flags
 	int				one;
 	int				a;
 	int				l;
+	int				g;
 	int				rh;
 	int				r;
 	int				t;
@@ -82,9 +83,11 @@ void				ft_ls_core(t_flags *flag, DIR *dir,
 	int winsize, char *path);
 void				ft_ls_do(t_files *the, t_flags *magic, int fucker);
 void				ft_ls_output(t_files *files, int win_width);
-void				ft_ls_l_output(t_files *temp, char *path);
+void				ft_ls_l_output(t_files *temp, char *path, t_flags *flags);
 
 void				ft_read_list(t_files *files, t_l_out width);
+void				ft_read_list_g(t_files *files, t_l_out width);
+
 int					ft_scan_flags(t_flags *flags, char **arg, int argc);
 void				ft_write_names(t_files **files, DIR *dir,
 	t_flags flag, char *path);
@@ -99,6 +102,7 @@ void				ft_set_cols(t_files *files, t_l_out *width);
 void				ft_print_type(t_files *files);
 void				ft_sticky_bit(t_files *files);
 void				ft_set_uid(t_files *files);
+void				ft_print_time(struct tm *tm, time_t file);
 
 void				ft_initialize(t_flags *flags);
 int					ft_count_folders(char **argv, int i,

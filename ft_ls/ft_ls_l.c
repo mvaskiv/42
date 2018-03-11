@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:28:08 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 16:42:25 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:39:19 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_write_l_stats(t_files **files, char *path_a)
 	temp->data->time = stats.st_mtimespec.tv_sec;
 }
 
-void	ft_ls_l_output(t_files *temp, char *path)
+void	ft_ls_l_output(t_files *temp, char *path, t_flags *flags)
 {
 	t_l_out		widths;
 	struct stat	stats;
@@ -124,6 +124,8 @@ void	ft_ls_l_output(t_files *temp, char *path)
 	ft_mini_printf("total %d\n", widths.blocks);
 	while (files != NULL)
 	{
+		flags->g == 1 ?
+		ft_read_list_g(files, widths) :
 		ft_read_list(files, widths);
 		files = files->next;
 	}

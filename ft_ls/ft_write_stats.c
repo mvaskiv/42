@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:11:02 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 19:31:50 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 20:00:06 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void		ft_write_flags(t_flags *flags, char *arg)
 	flags->l = ft_strchr(arg, 'l') ? 1 : flags->l;
 	flags->a = ft_strchr(arg, 'a') ? 1 : flags->a;
 	flags->f = ft_strchr(arg, 'f') ? 1 : flags->f;
+	flags->g = ft_strchr(arg, 'g') ? 1 : flags->g;
 	flags->r = ft_strchr(arg, 'r') ? 1 : flags->r;
 	flags->rh = ft_strchr(arg, 'R') ? 1 : flags->rh;
 	flags->t = ft_strchr(arg, 't') ? 1 : flags->t;
@@ -28,6 +29,18 @@ void		ft_write_flags(t_flags *flags, char *arg)
 		else if (ft_strlen(ft_strrchr(arg, '1')) > ft_strlen(ft_strrchr(arg, 'l')))
 			flags->one = 0;
 	}
+}
+
+void		ft_alter_flags(t_flags *flags)
+{
+	if (flags->f == 1)
+	{
+		flags->a = 1;
+		flags->t = 0;
+		flags->r = 0;
+	}
+	if (flags->g == 1)
+		flags->l = 1;
 }
 
 int			ft_scan_flags(t_flags *flags, char **arg, int argc)
@@ -50,12 +63,7 @@ int			ft_scan_flags(t_flags *flags, char **arg, int argc)
 			i++;
 		}
 	}
-	if (flags->f == 1)
-	{
-		flags->a = 1;
-		flags->t = 0;
-		flags->r = 0;
-	}
+	ft_alter_flags(flags);
 	return (1);
 }
 
