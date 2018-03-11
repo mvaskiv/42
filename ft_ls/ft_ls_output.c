@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:52:58 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:53:27 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:55:21 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_output_columns(t_files *files, t_output stock)
 		if (stock.words >= stock.word_count)
 			break ;
 		i += (stock.order / stock.columns);
-		if (i >=  stock.word_count)
+		if (i >= stock.word_count)
 			q = (stock.columns - 1);
 		if (++q >= stock.columns)
 		{

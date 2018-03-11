@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_columns.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/11 15:13:45 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 15:13:45 by mvaskiv          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 int		ft_true_width(int min_width)
@@ -23,9 +35,9 @@ int		ft_columns_number(int word_count, int min_width, int win_width)
 	return (columns);
 }
 
-void			ft_set_cols(t_files *files, t_l_out *width)
+void	ft_set_cols(t_files *files, t_l_out *width)
 {
-	t_files			*temp = NULL;
+	t_files			*temp;
 	struct group	*grp;
 
 	temp = files;
@@ -50,12 +62,11 @@ void			ft_set_cols(t_files *files, t_l_out *width)
 	}
 }
 
-
-int 		ft_high_namlen(t_files *files, int type)
+int		ft_high_namlen(t_files *files, int type)
 {
-	t_files		*temp = NULL;
-	int			i;
-	int 		j;
+	t_files	*temp;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

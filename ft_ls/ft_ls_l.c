@@ -6,22 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:28:08 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:30:36 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 15:09:03 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-char	*ft_get_uname(uid_t uid)
-{
-	struct passwd	*passwd;
-
-	passwd = getpwuid(uid);
-	if (passwd != NULL)
-		return (passwd->pw_name);
-	else
-		return (NULL);
-}
 
 char	*ft_month(int month_n)
 {
@@ -52,34 +41,6 @@ char	*ft_month(int month_n)
 	return (0);
 }
 
-void			ft_print_type(t_files *files)
-{
-	if (files->data->mode & S_IFIFO)
-		ft_putchar('p');
-	else if (S_ISDIR(files->data->mode))
-		ft_putchar('d');
-//	if (files->data->stats.st_mode & S_IFBLK)
-//		ft_putchar('b');
-	else if (S_ISLNK(files->data->mode))
-		ft_putchar('l');
-	else if (S_ISCHR(files->data->mode))
-		ft_putchar('c');
-	else if (S_ISSOCK(files->data->mode))
-		ft_putchar('s');
-	else
-		ft_putchar('-');
-}
-
-void			ft_sticky_bit(t_files *files)
-{
-	if (files->data->mode & S_ISVTX)
-		ft_mini_printf("t");
-	else if (files->data->mode & S_IXOTH)
-		ft_mini_printf("x");
-	else
-		ft_mini_printf("-");
-}
-
 void		ft_print_time(struct tm *tm, time_t file)
 {
 	time_t			now;
@@ -95,7 +56,7 @@ void		ft_print_time(struct tm *tm, time_t file)
 	}
 }
 
-void			ft_read_list(t_files *files, t_l_out width)
+void		ft_read_list(t_files *files, t_l_out width)
 {
 	struct group	*gr;
 	struct tm		*tm;
@@ -144,7 +105,7 @@ void		ft_write_l_stats(t_files **files, char *path_a)
 	temp->data->time = stats.st_mtimespec.tv_sec;
 }
 
-void	ft_ls_l_output(t_files *temp, char *path)
+void		ft_ls_l_output(t_files *temp, char *path)
 {
 	t_l_out		widths;
 	struct stat	stats;

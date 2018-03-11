@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:33:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:58:00 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 15:09:25 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct		s_flags
 	int				l;
 	int				rh;
 	int				r;
-	int			 	t;
+	int				t;
 	int				folders;
 }					t_flags;
 
@@ -62,7 +62,7 @@ typedef struct		s_output
 	int				word_count;
 	int				min_width;
 	int				true_width;
-	int		 		columns;
+	int				columns;
 	int				rows;
 	int				order;
 	int				words;
@@ -95,6 +95,8 @@ void				ft_read_ext_perm(char *path);
 void				ft_read_link(t_files *files);
 
 void				ft_set_cols(t_files *files, t_l_out *width);
+void				ft_print_type(t_files *files);
+void				ft_sticky_bit(t_files *files);
 
 void				ft_initialize(t_flags *flags);
 void				ft_count_folders(char **argv, int i, t_flags *flags);

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:39:38 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:40:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:55:21 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		ft_initialize(t_flags *flags)
 	flags->folders = 0;
 }
 
-void	ft_set_stock(t_output *stock, t_files *files, int win_width)
+void		ft_set_stock(t_output *stock, t_files *files, int win_width)
 {
 	stock->rows = 1;
 	stock->words = 0;

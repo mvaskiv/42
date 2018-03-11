@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:48:27 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 14:48:27 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 15:07:00 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void		ft_help_by_date(t_files **files, t_files *new, t_flags *flag)
 	}
 	else
 	{
-		while ((temp->next != NULL) && (new->data->time != temp->next->data->time))
+		while ((temp->next != NULL) &&
+			(new->data->time != temp->next->data->time))
 			temp = temp->next;
 		while (temp->next != NULL &&
 			(temp->next->data->time == new->data->time) && (flag->r == 0 ?
@@ -107,7 +108,8 @@ void		ft_insert_file(t_files **files, t_files *new, t_flags *flag)
 	}
 }
 
-void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
+void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag,
+	char *path)
 {
 	struct dirent	*directory;
 	t_files			**start;
@@ -121,7 +123,8 @@ void		ft_write_n_sort(t_files **files, DIR *dir, t_flags *flag, char *path)
 			if (directory == NULL)
 				return ;
 		}
-		(flag->t == 0) ? ft_insert_file(start, ft_new_node(directory, path), flag) :
-		ft_insert_file_by_date(start, ft_new_node(directory, path), flag);
+		(flag->t == 0) ?
+			ft_insert_file(start, ft_new_node(directory, path), flag) :
+			ft_insert_file_by_date(start, ft_new_node(directory, path), flag);
 	}
 }

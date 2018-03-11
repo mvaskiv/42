@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:11:02 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 15:03:52 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 15:07:45 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		ft_scan_flags(t_flags *flags, char **arg, int argc)
+int			ft_scan_flags(t_flags *flags, char **arg, int argc)
 {
 	int		i;
 
