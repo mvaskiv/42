@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:33:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 17:50:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:51:02 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct		s_l_out
 void				ft_ls_core(t_flags *flag, DIR *dir,
 	int winsize, char *path);
 void				ft_ls_do(t_files *the, t_flags *magic, int fucker);
-void				ft_ls_output(t_files *files, t_flags *flag, int win_width);
+void				ft_ls_output(t_files *files, int win_width);
 void				ft_ls_l_output(t_files *temp, char *path);
 
 void				ft_read_list(t_files *files, t_l_out width);

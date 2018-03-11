@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 14:52:58 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 16:47:43 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 16:48:16 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	ft_output_columns(t_files *files, t_output stock)
 	free(table);
 }
 
-void		ft_single_col(t_output stock, t_files *files, t_flags *flag)
+void		ft_single_col(t_output stock, t_files *files)
 {
 	if (stock.columns == 0)
 	{
@@ -78,7 +78,7 @@ void		ft_single_col(t_output stock, t_files *files, t_flags *flag)
 	}
 }
 
-void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
+void		ft_ls_output(t_files *files, int win_width)
 {
 	t_output	stock;
 
@@ -86,7 +86,7 @@ void		ft_ls_output(t_files *files, t_flags *flag, int win_width)
 		return ;
 	ft_set_stock(&stock, files, win_width);
 	if (stock.columns <= 1)
-		ft_single_col(stock, files, flag);
+		ft_single_col(stock, files);
 	else if (stock.columns > 1)
 	{
 		ft_output_columns(files, stock);

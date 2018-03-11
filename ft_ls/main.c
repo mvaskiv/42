@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 17:50:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/11 18:22:40 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	if (flag->l == 1)
 		ft_ls_l_output(files, path);
 	if ((flag->l != 1))
-		ft_ls_output(files, flag, (flag->one == 1 ? 0 : winsize));
+		ft_ls_output(files, (flag->one == 1 ? 0 : winsize));
 	if (flag->rh == 1)
 		ft_ls_do(files, flag, winsize);
 	closedir(dir);
 	ft_free_lst(&files);
 }
 
-void		ft_check_folders(int argc, char **argv, int i, int win)
+int		ft_check_folders(int argc, char **argv, int i, int win)
 {
 	t_flags		flags;
 	DIR			*dir;
@@ -40,7 +40,7 @@ void		ft_check_folders(int argc, char **argv, int i, int win)
 	f = 0;
 	ft_initialize(&flags);
 	if (!(ft_scan_flags(&flags, argv, argc)))
-		return ;
+		return (1);
 	files = (char**)malloc(sizeof(char) * argc);
 	flags.folders = ft_count_folders(argv, i, argc, files);
 	if (files[0] != NULL)
@@ -55,13 +55,13 @@ void		ft_check_folders(int argc, char **argv, int i, int win)
 			ft_ls_core(&flags, dir, win, argv[i]);
 		i++;
 	}
+	return (0);
 }
 
 int			main(int argc, char **argv)
 {
 	struct winsize	win;
 	t_flags			flags;
-	DIR				*dir;
 	int				i;
 
 	i = 1;
@@ -70,7 +70,7 @@ int			main(int argc, char **argv)
 		i++;
 	if (argv[i] && argv[i][0] != '-')
 	{
-		ft_check_folders(argc, argv, i, win.ws_col);
+		return ((ft_check_folders(argc, argv, i, win.ws_col)) ? 1 : 0);
 	}
 	else
 	{
