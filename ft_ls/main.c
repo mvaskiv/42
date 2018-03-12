@@ -6,7 +6,7 @@
 /*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 17:24:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/11 19:37:46 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/12 12:24:45 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 {
 	t_files		*files;
+	char		*path_print;
 
 	flag->f == 0 ?
 	ft_write_n_sort(&files, dir, flag, path) :
 	ft_write_dont_sort(&files, dir, flag, path);
+	path_print = ft_strjoin(".", path + ft_strlen(getenv("PWD")));
 	if (flag->folders > 1)
 		ft_mini_printf("%s:\n", ((ft_strstr(path, getenv("PWD")) > 0 ?
-			ft_strjoin(".", path + ft_strlen(getenv("PWD"))) : path)));
+			path_print : path)));
 	if (flag->l == 1)
 		ft_ls_l_output(files, path, flag);
 	if ((flag->l != 1))
@@ -31,6 +33,8 @@ void		ft_ls_core(t_flags *flag, DIR *dir, int winsize, char *path)
 	if (flag->folders > 1 && flag->rh != 1 && files != NULL)
 		ft_putchar('\n');
 	closedir(dir);
+	if (path_print != NULL)
+		ft_strdel(&path_print);
 	ft_free_lst(&files);
 }
 
@@ -81,7 +85,9 @@ int			main(int argc, char **argv)
 		ft_initialize(&flags);
 		if (!(ft_scan_flags(&flags, argv, argc)))
 			return (1);
+		flags.rh = 1;
 		ft_ls_core(&flags, opendir(getenv("PWD")), win.ws_col, getenv("PWD"));
 	}
+	sleep (10);
 	return (0);
 }
