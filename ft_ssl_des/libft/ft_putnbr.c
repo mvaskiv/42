@@ -1,18 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl_des.h                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 14:53:41 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/13 16:16:51 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/14 15:58:43 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/18 18:04:18 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_DES_H
-# define FT_SSL_DES_H
+#include "includes/libft.h"
 
-# include "libft/includes/libft.h"
+void			ft_putnbr(int n)
+{
+	int			i[11];
+	int			j;
 
-#endif
+	j = 0;
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	while (n)
+	{
+		i[j++] = n % 10;
+		n /= 10;
+	}
+	i[j] = '\0';
+	if (j == 0)
+		ft_putchar(48);
+	while (--j >= 0)
+		ft_putchar(i[j] + 48);
+}

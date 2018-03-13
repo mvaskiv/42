@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl_des.h                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 14:53:41 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/13 16:16:51 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/14 15:57:09 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/18 18:02:55 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_DES_H
-# define FT_SSL_DES_H
+void		*ft_memset(void *s, int c, unsigned int n)
+{
+	unsigned int	i;
 
-# include "libft/includes/libft.h"
-
-#endif
+	i = 0;
+	while (i < n)
+		((char *)s)[i++] = (unsigned char)c;
+	return (s);
+}

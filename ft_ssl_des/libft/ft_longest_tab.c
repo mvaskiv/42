@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl_des.h                                       :+:      :+:    :+:   */
+/*   ft_longest_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 14:53:41 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/13 16:16:51 by mvaskiv          ###   ########.fr       */
+/*   Created: 2018/03/11 14:26:10 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/11 14:26:10 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_DES_H
-# define FT_SSL_DES_H
+#include "includes/libft.h"
 
-# include "libft/includes/libft.h"
+int		ft_longest_tab(char **arr)
+{
+	int		i;
+	int		j;
 
-#endif
+	j = 0;
+	i = 0;
+	while (arr[j])
+	{
+		if (ft_strlen(arr[j]) > i)
+			i = ft_strlen(arr[j]);
+		j++;
+	}
+	return (i);
+}

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl_des.h                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 14:53:41 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/13 16:16:51 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/14 15:53:29 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/20 16:12:48 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_DES_H
-# define FT_SSL_DES_H
+#include "includes/libft.h"
 
-# include "libft/includes/libft.h"
+void		*ft_memalloc(size_t size)
+{
+	void			*str;
+	unsigned int	i;
 
-#endif
+	i = 0;
+	str = malloc(size);
+	if (str)
+	{
+		while (i < size)
+			((char *)str)[i++] = 0;
+	}
+	return (str);
+}

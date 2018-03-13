@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl_des.h                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 14:53:41 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/13 16:16:51 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/14 16:01:04 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/18 18:04:43 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_DES_H
-# define FT_SSL_DES_H
+char		*ft_strchr(const char *s, int c)
+{
+	int		i;
 
-# include "libft/includes/libft.h"
-
-#endif
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s[i] == c)
+		return ((char *)&s[i]);
+	return (0);
+}

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl_des.h                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 14:53:41 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/13 16:16:51 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/14 16:11:16 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/14 16:11:28 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_DES_H
-# define FT_SSL_DES_H
+#include "includes/libft.h"
 
-# include "libft/includes/libft.h"
+char	*ft_strnew(int size)
+{
+	char	*str;
+	int		i;
 
-#endif
+	i = 0;
+	str = NULL;
+	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	while (i <= size)
+		str[i++] = '\0';
+	return (str);
+}

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl_des.h                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mvaskiv <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 14:53:41 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/13 16:16:51 by mvaskiv          ###   ########.fr       */
+/*   Created: 2017/11/14 16:00:13 by mvaskiv           #+#    #+#             */
+/*   Updated: 2017/11/14 16:00:23 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_DES_H
-# define FT_SSL_DES_H
+#include "includes/libft.h"
 
-# include "libft/includes/libft.h"
+void	ft_putstr(char const *s)
+{
+	int		i;
 
-#endif
+	i = 0;
+	if (s != NULL)
+		while (s[i])
+			write(1, &s[i++], 1);
+}
