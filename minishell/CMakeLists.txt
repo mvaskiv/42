@@ -4,6 +4,8 @@ project(minishell)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(minishell
+        get_next_line.c
+        includes/get_next_line.h
         libft/includes/libft.h
         libft/ft_addchar.c
         libft/ft_arrclr.c
@@ -77,4 +79,4 @@ add_executable(minishell
         libft/ft_strtrim.c
         libft/ft_tolower.c
         libft/ft_toupper.c
-        main.c minishell.h)
+        main.c includes/minishell.h)
