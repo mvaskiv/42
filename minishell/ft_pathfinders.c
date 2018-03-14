@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:49:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/14 18:41:12 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/14 18:41:23 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ char	*ft_find_path(char *input)
 	{
 		fullname = ft_strjoin(ft_check_path(getenv("PATH")), name);
 		if (access(fullname, X_OK) == 0)
+		{
+			ft_strdel(&name);
 			return (fullname);
+		}
 		ft_strdel(&fullname);
 	}
 	return (NULL);

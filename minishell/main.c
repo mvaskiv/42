@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/14 19:02:55 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/14 19:37:51 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	ft_fork(char **input, char **env)
 //	exit(0);
 }
 
-void	ft_welcome(char **line)
+void	ft_welcome(char **line, char *name)
 {
-	ft_mini_printf("%s%s%s", YEL, getenv("USER"), NRM);
-	ft_mini_printf("%s_$>%s ", CYN, NRM);
+	ft_mini_printf("%s%s%s", YEL, name, NRM);
+	ft_mini_printf("%s_$>%s ", CYN, CYN);
 	get_next_line(0, line);
 }
 
@@ -50,13 +50,20 @@ void	ft_cd(char ***env, char *line)
 	envp[i - 1] = ft_strjoin(ft_strjoin(envp[i - 1], "/"), ft_strdup(line + 3));
 }
 
-int		ft_check_input(char *line, char **env)
+int		ft_check_input(char *line, char **env, char **name)
 {
+	char 	*dir;
+
 	if (line[0] == 'e' && line[1] == 'x' && line[2] == 'i' && line[3] == 't')
 		exit(0);
 	else if (line[0] == 'c' && line[1] == 'd')
 	{
-		chdir(ft_strdup(line + 3));
+		if (!line[3])
+			chdir(getenv("HOME"));
+		else
+			chdir(ft_strdup(line + 3));
+		*name = ft_strjoin("..", ft_strrchr(getcwd(dir, NULL), '/'));
+		ft_strdel(&dir);
 		return (1);
 	}
 	return (0);
@@ -68,13 +75,13 @@ int		main(int argc, char **argv, char **envp)
 	char 	**input;
 	char 	*line = NULL;
 	pid_t 	pid;
+	char 	*name = getenv("USER");
 
-
-	while(42)
+	while(!line)
 	{
-		ft_welcome(&line);
-		if (ft_check_input(line, envp))
-			NULL;
+		ft_welcome(&line, name);
+		if (ft_check_input(line, envp, &name))
+			ft_strdel(&line);
 		else
 		{
 			input = ft_strsplit(line, ' ');
