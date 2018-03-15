@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 13:42:55 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 13:50:35 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,10 @@ void	ft_unsetenv(char **env, char *line);
 
 /* Signals */
 void	ft_signal(int signal);
+
+
+/* help_me */
+
+int 	ft_count_quotes(char *line);
 
 #endif

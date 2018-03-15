@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:32:37 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 13:47:26 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 13:50:35 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_fork(char **input, char **env)
 	else if (pid == 0)
 	{
 		execve(input[0], &input[0], env);
-
 		wait(&status);
 	}
 	else

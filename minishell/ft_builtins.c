@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:33:33 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 13:06:11 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 16:24:32 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,4 @@ void	ft_unsetenv(char **env, char *line)
 
 	i = 0;
 	while (!(ft_strstr(env[i++], (line + 9))));
-}
-
-void	ft_echo(char *line)
-{
-	int 	i;
-
-	i = 5;
-	if (!line[i])
-		write(1, "\n", 1);
-	else
-	{
-		while (line[i])
-		{
-			if (line[i] == '\'' || line[i] == '\"')
-				i++;
-			else
-				ft_putchar(line[i++]);
-		}
-		write(1, "\n", 1);
-	}
 }
