@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:51:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 18:52:22 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:54:13 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ int			ft_cd(char *line, char **name)
 		*name = ft_strdup("Sweet_Home");
 		return (1);
 	}
+	if ((chdir(ft_strdup(line + 3))) == 0);
 	else if (ft_cd_error(line))
 		return (1);
-	else if ((chdir(ft_strdup(line + 3))) == 0)
-		chdir(ft_strdup(line + 3));
 	*name = ft_strjoin("..", ft_strrchr(getcwd(dir, NULL), '/'));
 	ft_strdel(&dir);
 	return (1);

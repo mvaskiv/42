@@ -40,8 +40,8 @@ void	ft_fork(char **input, char **env);
 
 /* Builtins */
 int		ft_cd(char *line, char **name);
-int		ft_echo(char *line);
 int		ft_env(char **env);
+int		ft_echo(char *line);
 char	**ft_setenv(char ***envp, char *line);
 int		ft_unsetenv(char **env, char *line);
 

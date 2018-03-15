@@ -79,4 +79,4 @@ add_executable(minishell
         libft/ft_strtrim.c
         libft/ft_tolower.c
         libft/ft_toupper.c
-        main.c includes/minishell.h ft_pathfinders.c ft_welcome.c ft_fork.c ft_builtins.c ft_signal.c ft_keys.c ft_echo.c ft_setenv.c)
+        main.c includes/minishell.h ft_pathfinders.c ft_welcome.c ft_fork.c ft_builtins.c ft_signal.c ft_keys.c ft_echo.c ft_setenv.c ft_cd.c)
