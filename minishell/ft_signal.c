@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/15 12:32:37 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 13:47:26 by mvaskiv          ###   ########.fr       */
+/*   Created: 2018/03/15 13:18:15 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/15 13:30:33 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void	ft_fork(char **input, char **env)
-{
-	int 	status;
-	pid_t	pid;
-
-	pid = fork();
-	if (pid == -1)
-		ft_putendl("error");
-	else if (pid == 0)
-	{
-		execve(input[0], &input[0], env);
-
-		wait(&status);
-	}
-	else
-		waitpid(pid, &status, 0);
-}
+//void	ft_signal(int signal)
+//{
+//	char	c;
+//
+//	c = NULL;
+//	signal(S, ft_signal);
+//
+//		exit(0);
+//	else
+//		signal(SIGINT, ft_signal);
+//
+//}

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 12:58:30 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 13:43:38 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		main(int argc, char **argv, char **envp)
 	pid_t 	pid;
 	char 	*name = getenv("USER");
 
-	while(!line)
+	while(1)
 	{
 		ft_welcome(&line, name);
 		if (ft_check_input(line, envp, &name))
@@ -50,9 +50,14 @@ int		main(int argc, char **argv, char **envp)
 		else
 		{
 			input = ft_strsplit(line, ' ');
-			input[0] = ft_find_path(input[0]);
-			ft_fork(input, envp);
-			ft_strdel(&line);
+			input[0] = ft_find_path(input);
+			if (input[0] == NULL)
+				ft_mini_printf("shell: command not found: %s\n", input[1]);
+			else
+			{
+				ft_fork(input, envp);
+				ft_strdel(&line);
+			}
 		}
 	}
 	return (0);
