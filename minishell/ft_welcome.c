@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_welcome.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 12:34:11 by mvaskiv          ###   ########.fr       */
+/*   Created: 2018/03/15 12:31:44 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/15 12:31:44 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "includes/minishell.h"
 
-# include "../libft/includes/libft.h"
-# include "get_next_line.h"
-# include "unistd.h"
-
-/* Welcome_message */
-void	ft_welcome(char **line, char *name);
-
-/* Pathfinders */
-char	*ft_check_path(char *path);
-char	*ft_find_path(char *input);
-
-/* Forkers */
-void	ft_fork(char **input, char **env);
-
-/* Builtins */
-void	ft_cd(char ***env, char *line);
-
-#endif
+void	ft_welcome(char **line, char *name)
+{
+	ft_mini_printf("%s%s%s", YEL, name, NRM);
+	ft_mini_printf("%s_$>%s ", CYN, CYN);
+	get_next_line(0, line);
+}

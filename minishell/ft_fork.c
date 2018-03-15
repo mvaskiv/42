@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 12:34:11 by mvaskiv          ###   ########.fr       */
+/*   Created: 2018/03/15 12:32:37 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/15 12:32:37 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "includes/minishell.h"
 
-# include "../libft/includes/libft.h"
-# include "get_next_line.h"
-# include "unistd.h"
+void	ft_fork(char **input, char **env)
+{
+	int 	status;
+	pid_t	pid;
 
-/* Welcome_message */
-void	ft_welcome(char **line, char *name);
-
-/* Pathfinders */
-char	*ft_check_path(char *path);
-char	*ft_find_path(char *input);
-
-/* Forkers */
-void	ft_fork(char **input, char **env);
-
-/* Builtins */
-void	ft_cd(char ***env, char *line);
-
-#endif
+	pid = fork();
+	if (pid == -1)
+		ft_putendl("error");
+	else if (pid == 0)
+	{
+		execve(input[0], &input[0], env);
+		wait(&status);
+	}
+	else
+		waitpid(pid, &status, 0);
+}

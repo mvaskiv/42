@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_builtins.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 12:34:11 by mvaskiv          ###   ########.fr       */
+/*   Created: 2018/03/15 12:33:33 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/15 12:34:00 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "includes/minishell.h"
 
-# include "../libft/includes/libft.h"
-# include "get_next_line.h"
-# include "unistd.h"
+void	ft_cd(char ***env, char *line)
+{
+	int		i;
+	char 	**envp;
 
-/* Welcome_message */
-void	ft_welcome(char **line, char *name);
-
-/* Pathfinders */
-char	*ft_check_path(char *path);
-char	*ft_find_path(char *input);
-
-/* Forkers */
-void	ft_fork(char **input, char **env);
-
-/* Builtins */
-void	ft_cd(char ***env, char *line);
-
-#endif
+	i = 0;
+	envp = *env;
+	while (!(ft_strstr(envp[i++], "PWD")));
+	envp[i - 1] = ft_strjoin(ft_strjoin(envp[i - 1], "/"), ft_strdup(line + 3));
+}
