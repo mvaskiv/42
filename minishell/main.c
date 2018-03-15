@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 18:06:15 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 19:33:56 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int		main(int argc, char **argv, char **envp)
 				ft_fork(input, env);
 				ft_strdel(&line);
 			}
+			ft_arrclr(input);
 		}
 	}
 	return (0);

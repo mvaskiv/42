@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 18:08:25 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:52:21 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # include "unistd.h"
 
 
-typedef struct			s_com
+typedef struct		s_com
 {
-	char				*name;
-	struct s_commands	*next;
-	struct s_commands	*prev;
-}						t_com;
+	char			*name;
+	struct s_com	*next;
+	struct s_com	*prev;
+}					t_com;
 
 /* Welcome_message */
 void	ft_welcome(char **line, char *name);
