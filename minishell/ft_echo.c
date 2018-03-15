@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 16:27:07 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/15 16:34:05 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_echo_quotes(char *line, int i)
 	return (i);
 }
 
-void		ft_echo(char *line)
+int		ft_echo(char *line)
 {
 	int i;
 
@@ -67,4 +67,5 @@ void		ft_echo(char *line)
 		}
 		write(1, "\n", 1);
 	}
+	return (1);
 }
