@@ -22,4 +22,5 @@ void	ft_arrclr(char **arr)
 		while (arr[i] != NULL)
 			ft_strdel(&arr[i++]);
 	}
+	free(arr);
 }
