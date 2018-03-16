@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 16:00:26 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 16:02:27 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		ft_echo(char *line)
 				write(1, " ", 1);
 			if (line[i] == ' ')
 				i++;
-			else if (line[i])
+			else if (line[i] != '\0' && line[i] != '\''&& line[i] != '\"')
 				write(1, &line[i++], 1);
 		}
 		write(1, "\n", 1);
