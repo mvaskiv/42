@@ -14,7 +14,7 @@
 
 void	ft_signal_caught(int sig)
 {
-//	kill(getpid(), SIGINT);
+	sig = 0;
 }
 
 void	ft_fork(char **input, char **env)

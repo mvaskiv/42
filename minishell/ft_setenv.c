@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 14:09:22 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 14:17:22 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char 	*ft_env_name(const char *line)
 	return (name);
 }
 
-char	**ft_change_env(char ***env, char *line, int i)
+char	**ft_change_env(char ***env, const char *line, int i)
 {
 	char	**dup;
 	char 	**envp = *env;
@@ -53,7 +53,7 @@ char	**ft_change_env(char ***env, char *line, int i)
 	return (dup);
 }
 
-char 	**ft_new_env(char ***env, char *line, int i)
+char 	**ft_new_env(char ***env, const char *line, int i)
 {
 	char 	**dup;
 	char 	**envp = *env;
@@ -70,7 +70,7 @@ char 	**ft_new_env(char ***env, char *line, int i)
 	return (dup);
 }
 
-char	**ft_setenv(char ***env, char *line)
+char	**ft_setenv(char ***env, const char *line)
 {
 	int		i;
 	char	**dup;

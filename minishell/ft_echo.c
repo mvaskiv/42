@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 16:35:47 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 17:24:42 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-static int	ft_echo_q_pos(char *line, char q)
+static int	ft_echo_q_pos(const char *line, char q)
 {
 	int 	i;
 
@@ -38,7 +38,7 @@ static int 	ft_quote_counter(const char *line, int i, char q)
 	return (c);
 }
 
-static int	ft_echo_quotes(char *line, int i)
+static int	ft_echo_quotes(const char *line, int i)
 {
 	char	q;
 	char 	*str;
@@ -61,7 +61,7 @@ static int	ft_echo_quotes(char *line, int i)
 	return (i - 5);
 }
 
-int		ft_echo(char *line)
+int		ft_echo(const char *line)
 {
 	int i;
 

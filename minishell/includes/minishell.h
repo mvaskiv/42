@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 15:46:28 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 16:12:11 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	ft_fork(char **input, char **env);
 /* Builtins */
 int		ft_cd(const char *line, char **name);
 int		ft_env(char **env);
-int		ft_echo(char *line);
-char	**ft_setenv(char ***envp, char *line);
-char	**ft_unsetenv(char ***env, char *line);
+int		ft_echo(const char *line);
+char	**ft_setenv(char ***envp, const char *line);
+char	**ft_unsetenv(char ***env, const char *line);
 
 /* Signals */
 void	ft_signal(int signal);
