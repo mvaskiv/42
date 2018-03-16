@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:44 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 16:24:19 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 16:31:38 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int 		ft_count_quotes(const char *line)
 	c = 0;
 	i = 0;
 	q = ft_get_quotes(line);
+	if (q == NULL)
+		return (0);
 	while (line[i])
 	{
 		if (line[i] == q)
