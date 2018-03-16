@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 13:50:48 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 14:09:22 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-char 	*ft_env_name(char *line)
+static char 	*ft_env_name(const char *line)
 {
 	char 	*name;
 	int 	i;

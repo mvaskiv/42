@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 13:53:19 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 14:13:14 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,47 @@ int		ft_env(char **env)
 	return (1);
 }
 
+static char 	*ft_env_name(const char *line)
+{
+	char 	*name;
+	int 	i;
+	int 	j;
+
+	j = 0;
+	i = 0;
+	while (line[9 + i] != '=')
+		i++;
+	name = (char*)malloc(sizeof(char) * i);
+	while (j < i)
+	{
+		name[j] = line[9 + j];
+		j++;
+	}
+	name[j] = '\0';
+	return (name);
+}
+
 char	**ft_unsetenv(char ***env, char *line)
 {
-	int 	i;
+	char	**dup;
+	char 	**envp = *env;
+	char 	*env_name;
+	int		i;
 
+	env_name = ft_env_name(line);
 	i = 0;
-	while (!(ft_strstr(env[i++], (line + 9))));
-	return (1);
+	while (envp[i++] != NULL);
+	dup = (char**)malloc(sizeof(char*) * i - 1);
+	i = 0;
+	while (envp[i] != NULL)
+	{
+		dup[i] = ft_strdup(envp[i]);
+		i++;
+		if (ft_strstr(envp[i], env_name))
+			i++;
+	}
+	dup[i] = NULL;
+	ft_strdel(&env_name);
+	ft_arrclr(*env);
+	return (dup);
 }
