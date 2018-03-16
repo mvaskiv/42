@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:44 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 15:09:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 14:39:25 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_welcome(char **line, char *name)
 	i = 0;
 	append = NULL;
 	ft_mini_printf("%s%s%s", BYEL, name, NRM);
-	ft_mini_printf("%s_$>%s ", CYN, CYN);
+	ft_mini_printf("%s_$>%s ", CYN, BWHT);
 	get_next_line(0, line);
 	while ((ft_count_quotes(line[0]) % 2) != 0)
 	{

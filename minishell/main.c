@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 13:48:45 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 15:46:28 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int		ft_check_input(char *line, char ***env, char **name)
+int		ft_check_input(const char *line, char ***env, char **name)
 {
 	if (line[0] == '\0')
 		return (1);
@@ -58,9 +58,25 @@ char 	**ft_arrdup(char **arr)
 	return (dup);
 }
 
-int		main(int argc, char **argv, char **envp)
+void	ft_check_exec(char **line, char ***env)
 {
 	char 	**input;
+
+	input = ft_strsplit(*line, ' ');
+	ft_find_path(input);
+	if (input[0] == NULL)
+		ft_mini_printf("%s%sshell: command not found: %s%s\n", NRM, RED, input[1], BWHT);
+	else
+	{
+		ft_fork(input, *env);
+		ft_strdel(line);
+	}
+	ft_arrclr(input);
+}
+
+int		main(int argc, char **argv, char **envp)
+{
+
 	char 	*line = NULL;
 	pid_t 	pid;
 	char 	*name = getenv("USER");
@@ -75,16 +91,7 @@ int		main(int argc, char **argv, char **envp)
 			ft_strdel(&line);
 		else
 		{
-			input = ft_strsplit(line, ' ');
-			ft_find_path(input);
-			if (input[0] == NULL)
-				ft_mini_printf("shell: command not found: %s\n", input[1]);
-			else
-			{
-				ft_fork(input, env);
-				ft_strdel(&line);
-			}
-			ft_arrclr(input);
+			ft_check_exec(&line, &env);
 		}
 	}
 	return (0);

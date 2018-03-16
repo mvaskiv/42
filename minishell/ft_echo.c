@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 16:34:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 16:00:26 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,35 @@ static int	ft_echo_q_pos(char *line, char q)
 	return (i);
 }
 
+static int 	ft_quote_counter(const char *line, int i, char q)
+{
+	int 	c;
+	char 	qq;
+
+	c = 0;
+	qq = q == '\'' ? '\"' : '\'';
+	while (line[i] != '\0')
+	{
+		if (line[i] == qq)
+			c++;
+		i++;
+	}
+	return (c);
+}
 
 static int	ft_echo_quotes(char *line, int i)
 {
 	char	q;
 	char 	*str;
-	int 	n;
 	int 	l;
 	int 	j;
+	int 	n;
 
 	j = 0;
 	q = line[i++];
+	n = ft_quote_counter(line, i, q);
 	l = ft_echo_q_pos(line, q) - i;
-	str = (char*)malloc(sizeof(char)* l + 1);
+	str = (char*)malloc(sizeof(char)* l + n + 1);
 	while (j < l)
 	{
 		str[j++] = line[i++];
@@ -42,7 +58,7 @@ static int	ft_echo_quotes(char *line, int i)
 	str[j] = '\0';
 	ft_putstr(str);
 	ft_strdel(&str);
-	return (i);
+	return (i - 5);
 }
 
 int		ft_echo(char *line)
@@ -54,7 +70,7 @@ int		ft_echo(char *line)
 		write(1, "\n", 1);
 	else
 	{
-		while (line[i])
+		while (line[i] != '\0')
 		{
 			if (line[i] == '\'' || line[i] == '\"')
 				i += ft_echo_quotes(line, i);

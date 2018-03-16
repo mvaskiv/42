@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:51:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 18:54:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 15:53:26 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-static int	ft_cd_error(char *line)
+static int	ft_cd_error(const char *line)
 {
 	struct stat	stats;
 
@@ -29,10 +29,12 @@ static int	ft_cd_error(char *line)
 	return (0);
 }
 
-int			ft_cd(char *line, char **name)
+int			ft_cd(const char *line, char **name)
 {
 	char		*dir;
+	char 		*new_dir;
 
+	new_dir = ft_strdup(line + 3);
 	dir = NULL;
 	if (!line[3])
 	{
@@ -40,10 +42,12 @@ int			ft_cd(char *line, char **name)
 		*name = ft_strdup("Sweet_Home");
 		return (1);
 	}
-	if ((chdir(ft_strdup(line + 3))) == 0);
+	if ((chdir(new_dir)) == 0);
 	else if (ft_cd_error(line))
 		return (1);
-	*name = ft_strjoin("..", ft_strrchr(getcwd(dir, NULL), '/'));
+	dir = getcwd(dir, NULL);
+	*name = ft_strjoin("..", ft_strrchr(dir, '/'));
+	ft_strdel(&new_dir);
 	ft_strdel(&dir);
 	return (1);
 }
