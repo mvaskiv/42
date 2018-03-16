@@ -19,14 +19,6 @@
 # include "get_next_line.h"
 # include "unistd.h"
 
-
-typedef struct		s_com
-{
-	char			*name;
-	struct s_com	*next;
-	struct s_com	*prev;
-}					t_com;
-
 /* Welcome_message */
 void	ft_welcome(char **line, char *name);
 

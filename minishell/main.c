@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 17:22:37 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 18:47:08 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,27 @@ void	ft_check_exec(char **line, char ***env)
 	ft_arrclr(input);
 }
 
+//void	ft_exec_local(char **line, char ***env)
+//{
+//	char	*envp[] = {"PATH=./"};
+//	char 	**input;
+//	char 	*prog;
+//
+//	prog = ft_strdup(*line + 2);
+//	input = ft_strsplit(*line + 2, ' ');
+////	ft_find_path(input);
+//	if (input[0] == NULL)
+//		ft_mini_printf("%s%sshell: no such file or directory: ./%s%s\n", NRM, RED, prog, BWHT);
+//	else
+//	{
+//		ft_fork(&prog, envp);
+//		ft_strdel(line);
+//	}
+//	ft_arrclr(input);
+//}
+
 int		main(int argc, char **argv, char **envp)
 {
-
 	char 	*line = NULL;
 	char 	*name = ft_strdup(getenv("USER"));
 	char 	**env;
@@ -85,15 +103,18 @@ int		main(int argc, char **argv, char **envp)
 		argv = NULL;
 	env = ft_arrdup(envp);
 	signal(SIGINT, SIG_IGN);
-	while(1)
+	while(42)
 	{
 		ft_welcome(&line, name);
+		if (!line)
+			break ;
+//		if (line[0] == '.' && line[1] == '/')
+//			ft_exec_local(&line, &env);
 		if (ft_check_input(line, &env, &name))
 			ft_strdel(&line);
 		else
-		{
 			ft_check_exec(&line, &env);
-		}
 	}
+	write (1, "\n", 1);
 	return (0);
 }
