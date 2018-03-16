@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 18:52:21 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 12:37:02 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINISHELL_H
 
 # include <signal.h>
-# include <ncurses.h>
 # include <sys/stat.h>
 # include "../libft/includes/libft.h"
 # include "get_next_line.h"
@@ -33,7 +32,7 @@ void	ft_welcome(char **line, char *name);
 
 /* Pathfinders */
 char	*ft_check_path(char *path, int x);
-char	*ft_find_path(char **input);
+void	ft_find_path(char **input);
 
 /* Forkers */
 void	ft_fork(char **input, char **env);
@@ -43,12 +42,12 @@ int		ft_cd(char *line, char **name);
 int		ft_env(char **env);
 int		ft_echo(char *line);
 char	**ft_setenv(char ***envp, char *line);
-int		ft_unsetenv(char **env, char *line);
+char	**ft_unsetenv(char ***env, char *line);
 
 /* Signals */
 void	ft_signal(int signal);
 
 /* help_me */
-int 	ft_count_quotes(char *line);
+int		ft_count_quotes(char *line);
 
 #endif

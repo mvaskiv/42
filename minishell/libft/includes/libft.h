@@ -26,6 +26,14 @@
 # define MAG  "\x1B[35m"
 # define CYN  "\x1B[36m"
 # define WHT  "\x1B[37m"
+# define BBLK "\033[1m\033[30m"
+# define BRED "\033[1m\033[31m"
+# define BGRN "\033[1m\033[32m"
+# define BYEL "\033[1m\033[33m"
+# define BBLU "\033[1m\033[34m"
+# define BMAG "\033[1m\033[35m"
+# define BCYN "\033[1m\033[36m"
+# define BWHT "\033[1m\033[37m"
 
 typedef struct			s_list
 {

@@ -51,7 +51,7 @@ void	ft_welcome(char **line, char *name)
 
 	i = 0;
 	append = NULL;
-	ft_mini_printf("%s%s%s", YEL, name, NRM);
+	ft_mini_printf("%s%s%s", BYEL, name, NRM);
 	ft_mini_printf("%s_$>%s ", CYN, CYN);
 	get_next_line(0, line);
 	while ((ft_count_quotes(line[0]) % 2) != 0)

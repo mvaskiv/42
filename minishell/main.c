@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 19:33:56 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/16 12:39:09 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ int		ft_check_input(char *line, char ***env, char **name)
 		return (ft_env(*env));
 	else if (line[0] == 'e' && line[1] == 'c' && line[2] == 'h' && line[3] == 'o')
 		return (ft_echo(line));
-	else if (ft_strstr(line, "setenv"))
+	else if (ft_strstr(line, "setenv "))
 	{
 		*env = ft_setenv(env, line);
 		return (1);
 	}
-	else if (ft_strstr(line, "unsetenv"))
-		return (ft_unsetenv(*env, line));
+	else if (ft_strstr(line, "unsetenv "))
+	{
+		*env = ft_unsetenv(env, line);
+		return (1);
+	}
 	return (0);
 }
 
@@ -70,7 +73,7 @@ int		main(int argc, char **argv, char **envp)
 		else
 		{
 			input = ft_strsplit(line, ' ');
-			input[0] = ft_find_path(input);
+			ft_find_path(input);
 			if (input[0] == NULL)
 				ft_mini_printf("shell: command not found: %s\n", input[1]);
 			else
