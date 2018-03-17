@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 18:47:08 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 13:48:32 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int		ft_check_input(const char *line, char ***env, char **name)
 		*env = ft_unsetenv(env, line);
 		return (1);
 	}
+	else if (ft_strchr(line, ';') || ft_strchr(line, '&'))
+		return (ft_handle_few(line, *env));
 	return (0);
 }
 
@@ -58,41 +60,6 @@ char 	**ft_arrdup(char **arr)
 	return (dup);
 }
 
-void	ft_check_exec(char **line, char ***env)
-{
-	char 	**input;
-
-	input = ft_strsplit(*line, ' ');
-	ft_find_path(input);
-	if (input[0] == NULL)
-		ft_mini_printf("%s%sshell: command not found: %s%s\n", NRM, RED, input[1], BWHT);
-	else
-	{
-		ft_fork(input, *env);
-		ft_strdel(line);
-	}
-	ft_arrclr(input);
-}
-
-//void	ft_exec_local(char **line, char ***env)
-//{
-//	char	*envp[] = {"PATH=./"};
-//	char 	**input;
-//	char 	*prog;
-//
-//	prog = ft_strdup(*line + 2);
-//	input = ft_strsplit(*line + 2, ' ');
-////	ft_find_path(input);
-//	if (input[0] == NULL)
-//		ft_mini_printf("%s%sshell: no such file or directory: ./%s%s\n", NRM, RED, prog, BWHT);
-//	else
-//	{
-//		ft_fork(&prog, envp);
-//		ft_strdel(line);
-//	}
-//	ft_arrclr(input);
-//}
-
 int		main(int argc, char **argv, char **envp)
 {
 	char 	*line = NULL;
@@ -108,9 +75,9 @@ int		main(int argc, char **argv, char **envp)
 		ft_welcome(&line, name);
 		if (!line)
 			break ;
-//		if (line[0] == '.' && line[1] == '/')
-//			ft_exec_local(&line, &env);
-		if (ft_check_input(line, &env, &name))
+		if (line[0] == '.' && line[1] == '/')
+			ft_exec_local(&line, &env);
+		else if (ft_check_input(line, &env, &name))
 			ft_strdel(&line);
 		else
 			ft_check_exec(&line, &env);
