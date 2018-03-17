@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 16:57:30 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 17:35:17 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define MINISHELL_H
 
 # include <signal.h>
+# include <termios.h>
 # include <sys/stat.h>
 # include "../libft/includes/libft.h"
 # include "get_next_line.h"
 # include "unistd.h"
 
 /* Welcome_message */
-void	ft_welcome(char **line, char *name);
+void	ft_welcome(char **line);
 
 /* Check_execs */
 
@@ -38,7 +39,7 @@ int		ft_handle_few(const char *line, char **env);
 /* Builtins */
 char	**ft_setenv(char ***envp, const char *line);
 char	**ft_unsetenv(char ***env, const char *line);
-int		ft_cd(const char *line, char **name);
+int		ft_cd(const char *line);
 int		ft_env(char **env);
 int		ft_echo(const char *line);
 
@@ -53,5 +54,7 @@ void	ft_signal(int signal);
 void	ft_fun_fact();
 int		ft_count_quotes(const char *line);
 int		ft_exit(const char *line);
+
+void	ft_set_term(void);
 
 #endif

@@ -56,7 +56,7 @@ int 		ft_count_quotes(const char *line)
 	return (c);
 }
 
-void		ft_welcome(char **line, char *name)
+void		ft_welcome(char **line)
 {
 	char	*append;
 	int 	i;
@@ -64,14 +64,14 @@ void		ft_welcome(char **line, char *name)
 
 	i = 0;
 	append = NULL;
-	ft_mini_printf("%s%s%s", BYEL, name, NRM);
+	ft_mini_printf("%s%s%s", BYEL, "Sweet_Lemonade", NRM);
 	ft_mini_printf("%s_$>%s ", CYN, BWHT);
 	get_next_line(0, line);
 	if (line == NULL || *line == '\0')
 		return ;
 	while ((ft_count_quotes(line[0]) % 2) != 0)
 	{
-		while (i++ <= ft_strlen(name) - 5)
+		while (i++ <= ft_strlen("Sweet_Lemonade") - 5)
 			ft_mini_printf("_");
 		i = 0;
 		ft_mini_printf("%s ", "dquote>");

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 17:24:42 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:11:56 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_echo_quotes(const char *line, int i)
 	q = line[i++];
 	n = ft_quote_counter(line, i, q);
 	l = ft_echo_q_pos(line, q) - i;
-	str = (char*)malloc(sizeof(char)* l + n + 1);
+	str = (char*)malloc(sizeof(char) * l + n + 1);
 	while (j < l)
 	{
 		str[j++] = line[i++];

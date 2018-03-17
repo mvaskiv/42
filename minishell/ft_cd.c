@@ -29,7 +29,7 @@ static int	ft_cd_error(const char *line)
 	return (0);
 }
 
-int			ft_cd(const char *line, char **name)
+int			ft_cd(const char *line)
 {
 	char		*dir;
 	char 		*new_dir;
@@ -39,15 +39,12 @@ int			ft_cd(const char *line, char **name)
 	if (!line[3])
 	{
 		chdir(getenv("HOME"));
-		*name = ft_strdup("Sweet_Home");
 		return (1);
 	}
 	if ((chdir(new_dir)) == 0);
 	else if (ft_cd_error(line))
 		return (1);
 	dir = getcwd(dir, 0);
-	ft_strclr(*name);
-	*name = ft_strjoin("..", ft_strrchr(dir, '/'));
 	ft_strdel(&new_dir);
 	ft_strdel(&dir);
 	return (1);

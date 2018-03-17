@@ -6,19 +6,19 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 15:31:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:21:10 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int		ft_check_input(const char *line, char ***env, char **name)
+int		ft_check_input(const char *line, char ***env)
 {
 	if (line[0] == '\0')
 		return (1);
 	else if (ft_exit(line));
 	else if (line[0] == 'c' && line[1] == 'd')
-		return (ft_cd(line, name));
+		return (ft_cd(line));
 	else if (line[0] == 'e' && line[1] == 'n' && line[2] == 'v' && !line[3])
 		return (ft_env(*env));
 	else if (line[0] == 'e' && line[1] == 'c' && line[2] == 'h' && line[3] == 'o')
@@ -59,24 +59,30 @@ char 	**ft_arrdup(char **arr)
 	return (dup);
 }
 
+void	ft_signal_int(int sig)
+{
+	sig = 0;
+	ft_mini_printf("\n%s%s%s", BYEL, "Sweet_Lemonade", NRM);
+	ft_mini_printf("%s_$>%s ", CYN, BWHT);
+}
+
 int		main(int argc, char **argv, char **envp)
 {
 	char 	*line = NULL;
-	char 	*name = ft_strdup(getenv("USER"));
 	char 	**env;
 
 	if (argc <= 0)
 		argv = NULL;
 	env = ft_arrdup(envp);
-	signal(SIGINT, SIG_IGN);
-	while(42)
+	while (42)
 	{
-		ft_welcome(&line, name);
+		signal(SIGINT, ft_signal_int);
+		ft_welcome(&line);
 		if (!line)
 			break ;
 		if (line[0] == '.' && line[1] == '/')
 			ft_exec_local(&line, &env);
-		else if (ft_check_input(line, &env, &name))
+		else if (ft_check_input(line, &env))
 			ft_strdel(&line);
 		else
 			ft_check_exec(&line, &env);
