@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:49:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 14:38:16 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 15:47:12 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_find_path(char **input)
 		if (path == NULL)
 		{
 			ft_strdel(&name);
+			ft_strdel(&path);
 			input[1] = input[0];
 			input[0] = NULL;
 			return ;

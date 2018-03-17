@@ -33,7 +33,7 @@ void	ft_find_path(char **input);
 
 /* Forkers */
 void	ft_fork(char **input, char **env);
-int 	ft_handle_few(const char *line, char **env);
+int		ft_handle_few(const char *line, char **env);
 
 /* Builtins */
 char	**ft_setenv(char ***envp, const char *line);
@@ -48,5 +48,6 @@ void	ft_signal(int signal);
 /* help_me */
 void	ft_fun_fact();
 int		ft_count_quotes(const char *line);
+int		ft_exit(const char *line);
 
 #endif
