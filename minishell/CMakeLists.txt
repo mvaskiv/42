@@ -4,7 +4,7 @@ project(minishell)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(minishell
-        get_next_line.c
+        input/get_next_line.c
         includes/get_next_line.h
         libft/includes/libft.h
         libft/ft_addchar.c
@@ -79,4 +79,4 @@ add_executable(minishell
         libft/ft_strtrim.c
         libft/ft_tolower.c
         libft/ft_toupper.c
-        main.c includes/minishell.h ft_pathfinders.c ft_welcome.c ft_fork.c ft_signal.c ft_echo.c ft_env_n_unset.c ft_cd.c ft_setenv.c ft_easter.c ft_handle_few.c ft_check_exec.c ft_autocomp.c)
+        main.c includes/minishell.h exec/ft_pathfinders.c input/ft_welcome.c exec/ft_fork.c builtins/ft_echo.c builtins/ft_env_n_unset.c builtins/ft_cd.c builtins/ft_setenv.c extra/ft_easter.c exec/ft_handle_few.c exec/ft_check_exec.c extra/ft_autocomp.c)

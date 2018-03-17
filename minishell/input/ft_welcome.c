@@ -6,11 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:44 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 18:15:44 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:21:10 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/minishell.h"
 
 static char	ft_get_quotes(const char *line)
 {

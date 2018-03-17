@@ -6,11 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 17:28:21 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 18:13:34 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:14:00 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/minishell.h"
 
 struct termios	original;
 

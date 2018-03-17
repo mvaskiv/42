@@ -6,11 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:19:47 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 15:31:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 15:34:10 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/minishell.h"
 
 void	ft_fun_fact()
 {

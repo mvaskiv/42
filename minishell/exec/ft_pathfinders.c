@@ -6,11 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:49:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 16:57:30 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 16:59:15 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/minishell.h"
 
 char 	*ft_check_path(char *path, int x)
 {
