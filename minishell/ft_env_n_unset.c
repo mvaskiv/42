@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/16 14:24:41 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 16:50:54 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,40 @@ char	**ft_unsetenv(char ***env, const char *line)
 	ft_strdel(&env_name);
 	ft_arrclr(*env);
 	return (dup);
+}
+
+char	*ft_get_pwd(char **env)
+{
+	int		i;
+	char 	*pwd;
+
+	i = 0;
+	while (env[i] != NULL)
+	{
+		if (ft_strstr(env[i], "PWD="))
+		{
+			pwd = ft_strdup(env[i] + 4);
+			return (pwd);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+char	*ft_get_path(char **env)
+{
+	int 	i;
+	char 	*path;
+
+	i = 0;
+	while (env[i] != NULL)
+	{
+		if (ft_strstr(env[i], "PATH="))
+		{
+			path = ft_strdup(env[i] + 5);
+			return (path);
+		}
+		i++;
+	}
+	return (NULL);
 }
