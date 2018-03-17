@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 18:11:56 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:29:42 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,17 @@ static int	ft_echo_quotes(const char *line, int i)
 	return (i - 5);
 }
 
-int		ft_echo(const char *line)
+int		ft_echo(const char *input)
 {
 	int i;
+	char 	*line;
 
 	i = 5;
-	if (!line[i])
+	if (!input[i])
 		write(1, "\n", 1);
 	else
 	{
+		line = ft_strdup(input);
 		while (line[i] != '\0')
 		{
 			if (line[i] == '\'' || line[i] == '\"')
@@ -78,10 +80,11 @@ int		ft_echo(const char *line)
 				write(1, " ", 1);
 			if (line[i] == ' ')
 				i++;
-			if (line[i] != '\0' && line[i] != '\''&& line[i] != '\"')
+			if (line[i] && line[i] != '\''&& line[i] != '\"')
 				write(1, &line[i++], 1);
 		}
 		write(1, "\n", 1);
+		ft_strdel(&line);
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 17:35:17 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:22:04 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	ft_fun_fact();
 int		ft_count_quotes(const char *line);
 int		ft_exit(const char *line);
 
-void	ft_set_term(void);
+//void	ft_set_term(void);
 
 #endif
