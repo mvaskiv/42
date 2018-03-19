@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 16:50:54 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/19 14:28:20 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,30 @@ static char 	*ft_env_name(const char *line)
 char	**ft_unsetenv(char ***env, const char *line)
 {
 	char	**dup;
-	char 	**envp = *env;
+	char 	**envp;
 	char 	*env_name;
 	int		i;
+	int 	j;
 
+	envp = ft_arrdup(*env);
 	env_name = ft_env_name(line);
 	i = 0;
 	while (envp[i++] != NULL);
 	dup = (char**)malloc(sizeof(char*) * i);
 	i = 0;
+	j = 0;
 	while (envp[i] != NULL)
 	{
-		dup[i] = ft_strdup(envp[i]);
-		i++;
-		if (ft_strstr(envp[i], env_name))
+		if ((ft_strstr(envp[i], env_name)))
 			i++;
+		dup[j] = ft_strdup(envp[i]);
+		i++;
+		j++;
 	}
 	dup[i] = NULL;
 	ft_strdel(&env_name);
 	ft_arrclr(*env);
+	ft_arrclr(envp);
 	return (dup);
 }
 
@@ -75,7 +80,7 @@ char	*ft_get_pwd(char **env)
 	i = 0;
 	while (env[i] != NULL)
 	{
-		if (ft_strstr(env[i], "PWD="))
+		if (env[i][0] == 'P' && ft_strstr(env[i], "PWD="))
 		{
 			pwd = ft_strdup(env[i] + 4);
 			return (pwd);
@@ -93,7 +98,7 @@ char	*ft_get_path(char **env)
 	i = 0;
 	while (env[i] != NULL)
 	{
-		if (ft_strstr(env[i], "PATH="))
+		if (env[i][0] == 'P' && ft_strstr(env[i], "PATH="))
 		{
 			path = ft_strdup(env[i] + 5);
 			return (path);

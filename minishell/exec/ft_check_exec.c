@@ -40,12 +40,15 @@ void	ft_exec_local(char **line, char ***env)
 	char	*envp;
 	char 	**input;
 	char 	*prog;
+	char 	*env_pwd;
 
-	envp = ft_strjoin(ft_get_pwd(*env), "/");
+	env_pwd = ft_get_pwd(*env);
+	envp = ft_strjoin(env_pwd, "/");
 	input = ft_strsplit(*line, ' ');
 	prog = ft_strdup(input[0] + 2);
 	ft_strdel(&input[0]);
 	input[0] = ft_strjoin(envp, prog);
+	ft_strdel(&env_pwd);
 	ft_strdel(&envp);
 	if (access(input[0], X_OK) != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 18:21:10 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/19 14:02:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char 	**ft_arrdup(char **arr)
 
 	i = 0;
 	while (arr[i++] != NULL);
-	dup = (char**)malloc(sizeof(char*) * i);
+	dup = (char**)malloc(sizeof(char*) * i + 2);
 	i = 0;
 	while (arr[i] != NULL)
 	{
