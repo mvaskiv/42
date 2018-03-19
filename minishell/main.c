@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 16:24:36 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/19 16:25:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_check_input(const char *line, char ***env)
 			line[3] == 'e' && line[4] == 't' && line[5] == 'e' && line[6] == 'n' &&
 			line[7] == 'v' && line [8] == ' ')
 	{
-		*env = ft_unsetenv(env, line);
+		ft_unsetenv(env, line);
 		return (1);
 	}
 	else if (ft_strchr(line, ';') || ft_strchr(line, '&'))

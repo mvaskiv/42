@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 16:18:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/19 17:15:17 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,33 @@ static char 	*ft_env_name(const char *line)
 	return (name);
 }
 
-char	**ft_unsetenv(char ***env, const char *line)
+void	ft_unsetenv(char ***env, const char *line)
 {
 	char	**dup;
-	char 	**envp;
+	char 	**envp = *env;
 	char 	*env_name;
 	int		i;
 	int 	j;
 
-	envp = ft_arrdup(*env);
 	env_name = ft_env_name(line);
 	i = 0;
 	while (envp[i++] != NULL);
-	dup = (char**)malloc(sizeof(char*) * i);
+	dup = (char**)malloc(sizeof(char*) * i - 1);
 	i = 0;
 	j = 0;
 	while (envp[i] != NULL)
 	{
 		if ((ft_strstr(envp[i], env_name)))
 			i++;
-		dup[j] = ft_strdup(envp[i]);
+		if (envp[i] != NULL)
+			dup[j] = ft_strdup(envp[i]);
 		i++;
 		j++;
 	}
 	dup[i] = NULL;
 	ft_strdel(&env_name);
 	ft_arrclr(*env);
-	ft_arrclr(envp);
-	return (dup);
+	*env = dup;
 }
 
 char	*ft_get_pwd(char **env)
