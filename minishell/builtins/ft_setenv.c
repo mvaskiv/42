@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 15:44:29 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/19 16:25:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,13 @@ static char 	*ft_env_name(const char *line)
 char	**ft_change_env(char ***env, const char *line, int i)
 {
 	char	**dup;
-	char 	**envp;
+	char 	**envp = *env;
 	int		j;
 
 	j = 0;
-	envp = ft_arrdup(*env);
 	while (envp[j++] != NULL);
 	dup = (char**)malloc(sizeof(char*) * j);
 	j = 0;
-	if (j == i)
-		dup[j++] = ft_strdup(line + 7);
 	while (envp[j] != NULL)
 	{
 		dup[j] = ft_strdup(envp[j]);
@@ -53,53 +50,51 @@ char	**ft_change_env(char ***env, const char *line, int i)
 			dup[j++] = ft_strdup(line + 7);
 	}
 	dup[j] = NULL;
-	ft_arrclr(envp);
 	return (dup);
 }
 
 char 	**ft_new_env(char ***env, const char *line, int i)
 {
 	char 	**dup;
-	char 	**envp;
+	char 	**envp = *env;
 
+	i = 0;
+	while (envp[i++] != NULL);
 	dup = (char**)malloc(sizeof(char*) * i + 1);
 	i = 0;
-	envp = ft_arrdup(*env);
-	while (envp[i])
+	while (envp[i] != NULL)
 	{
 		dup[i] = ft_strdup(envp[i]);
 		i++;
 	}
 	dup[i++] = ft_strdup(line + 7);
 	dup[i] = NULL;
-	ft_arrclr(envp);
 	return (dup);
 }
 
-char	**ft_setenv(char ***env, const char *line)
+void	ft_setenv(char ***env, const char *line)
 {
 	int		i;
-	char	**dup = NULL;
-	char 	**envp;
+	char	**dup;
+	char 	**envp = *env;
 	char 	*env_name;
 
 	i = 0;
-	envp = ft_arrdup(*env);
 	env_name = ft_env_name(line);
 	while (envp[i] != NULL)
 	{
 		if (ft_strstr(envp[i], env_name))
 		{
-			dup = ft_change_env(env, line, i);
 			ft_strdel(&env_name);
+			dup = ft_change_env(env, line, i);
 			ft_arrclr(*env);
-			return (dup);
+			*env = dup;
+			return ;
 		}
 		i++;
 	}
 	dup = ft_new_env(env, line, i);
 	ft_strdel(&env_name);
-	ft_arrclr(envp);
 	ft_arrclr(*env);
-	return (dup);
+	*env = dup;
 }

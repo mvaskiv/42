@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 14:28:20 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/19 16:18:32 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_env(char **env)
 	int 	i;
 
 	i = 0;
-	while (env[i] != NULL)
+	while (env[i])
 		ft_putendl(env[i++]);
 	return (1);
 }

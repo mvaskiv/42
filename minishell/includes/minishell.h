@@ -36,7 +36,7 @@ void	ft_fork(char **input, char **env);
 int		ft_handle_few(const char *line, char **env);
 
 /* Builtins */
-char	**ft_setenv(char ***envp, const char *line);
+void	ft_setenv(char ***envp, const char *line);
 char	**ft_unsetenv(char ***env, const char *line);
 int		ft_cd(const char *line);
 int		ft_env(char **env);
