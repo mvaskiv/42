@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 14:25:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/19 15:16:34 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int		ft_handle_few(const char *line, char **env);
 
 /* Builtins */
 char	**ft_setenv(char ***envp, const char *line);
-void	ft_set_env(char ***env, const char *line);
-
 char	**ft_unsetenv(char ***env, const char *line);
 int		ft_cd(const char *line);
 int		ft_env(char **env);
