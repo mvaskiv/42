@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:19:47 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 17:34:19 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 18:01:49 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int 	ft_exit(const char *line)
 
 void	ft_my_horse(char **env, char **line)
 {
-	char 	*input[3];
+	pid_t	pid = getpid();
 
-	input[0] = ft_strdup("/usr/bin/say");
-	input[1] = ft_strdup("My horse is amazing!");
-	input[2] = NULL;
-	ft_fork(input, env);
-	ft_strdel(&input[0]);
-	ft_strdel(&input[1]);
+	system("afplay /Users/mvaskiv/Downloads/horse.mp3");
 	ft_strdel(line);
+	if (signal(SIGINT, ft_signal_caught))
+	{
+		kill(pid, SIGINT);
+		return ;
+	}
 }

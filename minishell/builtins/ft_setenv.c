@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 15:27:31 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 19:15:01 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ static char 	*ft_env_name(const char *line)
 
 	j = 0;
 	i = 0;
-	while (line[7 + i] != '=')
+	while (line[i] != '=')
 		i++;
 	name = (char*)malloc(sizeof(char) * i + 1);
 	while (j <= i)
 	{
-		name[j] = line[7 + j];
+		name[j] = line[j];
 		j++;
 	}
 	name[j] = '\0';
 	return (name);
 }
 
-char	**ft_change_env(char ***env, const char *line, int i)
+char			**ft_change_env(char ***env, const char *line, int i)
 {
 	char	**dup;
 	char 	**envp = *env;
@@ -47,13 +47,13 @@ char	**ft_change_env(char ***env, const char *line, int i)
 		dup[j] = ft_strdup(envp[j]);
 		j++;
 		if (j == i)
-			dup[j++] = ft_strdup(line + 7);
+			dup[j++] = ft_strdup(line);
 	}
 	dup[j] = NULL;
 	return (dup);
 }
 
-char 	**ft_new_env(char ***env, const char *line, int i)
+char			**ft_new_env(char ***env, const char *line, int i)
 {
 	char 	**dup;
 	char 	**envp = *env;
@@ -67,19 +67,20 @@ char 	**ft_new_env(char ***env, const char *line, int i)
 		dup[i] = ft_strdup(envp[i]);
 		i++;
 	}
-	dup[i++] = ft_strdup(line + 7);
+	dup[i++] = ft_strdup(line);
 	dup[i] = NULL;
 	return (dup);
 }
 
-void	ft_setenv(char ***env, const char *line)
+void			ft_setenv(char ***env, const char *line)
 {
 	int		i;
 	char	**dup;
-	char 	**envp = *env;
+	char 	**envp;
 	char 	*env_name;
 
 	i = 0;
+	envp = *env;
 	env_name = ft_env_name(line);
 	while (envp[i] != NULL)
 	{
@@ -97,4 +98,44 @@ void	ft_setenv(char ***env, const char *line)
 	ft_strdel(&env_name);
 	ft_arrclr(*env);
 	*env = dup;
+}
+
+char			*ft_set_env_val(char **input)
+{
+	char	*value;
+	char	*tmp;
+	char 	*tmp_two;
+
+	tmp = ft_strmap(input[1], ft_toupper);
+	tmp_two = ft_strjoin(tmp, "=");
+	value = ft_strjoin(tmp_two, input[2]);
+	ft_strdel(&tmp);
+	ft_strdel(&tmp_two);
+	return (value);
+}
+
+int				ft_mod_env(char ***env, const char *line)
+{
+	char	*value;
+	char	*tmp;
+	char	**input;
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	while (line[i++])
+		j = (line[i] == ' ') ? j + 1 : j;
+	if (j != 2)
+		ft_setenv_usage();
+	else
+	{
+		input = ft_strsplit(line, ' ');
+		value = ft_set_env_val(input);
+		ft_setenv(env, value);
+		ft_strdel(&value);
+		ft_env(*env);
+		ft_arrclr(input);
+	}
+	return (1);
 }

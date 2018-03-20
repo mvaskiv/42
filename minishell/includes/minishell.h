@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 17:32:54 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 18:42:00 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_fork(char **input, char **env);
 int		ft_handle_few(const char *line, char **env);
 
 /* Builtins */
+int 	ft_mod_env(char ***env, const char *line);
 void	ft_setenv(char ***envp, const char *line);
 void	ft_unsetenv(char ***env, const char *line);
 int		ft_cd(const char *line);
@@ -51,14 +52,18 @@ void	ft_signal_int(int sig);
 void	ft_signal_caught(int sig);
 
 /* Errors */
+void	ft_setenv_usage(void);
 
 /* help_me */
-void	ft_fun_fact();
-void	ft_my_horse(char **env, char **line);
-
 int		ft_count_quotes(const char *line);
+char	*ft_no_env(const char *line, char ***env);
+
 int		ft_exit(const char *line);
 char	**ft_arrdup(char **arr);
+
+/* Easter_Eggs */
+void	ft_fun_fact();
+void	ft_my_horse(char **env, char **line);
 
 //void	ft_set_term(void);
 
