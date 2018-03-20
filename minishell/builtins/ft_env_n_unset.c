@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 17:15:17 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 14:38:11 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ static char 	*ft_env_name(const char *line)
 	i = 0;
 	while (line[9 + i] != '\0')
 		i++;
-	name = (char*)malloc(sizeof(char) * i);
+	name = (char*)malloc(sizeof(char) * i + 1);
 	while (j < i)
 	{
 		name[j] = line[9 + j];
 		j++;
 	}
+	name[j++] = '=';
 	name[j] = '\0';
 	return (name);
 }
@@ -53,12 +54,12 @@ void	ft_unsetenv(char ***env, const char *line)
 	env_name = ft_env_name(line);
 	i = 0;
 	while (envp[i++] != NULL);
-	dup = (char**)malloc(sizeof(char*) * i - 1);
+	dup = (char**)malloc(sizeof(char*) * i);
 	i = 0;
 	j = 0;
 	while (envp[i] != NULL)
 	{
-		if ((ft_strstr(envp[i], env_name)))
+		if (envp[i] && (ft_strstr(envp[i], env_name)))
 			i++;
 		if (envp[i] != NULL)
 			dup[j] = ft_strdup(envp[i]);

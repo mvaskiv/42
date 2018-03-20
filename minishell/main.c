@@ -59,13 +59,6 @@ char 	**ft_arrdup(char **arr)
 	return (dup);
 }
 
-void	ft_signal_int(int sig)
-{
-	sig = 0;
-	ft_mini_printf("\n%s%s%s", BYEL, "Sweet_Lemonade", NRM);
-	ft_mini_printf("%s_$>%s ", CYN, BWHT);
-}
-
 int		main(int argc, char **argv, char **envp)
 {
 	char 	*line = NULL;

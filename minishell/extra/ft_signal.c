@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/15 12:32:37 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/15 17:50:18 by mvaskiv          ###   ########.fr       */
+/*   Created: 2018/03/20 14:40:49 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/20 14:41:40 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_fork(char **input, char **env)
+void	ft_signal_int(int sig)
 {
-	int 	status;
-	pid_t	pid;
+	sig = 0;
+	ft_mini_printf("\n%s%s%s", BYEL, "Sweet_Lemonade", NRM);
+	ft_mini_printf("%s_$>%s ", CYN, BWHT);
+}
 
-	pid = fork();
-	if (pid == -1)
-		ft_putendl("error");
-	else if (pid == 0)
-	{
-		execve(input[0], &input[0], env);
-		wait(&status);
-		if (signal(SIGINT, ft_signal_caught))
-		{
-			kill(pid, SIGINT);
-			return ;
-		}
-	}
-	else
-	{
-		signal(SIGINT, SIG_IGN);
-		waitpid(pid, &status, 0);
-	}
+void	ft_signal_caught(int sig)
+{
+	sig = 0;
 }
