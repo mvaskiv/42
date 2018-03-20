@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 16:25:41 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 16:36:37 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int		ft_check_input(const char *line, char ***env)
 	if (line[0] == '\0')
 		return (1);
 	else if (ft_exit(line));
-	else if (line[0] == 'c' && line[1] == 'd')
+	else if (line[0] == 'c' && line[1] == 'd' && (line[2] == ' ' || !line[2]))
 		return (ft_cd(line));
 	else if (line[0] == 'e' && line[1] == 'n' && line[2] == 'v' && !line[3])
 		return (ft_env(*env));
-	else if (line[0] == 'e' && line[1] == 'c' && line[2] == 'h' && line[3] == 'o')
+	else if (line[0] == 'e' && line[1] == 'c' && line[2] == 'h' && line[3] == 'o' && line[4] == ' ')
 		return (ft_echo(line));
 	else if (line[0] == 's' && line[1] == 'e' && line[2] == 't' &&
 			line[3] == 'e' && line[4] == 'n' && line[5] == 'v' && line[6] == ' ')
@@ -73,7 +73,9 @@ int		main(int argc, char **argv, char **envp)
 		ft_welcome(&line);
 		if (!line)
 			break ;
-		if (line[0] == '.' && line[1] == '/')
+		if (line[0] == 'm' && line[1] == 'y' && line[2] == 'h')
+			ft_my_horse(env);
+		else if (line[0] == '.' && line[1] == '/')
 			ft_exec_local(&line, &env);
 		else if (ft_check_input(line, &env))
 			ft_strdel(&line);

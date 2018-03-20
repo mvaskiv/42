@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:19:47 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/17 15:34:10 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 16:36:37 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,14 @@ int 	ft_exit(const char *line)
 		exit(0);
 	}
 	return (0);
+}
+
+void	ft_my_horse(char **env)
+{
+	char 	*input[3];
+
+	input[0] = ft_strdup("/usr/bin/say");
+	input[1] = ft_strdup("My horse is amazing!");
+	input[2] = NULL;
+	ft_fork(input, env);
 }

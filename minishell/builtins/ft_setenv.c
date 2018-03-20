@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 16:25:41 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 15:27:31 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_setenv(char ***env, const char *line)
 	env_name = ft_env_name(line);
 	while (envp[i] != NULL)
 	{
-		if (ft_strstr(envp[i], env_name))
+		if (ft_strncmp(envp[i], env_name, ft_strlen(env_name)) == 0)
 		{
 			ft_strdel(&env_name);
 			dup = ft_change_env(env, line, i);

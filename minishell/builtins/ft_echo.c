@@ -80,7 +80,7 @@ int		ft_echo(const char *input)
 				write(1, " ", 1);
 			if (line[i] == ' ')
 				i++;
-			if (line[i] && line[i] != '\''&& line[i] != '\"')
+			if (line[i] && line[i] != '\''&& line[i] != '\"' && line[i] != ' ')
 				write(1, &line[i++], 1);
 		}
 		write(1, "\n", 1);

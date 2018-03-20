@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 14:41:40 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 16:08:09 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ char	*ft_get_path(char **env);
 void	ft_signal_int(int sig);
 void	ft_signal_caught(int sig);
 
+/* Errors */
+
 /* help_me */
 void	ft_fun_fact();
+void	ft_my_horse(char **env);
+
 int		ft_count_quotes(const char *line);
 int		ft_exit(const char *line);
 char	**ft_arrdup(char **arr);
