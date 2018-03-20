@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:19:47 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 16:36:37 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/20 17:34:19 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int 	ft_exit(const char *line)
 	return (0);
 }
 
-void	ft_my_horse(char **env)
+void	ft_my_horse(char **env, char **line)
 {
 	char 	*input[3];
 
@@ -40,4 +40,7 @@ void	ft_my_horse(char **env)
 	input[1] = ft_strdup("My horse is amazing!");
 	input[2] = NULL;
 	ft_fork(input, env);
+	ft_strdel(&input[0]);
+	ft_strdel(&input[1]);
+	ft_strdel(line);
 }
