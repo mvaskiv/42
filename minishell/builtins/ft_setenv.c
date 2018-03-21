@@ -134,7 +134,6 @@ int				ft_mod_env(char ***env, const char *line)
 		value = ft_set_env_val(input);
 		ft_setenv(env, value);
 		ft_strdel(&value);
-		ft_env(*env);
 		ft_arrclr(input);
 	}
 	return (1);
