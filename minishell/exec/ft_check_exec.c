@@ -6,11 +6,29 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 16:43:46 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 16:24:57 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	ft_path_set(char **input, char *path)
+{
+	if (ft_strncmp(input[0], "/", 1))
+		ft_find_path(input, path);
+	else
+	{
+		if (access(input[0], X_OK) == 0)
+			return ;
+		else
+		{
+			ft_strdel(&input[1]);
+			input[1] = input[0];
+			input[0] = NULL;
+			return ;
+		}
+	}
+}
 
 void	ft_check_exec(char **line, char ***env)
 {
@@ -23,7 +41,7 @@ void	ft_check_exec(char **line, char ***env)
 		ft_mini_printf("environmental variable PATH is not set\n");
 		return ;
 	}
-	ft_find_path(input, path);
+	ft_path_set(input, path);
 	ft_strdel(&path);
 	if (input[0] == NULL)
 	{

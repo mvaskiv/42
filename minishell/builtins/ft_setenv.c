@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 19:15:01 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 17:16:59 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int				ft_mod_env(char ***env, const char *line)
 	i = 0;
 	while (line[i++])
 		j = (line[i] == ' ') ? j + 1 : j;
-	if (j != 2)
+	if (j != 2 || !(line[7]) || !(line[8]))
 		ft_setenv_usage();
 	else
 	{

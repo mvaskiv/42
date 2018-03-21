@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 16:07:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 18:50:04 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 17:15:58 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char		*ft_no_env(const char *line, char ***env)
 	i = 0;
 	while (line[i++])
 		j = (line[i] == ' ') ? j + 1 : j;
-	if (j == 1)
+	if (j == 1 && line[9])
 		ft_mini_printf("unsetenv: no such environmental variable found\n");
 	else
 		ft_mini_printf("unsetenv: usage: unsetenv [env]\n");
