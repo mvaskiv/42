@@ -23,7 +23,7 @@ int		ft_check_input(const char *line, char ***env)
 	else if (line[0] == 'e' && line[1] == 'n' && line[2] == 'v' && !line[3])
 		return (ft_env(*env));
 	else if (line[0] == 'e' && line[1] == 'c' && line[2] == 'h' && line[3] == 'o' && line[4] == ' ')
-		return (ft_echo(line));
+		return (ft_echo(line, env));
 	else if (line[0] == 's' && line[1] == 'e' && line[2] == 't' &&
 			line[3] == 'e' && line[4] == 'n' && line[5] == 'v' && (line[6] == ' ' || !line[6]))
 		return (ft_mod_env(env, line));

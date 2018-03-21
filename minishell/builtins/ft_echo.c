@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/21 17:51:40 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 19:01:46 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,52 @@ static int	ft_echo_quotes(const char *line, int i)
 	return (++i);
 }
 
-int		ft_echo(const char *input)
+char 	*ft_get_env(char *name, char **env)
+{
+	int		i;
+	char 	*value;
+
+	i = 0;
+	while (env[i] != NULL)
+	{
+		if (env[i][0] == name[0] && ft_strstr(env[i], name))
+		{
+			value = ft_strdup(env[i] + ft_strlen(name));
+			return (value);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+int 	ft_echo_env(const char *line, int i, char ***env)
+{
+	int 	j;
+	char	*name;
+	char 	*value;
+	int 	l;
+
+	l = 0;
+	j = ++i;
+	while (ft_isalpha(line[j++]));
+	name = (char*)malloc(sizeof(char) * (j - i) + 1);
+	while (l < (j - i - 1))
+	{
+		name[l] = line[i + l];
+		l++;
+	}
+	name[l++] = '\0';
+	name = ft_strjoin(name, "=");
+	if (!(value = ft_get_env(name, *env)))
+		return (l);
+	else
+	{
+		ft_putstr(value);
+		return (l);
+	}
+}
+
+int		ft_echo(const char *input, char ***env)
 {
 	int i;
 	char 	*line;
@@ -73,6 +118,8 @@ int		ft_echo(const char *input)
 		{
 			if (line[i] == '\'' || line[i] == '\"')
 				i = ft_echo_quotes(line, i);
+			if (line[i] == '$')
+				i += ft_echo_env(line, i, env);
 			if (line[i + 1] && line[i + 1] != ' ' && line[i] == ' ')
 				write(1, " ", 1);
 			if (line[i] == ' ')
@@ -85,8 +132,8 @@ int		ft_echo(const char *input)
 	}
 	return (1);
 }
-
-int		ft_echo_check(const char *input)
-{
-
-}
+//
+//int		ft_echo_check(const char *input)
+//{
+//
+//}
