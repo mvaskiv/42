@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/21 17:24:37 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 18:15:48 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ int				ft_env(char **env)
 	int		i;
 
 	i = 0;
-	while (env[i])
-		ft_putendl(env[i++]);
+	while (env[i] != NULL)
+	{
+		ft_mini_printf("%s\n", env[i]);
+		i++;
+	}
 	return (1);
 }
 
@@ -45,7 +48,7 @@ void			ft_unsetenv(char ***env, const char *line)
 		else if (envp[i] != NULL)
 			dup[j++] = ft_strdup(envp[i++]);
 	}
-	dup[i] = NULL;
+	dup[j] = NULL;
 	ft_strdel(&env_name);
 	ft_arrclr(*env);
 	*env = dup;

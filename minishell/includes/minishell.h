@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/21 15:27:57 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 18:34:42 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,5 @@ char	**ft_arrdup(char **arr);
 /* Easter_Eggs */
 void	ft_fun_fact();
 void	ft_my_horse(char **env, char **line);
-
-//void	ft_set_term(void);
 
 #endif
