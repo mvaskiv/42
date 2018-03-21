@@ -6,19 +6,16 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 17:06:32 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 17:51:40 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int	ft_echo_q_pos(const char *line, char q)
+static int	ft_echo_q_pos(const char *line, char q, int i)
 {
-	int 	i;
-
-	i = ft_strlen(line);
 	while (line[i] != q)
-		i--;
+		i++;
 	return (i);
 }
 
@@ -49,7 +46,7 @@ static int	ft_echo_quotes(const char *line, int i)
 	j = 0;
 	q = line[i++];
 	n = ft_quote_counter(line, i, q);
-	l = ft_echo_q_pos(line, q) - i;
+	l = ft_echo_q_pos(line, q, i) - 6;
 	str = (char*)malloc(sizeof(char) * l + n + 1);
 	while (j < l)
 	{
@@ -58,7 +55,7 @@ static int	ft_echo_quotes(const char *line, int i)
 	str[j] = '\0';
 	ft_putstr(str);
 	ft_strdel(&str);
-	return (i);
+	return (++i);
 }
 
 int		ft_echo(const char *input)
@@ -87,4 +84,9 @@ int		ft_echo(const char *input)
 		ft_strdel(&line);
 	}
 	return (1);
+}
+
+int		ft_echo_check(const char *input)
+{
+
 }
