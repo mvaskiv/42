@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/20 18:43:04 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 15:51:59 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,42 @@ char			*ft_get_path(char **env)
 	while (env[i] != NULL)
 	{
 		if (env[i][0] == 'P' && ft_strstr(env[i], "PATH="))
+		{
+			path = ft_strdup(env[i] + 5);
+			return (path);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+char			*ft_get_oldpwd(char **env)
+{
+	int 	i;
+	char 	*path;
+
+	i = 0;
+	while (env[i] != NULL)
+	{
+		if (env[i][0] == 'O' && ft_strstr(env[i], "OLDPWD="))
+		{
+			path = ft_strdup(env[i] + 7);
+			return (path);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+char			*ft_get_home(char **env)
+{
+	int 	i;
+	char 	*path;
+
+	i = 0;
+	while (env[i] != NULL)
+	{
+		if (env[i][0] == 'H' && ft_strstr(env[i], "HOME="))
 		{
 			path = ft_strdup(env[i] + 5);
 			return (path);

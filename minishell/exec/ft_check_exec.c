@@ -18,7 +18,11 @@ void	ft_check_exec(char **line, char ***env)
 	char 	*path;
 
 	input = ft_strsplit(*line, ' ');
-	path = ft_get_path(*env);
+	if (!(path = ft_get_path(*env)))
+	{
+		ft_mini_printf("environmental variable PATH is not set\n");
+		return ;
+	}
 	ft_find_path(input, path);
 	ft_strdel(&path);
 	if (input[0] == NULL)

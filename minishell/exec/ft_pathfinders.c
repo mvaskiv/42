@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:49:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/19 16:45:27 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/21 14:58:18 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char 	*ft_check_path(char *path, int x)
+char			*ft_check_path(char *path, int x)
 {
 	static int 	i = 0;
 	int 		j;
@@ -54,13 +54,12 @@ static void 	ft_success(char **path, char **name, char ***input, char *fullname)
 	*input[0] = fullname;
 }
 
-void	ft_find_path(char **input, char *path_env)
+void			ft_find_path(char **input, char *path_env)
 {
 	char 		*name;
 	char 		*fullname;
 	char 		*path;
 
-	path = NULL;
 	name = ft_strjoin("/", input[0]);
 	while (1)
 	{
