@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 15:37:27 by mvaskiv          ###   ########.fr       */
+/*   Created: 2018/03/22 16:29:04 by mvaskiv           #+#    #+#             */
+/*   Updated: 2018/03/22 16:29:04 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int				ft_env(char **env)
+int			ft_env(char **env)
 {
 	int		i;
 
@@ -35,8 +35,9 @@ int			ft_unsetenv(char ***env, const char *line, int i)
 	envp = *env;
 	if (!(env_name = ft_no_env(line, env)))
 		return (1);
-	while (envp[i++] != NULL);
-	dup = (char**)malloc(sizeof(char*) * i - 1);
+	while (envp[i] != NULL)
+		i++;
+	dup = (char**)malloc(sizeof(char*) * i);
 	i = 0;
 	j = 0;
 	while (envp[i] != NULL)

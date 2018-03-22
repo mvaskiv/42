@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:51:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:16:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:14:44 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_cd_error(const char *line)
 {
 	struct stat	stats;
 	char		*pwd;
-	char 		*tmp;
+	char		*tmp;
 
 	tmp = ft_strjoin(getenv("PWD"), "/");
 	pwd = ft_strjoin(tmp, line + 3);
@@ -38,9 +38,9 @@ static int	ft_cd_error(const char *line)
 
 static void	ft_substitute_home(char **new_dir)
 {
-	char 	*fullname;
-	char 	*first;
-	char 	*second;
+	char	*fullname;
+	char	*first;
+	char	*second;
 
 	fullname = NULL;
 	first = ft_strdup(getenv("HOME"));
@@ -61,14 +61,14 @@ static void	ft_substitute_home(char **new_dir)
 	}
 }
 
-static int 	ft_check_dir(char **new_dir, char ***env)
+static int	ft_check_dir(char **new_dir, char ***env)
 {
-	char 	*old;
+	char	*old;
 
 	if (!(ft_strncmp(*new_dir, "-", 2)))
 	{
 		old = ft_get_oldpwd(*env);
-		if(old == NULL)
+		if (old == NULL)
 		{
 			ft_mini_printf("no OLDPWD set yet\nStatying in the current dir\n");
 			return (1);
@@ -87,25 +87,27 @@ static int 	ft_check_dir(char **new_dir, char ***env)
 
 int			ft_cd(const char *line, char ***env)
 {
-	char 		*new_dir;
-	char 		*set_old;
-	char 		*old;
-	char 		*home;
+	char		*new_dir;
+	char		*set_old;
+	char		*old;
+	char		*home;
 
 	home = ft_get_home(*env);
 	old = getcwd(NULL, 0);
 	set_old = ft_strjoin("setenv OLDPWD ", old);
 	ft_strdel(&old);
-	new_dir = ft_strdup(line + 3);
+	if (line[3])
+		new_dir = ft_strdup(line + 3);
 	if (!line[2])
 		chdir(home);
-	else if (ft_check_dir(&new_dir, env));
-	else if ((chdir(new_dir)) == 0);
+	else if (ft_check_dir(&new_dir, env))
+		ft_strdel(&new_dir);
+	else if ((chdir(new_dir)) == 0)
+		ft_strdel(&new_dir);
 	else if (ft_cd_error(line))
 		ft_strdel(&new_dir);
 	ft_mod_env(env, set_old);
 	ft_strdel(&set_old);
-	ft_strdel(&new_dir);
 	ft_strdel(&home);
 	return (1);
 }

@@ -14,7 +14,7 @@
 
 void	ft_fork(char **input, char **env)
 {
-	int 	status;
+	int		status;
 	pid_t	pid;
 
 	pid = fork();

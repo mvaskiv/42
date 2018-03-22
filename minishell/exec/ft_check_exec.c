@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:16:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:25:18 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_path_set(char **input, char *path)
 
 void	ft_check_exec(char **line, char ***env)
 {
-	char 	**input;
-	char 	*path;
+	char	**input;
+	char	*path;
 
 	input = ft_strsplit(*line, ' ');
 	if (!(path = ft_get_path(*env)))
@@ -45,7 +45,8 @@ void	ft_check_exec(char **line, char ***env)
 	ft_strdel(&path);
 	if (input[0] == NULL)
 	{
-		ft_mini_printf("%s%sshell: command not found: %s%s\n", NRM, RED, input[1], BWHT);
+		ft_mini_printf("%s%sshell: command not found: ", NRM, RED);
+		ft_mini_printf("%s%s\n", input[1], BWHT);
 		ft_strdel(&input[1]);
 		ft_strdel(line);
 	}
@@ -60,9 +61,9 @@ void	ft_check_exec(char **line, char ***env)
 void	ft_exec_local(char **line, char ***env)
 {
 	char	*envp;
-	char 	**input;
-	char 	*prog;
-	char 	*env_pwd;
+	char	**input;
+	char	*prog;
+	char	*env_pwd;
 
 	env_pwd = ft_get_pwd(*env);
 	envp = ft_strjoin(env_pwd, "/");
@@ -74,7 +75,8 @@ void	ft_exec_local(char **line, char ***env)
 	ft_strdel(&envp);
 	if (access(input[0], X_OK) != 0)
 	{
-		ft_mini_printf("%s%sshell: no such file or directory ./%s\n", NRM, MAG, prog);
+		ft_mini_printf("%s%sshell: no such file or directory ", NRM, MAG);
+		ft_mini_printf("./%s\n", prog);
 		ft_strdel(&prog);
 		ft_strdel(line);
 		ft_fun_fact();

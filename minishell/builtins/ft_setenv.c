@@ -6,17 +6,17 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:16:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:27:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static char 	*ft_env_name(const char *line)
+static char		*ft_env_name(const char *line)
 {
-	char 	*name;
-	int 	i;
-	int 	j;
+	char	*name;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
@@ -35,12 +35,14 @@ static char 	*ft_env_name(const char *line)
 char			**ft_change_env(char ***env, const char *line, int i)
 {
 	char	**dup;
-	char 	**envp = *env;
+	char	**envp;
 	int		j;
 
 	j = 0;
-	while (envp[j++] != NULL);
-	dup = (char**)malloc(sizeof(char*) * j);
+	envp = *env;
+	while (envp[j] != NULL)
+		j++;
+	dup = (char**)malloc(sizeof(char*) * j + 1);
 	j = 0;
 	while (envp[j] != NULL)
 	{
@@ -55,12 +57,14 @@ char			**ft_change_env(char ***env, const char *line, int i)
 
 char			**ft_new_env(char ***env, const char *line, int i)
 {
-	char 	**dup;
-	char 	**envp = *env;
+	char	**dup;
+	char	**envp;
 
 	i = 0;
-	while (envp[i++] != NULL);
-	dup = (char**)malloc(sizeof(char*) * i + 1);
+	envp = *env;
+	while (envp[i] != NULL)
+		i++;
+	dup = (char**)malloc(sizeof(char*) * i + 2);
 	i = 0;
 	while (envp[i] != NULL)
 	{
@@ -76,8 +80,8 @@ void			ft_setenv(char ***env, const char *line)
 {
 	int		i;
 	char	**dup;
-	char 	**envp;
-	char 	*env_name;
+	char	**envp;
+	char	*env_name;
 
 	i = 0;
 	envp = *env;
@@ -104,7 +108,7 @@ char			*ft_set_env_val(char **input)
 {
 	char	*value;
 	char	*tmp;
-	char 	*tmp_two;
+	char	*tmp_two;
 
 	tmp = ft_strmap(input[1], ft_toupper);
 	tmp_two = ft_strjoin(tmp, "=");

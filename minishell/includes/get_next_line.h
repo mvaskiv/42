@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 14:19:17 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/01/31 15:58:12 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:22:57 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ typedef struct			s_storage
 {
 	char				*content;
 	int					fd;
-	struct s_storage		*next;
+	struct s_storage	*next;
 }						t_storage;
 
-int		get_next_line(const int fd, char **line);
+int						get_next_line(const int fd, char **line);
 
 #endif

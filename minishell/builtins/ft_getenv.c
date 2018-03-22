@@ -15,7 +15,7 @@
 char			*ft_get_pwd(char **env)
 {
 	int		i;
-	char 	*pwd;
+	char	*pwd;
 
 	i = 0;
 	while (env[i] != NULL)
@@ -32,8 +32,8 @@ char			*ft_get_pwd(char **env)
 
 char			*ft_get_path(char **env)
 {
-	int 	i;
-	char 	*path;
+	int		i;
+	char	*path;
 
 	i = 0;
 	while (env[i] != NULL)
@@ -50,8 +50,8 @@ char			*ft_get_path(char **env)
 
 char			*ft_get_oldpwd(char **env)
 {
-	int 	i;
-	char 	*path;
+	int		i;
+	char	*path;
 
 	i = 0;
 	while (env[i] != NULL)
@@ -68,8 +68,8 @@ char			*ft_get_oldpwd(char **env)
 
 char			*ft_get_home(char **env)
 {
-	int 	i;
-	char 	*path;
+	int		i;
+	char	*path;
 
 	i = 0;
 	while (env[i] != NULL)

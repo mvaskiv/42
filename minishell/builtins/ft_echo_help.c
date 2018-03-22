@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 14:55:25 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 15:26:03 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:21:23 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_echo_q_pos(const char *line, char q, int i)
 static char	*ft_get_env(char *name, char **env)
 {
 	int		i;
-	char 	*value;
+	char	*value;
 
 	i = 0;
 	while (env[i] != NULL)
@@ -37,10 +37,10 @@ static char	*ft_get_env(char *name, char **env)
 	return (NULL);
 }
 
-static char *ft_get_envname_echo(int i, int j, int l, const char *line)
+static char	*ft_get_envname_echo(int i, int j, int l, const char *line)
 {
-	char 	*name;
-	char 	*fullname;
+	char	*name;
+	char	*fullname;
 
 	name = (char*)malloc(sizeof(char) * (j - i) + 1);
 	while (l < (j - i - 1))
@@ -54,16 +54,18 @@ static char *ft_get_envname_echo(int i, int j, int l, const char *line)
 	return (fullname);
 }
 
-int 		ft_echo_env(const char *line, int i, char ***env)
+int			ft_echo_env(const char *line, int i, char ***env)
 {
-	int 	j;
-	char 	*value;
-	char 	*fullname;
-	int 	l;
+	int		j;
+	char	*value;
+	char	*fullname;
+	int		l;
 
 	l = 0;
 	j = ++i;
-	while (ft_isalpha(line[j++]));
+	while (ft_isalpha(line[j]))
+		j++;
+	j++;
 	fullname = ft_get_envname_echo(i, j, l, line);
 	l = ft_strlen(fullname);
 	if (!(value = ft_get_env(fullname, *env)))
@@ -81,9 +83,9 @@ int 		ft_echo_env(const char *line, int i, char ***env)
 int			ft_echo_quotes(const char *line, int i, char ***env)
 {
 	char	q;
-	int 	l;
-	int 	j;
-	int 	n;
+	int		l;
+	int		j;
+	int		n;
 
 	n = 0;
 	q = line[i++];

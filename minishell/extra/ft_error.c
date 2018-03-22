@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 16:07:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:17:24 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:54:42 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char		*ft_env_name(const char *line)
 	return (name);
 }
 
-char		*ft_no_env(const char *line, char ***env)
+char			*ft_no_env(const char *line, char ***env)
 {
 	char	*env_name;
 	char	**envp;
