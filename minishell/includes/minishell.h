@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:16:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 14:17:24 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_unsetenv(char ***env, const char *line);
 int		ft_cd(const char *line, char ***env);
 int		ft_env(char **env);
 int		ft_echo(const char *line, char ***env);
+int 	ft_echo_env(const char *line, int i, char ***env);
+int		ft_echo_quotes(const char *line, int i, char ***env);
 
 /* PWD_n_PATH -> Env handling */
 char	*ft_get_pwd(char **env);
