@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:51:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 18:43:55 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 19:00:47 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,18 @@ static int	ft_check_dir(char **new_dir, char ***env)
 	return (0);
 }
 
+static void	ft_set_pwd(char ***env)
+{
+	char	*new;
+	char	*set_new;
+
+	new = getcwd(NULL, 0);
+	set_new = ft_strjoin("setenv PWD ", new);
+	ft_mod_env(env, set_new);
+	ft_strdel(&new);
+	ft_strdel(&set_new);
+}
+
 int			ft_cd(const char *line, char ***env)
 {
 	char		*new_dir;
@@ -107,6 +119,7 @@ int			ft_cd(const char *line, char ***env)
 	else if (ft_cd_error(line))
 		ft_strdel(&new_dir);
 	ft_mod_env(env, set_old);
+	ft_set_pwd(env);
 	ft_strdel(&set_old);
 	ft_strdel(&home);
 	return (1);

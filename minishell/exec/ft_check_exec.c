@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 18:41:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 19:06:14 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ void	ft_check_exec(char **line, char ***env)
 	char	**input;
 	char	*path;
 
-	input = ft_strsplit(*line, ' ');
 	if (!(path = ft_get_path(*env)))
 	{
 		ft_mini_printf("environmental variable PATH is not set\n");
+		ft_strdel(line);
 		return ;
 	}
+	input = ft_strsplit(*line, ' ');
 	ft_path_set(input, path);
 	ft_strdel(&path);
 	if (input[0] == NULL)
