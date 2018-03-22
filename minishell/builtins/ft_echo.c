@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 16:25:31 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/21 19:01:46 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 14:44:25 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,6 @@ static int 	ft_quote_counter(const char *line, int i, char q)
 	return (c);
 }
 
-static int	ft_echo_quotes(const char *line, int i)
-{
-	char	q;
-	char 	*str;
-	int 	l;
-	int 	j;
-	int 	n;
-
-	j = 0;
-	q = line[i++];
-	n = ft_quote_counter(line, i, q);
-	l = ft_echo_q_pos(line, q, i) - 6;
-	str = (char*)malloc(sizeof(char) * l + n + 1);
-	while (j < l)
-	{
-		str[j++] = line[i++];
-	}
-	str[j] = '\0';
-	ft_putstr(str);
-	ft_strdel(&str);
-	return (++i);
-}
-
 char 	*ft_get_env(char *name, char **env)
 {
 	int		i;
@@ -76,16 +53,11 @@ char 	*ft_get_env(char *name, char **env)
 	return (NULL);
 }
 
-int 	ft_echo_env(const char *line, int i, char ***env)
+char 	*ft_get_envname_echo(int i, int j, int l, const char *line)
 {
-	int 	j;
-	char	*name;
-	char 	*value;
-	int 	l;
+	char 	*name;
+	char 	*fullname;
 
-	l = 0;
-	j = ++i;
-	while (ft_isalpha(line[j++]));
 	name = (char*)malloc(sizeof(char) * (j - i) + 1);
 	while (l < (j - i - 1))
 	{
@@ -93,14 +65,61 @@ int 	ft_echo_env(const char *line, int i, char ***env)
 		l++;
 	}
 	name[l++] = '\0';
-	name = ft_strjoin(name, "=");
-	if (!(value = ft_get_env(name, *env)))
-		return (l);
-	else
+	fullname = ft_strjoin(name, "=");
+	ft_strdel(&name);
+	return (fullname);
+}
+
+int 	ft_echo_env(const char *line, int i, char ***env)
+{
+	int 	j;
+	char 	*value;
+	char 	*fullname;
+	int 	l;
+
+	l = 0;
+	j = ++i;
+	while (ft_isalpha(line[j++]));
+	fullname = ft_get_envname_echo(i, j, l, line);
+	l = ft_strlen(fullname);
+	if (!(value = ft_get_env(fullname, *env)))
 	{
-		ft_putstr(value);
+		ft_strdel(&fullname);
 		return (l);
 	}
+	else
+		ft_putstr(value);
+	ft_strdel(&value);
+	ft_strdel(&fullname);
+	return (l);
+}
+
+static int	ft_echo_quotes(const char *line, int i, char ***env)
+{
+	char	q;
+	int 	l;
+	int 	j;
+	int 	n;
+
+	n = 0;
+	j = 0;
+	q = line[i++];
+	l = ft_echo_q_pos(line, q, i) - 6;
+	while (j < l)
+	{
+		if (line[i] && line[i] != '$')
+		{
+			ft_putchar(line[i++]);
+			j++;
+		}
+		else if (line[i] == '$')
+		{
+			n = ft_echo_env(line, i, env);
+			i += n;
+			j += n;
+		}
+	}
+	return (++i);
 }
 
 int		ft_echo(const char *input, char ***env)
@@ -117,14 +136,16 @@ int		ft_echo(const char *input, char ***env)
 		while (line[i] != '\0')
 		{
 			if (line[i] == '\'' || line[i] == '\"')
-				i = ft_echo_quotes(line, i);
+				i = ft_echo_quotes(line, i, env);
 			if (line[i] == '$')
 				i += ft_echo_env(line, i, env);
-			if (line[i + 1] && line[i + 1] != ' ' && line[i] == ' ')
-				write(1, " ", 1);
 			if (line[i] == ' ')
+			{
+				if (line[i + 1] && line[i + 1] != ' ')
+					write(1, " ", 1);
 				i++;
-			if (line[i] && line[i] != '\''&& line[i] != '\"' && line[i] != ' ')
+			}
+			else if (line[i] && line[i] != '\''&& line[i] != '\"' && line[i] != ' ')
 				write(1, &line[i++], 1);
 		}
 		write(1, "\n", 1);
