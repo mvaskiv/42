@@ -75,7 +75,7 @@ int		main(int argc, char **argv, char **envp)
 			break ;
 		if (line[0] == 'm' && line[1] == 'y' && line[2] == 'h' &&
 				line[3] == 'o' && line[4] == 'r' && line[5] == 's')
-			ft_my_horse(env, &line);
+			ft_my_horse(&line);
 		else if (line[0] == '.' && line[1] == '/')
 			ft_exec_local(&line, &env);
 		else if (ft_check_input(line, &env))

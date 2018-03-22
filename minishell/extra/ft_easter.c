@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:19:47 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 18:41:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 20:04:28 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,24 @@ int		ft_exit(const char *line)
 	return (0);
 }
 
-void	ft_my_horse(char **env, char **line)
+void	ft_my_horse(char **line)
 {
 	pid_t	pid;
 
-	pid = getpid();
+//	pid = getpid();
 	system("afplay /Users/mvaskiv/Downloads/horse.mp3");
 	ft_strdel(line);
 	if (signal(SIGINT, ft_signal_caught))
 	{
 		kill(pid, SIGINT);
+		write(1, "\n", 1);
 		return ;
 	}
+}
+
+char	ft_toupper_char(char c)
+{
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }

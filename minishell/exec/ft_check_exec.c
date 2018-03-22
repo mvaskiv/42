@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 19:06:14 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 19:08:03 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_check_exec(char **line, char ***env)
 	{
 		ft_mini_printf("%s%sshell: command not found: ", NRM, RED);
 		ft_mini_printf("%s%s\n", input[1], BWHT);
-		ft_strdel(&input[1]);
+		input[0] = ft_strdup("del");
 		ft_strdel(line);
 	}
 	else

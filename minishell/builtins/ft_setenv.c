@@ -42,7 +42,7 @@ char			**ft_change_env(char ***env, const char *line, int i)
 	envp = *env;
 	while (envp[j] != NULL)
 		j++;
-	dup = (char**)malloc(sizeof(char*) * j + 1);
+	dup = (char**)malloc(sizeof(char*) * (j + 1));
 	j = 0;
 	while (envp[j] != NULL)
 	{
@@ -64,7 +64,7 @@ char			**ft_new_env(char ***env, const char *line, int i)
 	envp = *env;
 	while (envp[i] != NULL)
 		i++;
-	dup = (char**)malloc(sizeof(char*) * i + 2);
+	dup = (char**)malloc(sizeof(char*) * (i + 2));
 	i = 0;
 	while (envp[i] != NULL)
 	{
@@ -107,7 +107,6 @@ void			ft_setenv(char ***env, const char *line)
 int				ft_mod_env(char ***env, const char *line)
 {
 	char	*value;
-	char	*tmp;
 	char	**input;
 	int		i;
 	int		j;

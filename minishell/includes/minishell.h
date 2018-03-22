@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 18:41:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 19:22:18 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		ft_exit(const char *line);
 char	**ft_arrdup(char **arr);
 
 void	ft_fun_fact();
-void	ft_my_horse(char **env, char **line);
+void	ft_my_horse(char **line);
+char	ft_toupper_char(char c);
 
 #endif

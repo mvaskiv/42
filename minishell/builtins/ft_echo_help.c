@@ -84,7 +84,6 @@ int			ft_echo_quotes(const char *line, int i, char ***env)
 {
 	char	q;
 	int		l;
-	int		j;
 	int		n;
 
 	n = 0;

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 17:24:03 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 18:41:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 19:22:18 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char			*ft_set_env_val(char **input)
 	char	*tmp;
 	char	*tmp_two;
 
-	tmp = ft_strmap(input[1], ft_toupper);
+	tmp = ft_strmap(input[1], ft_toupper_char);
 	tmp_two = ft_strjoin(tmp, "=");
 	value = ft_strjoin(tmp_two, input[2]);
 	ft_strdel(&tmp);
