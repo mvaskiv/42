@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:51:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 16:14:44 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 18:43:55 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ int			ft_cd(const char *line, char ***env)
 	old = getcwd(NULL, 0);
 	set_old = ft_strjoin("setenv OLDPWD ", old);
 	ft_strdel(&old);
-	if (line[3])
+	if (line[2] && line[3])
 		new_dir = ft_strdup(line + 3);
-	if (!line[2])
+	if (!line[2] || !line[3])
 		chdir(home);
 	else if (ft_check_dir(&new_dir, env))
 		ft_strdel(&new_dir);
