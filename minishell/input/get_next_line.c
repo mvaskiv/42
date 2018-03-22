@@ -6,19 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 17:57:24 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:16:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:48:17 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
 
-/* BEGINNING*/
-
-/* ft_endl to find the end of the line and replace it with \0
-to ease my life and particularly the process of the output
-using the ft_strdup function or whatever */
-
-static int		ft_endl(char *string)
+static int			ft_endl(char *string)
 {
 	int		i;
 
@@ -34,19 +28,17 @@ static int		ft_endl(char *string)
 		return (-1);
 }
 
-/*	ft_find_file to find the correct file in the storage list */
-
-static t_storage		*ft_find_file(t_storage **storage, int fd, char **tmp)
+static t_storage	*ft_find_file(t_storage **storage, int fd, char **tmp)
 {
-	t_storage       *temp;
-	t_storage				**start;
+	t_storage		*temp;
+	t_storage		**start;
 
 	*tmp = ft_strnew(BUFF_SIZE + 1);
 	start = storage;
 	temp = *storage;
-	while(temp)
+	while (temp)
 	{
-		if(temp->fd == fd)
+		if (temp->fd == fd)
 			return (temp);
 		temp = temp->next;
 	}
@@ -56,19 +48,18 @@ static t_storage		*ft_find_file(t_storage **storage, int fd, char **tmp)
 	temp->next = *start;
 	*storage = temp;
 	temp = *storage;
-	return(temp);
+	return (temp);
 }
 
-/* ft_read_n_write to read tmp, overwrite the existing data */
-
-static char		*ft_read_n_write(char *string, char *tmp, int ret)
+static char			*ft_read_n_write(char *string, char *tmp, int ret)
 {
 	int		i;
 	int		j;
-	char	*str = NULL;
+	char	*str;
 
 	i = 0;
 	j = 0;
+	str = NULL;
 	if (ret && tmp)
 		tmp[ret] = '\0';
 	if (string != NULL)
@@ -86,13 +77,14 @@ static char		*ft_read_n_write(char *string, char *tmp, int ret)
 	return (str);
 }
 
-/* ft_check_endl to check for the /n in the storage->content and write **line accordingly */
-
-static int		ft_check_endl(t_storage *storage, char **tmp, char **line, int ret)
+static int			ft_check_endl(t_storage *storage, char **tmp,
+									char **line, int ret)
 {
-	int		endl = 0;
-	char	*to_keep = NULL;
+	int		endl;
+	char	*to_keep;
 
+	endl = 0;
+	to_keep = NULL;
 	storage->content = ft_read_n_write(storage->content, *tmp, ret);
 	endl = ft_endl(storage->content);
 	if (endl > -1)
@@ -109,15 +101,13 @@ static int		ft_check_endl(t_storage *storage, char **tmp, char **line, int ret)
 	return (0);
 }
 
-/* get_next_line body */
-
-int		get_next_line(const int fd, char **line)
+int					get_next_line(const int fd, char **line)
 {
-	static t_storage		*storage_s = NULL;
+	static t_storage	*storage_s;
 	char				*tmp;
-	int				output;
-	int				ret;
-	t_storage		*storage;
+	int					output;
+	int					ret;
+	t_storage			*storage;
 
 	storage = ft_find_file(&storage_s, fd, &tmp);
 	if (!line || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, tmp, 0)) < 0)
@@ -139,5 +129,3 @@ int		get_next_line(const int fd, char **line)
 	storage_s = storage;
 	return (output);
 }
-
-/* THE END */

@@ -14,7 +14,7 @@
 
 static char	ft_get_quotes(const char *line)
 {
-	int 	i;
+	int		i;
 	char	q;
 
 	i = 0;
@@ -24,23 +24,23 @@ static char	ft_get_quotes(const char *line)
 		if (line[i] == '\'')
 		{
 			q = '\'';
-			break;
+			break ;
 		}
 		if (line[i] == '\"')
 		{
 			q = '\"';
-			break;
+			break ;
 		}
 		i++;
 	}
 	return (q);
 }
 
-int 		ft_count_quotes(const char *line)
+int			ft_count_quotes(const char *line)
 {
 	int		i;
-	int 	c;
-	char 	q;
+	int		c;
+	char	q;
 
 	c = 0;
 	i = 0;
@@ -59,8 +59,8 @@ int 		ft_count_quotes(const char *line)
 void		ft_welcome(char **line)
 {
 	char	*append;
-	int 	i;
-	char 	*temp;
+	int		i;
+	char	*temp;
 
 	i = 0;
 	append = NULL;

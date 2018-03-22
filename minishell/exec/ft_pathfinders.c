@@ -14,9 +14,9 @@
 
 char			*ft_check_path(char *path, int x)
 {
-	static int 	i = 0;
-	int 		j;
-	char 		*possible;
+	static int	i = 0;
+	int			j;
+	char		*possible;
 
 	if (x == 1)
 	{
@@ -39,13 +39,14 @@ char			*ft_check_path(char *path, int x)
 	return (possible);
 }
 
-static void 	ft_fail(char **path, char **name)
+static void		ft_fail(char **path, char **name)
 {
 	ft_strdel(name);
 	ft_strdel(path);
 }
 
-static void 	ft_success(char **path, char **name, char ***input, char *fullname)
+static void		ft_success(char **path, char **name,
+							char ***input, char *fullname)
 {
 	ft_check_path(NULL, 1);
 	ft_strdel(path);
@@ -56,9 +57,9 @@ static void 	ft_success(char **path, char **name, char ***input, char *fullname)
 
 void			ft_find_path(char **input, char *path_env)
 {
-	char 		*name;
-	char 		*fullname;
-	char 		*path;
+	char		*name;
+	char		*fullname;
+	char		*path;
 
 	name = ft_strjoin("/", input[0]);
 	while (1)

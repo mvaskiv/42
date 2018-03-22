@@ -6,13 +6,13 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 16:07:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:16:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 14:17:24 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_setenv_usage()
+void			ft_setenv_usage(void)
 {
 	ft_mini_printf("setenv: usage: setenv [env] [value]\n");
 }
@@ -40,10 +40,10 @@ static char		*ft_env_name(const char *line)
 
 char		*ft_no_env(const char *line, char ***env)
 {
-	char 	*env_name;
-	char 	**envp;
-	int 	i;
-	int 	j;
+	char	*env_name;
+	char	**envp;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

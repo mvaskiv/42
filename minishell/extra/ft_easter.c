@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-void	ft_fun_fact()
+void	ft_fun_fact(void)
 {
 	ft_putendl("However, here is a fun fact for you:");
 	ft_putendl("Banging your head against the wall");
@@ -20,7 +20,7 @@ void	ft_fun_fact()
 	ft_putstr(BWHT);
 }
 
-int 	ft_exit(const char *line)
+int		ft_exit(const char *line)
 {
 	if (line[0] == 'e' && line[1] == 'x' && line[2] == 'i' && line[3] == 't')
 		exit(0);
@@ -34,8 +34,9 @@ int 	ft_exit(const char *line)
 
 void	ft_my_horse(char **env, char **line)
 {
-	pid_t	pid = getpid();
+	pid_t	pid;
 
+	pid = getpid();
 	system("afplay /Users/mvaskiv/Downloads/horse.mp3");
 	ft_strdel(line);
 	if (signal(SIGINT, ft_signal_caught))

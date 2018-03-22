@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:08:42 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 14:16:13 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:37:27 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,16 @@ int				ft_env(char **env)
 	return (1);
 }
 
-void			ft_unsetenv(char ***env, const char *line)
+int			ft_unsetenv(char ***env, const char *line, int i)
 {
 	char	**dup;
 	char	**envp;
 	char	*env_name;
-	int		i;
 	int		j;
 
 	envp = *env;
 	if (!(env_name = ft_no_env(line, env)))
-		return ;
-	i = 0;
+		return (1);
 	while (envp[i++] != NULL);
 	dup = (char**)malloc(sizeof(char*) * i - 1);
 	i = 0;
@@ -52,4 +50,5 @@ void			ft_unsetenv(char ***env, const char *line)
 	ft_strdel(&env_name);
 	ft_arrclr(*env);
 	*env = dup;
+	return (1);
 }

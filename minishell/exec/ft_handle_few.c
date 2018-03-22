@@ -14,8 +14,8 @@
 
 static char	ft_find_delim(const char *line)
 {
-	int 	i;
-	char 	q;
+	int		i;
+	char	q;
 
 	i = 0;
 	q = '\0';
@@ -39,8 +39,8 @@ static char	ft_find_delim(const char *line)
 int			ft_handle_few(const char *line, char **env)
 {
 	char	**input;
-	char 	q;
-	int 	i;
+	char	q;
+	int		i;
 
 	i = 0;
 	q = ft_find_delim(line);

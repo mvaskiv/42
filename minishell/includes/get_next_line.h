@@ -19,7 +19,7 @@
 typedef struct			s_storage
 {
 	char				*content;
-	int				fd;
+	int					fd;
 	struct s_storage		*next;
 }						t_storage;
 
