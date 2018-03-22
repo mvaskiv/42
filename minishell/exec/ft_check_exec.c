@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 16:25:18 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:28:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,11 @@ void	ft_exec_local(char **line, char ***env)
 	{
 		ft_mini_printf("%s%sshell: no such file or directory ", NRM, MAG);
 		ft_mini_printf("./%s\n", prog);
-		ft_strdel(&prog);
-		ft_strdel(line);
 		ft_fun_fact();
 	}
 	else
-	{
-		ft_strdel(&prog);
 		ft_fork(input, *env);
-		ft_strdel(line);
-	}
+	ft_strdel(&prog);
+	ft_strdel(line);
 	ft_arrclr(input);
 }

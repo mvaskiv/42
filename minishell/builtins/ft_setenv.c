@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:10:14 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 16:27:41 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:27:55 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,6 @@ void			ft_setenv(char ***env, const char *line)
 	ft_strdel(&env_name);
 	ft_arrclr(*env);
 	*env = dup;
-}
-
-char			*ft_set_env_val(char **input)
-{
-	char	*value;
-	char	*tmp;
-	char	*tmp_two;
-
-	tmp = ft_strmap(input[1], ft_toupper);
-	tmp_two = ft_strjoin(tmp, "=");
-	value = ft_strjoin(tmp_two, input[2]);
-	ft_strdel(&tmp);
-	ft_strdel(&tmp_two);
-	return (value);
 }
 
 int				ft_mod_env(char ***env, const char *line)

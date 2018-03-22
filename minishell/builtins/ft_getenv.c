@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 17:24:03 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/21 17:24:37 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:19:36 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,18 @@ char			*ft_get_home(char **env)
 		i++;
 	}
 	return (NULL);
+}
+
+char			*ft_set_env_val(char **input)
+{
+	char	*value;
+	char	*tmp;
+	char	*tmp_two;
+
+	tmp = ft_strmap(input[1], ft_toupper);
+	tmp_two = ft_strjoin(tmp, "=");
+	value = ft_strjoin(tmp_two, input[2]);
+	ft_strdel(&tmp);
+	ft_strdel(&tmp_two);
+	return (value);
 }

@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 15:37:27 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:51:26 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_signal_int(int sig);
 void	ft_signal_caught(int sig);
 
 void	ft_setenv_usage(void);
+char	*ft_set_env_val(char **input);
 
 int		ft_count_quotes(const char *line);
 char	*ft_no_env(const char *line, char ***env);
