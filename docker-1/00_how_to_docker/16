@@ -1,0 +1,1 @@
+docker events -f name=spawning-pool

@@ -1,0 +1,10 @@
+docker run -d --name Abathur --restart always -p 3000:3000 -v /home/Abathur:/root -i -d -e FLASK_APP=/root/html.py python:2-slim
+
+docker exec Abathur pip install flask \
+docker exec Abathur sh -c "echo 'from flask import Flask' > /root/html.py" \
+docker exec Abathur sh -c "echo 'app = Flask(__name__)\n' >> /root/html.py" \
+docker exec Abathur sh -c "echo '@app.route(\"/\")' >> /root/html.py" \
+docker exec Abathur sh -c "echo 'def homepage():' >> /root/html.py" \
+docker exec Abathur sh -c "echo '\treturn \"<html><head><body><h1>Hello World</h1></body></head></html>\"' >> /root/html.py"
+
+docker exec -d Abathur flask run --host=0.0.0.0 --port=3000
