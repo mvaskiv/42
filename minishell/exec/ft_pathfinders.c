@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:49:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 18:41:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/26 13:14:41 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char			*ft_check_path(char *path, int x)
 	while (path[i] != ':' && path[i] != '\0')
 		possible[j++] = path[i++];
 	possible[j] = '\0';
-	if (i >= ft_strlen(path))
+	if (i > ft_strlen(path))
 	{
 		i = 0;
 		ft_strdel(&possible);

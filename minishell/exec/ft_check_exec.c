@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 19:08:03 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/23 13:16:43 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 void	ft_path_set(char **input, char *path)
 {
+	struct stat	stats;
+
 	if (ft_strncmp(input[0], "/", 1))
 		ft_find_path(input, path);
 	else
 	{
-		if (access(input[0], X_OK) == 0)
+		stat(input[0], &stats);
+		if ((access(input[0], F_OK) == 0) && (!(S_ISDIR(stats.st_mode))))
 			return ;
 		else
 		{
+			ft_mini_printf("shell: permission denied or \n");
 			ft_strdel(&input[1]);
 			input[1] = input[0];
 			input[0] = NULL;
@@ -48,14 +52,11 @@ void	ft_check_exec(char **line, char ***env)
 	{
 		ft_mini_printf("%s%sshell: command not found: ", NRM, RED);
 		ft_mini_printf("%s%s\n", input[1], BWHT);
-		input[0] = ft_strdup("del");
-		ft_strdel(line);
+		ft_strdel(&input[1]);
 	}
 	else
-	{
 		ft_fork(input, *env);
-		ft_strdel(line);
-	}
+	ft_strdel(line);
 	ft_arrclr(input);
 }
 

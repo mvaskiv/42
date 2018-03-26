@@ -6,19 +6,22 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 18:51:40 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 19:00:47 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/23 12:41:22 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int	ft_cd_error(const char *line)
+static int	ft_cd_error(const char *line, char ***env)
 {
 	struct stat	stats;
 	char		*pwd;
 	char		*tmp;
+	char		*pwd_env;
 
-	tmp = ft_strjoin(getenv("PWD"), "/");
+	pwd_env = ft_get_pwd(*env);
+	tmp = ft_strjoin(pwd_env, "/");
+	ft_strdel(&pwd_env);
 	pwd = ft_strjoin(tmp, line + 3);
 	ft_strdel(&tmp);
 	if ((stat(pwd, &stats)))
@@ -36,14 +39,14 @@ static int	ft_cd_error(const char *line)
 	return (0);
 }
 
-static void	ft_substitute_home(char **new_dir)
+static void	ft_substitute_home(char **new_dir, char ***env)
 {
 	char	*fullname;
 	char	*first;
 	char	*second;
 
 	fullname = NULL;
-	first = ft_strdup(getenv("HOME"));
+	first = ft_get_home(*env);
 	second = ft_strdup(*new_dir + 1);
 	fullname = ft_strjoin(first, second);
 	ft_strdel(&first);
@@ -79,7 +82,7 @@ static int	ft_check_dir(char **new_dir, char ***env)
 	}
 	else if (*new_dir[0] == '~')
 	{
-		ft_substitute_home(new_dir);
+		ft_substitute_home(new_dir, env);
 		return (1);
 	}
 	return (0);
@@ -116,7 +119,7 @@ int			ft_cd(const char *line, char ***env)
 		ft_strdel(&new_dir);
 	else if ((chdir(new_dir)) == 0)
 		ft_strdel(&new_dir);
-	else if (ft_cd_error(line))
+	else if (ft_cd_error(line, env))
 		ft_strdel(&new_dir);
 	ft_mod_env(env, set_old);
 	ft_set_pwd(env);

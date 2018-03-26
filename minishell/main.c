@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 18:41:05 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/23 17:51:00 by mvaskiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,7 @@ int		main(int argc, char **argv, char **envp)
 		ft_welcome(&line);
 		if (!line)
 			break ;
-		if (line[0] == 'm' && line[1] == 'y' && line[2] == 'h' &&
-				line[3] == 'o' && line[4] == 'r' && line[5] == 's')
-			ft_my_horse(&line);
-		else if (line[0] == '.' && line[1] == '/')
+		if (line[0] == '.' && line[1] == '/')
 			ft_exec_local(&line, &env);
 		else if (ft_check_input(line, &env))
 			ft_strdel(&line);
