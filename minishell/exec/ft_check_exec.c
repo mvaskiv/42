@@ -34,6 +34,16 @@ void	ft_path_set(char **input, char *path)
 	}
 }
 
+int     ft_check_null(char **line)
+{
+    if (input = NULL)
+    {
+        write(1, "\n", 1);
+        return (1);
+    }
+    return (0);
+}
+
 void	ft_check_exec(char **line, char ***env)
 {
 	char	**input;
@@ -46,6 +56,8 @@ void	ft_check_exec(char **line, char ***env)
 		return ;
 	}
 	input = ft_strsplit(*line, ' ');
+    if (ft_check_null(input))
+        return ;
 	ft_path_set(input, path);
 	ft_strdel(&path);
 	if (input[0] == NULL)
