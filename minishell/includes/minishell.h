@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/30 13:58:05 by jdoekiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 14:00:47 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*ft_get_path(char **env);
 char	*ft_get_oldpwd(char **env);
 char	*ft_get_home(char **env);
 
+void	ft_signal_kill(int sig);
 void	ft_signal_int(int sig);
 void	ft_signal_caught(int sig);
 

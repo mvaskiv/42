@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:49:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/30 13:58:05 by jdoekiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 14:13:23 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ char			*ft_check_path(char *path, int x)
 		i = 0;
 		return (NULL);
 	}
-	possible = (char*)malloc(sizeof(char) * 64);
+	possible = (char*)malloc(sizeof(char) * 128);
 	j = 0;
-	while (path[i] != ':' && path[i] != '\0')
-		possible[j++] = path[i++];
-	possible[j] = '\0';
 	if (i > ft_strlen(path))
 	{
 		i = 0;
@@ -35,7 +32,12 @@ char			*ft_check_path(char *path, int x)
 		return (NULL);
 	}
 	else
+	{
+		while (path[i] != ':' && path[i] != '\0')
+			possible[j++] = path[i++];
+		possible[j] = '\0';
 		i++;
+	}
 	return (possible);
 }
 

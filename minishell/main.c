@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/29 12:02:06 by jdoekiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 14:04:05 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ static void	ft_rid_tab(char **line)
 	*line = out;
 }
 
+
+
 int		main(int argc, char **argv, char **envp)
 {
 	char	*line;
@@ -99,9 +101,9 @@ int		main(int argc, char **argv, char **envp)
 	{
 		signal(SIGINT, ft_signal_int);
 		ft_welcome(&line);
-		ft_rid_tab(&line);
 		if (!line)
 			break ;
+		ft_rid_tab(&line);
 		if (line[0] == '.' && line[1] == '/')
 			ft_exec_local(&line, &env);
 		else if (ft_check_input(line, &env))

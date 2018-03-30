@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/30 13:59:11 by jdoekiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 14:25:37 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@ static int	ft_path_set(char **input, char *path)
 	return (i);
 }
 
-static int	ft_check_null(char **input, char **line, char **path)
+static int	ft_check_null(char **input, char **line)
 {
     if (input[0] == NULL)
 	{
 		ft_strdel(line);
-		ft_strdel(path);
 		ft_arrclr(input);
         return (1);
 	}
@@ -50,15 +49,16 @@ void		ft_check_exec(char **line, char ***env)
 	char	**input;
 	char	*path;
 
-	if (!(path = ft_get_path(*env)))
+	input = ft_strsplit(*line, ' ');
+    if (ft_check_null(input, line))
+        return ;
+	if (!(path = ft_get_path(*env)) && (ft_strncmp(input[0], "/", 1)))
 	{
 		ft_mini_printf("environmental variable PATH is not set\n");
 		ft_strdel(line);
+		ft_arrclr(input);
 		return ;
 	}
-	input = ft_strsplit(*line, ' ');
-    if (ft_check_null(input, line, &path))
-        return ;
 	if (ft_path_set(input, path) == 1)
 		ft_fork(input, *env);
 	else
