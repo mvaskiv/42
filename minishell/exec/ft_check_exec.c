@@ -6,35 +6,11 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/30 13:58:25 by jdoekiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 13:59:11 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-static void	ft_clear(char ***input_o)
-{
-	int 	i;
-	char 	**input;
-	int 	j;
-
-	j = 1;
-	input = *input_o;
-	while (input[j] != NULL)
-		j++;
-	i = 2;
-	if (input[1] != NULL && input[2] != NULL)
-	{
-		while (input[i] != NULL)
-		{
-			if (input[i])
-				ft_strdel(&input[i]);
-			i++;
-		}
-	}
-	else
-		return ;
-}
 
 static int	ft_path_set(char **input, char *path)
 {
