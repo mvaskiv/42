@@ -6,45 +6,70 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:47:34 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/23 13:16:43 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 13:58:25 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_path_set(char **input, char *path)
+static void	ft_clear(char ***input_o)
+{
+	int 	i;
+	char 	**input;
+	int 	j;
+
+	j = 1;
+	input = *input_o;
+	while (input[j] != NULL)
+		j++;
+	i = 2;
+	if (input[1] != NULL && input[2] != NULL)
+	{
+		while (input[i] != NULL)
+		{
+			if (input[i])
+				ft_strdel(&input[i]);
+			i++;
+		}
+	}
+	else
+		return ;
+}
+
+static int	ft_path_set(char **input, char *path)
 {
 	struct stat	stats;
+	int 		i;
 
 	if (ft_strncmp(input[0], "/", 1))
-		ft_find_path(input, path);
+		i = ft_find_path(input, path);
 	else
 	{
 		stat(input[0], &stats);
 		if ((access(input[0], F_OK) == 0) && (!(S_ISDIR(stats.st_mode))))
-			return ;
+			return (1);
 		else
 		{
-			ft_mini_printf("shell: permission denied or \n");
-			ft_strdel(&input[1]);
-			input[1] = input[0];
-			input[0] = NULL;
-			return ;
+			ft_mini_printf("shell: permission denied\n");
+			return (0);
 		}
 	}
+	return (i);
 }
 
-int     ft_check_null(char **line)
+static int	ft_check_null(char **input, char **line, char **path)
 {
-    if (input = NULL)
-    {
-        write(1, "\n", 1);
+    if (input[0] == NULL)
+	{
+		ft_strdel(line);
+		ft_strdel(path);
+		ft_arrclr(input);
         return (1);
-    }
+	}
     return (0);
 }
 
-void	ft_check_exec(char **line, char ***env)
+void		ft_check_exec(char **line, char ***env)
 {
 	char	**input;
 	char	*path;
@@ -56,23 +81,18 @@ void	ft_check_exec(char **line, char ***env)
 		return ;
 	}
 	input = ft_strsplit(*line, ' ');
-    if (ft_check_null(input))
+    if (ft_check_null(input, line, &path))
         return ;
-	ft_path_set(input, path);
-	ft_strdel(&path);
-	if (input[0] == NULL)
-	{
-		ft_mini_printf("%s%sshell: command not found: ", NRM, RED);
-		ft_mini_printf("%s%s\n", input[1], BWHT);
-		ft_strdel(&input[1]);
-	}
-	else
+	if (ft_path_set(input, path) == 1)
 		ft_fork(input, *env);
+	else
+		ft_mini_printf("%s", BWHT);
+	ft_strdel(&path);
 	ft_strdel(line);
 	ft_arrclr(input);
 }
 
-void	ft_exec_local(char **line, char ***env)
+void		ft_exec_local(char **line, char ***env)
 {
 	char	*envp;
 	char	**input;

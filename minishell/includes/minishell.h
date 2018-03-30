@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:53 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/22 19:22:18 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 13:58:05 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_check_exec(char **line, char ***env);
 void	ft_exec_local(char **line, char ***env);
 
 char	*ft_check_path(char *path, int x);
-void	ft_find_path(char **input, char *path_env);
+int		ft_find_path(char **input, char *path_env);
 
 void	ft_fork(char **input, char **env);
 int		ft_handle_few(const char *line, char **env);

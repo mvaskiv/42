@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 17:49:46 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/26 13:14:41 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/30 13:58:05 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char			*ft_check_path(char *path, int x)
 		i = 0;
 		return (NULL);
 	}
-	possible = (char*)malloc(sizeof(char) * 128);
+	possible = (char*)malloc(sizeof(char) * 64);
 	j = 0;
 	while (path[i] != ':' && path[i] != '\0')
 		possible[j++] = path[i++];
@@ -55,7 +55,7 @@ static void		ft_success(char **path, char **name,
 	*input[0] = fullname;
 }
 
-void			ft_find_path(char **input, char *path_env)
+int			ft_find_path(char **input, char *path_env)
 {
 	char		*name;
 	char		*fullname;
@@ -68,16 +68,15 @@ void			ft_find_path(char **input, char *path_env)
 		if (path == NULL)
 		{
 			ft_fail(&path, &name);
-			ft_strdel(&input[1]);
-			input[1] = input[0];
-			input[0] = NULL;
-			return ;
+			ft_mini_printf("%s%sshell: command not found: ", NRM, RED);
+			ft_mini_printf("%s\n", input[0]);
+			return (0);
 		}
 		fullname = ft_strjoin(path, name);
 		if (access(fullname, X_OK) == 0)
 		{
 			ft_success(&path, &name, &input, fullname);
-			return ;
+			return (1);
 		}
 		ft_strdel(&fullname);
 		ft_strdel(&path);

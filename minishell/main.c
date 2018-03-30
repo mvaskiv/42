@@ -6,7 +6,7 @@
 /*   By: mvaskiv <mvaskiv@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:45:07 by mvaskiv           #+#    #+#             */
-/*   Updated: 2018/03/23 17:51:00 by mvaskiv          ###   ########.fr       */
+/*   Updated: 2018/03/29 12:02:06 by jdoekiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int		ft_check_input(const char *line, char ***env)
 		return (1);
 	else if (ft_exit(line))
 		return (1);
+	else if (ft_strchr(line, ';') || ft_strchr(line, '&'))
+		return (ft_handle_few(line, *env));
 	else if ((line[0] == 'c' && line[1] == 'd' && line[2] == ' ') ||
 			(line[0] == 'c' && line[1] == 'd' && !line[2]))
 		return (ft_cd(line, env));
@@ -34,8 +36,6 @@ int		ft_check_input(const char *line, char ***env)
 			line[3] == 'e' && line[4] == 't' && line[5] == 'e' &&
 			line[6] == 'n' && line[7] == 'v' && (line[8] == ' ' || !line[8]))
 		return (ft_unsetenv(env, line, 0));
-	else if (ft_strchr(line, ';') || ft_strchr(line, '&'))
-		return (ft_handle_few(line, *env));
 	return (0);
 }
 
@@ -58,6 +58,34 @@ char	**ft_arrdup(char **arr)
 	return (dup);
 }
 
+static void	ft_rid_tab(char **line)
+{
+	char	*out;
+	char 	*in;
+	int 	i;
+	int 	j;
+
+	j = 0;
+	i = 0;
+	in = *line;
+	out = (char*)malloc(sizeof(char) * ft_strlen(in));
+	while (i < ft_strlen(in))
+	{
+		if (in[i] == '\t')
+		{
+			out[j++] = ' ';
+			i++;
+		}
+		else
+		{
+			out[j++] = in[i++];
+		}
+	}
+	out[j] = '\0';
+	ft_strdel(line);
+	*line = out;
+}
+
 int		main(int argc, char **argv, char **envp)
 {
 	char	*line;
@@ -71,6 +99,7 @@ int		main(int argc, char **argv, char **envp)
 	{
 		signal(SIGINT, ft_signal_int);
 		ft_welcome(&line);
+		ft_rid_tab(&line);
 		if (!line)
 			break ;
 		if (line[0] == '.' && line[1] == '/')
