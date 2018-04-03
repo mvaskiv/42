@@ -1,0 +1,48 @@
+div.head {
+	background-color: chocolate;
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 10px;
+}
+.menu {
+	position: relative;
+	display: inline-block;
+}
+
+.dropbutton {
+	position: relative;
+	left: 10px;
+	background-color: chocolate;
+	width: 105px;
+	border: none;
+	cursor: progress;
+}
+
+.content {
+	display: none;
+	position: absolute;
+	background-color: chocolate;
+	left: 10px;
+	width: 105px;
+	z-index: 1;
+}
+
+.content a {
+	color: black;
+	padding: 12px 21px;
+	display: block;
+	text-decoration: none;
+}
+
+.content a:hover {
+	background-color: burlywood;
+}
+
+.menu:hover .content {
+	display: block;
+}
+
+.menu:hover .dropbutton {
+	background-color: burlywood;
+}
