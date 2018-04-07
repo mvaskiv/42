@@ -29,11 +29,11 @@
 	}
 
 	function get_product_list($products) {
-		// $html = "<div id='order-list'>"
-		// foreach($products as $product) {
-		// 	<div><p>1</p></div>
-		// }
-		// $html = $html . "</div>";
+		$html = "";
+		foreach ($products as $product) {
+			$html = $html . "<div><p>" . $product["id"] . "</p><p>" . $product["user_name"] . "</p><p>" . $product["sum"] . "</p><p> " . str_replace("\"", "", substr($product["purchase"], 1, -1)) . "</p></div>";
+		}
+		return $html;
 	}
 
 	$productList = getOptionList(array_values(mysqli_fetch_all(send_db_request("SELECT name FROM products;", ""), MYSQLI_ASSOC)));
@@ -41,7 +41,7 @@
 	$categoryList = getOptionList($dbCategories);
 	$select_category_list = get_select_category_list($dbCategories);
 	$userList = getOptionList(array_values(mysqli_fetch_all(send_db_request("SELECT name FROM users;", ""), MYSQLI_ASSOC)));
-	$orders = mysqli_fetch_all(send_db_request("SELECT * FROM orders;", ""), MYSQLI_ASSOC);
+	$orders = get_product_list(mysqli_fetch_all(send_db_request("SELECT * FROM orders;", ""), MYSQLI_ASSOC));
 ?>
 
 <!DOCTYPE html>
