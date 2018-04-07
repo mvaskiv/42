@@ -1,0 +1,17 @@
+div.box {
+	float: right;
+	margin-left: 15px;
+	margin-bottom: 15px;
+	background-color: aliceblue;
+	width: 190px;
+	height: 190px;
+}
+
+.box:hover {
+	background-color: azure;
+}
+img.art {
+	width: 100%;
+	height: 100%;
+	
+}
