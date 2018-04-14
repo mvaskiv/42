@@ -1,0 +1,120 @@
+/* Dropdown Buttons and Links */
+
+.contact {
+	width: 70px;
+	position: relative;
+	top: 0px;
+	float: right;
+	display: inline-block;
+}
+
+.about {
+	width: 70px;
+	position: relative;
+	top: 0px;
+	float: right;
+	display: inline-block;
+}
+
+.login {
+	width: 70px;
+	position: relative;
+	top: 0px;
+	float: right;
+	display: inline-block;
+}
+
+.dropbutton {
+	background-color: transparent;
+	width: 70px;
+	height: 30px;
+	border: none;
+	z-index: 10;
+}
+
+.content {
+	display: none;
+	position: relative;
+	background-color: aliceblue;
+	left: 12px;
+	width: 70px;
+	z-index: 10;
+}
+
+.content a {
+	color: black;
+	position: relative;
+	right: 15px;
+	display: block;
+	text-decoration: none;
+	z-index: 10;
+}
+
+.content a:hover {
+	background-color: darkred;
+	z-index: 10;
+}
+
+.menu:hover .content {
+	display: block;
+	z-index: 10;
+}
+
+.menu:hover .dropbutton {
+	color: darkred;
+	cursor: pointer;
+	background-color: aliceblue;
+	z-index: 10;
+}
+
+.sidebar_l {
+	color: black;
+	height: 25px;
+	background-color: aliceblue;
+	width: 100%;
+	margin-bottom: 5px;
+	text-align: left;
+	margin-left: 15px;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.sidebar_l:hover {
+	background-color: transparent;
+	padding: 0px 0px;
+
+}
+img.sidebar_icon {
+	height: 20px;
+	position: relative;
+	bottom: -3px;
+	margin-right :5px;
+}
+/* Fonts */
+
+a.sidemenu {
+	font-size: 15px;
+	font-family: Raleway;
+	font-style: normal;
+	font-variant: small-caps;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
+a.menu {
+	font-family: Raleway;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
+h1.menu {
+	font-family: Raleway;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
