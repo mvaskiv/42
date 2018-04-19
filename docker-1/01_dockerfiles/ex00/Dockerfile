@@ -1,5 +1,6 @@
 FROM alpine
 
-RUN apt-get update && apt-get install -y vim
+RUN apk update
+RUN apk --no-cache add vim
 
 ENTRYPOINT vim
