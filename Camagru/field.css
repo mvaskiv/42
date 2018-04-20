@@ -1,0 +1,72 @@
+.u_new_comment {
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+	margin-top: 5px;
+	margin-left: 0px;
+    padding: 6px 10px;
+    width: 33vw;
+	min-width: 500px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #292929;
+    background-color: transparent;
+}
+.login {
+	margin-top: 20px;
+	margin-left: 0px;
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 10px;
+    width: 320px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #292929;
+    background-color: transparent;
+}
+.register_input {
+	margin-top: 5px;
+	margin-left: 0px;
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 10px;
+    width: 320px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #292929;
+    background-color: transparent;
+}
+.register_small_input {
+	margin-top: 5px;
+	margin-left: 0px;
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 10px;
+    width: 160px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #292929;
+    background-color: transparent;
+}
+#bigassbutton {
+	opacity: 1;
+    margin-top: 30px;
+    width: 290px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #0969c4;
+    border-style: none;
+    color: #ffffff;
+   	font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}

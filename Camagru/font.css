@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+#blue_text {
+	color: #03519b;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	line-height: 35px;
+	text-align: center;
+}
+p.footer {
+	color: #aaaaaa;
+	padding-top: 0px;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 10px;
+	text-align: center;
+}
+
+#logo {
+	color: #ffffff;
+	float: left;
+	font-family: 'Pacifico', cursive;
+	font-size: 24px;
+	line-height: 50px;
+	text-align: left;
+	text-shadow: 2px 2px 3px black;
+}
+#login, #a_login {
+	color: #ffffff;
+	float: right;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 50px;
+	text-align: right;
+}
+#login_d {
+	color: #03519b;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	line-height: 35px;
+	text-align: right;
+}
+#a_login:hover {
+	cursor: pointer;
+	text-shadow: 1px 1px 2px black;
+}
+#u_name {
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: bold;
+	width: 11vw;
+	padding-left: 10px;
+	min-width: 165px;
+}
+#u_name_l {
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: bold;
+	width: 11vw;
+	padding-left: 6px;
+	min-width: 165px;
+}
+#u_post_time {
+	color: #232323;
+	float: right;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: bold;
+	width: 11vw;
+	padding-left: 6px;
+	min-width: 165px;
+	text-align: right;
+}
+#u_comment_text {
+	padding-top: 5px;
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 300;
+	width: 11vw;
+	padding-left: 10px;
+	min-width: 165px;
+}
