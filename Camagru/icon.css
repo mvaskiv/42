@@ -1,3 +1,5 @@
+/* Icons */
+
 #cam_icon {
 	color: #ffffff;
 	float: left;
@@ -35,9 +37,6 @@
 	padding-left: 5px;
 	cursor: pointer;
 }
-#comment_submit_icon:hover {
-	color: #03519b;
-}
 #like_icon {
 	color: #393939;
 	font-size: 20px;
@@ -48,9 +47,6 @@
 	padding-left: 5px;
 	cursor: pointer;
 }
-#like_icon:hover {
-	color: red;
-}
 #clock_icon {
 	color: #393939;
 	font-size: 17px;
@@ -58,4 +54,12 @@
 	width: 10px;
 	height: 10px;
 	padding-left: 5px;
+}
+
+/* Behavior */
+#like_icon:hover {
+	color: red;
+}
+#comment_submit_icon:hover {
+	color: #03519b;
 }

@@ -11,8 +11,8 @@ body.login_bg {
 	background-color: #f7f6f4;
 	overflow-x: hidden;
 	overflow-y: auto;
-	background-blend-mode: overlay;
-	background: url('img/background.jpg') repeat;
+	background: #e0d5c3 url('img/background_q.jpg') repeat;
+	background-blend-mode:screen;
 }
 div.header {
 	position: fixed;
