@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+         <meta charset="UTF-8">
+        <meta name="landing" content="Esquiro - attorney association">
+        <title>Esquiro</title>
+    </head>
+    <body topmargin=0 marginheight=0>
+		<div class="menu">
+			<div class="menu_content">
+				<img class="logo" src="logo.png">
+			</div>
+		</div>
+		<div class="intro">
+
+		</div>
+		<div class="head">
+			<h1>sdf</h1>
+		</div>
+		
+		<div class="middle"></div>
+		<div class="middle_cover">
+		
+		</div>
+		<div class="bottom">
+			<div class="footer">
+				<div id="map" class="map">
+					<script>
+					  function initMap() {
+						var uluru = {lat: 50.502395, lng: 30.605205};
+						var map = new google.maps.Map(document.getElementById('map'), {
+						  zoom: 16,
+						  gestureHandling: 'auto',
+						  center: uluru
+						});
+						var marker = new google.maps.Marker({
+						  position: uluru,
+						  map: map
+						});
+					  }
+					</script>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function open() {
+				document.getElementById('mynav').style.width = "0%";
+			}
+		</script>
+		<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDczcTFT4a7jo8YSpSaj93FroRS7zJBfYA&callback=initMap">
+		</script>
+	</body>
+</html>
