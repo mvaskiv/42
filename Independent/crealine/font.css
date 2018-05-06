@@ -1,0 +1,487 @@
+@font-face {
+font-family: 'Gotham Pro Light';
+font-style: normal;
+font-weight: normal;
+src: local('Gotham Pro Light'), url('assets/fonts/GothaProLig.woff') format('woff');
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Pro'), url('assets/fonts/GothamPro.woff') format('woff');
+}
+@font-face {
+  font-family: 'Gotham Pro Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Pro Bold'), url('assets/fonts/GothamPro-Bold.woff') format('woff');
+}
+h1 {
+  position: relative;
+  top: 34%;
+  color: #ffffff;
+  font-family: "Gotham Pro";
+  font-size: 58px;
+  font-weight: 300;
+  line-height: 50.78px;
+  font-weight: 300;
+}
+h1.bold {
+  position: relative;
+  color: #ffffff;
+  font-family: "Gotham Pro Bold";
+  font-size: 58px;
+  font-weight: 300;
+  line-height: 8px;
+  font-weight: 500;
+}
+h1.dialogue {
+    position: relative;
+    top: 0px;
+    padding-left: 50px;
+    width: 861px;
+    height: 137px;
+    color: #ffffff;
+    font-family: "Gotham Pro";
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 72px;
+    text-align: left;
+}
+h2 {
+  color: #6d6f70;
+  font-family: "Gotham Pro Light";
+  font-size: 44px;
+  font-weight: 300;
+  white-space: nowrap;
+  line-height: 22px;
+}
+h2.white {
+  color: #fff;
+    width: 600px;
+  font-family: "Gotham Pro Light";
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 53px;
+    white-space: normal;
+}
+h2.orange {
+  color: #f59120;
+  font-family: "Gotham Pro";
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 34px;
+  font-weight: 300;
+}
+h2.green {
+    position: relative;
+    left: 80px;
+    top: 30px;
+    width: 477px;
+    height: 39px;
+    color: #a7ce39;
+    font-family: "Gotham Pro Light";
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 57.76px;
+}
+h2.green_center {
+    position: relative;
+    bottom: 30px;
+    left: 45px;
+    width: 707px;
+    height: 69px;
+    white-space: nowrap;
+    color: #a7ce39;
+    font-family: "Gotham Pro Light";
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 57.76px;
+}
+h2.bold {
+  font-family: "Gotham Pro Bold";
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 16px;
+}
+h2.stages {
+  font-family: "Gotham Pro Light";
+  width: 645px;
+  margin-top: 35px;
+  white-space: normal;
+  font-size: 43px;
+  font-weight: 1000;
+  line-height: 55px; 
+}
+h3.white_light {
+  color: #fff;
+    width: 600px;
+  font-family: "Gotham Pro Light";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 43px;
+    white-space: normal;
+}
+h3.white {
+  color: #fff;
+    width: 600px;
+  font-family: "Gotham Pro";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 43px;
+    white-space: normal;
+}
+p.green_more {
+    position: relative;
+    color: #a7ce39;
+    font-family: "Gotham Pro";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30.67px;
+}
+p.contact_top {
+  position: relative;
+  height: 24px;
+  margin-top: -15px;
+  margin-bottom: 30px;
+  color: #808083;
+  font-family: "Gotham Pro";
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 37px;
+}
+p.contact_top_two {
+  position: relative;
+  height: 24px;
+  margin-top: -15px;
+  left: -40px;
+  margin-bottom: 30px;
+  color: #808083;
+  font-family: "Gotham Pro";
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 37px;
+}
+p.intro_digit_clock {
+  position: absolute;
+  top: -120px;
+  left: 88px;
+  width: 190px;
+  height: 68px;
+  color: #a7ce39;
+  font-family: "Gotham Pro Bold";
+  font-size: 94px;
+  font-weight: 700;
+  line-height: 27px;
+}
+p.intro_digit_cart {
+  position: absolute;
+  top: -110px;
+  left: 108px;
+  width: 190px;
+  height: 68px;
+  color: #a7ce39;
+  font-family: "Gotham Pro Bold";
+  font-size: 94px;
+  font-weight: 700;
+  line-height: 27px;
+}
+p.intro_digit_direction {
+  position: absolute;
+  top: -103px;
+  left: 0px;
+  width: 540px;
+  height: 68px;
+  color: #a7ce39;
+  font-family: "Gotham Pro Bold";
+  font-size: 94px;
+  font-weight: 700;
+  line-height: 27px;
+}
+p.intro_txt_clock {
+  position: absolute;
+  top: 13px;
+  left: 165px;
+  text-align: left;
+  width: 368px;
+  height: 106px;
+  color: #173054;
+  font-family: "Gotham Pro";
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.intro_txt_cart_one {
+  position: absolute;
+  top: -11px;
+  left: 305px;
+  text-align: left;
+  width: 368px;
+  height: 106px;
+  color: #173054;
+  font-family: "Gotham Pro";
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.intro_txt_cart {
+  position: absolute;
+  top: 15px;
+  left: 180px;
+  text-align: left;
+  width: 416px;
+  height: 106px;
+  color: #173054;
+  font-family: "Gotham Pro";
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.intro_txt_direction {
+  position: absolute;
+  top: 25px;
+  left: 150px;
+  text-align: left;
+  width: 258px;
+  height: 106px;
+  color: #173054;
+  font-family: "Gotham Pro";
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.dialogue {
+    position: relative;
+    left: 80px;
+    top: 40px;
+    width: 601px;
+    height: 130px;
+    color: #ffffff;
+    font-family: "Gotham Pro Light";
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 22.15px;
+    text-align: left;
+}
+p.dialogue_lower {
+    position: relative;
+    left: 80px;
+    top: 0px;
+    width: 453px;
+    height: 60px;
+    color: #ffffff;
+    font-family: "Gotham Pro Light";
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 22.15px;
+    text-align: left;
+}
+p.why_power_digit {
+  position: absolute;
+  top: -395px;
+  left: -60px;
+  width: 540px;
+  height: 68px;
+  color: #a7ce39;
+  font-family: "Gotham Pro";
+  font-size: 350px;
+  font-weight: 700;
+  line-height: 27px;
+  opacity: 0.25;
+}
+p.why_packaging_digit {
+  position: absolute;
+  top: -395px;
+  left: -40px;
+  width: 540px;
+  height: 68px;
+  color: #a7ce39;
+  font-family: "Gotham Pro";
+  font-size: 350px;
+  font-weight: 700;
+  line-height: 27px;  
+  opacity: 0.25;
+}
+p.why_rivals_digit {
+  position: absolute;
+  top: -390px;
+  left: -25px;
+  width: 540px;
+  height: 68px;
+  color: #a7ce39;
+  font-family: "Gotham Pro";
+  font-size: 350px;
+  font-weight: 700;
+  line-height: 27px;
+  opacity: 0.25;
+}
+p.why_power_caption {
+    position: relative;
+    top: -380px;
+    left: 20px;
+    width: 379px;
+    height: 136px;
+    color: #a7ce39;
+    font-family: "Gotham Pro";
+    font-size: 45px;
+    font-weight: 600;
+    line-height: 52.71px;
+}
+p.why_rivals_caption {
+    position: relative;
+    top: -415px;
+    left: 130px;
+    width: 379px;
+    height: 136px;
+    color: #a7ce39;
+    font-family: "Gotham Pro";
+    font-size: 45px;
+    font-weight: 600;
+    line-height: 59.71px;
+}
+p.why_packaging_caption {
+    position: relative;
+    top: -405px;
+    left: 130px;
+    width: 379px;
+    height: 136px;
+    color: #a7ce39;
+    font-family: "Gotham Pro";
+    font-size: 45px;
+    font-weight: 600;
+    line-height: 52.71px;
+}
+
+p.why_power_txt {
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  text-align: left;
+  width: 320px;
+  height: 106px;
+  color: #173054;
+  font-family: "Gotham Pro";
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.why_rivals_txt {
+  position: absolute;
+  top: 85px;
+  left: 0px;
+  text-align: left;
+  width: 340px;
+  height: 106px;
+  color: #173054;
+  font-family: "Gotham Pro";
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.why_packaging_txt {
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  text-align: left;
+  width: 447px;
+  height: 106px;
+  color: #173054;
+  font-family: "Gotham Pro";
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.why_power_sum {
+  position: absolute;
+  top: 215px;
+  left: 0px;
+  text-align: left;
+  width: 237px;
+  height: 44px;
+  color: #a7ce39;
+  font-family: "Gotham Pro Bold";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.why_rivals_sum {
+  position: absolute;
+  top: 215px;
+  left: 0px;
+  text-align: left;
+  width: 237px;
+  height: 44px;
+  color: #a7ce39;
+  font-family: "Gotham Pro Bold";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.why_packaging_sum {
+  position: absolute;
+  top: 215px;
+  left: 0px;
+  text-align: left;
+  width: 437px;
+  height: 44px;
+  color: #a7ce39;
+  font-family: "Gotham Pro Bold";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 22.15px;
+}
+p.about {
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  text-align: left;
+  width: 591px;
+  height: 106px;
+  color: #fff;
+  font-family: "Gotham Pro Light";
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 22.15px;
+}
+p.feedback {
+  position: absolute;
+  top: 70px;
+  width: 909px;
+  color: #414141;
+  font-family: "Gotham Pro Light";
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 22.15px;
+}
+p.feedback_bold {
+  position: relative;
+  top: 100px;
+  text-align: center;
+  width: 909px;
+  color: #414141;
+  font-family: "Gotham Pro Bold";
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 22.15px;
+}
+p.more {
+    position: relative;
+    top: 120px;
+    color: #173054;
+    font-family: "Gotham Pro";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30.67px;
+}
+p.footer {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50px;
+    color: #ffffff;
+    font-family: "Gotham Pro";
+    width: 220px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 23.85px;
+}

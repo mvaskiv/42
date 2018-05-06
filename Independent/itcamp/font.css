@@ -1,0 +1,196 @@
+@font-face {
+font-family: 'Helvetica Neue Cyr Bold';
+src: url('assets/fonts/HelveticaNeueCyr-Bold.eot');
+src: url('assets/fonts/HelveticaNeueCyr-Bold.eot?#iefix') format('embedded-opentype'),
+url('assets/fonts/HelveticaNeueCyr-Bold.woff') format('woff'),
+url('assets/fonts/HelveticaNeueCyr-Bold.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+h1 {
+  color: #ffffff;
+  font-family: Cuprum;
+  font-size: 49px;
+  font-weight: 700;
+}
+h1.logo {
+  float: left;
+  color: #ffffff;
+  font-family: 'Helvetica Neue Cyr Bold';
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1.8px;
+}
+h1.phone {
+  font-family: Cuprum;
+  position: relative;
+  float: right;
+  white-space: nowrap;
+  top: -20px;
+  left: 0px;
+  width: 195px;
+  height: 23px;
+  color: #fefefe;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.75px;
+}
+h1.dark {
+  font-family: Cuprum;
+  position: relative;
+  white-space: nowrap;
+  color: #404040;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+h2 {
+  color: #ffffff;
+  font-family: Cuprum;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 15px;
+}
+h2.orange {
+  color: #ff5a43;
+  font-family: Cuprum;
+  font-size: 30px;
+  font-weight: 700;
+}
+h2.smaller {
+  color: #ffffff;
+  font-family: Cuprum;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+h3.orange {
+  color: #ff5a43;
+  font-family: Cuprum;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+p.white {
+  color: #ffffff;
+  font-family: Cuprum;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+p.intro {
+  position: absolute;
+  top: 40px;
+  width: 159px;
+  color: #5f5f5f;
+  font-family: Cuprum;
+  font-size: 20px;
+  font-weight: 400;
+}
+p.who {
+  position: absolute;
+  top: 80px;
+  width: 146px;
+  color: #fff;
+  font-family: Cuprum;
+  font-size: 20px;
+  font-weight: 400;
+}
+p.what {
+  position: absolute;
+  color: #33323b;
+  top: 25px;
+  font-family: Cuprum;
+  font-size: 20px;
+  font-weight: 400;
+}
+p.what_bottom {
+  position: relative;
+  margin-top: 400px;
+  color: #33323b;
+  top: 25px;
+  font-family: Cuprum;
+  font-size: 20px;
+  font-weight: 400;
+}
+p.more {
+  font-family: Cuprum;
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  margin-top: 61px;
+  width: 549px;
+  color: #5f5f5f;
+  font-size: 20px;
+  font-weight: 400;
+}
+p.ben {
+  position: absolute;
+  top: 0px;
+  left: 80px;
+  margin-top: 31px;
+  width: 359px;
+  color: #fefefe;
+  font-family: Cuprum;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+}
+p.hebron_h {
+  color: #393f4b;
+  white-space: nowrap;
+  font-family: Cuprum;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+p.hebron {
+  color: #404040;
+  width: 407px;
+  font-weight: 700;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: Cuprum;
+}
+p.help {
+  color: #ffffff;
+  font-family: Cuprum;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+p.schedule_head_bold {
+    font-family: Cuprum;
+    color:  #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+}
+p.schedule_head_bold_orange {
+    font-family: Cuprum;
+    color:  #fe4242;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+}
+p.schedule_head {
+    font-family: Cuprum;
+    color:  #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: right;
+}
+
+
+a.menu {
+  height: 16px;
+  color: #b3aba9;
+  font-family: Cuprum;
+  font-size: 18px;
+  padding: 10px;
+  font-weight: 400;
+  line-height: 24px;
+  text-decoration: none;
+}
+a:visited {
+  color: #ffffff;
+}
