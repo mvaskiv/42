@@ -1,21 +1,29 @@
-/* Icons */
-
-#cam_icon {
-	color: #ffffff;
-	float: left;
-	font-size: 29px;
-	line-height: 50px;
-	width: 50px;
-	height: 50px;
-	padding-bottom: 10px;
-	vertical-align: middle;
-}
 #menu_icon {
-    display: none;
+    display: block;
+    position: relative;
+    float: right;
+    margin-right: 15px;
+    font-size: 50px;
+    color: #fff;
+}
+#logo {
+    margin-left: 29%;
+    font-size: 35px;
+    color: #ffffff;
+	float: left;
+	font-family: 'Pacifico', cursive;
+	line-height: 50px;
+	text-align: left;
+}
+#cam_icon {
+    color: #ffffff;
+	float: left;
+    font-size: 50px;
+    margin-left: 10px;
 }
 #user_icon {
 	color: #393939;
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 10px;
 	width: 10px;
 	height: 10px;
@@ -23,26 +31,26 @@
 }
 #user_icon_l {
 	color: #393939;
-	font-size: 17px;
+	font-size: 27px;
 	line-height: 10px;
-	width: 10px;
-	height: 10px;
+	width: 25px;
+	height: 20px;
 	padding-left: 5px;
 }
 #comment_submit_icon {
 	color: #393939;
-	font-size: 20px;
-	padding-top: -5px;
+	font-size: 37px;
+	padding-top: 10px;
 	line-height: 20px;
 	width: 25px;
 	height: 25px;
-	padding-left: 5px;
+	padding-left: 0px;
 	cursor: pointer;
 }
 #like_icon {
 	color: #393939;
-	font-size: 20px;
-	padding-top: -5px;
+	font-size: 37px;
+	padding-top: 10px;
 	line-height: 20px;
 	width: 25px;
 	height: 25px;

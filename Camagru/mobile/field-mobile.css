@@ -1,28 +1,27 @@
 .u_new_comment {
 	color: #232323;
+    width: 80%;
     font-family: "Open Sans";
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 400;
-	margin-top: 0px;
-	margin-left: 0px;
+	margin-top: 10px;
+	margin-left: 15px;
     padding: 6px 10px;
-    width: 510px;
-	min-width: 500px;
-    height: 20px;
+    height: 50px;
     border-radius: 5px;
     border: 1px solid #ddd;
     background-color: #fff;
 }
 .login {
-	margin-top: 5px;
+	margin-top: 15px;
 	margin-left: 0px;
 	color: #232323;
     font-family: "Open Sans";
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 400;
     padding: 6px 10px;
-    width: 170px;
-    height: 20px;
+    width: 220px;
+    height: 40px;
     border-radius: 5px;
     border: 1px solid #292929;
     background-color: transparent;
@@ -72,30 +71,30 @@
 }
 #side-login-button {
 	opacity: 1;
-    margin-top: 15px;
-    width: 100px;
-    height: 35px;
-    border-radius: 5px;
-    background-color: #0969c4;
-    border-style: none;
-    color: #ffffff;
-   	font-family: "Open Sans";
-    font-size: 14px;
-    font-weight: 400;
-    transition: box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-}
-#side-register-button {
-    opacity: 1;
-    margin-top: 10px;
-    width: 170px;
+    margin-top: 25px;
+    width: 150px;
     height: 45px;
     border-radius: 5px;
     background-color: #0969c4;
     border-style: none;
     color: #ffffff;
    	font-family: "Open Sans";
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 400;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+#side-register-button {
+    opacity: 1;
+    margin-top: 20px;
+    width: 200px;
+    height: 55px;
+    border-radius: 5px;
+    background-color: #0969c4;
+    border-style: none;
+    color: #ffffff;
+   	font-family: "Open Sans";
+    font-size: 20px;
     font-weight: 400;
     transition: box-shadow 0.3s ease-in-out;
     cursor: pointer;
