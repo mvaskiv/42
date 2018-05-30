@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="icon.css">
         <link rel="stylesheet" type="text/css" media="screen and (max-width: 768px)" href="mobile/icon-mobile.css">
         <link rel="stylesheet" type="text/css" media="screen and (min-width: 768px)" href="font.css">
@@ -17,10 +17,8 @@
     <body>
         <div class="header mid_centered">
             <div id="header_content">
-                <a href="index.html">
-                    <i id="cam_icon" class="fas fa-camera-retro"></i>
-                    <span id="logo">Camagru</span>
-                </a>
+                <i id="cam_icon" class="fas fa-camera-retro"></i>
+                <span id="logo">Camagru</span>
                 <i class="fas fa-bars" id="menu_icon" onclick="revealMenu()"></i>
             </div>
         </div>
@@ -31,10 +29,12 @@
                         <span id="login_d">Log in</span>
                         <input class="login" type="text" placeholder="Login">
                         <input class="login" type="password" placeholder="Password">
-                        <input id="side-login-button" type="submit" value="Enter"><br><br><br>
-                        <span id="login_d">- OR -</span><br><br>
-                        <input id="side-register-button" type="submit" value="Register">
+                        <input id="side-login-button" type="submit" value="Enter">
                     </form>
+                    <div class="side-login-form">
+                        <span id="login_d">- OR -</span><br><br>
+                        <a href="register.html"><input id="side-register-button" type="submit" value="Register"></a>
+                    </div>
                 </div>
 <!--             Logged in -->
                  
@@ -133,10 +133,12 @@
                         <span id="login_d">Log in</span>
                         <input class="login" type="text" placeholder="Login">
                         <input class="login" type="password" placeholder="Password">
-                        <input id="side-login-button" type="submit" value="Enter"><br><br><br>
-                        <span id="login_d">- OR -</span><br><br>
-                        <input id="side-register-button" type="submit" value="Register">
+                        <input id="side-login-button" type="submit" value="Enter">
                     </form>
+                 <div class="side-login-form">
+                        <span id="login_d">- OR -</span><br><br>
+                        <a href="register.html"><input id="side-register-button" type="submit" value="Register"></a>
+                </div>
 <!--                 Logged in -->
                  
             </div>

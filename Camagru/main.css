@@ -93,7 +93,8 @@ div.footer {
 	width: 600px;
 	height: 620px;
 	text-align: center;
-	box-shadow: 5px 5px 15px #292929;
+	box-shadow: 1px 11px 95px #aaa;
+    transition: 0.5s;
 }
 #user-panel {
     position: sticky;
@@ -149,6 +150,9 @@ div.footer {
 }
 /* Content IDs */
 
+#mobile-menu-slider {
+    display: none;
+}
 #site-content {
     position: absolute;
     left: 0;
