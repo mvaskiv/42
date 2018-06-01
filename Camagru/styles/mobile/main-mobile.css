@@ -20,7 +20,7 @@ div.header {
 	margin-right: 0px;
 	width: 100%;
 	height: 70px;
-	background: linear-gradient(#2f65bc, #214f99);
+	background: #292929;
     opacity: 0.9;
 	z-index: 99;
 }
@@ -158,7 +158,7 @@ div.footer {
     left: 100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(#214f99,#2f65bc);
+    background: #292929;
     z-index: 98;
     transition: 0.5s;
 }
@@ -173,6 +173,7 @@ div.footer {
 	width: 600px;
 	height: auto;
     background: #fff;
+    border-radius: 15px;
     border-style: solid;
     border-width: 1px;
     border-color: #ccc;
