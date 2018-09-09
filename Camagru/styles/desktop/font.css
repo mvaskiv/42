@@ -1,6 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
+a {
+	text-decoration: none;
+}
 #blue_text {
+	color: #03519b;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	line-height: 35px;
+	text-align: center;
+}
+h1.blue_text {
+	color: #03519b;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	line-height: 35px;
+	text-align: center;
+}
+.blue_text {
 	color: #03519b;
 	font-family: 'PT Sans', sans-serif;
 	font-size: 17px;
@@ -25,7 +44,6 @@ p.footer {
 	font-size: 24px;
 	line-height: 50px;
 	text-align: left;
-
 }
 #login, #a_login {
 	color: #ffffff;
@@ -44,6 +62,26 @@ p.footer {
 	font-weight: normal;
 	line-height: 35px;
 	text-align: right;
+}
+#logout_d {
+	color: #595959;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	line-height: 35px;
+	-webkit-transition: 0.5s;
+	-moz-transition:  0.5s;
+	-ms-transition:  0.5s;
+	-o-transition:  0.5s;
+	transition:  0.5s;
+}
+#logout_d:hover{
+	color: red;
+	-webkit-transition: 0.5s;
+	-moz-transition:  0.5s;
+	-ms-transition:  0.5s;
+	-o-transition:  0.5s;
+	transition:  0.15s;
 }
 #a_login:hover {
 	cursor: pointer;
@@ -81,10 +119,96 @@ p.footer {
 #u_comment_text {
 	padding-top: 5px;
 	color: #232323;
-    font-family: "Open Sans";
-    font-size: 12px;
-    font-weight: 300;
+	font-family: "Open Sans";
+	font-size: 12px;
+	font-weight: 300;
 	width: 11vw;
 	padding-left: 10px;
 	min-width: 165px;
+}
+
+/* User Panel */
+
+hr.panel {
+	display: block;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	border-color: #797979;
+	border-style: solid;
+	border-width: 0.5px;
+	width: 80%;
+}
+.logout {
+	position: absolute;
+	bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+	cursor: pointer;
+}
+p.info {
+	color: #292929;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 20px;
+}
+p.menu {
+	color: #03519b;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 15px;
+	-webkit-transition: 0.5s;
+	-moz-transition:  0.5s;
+	-ms-transition:  0.5s;
+	-o-transition:  0.5s;
+	transition:  0.1s;
+	cursor: pointer;
+}
+p.menu:hover {
+	font-weight: 700;
+	-webkit-transition: 0.5s;
+	-moz-transition:  0.5s;
+	-ms-transition:  0.5s;
+	-o-transition:  0.5s;
+	transition:  0.1s;
+}
+p.likes {
+	position: absolute;
+	top: 0px;
+	left: 20px;
+}
+p.posts {
+	position: absolute;
+	top: 0px;
+	right: 20px;
+}
+p.counter {
+	color: #03519b;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 25px;
+}
+p.counter.likes {
+	position: absolute;
+	top: 15px;
+	left: 30px;
+}
+p.counter.posts {
+	position: absolute;
+	top: 15px;
+	right: 30px;
+}
+p.delete {
+	color: #fff;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	line-height: 15px;
 }
