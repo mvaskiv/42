@@ -1,0 +1,194 @@
+.u_new_comment {
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+	margin-top: 0px;
+	margin-left: 0px;
+    padding: 6px 10px;
+    width: 510px;
+	min-width: 500px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+.login {
+	margin-top: 5px;
+	margin-left: 0px;
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 10px;
+    width: 170px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #292929;
+    background-color: transparent;
+}
+.register_input {
+	margin-top: 5px;
+	margin-left: 0px;
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 10px;
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #292929;
+    background-color: transparent;
+}
+.register_small_input {
+	margin-top: 5px;
+	margin-left: 0px;
+	color: #232323;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 10px;
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #292929;
+    background-color: transparent;
+}
+#bigassbutton {
+	opacity: 1;
+    margin-top: 0px;
+    width: 290px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #0c4;
+    border-style: none;
+    color: #ffffff;
+   	font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+#side-login-button {
+	opacity: 1;
+    margin-top: 15px;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #0ac;
+    border-style: none;
+    color: #ffffff;
+   	font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+#side-register-button {
+    opacity: 1;
+    margin-top: 10px;
+    width: 170px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #0c4;
+    border-style: none;
+    color: #ffffff;
+   	font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+#add-avatar-form {
+    position: relative;
+    top:100px;
+}
+.comment-button {
+    background: none;
+    border-style: none;
+    width: 35px;
+    height: 35px;
+    margin-left: -10px;
+}
+#caption {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 500px;
+    height: 100px;
+}
+#comment-form {
+    position: relative;
+    width: 600px;
+}
+#upload-form {
+    position: relative;
+    top:40px;
+}
+#file-selection {
+    position: relative;
+    color: transparent;
+    width: 310px;
+    height: 100px;
+    text-align: center;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+     visibility: hidden;
+ }
+.custom-file-input::before {
+    content: 'Select your file';
+    color: white;
+    display: inline-block;
+    background: #0ac;
+    padding: 15px 8px;
+    border-radius: 10px;
+    outline: none;
+    width: 290px;
+    height: 50px;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 25px;
+    text-align: center;
+}
+.custom-file-input:hover::before {
+}
+.custom-file-input:active {
+    outline: 0;
+}
+.custom-file-input:active::before {
+    background: #e3e3e3;
+}
+
+.custom-file-input2::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input2::before {
+    content: 'Select your file';
+    color: white;
+    display: inline-block;
+    background: #0ac;
+    padding: 15px 8px;
+    border-radius: 7px;
+    outline: none;
+    margin-top: 49px;
+    width: 140px;
+    height: 17px;
+    margin-left: 75px;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: center;
+}
+.custom-file-input2:hover::before {
+}
+.custom-file-input2:active {
+    outline: 0;
+}
+.custom-file-input2:active::before {
+    background: #e3e3e3;
+}

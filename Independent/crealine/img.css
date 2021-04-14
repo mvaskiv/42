@@ -1,0 +1,111 @@
+.logo {
+  position: relative;
+  float: left;
+  margin-left: 8%;
+  margin-top: 57px;
+}
+img.tiny_icon {
+  position: relative;
+  float: left;
+  margin-top: 3px;
+  margin-right: 11px;
+  width: 33px;
+  height: 33px;
+  vertical-align: middle;
+}
+img.tiny_tick {
+  position: relative;
+  float: left;
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 27px;
+  height: 22px;
+  vertical-align: middle;
+}
+img.chevron {
+    position: relative;
+    bottom: -8px;
+    left: 15px;
+    width: 21px;
+    height: 34px;
+}
+img.chevron_vert {
+    position: relative;
+    top: 130px;
+  width: 69px;
+  height: 23px;
+  opacity: 1.5;
+}
+img.intro_img {
+  position: relative;
+  float: left;
+  bottom: 0px;
+  width: 413px;
+  height: 192px;
+}
+img.why_img {
+    position: relative;
+    float: left;
+    bottom: 20px;
+}
+img.wave {
+    position: absolute;
+    margin-left: -45%;
+    margin-right: auto;
+    bottom: -50px;
+    width: 90%;
+    z-index: 0;
+}
+img.about_a {
+    position: absolute;
+    width: 496px;
+    height: 300px;
+    top: 585px;
+    left: 390px;
+    z-index: 1;
+}
+img.about_b {
+    position: absolute;
+    width: 496px;
+    height: 300px;
+    top: 295px;
+    left: 640px;
+    z-index: 1;
+}
+img.about_c {
+    position: absolute;
+    width: 496px;
+    height: 300px;
+    top: 0px;
+    left: 870px;
+    z-index: 1;
+}
+img.stages_expl {
+    position: relative;
+    bottom: 0px;
+    float: left;
+    margin-right: 30px;
+}
+img.pyramid_center {
+    position: absolute;
+    top: 0px;
+    width: 187px;
+}
+img.pyramid_border {
+    position: absolute;
+    top: -105px;
+    left: -110px;
+    width: 402px;
+    text-align: center;
+}
+img.product_bg {
+    margin-left: -87%;
+    height: 900px;
+    width: 250%;
+    overflow: hidden;
+}
+img.product_img_all {
+    position: relative;
+    width: 1300px;
+    height: 370px;
+}

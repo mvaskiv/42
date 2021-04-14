@@ -1,0 +1,200 @@
+#head_content {
+  position: relative;
+  top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 421px;
+  height: 277px;
+}
+#menubar {
+  position: relative;
+  top: 32px;
+  left: -10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 760px;
+}
+
+#intro_details {
+  position: relative;
+  width: 100%;
+  height: 152px;
+  background: url('assets/info_border.png') no-repeat center;
+  background-size: cover;
+}
+#intro_box {
+  position: relative;
+  float: left;
+  top: 40px;
+  margin-left: 40px;
+  margin-right: 30px;
+  width: 149px;
+  height: 79px;
+  text-align: center;
+  display: inline-block;
+}
+#intro_form {
+  position: relative;
+  margin-top: 27px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 791px;
+  height: 67px;
+}
+
+#who_content {
+  position: relative;
+  top: 67px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 814px;
+  height: 262px;
+  text-align: center;
+}
+#who_box {
+  position: relative;
+  float: left;
+  top: 40px;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 271px;
+  height: 147px;
+  text-align: center;
+  display: inline-block;
+}
+
+#what_box {
+  position: absolute;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 68px;
+  height: 68px;
+  text-align: center;
+  display: inline-block;
+}
+
+#more_l {
+  position: relative;
+  float: left;
+  top: -30px;
+  width: 52.5%;
+  height: 751px;
+  background: url('assets/more_bg.png') no-repeat right;
+  background-size: cover;
+}
+#more_r {
+  position: relative;
+  float: left;
+  top: 170px;
+  width: 458px;
+  height: 260px;
+  text-align: left;
+}
+
+#benefits_content {
+  position: relative;
+  top: 67px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1050px;
+  height: 810px;
+}
+#ben_box {
+  position: relative;
+  margin-left: 70px;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  float: left;
+  width: 402px;
+  height: 85px;
+  text-align: left;
+}
+#ben_num {
+  position: relative;
+  float: left;
+  width: 70px;
+  height: 81px;
+  color: #393f4b;
+  font-family: Cuprum;
+  font-size: 18px;
+  font-weight: 700;
+  background: url('assets/spot.png') no-repeat center;
+  background-size: cover;
+}
+#process_box {
+  position: relative;
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 547px;
+  height: 291px;
+  text-align: center;
+}
+
+
+#help_content {
+  position: relative;
+  top: 73px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1069px;
+  height: 300px;
+}
+#help_box {
+  position: relative;
+  float: left;
+  margin-left: 45px;
+  margin-right: 45px;
+  width: 177px;
+  height: 131px;
+}
+
+#schedule_content {
+    position: relative;
+    top: 97px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1170px;
+}
+#schedule_l {
+  position: relative;
+  float: left;
+  top: 0px;
+  width: 198px;
+  height: 1345px;
+}
+#schedule_r {
+  position: relative;
+  float: right;
+  top: 0px;
+  width: 891px;
+  height: 1345px;
+  text-align: left;
+}
+#schedule_box {
+    position: relative;
+    float: left;
+    margin-left: 15px;
+    margin-right: 0px;
+    margin-bottom: 9px;
+    background-color:  #f74444;
+    width: 280px;
+    height: 308px;
+    text-align: center;
+}
+#schd_box_content {
+    width: 280px;
+    font-family: Cuprum;
+    color:  #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}
+
+#team_content {
+    position: relative;
+    top: 78px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1085px;
+}

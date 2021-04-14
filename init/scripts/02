@@ -1,0 +1,8 @@
+#!/bin/bash
+
+line="0 4 * * 1 apt-get update > /var/log/update_script.log && apt-get -y upgrade >> /var/log/update_script.log"
+if [[ ! $(crontab -l | grep 'update_script') ]]
+then
+	(crontab -l; echo "$line") | crontab -
+fi
+(apt-get update > /var/log/update_script.log && apt-get -y upgrade >> /var/log/update_script.log)

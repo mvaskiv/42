@@ -1,0 +1,23 @@
+#!/bin/bash
+
+hashread=$(md5sum /etc/crontab | cut -d ' ' -f1)
+BASEDIR=$(dirname "$0")
+if [[ $USER = "root" ]]
+then
+	path="/root/"
+else
+	path="/home/$USER/"
+fi
+line="0 0 * * * "$path"Documents/04"
+
+if [[ ! $(crontab -l | grep 'Documents/04') ]]
+then
+	(crontab -l; echo "$line") | crontab -
+	(echo $hashread > "$path"Documents/cron_last_hash)
+	(cp $BASEDIR/04 "$path"/Documents/)
+fi
+hashoriginal=$(cat "$path"Documents/cron_last_hash)
+if [[ $hashread != $hashoriginal ]]
+then
+	(echo "md5 mismatch" | mail -s "intruders" root@debian)
+fi

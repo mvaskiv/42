@@ -1,0 +1,1 @@
+dig slash16.org | grep ';; ADDITIONAL SECTION' -A8 | grep '	A	' | cut -d 'A' -f2 | tr -d '	'

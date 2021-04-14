@@ -1,0 +1,24 @@
+#frame {
+  position: absolute;
+  top: 40px;
+  left: -27px;
+}
+#compass {
+  position: relative;
+  top: -20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  height: 65px;
+}
+#intro_icon {
+  position: absolute;
+  left: 50px;
+}
+#what_icon {
+  position: absolute;
+}
+#dot {
+  position: relative;
+  bottom: 4px;
+}
